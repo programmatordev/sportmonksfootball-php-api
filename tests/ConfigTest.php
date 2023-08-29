@@ -6,6 +6,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use ProgrammatorDev\SportMonksFootball\Config;
 use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
+use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 
@@ -26,17 +27,20 @@ class ConfigTest extends AbstractTest
     {
         $this->assertSame(self::APPLICATION_KEY, $this->config->getApplicationKey());
         $this->assertInstanceOf(HttpClientBuilder::class, $this->config->getHttpClientBuilder());
+        $this->assertSame(null, $this->config->getCache());
     }
 
     public function testConfigWithOptions()
     {
         $config = new Config([
             'applicationKey' => 'newtestappkey',
-            'httpClientBuilder' => new HttpClientBuilder()
+            'httpClientBuilder' => new HttpClientBuilder(),
+            'cache' => $this->createMock(CacheItemPoolInterface::class)
         ]);
 
         $this->assertSame('newtestappkey', $config->getApplicationKey());
         $this->assertInstanceOf(HttpClientBuilder::class, $config->getHttpClientBuilder());
+        $this->assertInstanceOf(CacheItemPoolInterface::class, $config->getCache());
     }
 
     #[DataProvider('provideInvalidConfigOptionsData')]
@@ -75,5 +79,11 @@ class ConfigTest extends AbstractTest
     {
         $this->config->setHttpClientBuilder(new HttpClientBuilder());
         $this->assertInstanceOf(HttpClientBuilder::class, $this->config->getHttpClientBuilder());
+    }
+
+    public function testConfigSetCache()
+    {
+        $this->config->setCache($this->createMock(CacheItemPoolInterface::class));
+        $this->assertInstanceOf(CacheItemPoolInterface::class, $this->config->getCache());
     }
 }

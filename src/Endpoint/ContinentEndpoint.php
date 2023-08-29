@@ -16,6 +16,8 @@ class ContinentEndpoint extends AbstractEndpoint
 
     private string $urlGetContinentById = 'https://api.sportmonks.com/v3/core/continents/{id}';
 
+    protected int $cacheTtl = 60 * 60; // 1 hour
+
     /**
      * @throws Exception
      */
