@@ -6,8 +6,8 @@ use ProgrammatorDev\SportMonksFootball\Config;
 
 class SportMonksFootballTest extends AbstractTest
 {
-    public function testSportMonksFootballGetConfig()
+    public function testSportMonksFootballConfig()
     {
-        $this->assertInstanceOf(Config::class, $this->givenApi()->getConfig());
+        $this->assertInstanceOf(Config::class, $this->givenApi()->config);
     }
 }

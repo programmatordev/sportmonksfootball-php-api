@@ -2,14 +2,14 @@
 
 namespace ProgrammatorDev\SportMonksFootball;
 
+use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
+
 class SportMonksFootball
 {
-    public function __construct(
-        private readonly Config $config
-    ) {}
+    public ContinentEndpoint $continents;
 
-    public function getConfig(): Config
+    public function __construct(public readonly Config $config)
     {
-        return $this->config;
+        $this->continents = new ContinentEndpoint($this);
     }
 }
