@@ -11,6 +11,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Config
 {
+    private string $baseUrl = 'https://api.sportmonks.com';
+
     private array $options;
 
     public function __construct(array $options = [])
@@ -38,6 +40,11 @@ class Config
         $resolver->setAllowedValues('applicationKey', fn($value) => !empty($value));
 
         return $resolver->resolve($options);
+    }
+
+    public function getBaseUrl(): string
+    {
+        return $this->baseUrl;
     }
 
     public function getApplicationKey(): string
