@@ -3,15 +3,18 @@
 namespace ProgrammatorDev\SportMonksFootball\Endpoint;
 
 use Http\Client\Common\Plugin\CachePlugin;
+use Http\Client\Common\Plugin\LoggerPlugin;
 use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Config;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\CacheTtlTrait;
 use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
+use ProgrammatorDev\SportMonksFootball\HttpClient\Listener\LoggerCacheListener;
 use ProgrammatorDev\SportMonksFootball\HttpClient\ResponseMediator;
 use ProgrammatorDev\SportMonksFootball\SportMonksFootball;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriInterface;
+use Psr\Log\LoggerInterface;
 
 class AbstractEndpoint
 {
@@ -23,6 +26,8 @@ class AbstractEndpoint
 
     private ?CacheItemPoolInterface $cache;
 
+    private ?LoggerInterface $logger;
+
     protected int $cacheTtl = 60; // 1 minute
 
     public function __construct(SportMonksFootball $api)
@@ -31,6 +36,7 @@ class AbstractEndpoint
 
         $this->httpClientBuilder = $this->config->getHttpClientBuilder();
         $this->cache = $this->config->getCache();
+        $this->logger = $this->config->getLogger();
     }
 
     /**
@@ -58,14 +64,23 @@ class AbstractEndpoint
 
     private function configurePlugins(): void
     {
+        // Plugin order is important:
+        // The CachePlugin should come first, otherwise the LoggerPlugin will log requests even if they are cached
         if ($this->cache !== null) {
             $this->httpClientBuilder->addPlugin(
                 new CachePlugin($this->cache, $this->httpClientBuilder->getStreamFactory(), [
                     'default_ttl' => $this->cacheTtl,
                     'cache_lifetime' => 0,
+                    'cache_listeners' => ($this->logger !== null) ? [new LoggerCacheListener($this->logger)] : [],
                     // Removed default no-cache/private directives to cache responses
                     'respect_response_cache_directives' => ['max-age']
                 ])
+            );
+        }
+
+        if ($this->logger !== null) {
+            $this->httpClientBuilder->addPlugin(
+                new LoggerPlugin($this->logger)
             );
         }
     }
