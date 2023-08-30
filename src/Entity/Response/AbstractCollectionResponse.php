@@ -2,23 +2,21 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
-use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Entity\Pagination;
 
 class AbstractCollectionResponse extends AbstractResponse
 {
-    use CreateEntityCollectionTrait;
+    private ?Pagination $pagination;
 
-    private array $data;
-
-    public function __construct(array $response, string $entityClass)
+    public function __construct(array $response)
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection($response['data'], $entityClass);
+        $this->pagination = new Pagination($response['pagination']);
     }
 
-    public function getData(): array
+    public function getPagination(): ?Pagination
     {
-        return $this->data;
+        return $this->pagination;
     }
 }

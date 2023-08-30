@@ -3,6 +3,26 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Continent;
+use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
 
-/** @method Continent[] getData() */
-class ContinentCollection extends AbstractCollectionResponse {}
+class ContinentCollection extends AbstractCollectionResponse
+{
+    use CreateEntityCollectionTrait;
+
+    private array $data;
+
+    public function __construct(array $response)
+    {
+        parent::__construct($response);
+
+        $this->data = $this->createEntityCollection($response['data'], Continent::class);
+    }
+
+    /**
+     * @return Continent[]
+     */
+    public function getData(): array
+    {
+        return $this->data;
+    }
+}

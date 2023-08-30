@@ -6,6 +6,7 @@ use Nyholm\Psr7\Response;
 use ProgrammatorDev\SportMonksFootball\Entity\Pagination;
 use ProgrammatorDev\SportMonksFootball\Entity\Plan;
 use ProgrammatorDev\SportMonksFootball\Entity\RateLimit;
+use ProgrammatorDev\SportMonksFootball\Entity\Response\AbstractCollectionResponse;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\AbstractResponse;
 use ProgrammatorDev\SportMonksFootball\Entity\Subscription;
 use ProgrammatorDev\SportMonksFootball\HttpClient\ResponseMediator;
@@ -17,6 +18,14 @@ class AbstractResponseTest extends AbstractTest
         $response = new Response(body: MockResponse::ABSTRACT_RESPONSE);
         $abstractResponse = new AbstractResponse(ResponseMediator::toArray($response));
 
+        $this->assertAbstractResponse($abstractResponse);
+    }
+
+    public function testAbstractCollectionResponse()
+    {
+        $response = new Response(body: MockResponse::ABSTRACT_RESPONSE);
+        $abstractResponse = new AbstractCollectionResponse(ResponseMediator::toArray($response));
+
         $pagination = $abstractResponse->getPagination();
         $this->assertInstanceOf(Pagination::class, $pagination);
         $this->assertSame(7, $pagination->getCount());
@@ -25,6 +34,11 @@ class AbstractResponseTest extends AbstractTest
         $this->assertSame(null, $pagination->getNextPage());
         $this->assertSame(false, $pagination->hasMore());
 
+        $this->assertAbstractResponse($abstractResponse);
+    }
+
+    private function assertAbstractResponse(AbstractResponse $abstractResponse): void
+    {
         $subscriptions = $abstractResponse->getSubscriptions();
         $this->assertContainsOnlyInstancesOf(Subscription::class, $subscriptions);
         $this->assertSame([], $subscriptions[0]->getMeta());

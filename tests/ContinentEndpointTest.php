@@ -15,7 +15,7 @@ class ContinentEndpointTest extends AbstractTest
             )
         );
 
-        $response = $this->givenApi()->continents()->getAllContinents();
+        $response = $this->givenApi()->continents()->getAll();
 
         $data = $response->getData();
         $this->assertContainsOnlyInstancesOf(Continent::class, $data);
@@ -30,7 +30,7 @@ class ContinentEndpointTest extends AbstractTest
             )
         );
 
-        $response = $this->givenApi()->continents()->getContinentById(1);
+        $response = $this->givenApi()->continents()->getById(1);
 
         $data = $response->getData();
         $this->assertContinentResponse($data);
