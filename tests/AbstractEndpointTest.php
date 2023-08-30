@@ -19,7 +19,7 @@ class AbstractEndpointTest extends AbstractTest
         $cache->expects($this->once())->method('save');
 
         $api = $this->givenApi();
-        $api->config->setCache($cache);
+        $api->config()->setCache($cache);
 
         $this->mockSendRequest($api);
     }

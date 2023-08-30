@@ -5,7 +5,7 @@ namespace ProgrammatorDev\SportMonksFootball\Endpoint;
 use Http\Client\Common\Plugin\CachePlugin;
 use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Config;
-use ProgrammatorDev\SportMonksFootball\Endpoint\Util\WithCacheTtlTrait;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\CacheTtlTrait;
 use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
 use ProgrammatorDev\SportMonksFootball\HttpClient\ResponseMediator;
 use ProgrammatorDev\SportMonksFootball\SportMonksFootball;
@@ -15,7 +15,7 @@ use Psr\Http\Message\UriInterface;
 
 class AbstractEndpoint
 {
-    use WithCacheTtlTrait;
+    use CacheTtlTrait;
 
     private Config $config;
 
@@ -27,7 +27,7 @@ class AbstractEndpoint
 
     public function __construct(SportMonksFootball $api)
     {
-        $this->config = $api->config;
+        $this->config = $api->config();
 
         $this->httpClientBuilder = $this->config->getHttpClientBuilder();
         $this->cache = $this->config->getCache();
