@@ -7,6 +7,7 @@ use ProgrammatorDev\SportMonksFootball\Config;
 use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 use Psr\Cache\CacheItemPoolInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 
@@ -28,6 +29,7 @@ class ConfigTest extends AbstractTest
         $this->assertSame(self::APPLICATION_KEY, $this->config->getApplicationKey());
         $this->assertInstanceOf(HttpClientBuilder::class, $this->config->getHttpClientBuilder());
         $this->assertSame(null, $this->config->getCache());
+        $this->assertSame(null, $this->config->getLogger());
     }
 
     public function testConfigWithOptions()
@@ -35,12 +37,14 @@ class ConfigTest extends AbstractTest
         $config = new Config([
             'applicationKey' => 'newtestappkey',
             'httpClientBuilder' => new HttpClientBuilder(),
-            'cache' => $this->createMock(CacheItemPoolInterface::class)
+            'cache' => $this->createMock(CacheItemPoolInterface::class),
+            'logger' => $this->createMock(LoggerInterface::class)
         ]);
 
         $this->assertSame('newtestappkey', $config->getApplicationKey());
         $this->assertInstanceOf(HttpClientBuilder::class, $config->getHttpClientBuilder());
         $this->assertInstanceOf(CacheItemPoolInterface::class, $config->getCache());
+        $this->assertInstanceOf(LoggerInterface::class, $config->getLogger());
     }
 
     #[DataProvider('provideInvalidConfigOptionsData')]
@@ -85,5 +89,11 @@ class ConfigTest extends AbstractTest
     {
         $this->config->setCache($this->createMock(CacheItemPoolInterface::class));
         $this->assertInstanceOf(CacheItemPoolInterface::class, $this->config->getCache());
+    }
+
+    public function testConfigSetLogger()
+    {
+        $this->config->setLogger($this->createMock(LoggerInterface::class));
+        $this->assertInstanceOf(LoggerInterface::class, $this->config->getLogger());
     }
 }

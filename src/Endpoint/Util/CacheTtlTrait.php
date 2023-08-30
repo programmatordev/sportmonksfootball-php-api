@@ -2,7 +2,7 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Endpoint\Util;
 
-trait WithCacheTtlTrait
+trait CacheTtlTrait
 {
     public function withCacheTtl(int $seconds): static
     {

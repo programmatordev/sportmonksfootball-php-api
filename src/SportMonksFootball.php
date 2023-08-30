@@ -6,10 +6,17 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
 
 class SportMonksFootball
 {
-    public ContinentEndpoint $continents;
+    public function __construct(
+        private readonly Config $config
+    ) {}
 
-    public function __construct(public readonly Config $config)
+    public function config(): Config
     {
-        $this->continents = new ContinentEndpoint($this);
+        return $this->config;
+    }
+
+    public function continents(): ContinentEndpoint
+    {
+        return new ContinentEndpoint($this);
     }
 }

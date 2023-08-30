@@ -6,6 +6,7 @@ use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 use Psr\Cache\CacheItemPoolInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class Config
@@ -23,7 +24,8 @@ class Config
 
         $resolver->setDefaults([
             'httpClientBuilder' => new HttpClientBuilder(),
-            'cache' => null
+            'cache' => null,
+            'logger' => null
         ]);
 
         $resolver->setRequired('applicationKey');
@@ -31,6 +33,7 @@ class Config
         $resolver->setAllowedTypes('applicationKey', 'string');
         $resolver->setAllowedTypes('httpClientBuilder', HttpClientBuilder::class);
         $resolver->setAllowedTypes('cache', ['null', CacheItemPoolInterface::class]);
+        $resolver->setAllowedTypes('logger', ['null', LoggerInterface::class]);
 
         $resolver->setAllowedValues('applicationKey', fn($value) => !empty($value));
 
@@ -74,6 +77,18 @@ class Config
     public function setCache(?CacheItemPoolInterface $cache): self
     {
         $this->options['cache'] = $cache;
+
+        return $this;
+    }
+
+    public function getLogger(): ?LoggerInterface
+    {
+        return $this->options['logger'];
+    }
+
+    public function setLogger(?LoggerInterface $logger): self
+    {
+        $this->options['logger'] = $logger;
 
         return $this;
     }
