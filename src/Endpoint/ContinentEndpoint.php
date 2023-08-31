@@ -5,12 +5,9 @@ namespace ProgrammatorDev\SportMonksFootball\Endpoint;
 use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentItem;
-use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
 
 class ContinentEndpoint extends AbstractEndpoint
 {
-    use CreateEntityCollectionTrait;
-
     protected int $cacheTtl = 60 * 60; // 1 hour
 
     /**
