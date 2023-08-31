@@ -21,6 +21,8 @@ class AbstractEndpoint
 
     private Config $config;
 
+    protected string $language;
+
     private HttpClientBuilder $httpClientBuilder;
 
     private ?CacheItemPoolInterface $cache;
@@ -33,6 +35,7 @@ class AbstractEndpoint
     {
         $this->config = $api->config();
 
+        $this->language = $this->config->getLanguage();
         $this->httpClientBuilder = $this->config->getHttpClientBuilder();
         $this->cache = $this->config->getCache();
         $this->logger = $this->config->getLogger();
@@ -93,12 +96,10 @@ class AbstractEndpoint
         return $path;
     }
 
-    private function buildUrl(string $path, array $query): string
+    private function buildUrl(string $path, array $query = []): string
     {
-        // Add application key to all requests
-        $query = $query + [
-            'api_token' => $this->config->getApplicationKey()
-        ];
+        $query['api_token'] = $this->config->getApplicationKey(); // For authentication
+        $query['locale'] = $this->language; // Language
 
         return \sprintf('%s%s?%s', $this->config->getBaseUrl(), $path, http_build_query($query));
     }

@@ -3,6 +3,7 @@
 namespace ProgrammatorDev\SportMonksFootball;
 
 use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
+use ProgrammatorDev\SportMonksFootball\Language\Language;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 use Psr\Cache\CacheItemPoolInterface;
@@ -25,6 +26,7 @@ class Config
         $resolver = new OptionsResolver();
 
         $resolver->setDefaults([
+            'language' => Language::ENGLISH,
             'httpClientBuilder' => new HttpClientBuilder(),
             'cache' => null,
             'logger' => null
@@ -33,11 +35,13 @@ class Config
         $resolver->setRequired('applicationKey');
 
         $resolver->setAllowedTypes('applicationKey', 'string');
+        $resolver->setAllowedTypes('language', 'string');
         $resolver->setAllowedTypes('httpClientBuilder', HttpClientBuilder::class);
         $resolver->setAllowedTypes('cache', ['null', CacheItemPoolInterface::class]);
         $resolver->setAllowedTypes('logger', ['null', LoggerInterface::class]);
 
         $resolver->setAllowedValues('applicationKey', fn($value) => !empty($value));
+        $resolver->setAllowedValues('language', Language::getOptions());
 
         return $resolver->resolve($options);
     }
@@ -60,6 +64,23 @@ class Config
         Validator::notBlank()->assert($applicationKey, 'applicationKey');
 
         $this->options['applicationKey'] = $applicationKey;
+
+        return $this;
+    }
+
+    public function getLanguage(): string
+    {
+        return $this->options['language'];
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function setLanguage(string $language): self
+    {
+        Validator::choice(Language::getOptions())->assert($language, 'language');
+
+        $this->options['language'] = $language;
 
         return $this;
     }

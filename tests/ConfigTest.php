@@ -3,8 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Test;
 
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use ProgrammatorDev\SportMonksFootball\Config;
 use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
+use ProgrammatorDev\SportMonksFootball\Test\DataProvider\InvalidValueDataProvider;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
@@ -27,6 +29,7 @@ class ConfigTest extends AbstractTest
     public function testConfigDefaultOptions()
     {
         $this->assertSame(self::APPLICATION_KEY, $this->config->getApplicationKey());
+        $this->assertSame('en', $this->config->getLanguage());
         $this->assertInstanceOf(HttpClientBuilder::class, $this->config->getHttpClientBuilder());
         $this->assertSame(null, $this->config->getCache());
         $this->assertSame(null, $this->config->getLogger());
@@ -36,12 +39,14 @@ class ConfigTest extends AbstractTest
     {
         $config = new Config([
             'applicationKey' => 'newtestappkey',
+            'language' => 'ja',
             'httpClientBuilder' => new HttpClientBuilder(),
             'cache' => $this->createMock(CacheItemPoolInterface::class),
             'logger' => $this->createMock(LoggerInterface::class)
         ]);
 
         $this->assertSame('newtestappkey', $config->getApplicationKey());
+        $this->assertSame('ja', $config->getLanguage());
         $this->assertInstanceOf(HttpClientBuilder::class, $config->getHttpClientBuilder());
         $this->assertInstanceOf(CacheItemPoolInterface::class, $config->getCache());
         $this->assertInstanceOf(LoggerInterface::class, $config->getLogger());
@@ -51,7 +56,6 @@ class ConfigTest extends AbstractTest
     public function testConfigWithInvalidOptions(array $options, string $expectedException)
     {
         $this->expectException($expectedException);
-
         new Config($options);
     }
 
@@ -65,6 +69,10 @@ class ConfigTest extends AbstractTest
             ['applicationKey' => ''],
             InvalidOptionsException::class
         ];
+        yield 'invalid language' => [
+            ['applicationKey' => self::APPLICATION_KEY, 'language' => 'invalid'],
+            InvalidOptionsException::class
+        ];
     }
 
     public function testConfigSetApplicationKey()
@@ -73,10 +81,29 @@ class ConfigTest extends AbstractTest
         $this->assertSame('newtestappkey', $this->config->getApplicationKey());
     }
 
-    public function testConfigSetApplicationKeyWithBlankValue()
+    #[DataProvider('provideInvalidApplicationKeyData')]
+    public function testConfigSetApplicationKeyWithInvalidValue(string $applicationKey, string $expectedException)
     {
-        $this->expectException(ValidationException::class);
-        $this->config->setApplicationKey('');
+        $this->expectException($expectedException);
+        $this->config->setApplicationKey($applicationKey);
+    }
+
+    public static function provideInvalidApplicationKeyData(): \Generator
+    {
+        yield 'empty application key' => ['', ValidationException::class];
+    }
+
+    public function testConfigSetLanguage()
+    {
+        $this->config->setLanguage('ja');
+        $this->assertSame('ja', $this->config->getLanguage());
+    }
+
+    #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidLanguageData')]
+    public function testConfigSetLanguageWithInvalidValue(string $language, string $expectedException)
+    {
+        $this->expectException($expectedException);
+        $this->config->setLanguage($language);
     }
 
     public function testConfigSetHttpClientBuilder()
