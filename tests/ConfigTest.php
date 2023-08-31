@@ -3,8 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Test;
 
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use ProgrammatorDev\SportMonksFootball\Config;
 use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
+use ProgrammatorDev\SportMonksFootball\Test\DataProvider\InvalidValueDataProvider;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
@@ -97,17 +99,11 @@ class ConfigTest extends AbstractTest
         $this->assertSame('ja', $this->config->getLanguage());
     }
 
-    #[DataProvider('provideInvalidLanguageData')]
+    #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidLanguageData')]
     public function testConfigSetLanguageWithInvalidValue(string $language, string $expectedException)
     {
         $this->expectException($expectedException);
         $this->config->setLanguage($language);
-    }
-
-    public static function provideInvalidLanguageData(): \Generator
-    {
-        yield 'empty language' => ['', ValidationException::class];
-        yield 'invalid language' => ['invalid', ValidationException::class];
     }
 
     public function testConfigSetHttpClientBuilder()

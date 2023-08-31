@@ -3,11 +3,14 @@
 namespace ProgrammatorDev\SportMonksFootball\Endpoint;
 
 use Http\Client\Exception;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentItem;
 
 class ContinentEndpoint extends AbstractEndpoint
 {
+    use LanguageTrait;
+
     protected int $cacheTtl = 60 * 60; // 1 hour
 
     /**
