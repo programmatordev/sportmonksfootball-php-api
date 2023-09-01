@@ -11,4 +11,9 @@ class InvalidValueDataProvider
         yield 'empty language' => ['', ValidationException::class];
         yield 'invalid language' => ['invalid', ValidationException::class];
     }
+
+    public static function provideInvalidPaginationData(): \Generator
+    {
+        yield 'zero page' => [0, ValidationException::class];
+    }
 }

@@ -6,6 +6,8 @@ use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentItem;
+use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
+use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 
 class ContinentEndpoint extends AbstractEndpoint
 {
@@ -15,12 +17,18 @@ class ContinentEndpoint extends AbstractEndpoint
 
     /**
      * @throws Exception
+     * @throws ValidationException
      */
-    public function getAll(): ContinentCollection
+    public function getAll(int $page = 1): ContinentCollection
     {
+        Validator::greaterThan(0)->assert($page, 'page');
+
         $response = $this->sendRequest(
             method: 'GET',
-            path: '/v3/core/continents'
+            path: '/v3/core/continents',
+            query: [
+                'page' => $page
+            ]
         );
 
         return new ContinentCollection($response);
