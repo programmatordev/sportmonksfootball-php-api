@@ -158,13 +158,13 @@ class AbstractEndpoint
         $link = $data['link'] ?? null;
 
         // An error may occur with a misleading 200 status code:
-        // If there is a message property on the response, it means it is returning an error
+        // If there is a "message" property on the response, it means it is returning an error
         if ($statusCode >= 200 && $statusCode <= 299 && $message !== null) {
             throw new NoResultsFoundException(new Error($data));
         }
 
         if ($statusCode >= 400) {
-            // Filter errors by the provided meta code (ignores status codes as they may be misleading)
+            // Filter errors by the provided "code" property (ignores status codes as they may be misleading)
             // https://docs.sportmonks.com/football/api/error-codes/include-exceptions
             // https://docs.sportmonks.com/football/api/error-codes/filtering-and-complexity-exceptions
             // https://docs.sportmonks.com/football/api/error-codes/other-exceptions
@@ -180,7 +180,8 @@ class AbstractEndpoint
                     5007 => throw new InsufficientResourcesException($message, $code, $link),
                     5008 => throw new IncludeDepthException($message, $code, $link),
                     5010 => throw new InnaplicableFilterException($message, $code, $link),
-                    5013 => throw new IncludeNotAvailableException($message, $code, $link)
+                    5013 => throw new IncludeNotAvailableException($message, $code, $link),
+                    default => throw new UnexpectedErrorException($message, $code, $link)
                 };
             }
 
