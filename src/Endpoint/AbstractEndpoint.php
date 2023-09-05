@@ -7,11 +7,31 @@ use Http\Client\Common\Plugin\LoggerPlugin;
 use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Config;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\CacheTtlTrait;
+use ProgrammatorDev\SportMonksFootball\Entity\Response\Error;
+use ProgrammatorDev\SportMonksFootball\Exception\BadRequestException;
+use ProgrammatorDev\SportMonksFootball\Exception\ForbiddenException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeDepthException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotAllowedException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotAvailableException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotFoundException;
+use ProgrammatorDev\SportMonksFootball\Exception\InnaplicableFilterException;
+use ProgrammatorDev\SportMonksFootball\Exception\InsufficientIncludesException;
+use ProgrammatorDev\SportMonksFootball\Exception\InsufficientResourcesException;
+use ProgrammatorDev\SportMonksFootball\Exception\InvalidQueryParameterException;
+use ProgrammatorDev\SportMonksFootball\Exception\NoResultsFoundException;
+use ProgrammatorDev\SportMonksFootball\Exception\NotFoundException;
+use ProgrammatorDev\SportMonksFootball\Exception\PaginationLimitException;
+use ProgrammatorDev\SportMonksFootball\Exception\QueryComplexityException;
+use ProgrammatorDev\SportMonksFootball\Exception\RateLimitException;
+use ProgrammatorDev\SportMonksFootball\Exception\TooManyRequestsException;
+use ProgrammatorDev\SportMonksFootball\Exception\UnauthorizedException;
+use ProgrammatorDev\SportMonksFootball\Exception\UnexpectedErrorException;
 use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
 use ProgrammatorDev\SportMonksFootball\HttpClient\Listener\LoggerCacheListener;
 use ProgrammatorDev\SportMonksFootball\HttpClient\ResponseMediator;
 use ProgrammatorDev\SportMonksFootball\SportMonksFootball;
 use Psr\Cache\CacheItemPoolInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Log\LoggerInterface;
 
@@ -43,6 +63,24 @@ class AbstractEndpoint
 
     /**
      * @throws Exception
+     * @throws NoResultsFoundException
+     * @throws IncludeNotAllowedException
+     * @throws IncludeNotFoundException
+     * @throws InsufficientIncludesException
+     * @throws QueryComplexityException
+     * @throws PaginationLimitException
+     * @throws RateLimitException
+     * @throws InvalidQueryParameterException
+     * @throws InsufficientResourcesException
+     * @throws IncludeDepthException
+     * @throws InnaplicableFilterException
+     * @throws IncludeNotAvailableException
+     * @throws BadRequestException
+     * @throws UnauthorizedException
+     * @throws ForbiddenException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @throws UnexpectedErrorException
      */
     protected function sendRequest(
         string $method,
@@ -61,7 +99,12 @@ class AbstractEndpoint
             $body
         );
 
-        return ResponseMediator::toArray($response);
+        // Get response contents once
+        $data = ResponseMediator::toArray($response);
+        // Check if response is an error
+        $this->checkErrorResponse($response, $data);
+
+        return $data;
     }
 
     private function configurePlugins(): void
@@ -84,6 +127,74 @@ class AbstractEndpoint
             $this->httpClientBuilder->addPlugin(
                 new LoggerPlugin($this->logger)
             );
+        }
+    }
+
+    /**
+     * @throws NoResultsFoundException
+     * @throws IncludeNotAllowedException
+     * @throws IncludeNotFoundException
+     * @throws InsufficientIncludesException
+     * @throws QueryComplexityException
+     * @throws PaginationLimitException
+     * @throws RateLimitException
+     * @throws InvalidQueryParameterException
+     * @throws InsufficientResourcesException
+     * @throws IncludeDepthException
+     * @throws InnaplicableFilterException
+     * @throws IncludeNotAvailableException
+     * @throws BadRequestException
+     * @throws UnauthorizedException
+     * @throws ForbiddenException
+     * @throws NotFoundException
+     * @throws TooManyRequestsException
+     * @throws UnexpectedErrorException
+     */
+    private function checkErrorResponse(ResponseInterface $response, array $data): void
+    {
+        $statusCode = $response->getStatusCode();
+        $message = $data['message'] ?? null;
+        $code = $data['code'] ?? null;
+        $link = $data['link'] ?? null;
+
+        // An error may occur with a misleading 200 status code:
+        // If there is a "message" property on the response, it means it is returning an error
+        if ($statusCode >= 200 && $statusCode <= 299 && $message !== null) {
+            throw new NoResultsFoundException(new Error($data));
+        }
+
+        if ($statusCode >= 400) {
+            // Filter errors by the provided "code" property (ignores status codes as they may be misleading)
+            // https://docs.sportmonks.com/football/api/error-codes/include-exceptions
+            // https://docs.sportmonks.com/football/api/error-codes/filtering-and-complexity-exceptions
+            // https://docs.sportmonks.com/football/api/error-codes/other-exceptions
+            if ($code !== null) {
+                match ($code) {
+                    5000 => throw new IncludeNotAllowedException($message, $code, $link),
+                    5001 => throw new IncludeNotFoundException($message, $code, $link),
+                    5002 => throw new InsufficientIncludesException($message, $code, $link),
+                    5003 => throw new PaginationLimitException($message, $code, $link),
+                    5004 => throw new QueryComplexityException($message, $code, $link),
+                    5005 => throw new RateLimitException($message, $code, $link),
+                    5006 => throw new InvalidQueryParameterException($message, $code, $link),
+                    5007 => throw new InsufficientResourcesException($message, $code, $link),
+                    5008 => throw new IncludeDepthException($message, $code, $link),
+                    5010 => throw new InnaplicableFilterException($message, $code, $link),
+                    5013 => throw new IncludeNotAvailableException($message, $code, $link),
+                    default => throw new UnexpectedErrorException($message, $code, $link)
+                };
+            }
+
+            // Filter error by status code
+            // https://docs.sportmonks.com/football/api/error-codes
+            match ($statusCode) {
+                400 => throw new BadRequestException($message, $statusCode, $link),
+                401 => throw new UnauthorizedException($message, $statusCode, $link),
+                403 => throw new ForbiddenException($message, $statusCode, $link),
+                404 => throw new NotFoundException($message, $statusCode, $link),
+                429 => throw new TooManyRequestsException($message, $statusCode, $link),
+                default => throw new UnexpectedErrorException($message, $statusCode, $link)
+            };
         }
     }
 
