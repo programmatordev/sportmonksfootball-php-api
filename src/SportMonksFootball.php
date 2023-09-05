@@ -3,12 +3,11 @@
 namespace ProgrammatorDev\SportMonksFootball;
 
 use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 
 class SportMonksFootball
 {
-    public function __construct(
-        private readonly Config $config
-    ) {}
+    public function __construct(private readonly Config $config) {}
 
     public function config(): Config
     {
@@ -18,5 +17,10 @@ class SportMonksFootball
     public function continents(): ContinentEndpoint
     {
         return new ContinentEndpoint($this);
+    }
+
+    public function countries(): CountryEndpoint
+    {
+        return new CountryEndpoint($this);
     }
 }
