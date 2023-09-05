@@ -36,6 +36,24 @@ class ContinentEndpoint extends AbstractEndpoint
     /**
      * @throws Exception
      * @throws ValidationException
+     * @throws BadRequestException
+     * @throws ForbiddenException
+     * @throws IncludeDepthException
+     * @throws IncludeNotAllowedException
+     * @throws IncludeNotAvailableException
+     * @throws IncludeNotFoundException
+     * @throws InnaplicableFilterException
+     * @throws InsufficientIncludesException
+     * @throws InsufficientResourcesException
+     * @throws InvalidQueryParameterException
+     * @throws NoResultsFoundException
+     * @throws NotFoundException
+     * @throws PaginationLimitException
+     * @throws QueryComplexityException
+     * @throws RateLimitException
+     * @throws TooManyRequestsException
+     * @throws UnauthorizedException
+     * @throws UnexpectedErrorException
      */
     public function getAll(int $page = 1): ContinentCollection
     {
