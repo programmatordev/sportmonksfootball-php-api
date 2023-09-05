@@ -8,6 +8,7 @@ use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Config;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\CacheTtlTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\Error;
+use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 use ProgrammatorDev\SportMonksFootball\Exception\BadRequestException;
 use ProgrammatorDev\SportMonksFootball\Exception\ForbiddenException;
 use ProgrammatorDev\SportMonksFootball\Exception\IncludeDepthException;
@@ -63,24 +64,7 @@ class AbstractEndpoint
 
     /**
      * @throws Exception
-     * @throws NoResultsFoundException
-     * @throws IncludeNotAllowedException
-     * @throws IncludeNotFoundException
-     * @throws InsufficientIncludesException
-     * @throws QueryComplexityException
-     * @throws PaginationLimitException
-     * @throws RateLimitException
-     * @throws InvalidQueryParameterException
-     * @throws InsufficientResourcesException
-     * @throws IncludeDepthException
-     * @throws InnaplicableFilterException
-     * @throws IncludeNotAvailableException
-     * @throws BadRequestException
-     * @throws UnauthorizedException
-     * @throws ForbiddenException
-     * @throws NotFoundException
-     * @throws TooManyRequestsException
-     * @throws UnexpectedErrorException
+     * @throws ApiErrorException
      */
     protected function sendRequest(
         string $method,
@@ -131,24 +115,7 @@ class AbstractEndpoint
     }
 
     /**
-     * @throws NoResultsFoundException
-     * @throws IncludeNotAllowedException
-     * @throws IncludeNotFoundException
-     * @throws InsufficientIncludesException
-     * @throws QueryComplexityException
-     * @throws PaginationLimitException
-     * @throws RateLimitException
-     * @throws InvalidQueryParameterException
-     * @throws InsufficientResourcesException
-     * @throws IncludeDepthException
-     * @throws InnaplicableFilterException
-     * @throws IncludeNotAvailableException
-     * @throws BadRequestException
-     * @throws UnauthorizedException
-     * @throws ForbiddenException
-     * @throws NotFoundException
-     * @throws TooManyRequestsException
-     * @throws UnexpectedErrorException
+     * @throws ApiErrorException
      */
     private function checkErrorResponse(ResponseInterface $response, array $data): void
     {
