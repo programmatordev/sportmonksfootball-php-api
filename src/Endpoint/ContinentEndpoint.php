@@ -31,7 +31,7 @@ class ContinentEndpoint extends AbstractEndpoint
 {
     use LanguageTrait;
 
-    protected int $cacheTtl = 60 * 60; // 1 hour
+    protected int $cacheTtl = 60 * 60 * 24; // 1 day
 
     /**
      * @throws Exception
