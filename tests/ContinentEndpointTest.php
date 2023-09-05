@@ -47,7 +47,6 @@ class ContinentEndpointTest extends AbstractTest
 
     private function assertContinentResponse(Continent $continent): void
     {
-        $this->assertInstanceOf(Continent::class, $continent);
         $this->assertSame(1, $continent->getId());
         $this->assertSame('Europe', $continent->getName());
         $this->assertSame('EU', $continent->getCode());

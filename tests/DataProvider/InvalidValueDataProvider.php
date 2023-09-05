@@ -16,4 +16,9 @@ class InvalidValueDataProvider
     {
         yield 'zero page' => [0, ValidationException::class];
     }
+
+    public static function provideInvalidQueryData(): \Generator
+    {
+        yield 'empty query' => ['', ValidationException::class];
+    }
 }
