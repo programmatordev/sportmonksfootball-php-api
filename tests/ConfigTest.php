@@ -29,6 +29,7 @@ class ConfigTest extends AbstractTest
     public function testConfigDefaultOptions()
     {
         $this->assertSame(self::APPLICATION_KEY, $this->config->getApplicationKey());
+        $this->assertSame('UTC', $this->config->getTimezone());
         $this->assertSame('en', $this->config->getLanguage());
         $this->assertInstanceOf(HttpClientBuilder::class, $this->config->getHttpClientBuilder());
         $this->assertSame(null, $this->config->getCache());
@@ -39,6 +40,7 @@ class ConfigTest extends AbstractTest
     {
         $config = new Config([
             'applicationKey' => 'newtestappkey',
+            'timezone' => 'Europe/Lisbon',
             'language' => 'ja',
             'httpClientBuilder' => new HttpClientBuilder(),
             'cache' => $this->createMock(CacheItemPoolInterface::class),
@@ -46,6 +48,7 @@ class ConfigTest extends AbstractTest
         ]);
 
         $this->assertSame('newtestappkey', $config->getApplicationKey());
+        $this->assertSame('Europe/Lisbon', $config->getTimezone());
         $this->assertSame('ja', $config->getLanguage());
         $this->assertInstanceOf(HttpClientBuilder::class, $config->getHttpClientBuilder());
         $this->assertInstanceOf(CacheItemPoolInterface::class, $config->getCache());
@@ -67,6 +70,10 @@ class ConfigTest extends AbstractTest
         ];
         yield 'empty application key' => [
             ['applicationKey' => ''],
+            InvalidOptionsException::class
+        ];
+        yield 'invalid timezone' => [
+            ['applicationKey' => self::APPLICATION_KEY, 'timezone' => 'Invalid/Timezone'],
             InvalidOptionsException::class
         ];
         yield 'invalid language' => [
@@ -91,6 +98,19 @@ class ConfigTest extends AbstractTest
     public static function provideInvalidApplicationKeyData(): \Generator
     {
         yield 'empty application key' => ['', ValidationException::class];
+    }
+
+    public function testConfigSetTimezone()
+    {
+        $this->config->setTimezone('Europe/Lisbon');
+        $this->assertSame('Europe/Lisbon', $this->config->getTimezone());
+    }
+
+    #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidTimezoneData')]
+    public function testConfigSetTimezoneWithInvalidValue(string $timezone, string $expectedException)
+    {
+        $this->expectException($expectedException);
+        $this->config->setTimezone($timezone);
     }
 
     public function testConfigSetLanguage()

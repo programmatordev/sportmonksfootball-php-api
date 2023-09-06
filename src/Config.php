@@ -26,6 +26,7 @@ class Config
         $resolver = new OptionsResolver();
 
         $resolver->setDefaults([
+            'timezone' => 'UTC',
             'language' => Language::ENGLISH,
             'httpClientBuilder' => new HttpClientBuilder(),
             'cache' => null,
@@ -35,12 +36,14 @@ class Config
         $resolver->setRequired('applicationKey');
 
         $resolver->setAllowedTypes('applicationKey', 'string');
+        $resolver->setAllowedTypes('timezone', 'string');
         $resolver->setAllowedTypes('language', 'string');
         $resolver->setAllowedTypes('httpClientBuilder', HttpClientBuilder::class);
         $resolver->setAllowedTypes('cache', ['null', CacheItemPoolInterface::class]);
         $resolver->setAllowedTypes('logger', ['null', LoggerInterface::class]);
 
         $resolver->setAllowedValues('applicationKey', fn($value) => !empty($value));
+        $resolver->setAllowedValues('timezone', \DateTimeZone::listIdentifiers());
         $resolver->setAllowedValues('language', Language::getOptions());
 
         return $resolver->resolve($options);
@@ -64,6 +67,23 @@ class Config
         Validator::notBlank()->assert($applicationKey, 'applicationKey');
 
         $this->options['applicationKey'] = $applicationKey;
+
+        return $this;
+    }
+
+    public function getTimezone(): string
+    {
+        return $this->options['timezone'];
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function setTimezone(string $timezone): self
+    {
+        Validator::timezone()->assert($timezone, 'timezone');
+
+        $this->options['timezone'] = $timezone;
 
         return $this;
     }
