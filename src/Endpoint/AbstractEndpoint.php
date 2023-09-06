@@ -42,7 +42,11 @@ class AbstractEndpoint
 
     private Config $config;
 
+    protected string $timezone;
+
     protected string $language;
+
+    protected int $cacheTtl = 60; // 1 minute
 
     private HttpClientBuilder $httpClientBuilder;
 
@@ -50,12 +54,11 @@ class AbstractEndpoint
 
     private ?LoggerInterface $logger;
 
-    protected int $cacheTtl = 60; // 1 minute
-
     public function __construct(SportMonksFootball $api)
     {
         $this->config = $api->config();
 
+        $this->timezone = $this->config->getTimezone();
         $this->language = $this->config->getLanguage();
         $this->httpClientBuilder = $this->config->getHttpClientBuilder();
         $this->cache = $this->config->getCache();
@@ -177,7 +180,8 @@ class AbstractEndpoint
     private function buildUrl(string $path, array $query = []): string
     {
         $query['api_token'] = $this->config->getApplicationKey(); // For authentication
-        $query['locale'] = $this->language; // Language
+        $query['timezone'] = $this->timezone;
+        $query['locale'] = $this->language;
 
         return \sprintf('%s%s?%s', $this->config->getBaseUrl(), $path, http_build_query($query));
     }
