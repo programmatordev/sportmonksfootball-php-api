@@ -177,11 +177,20 @@ class AbstractEndpoint
         return $path;
     }
 
+    private function buildIncludeQuery(array $includes): string
+    {
+        return implode(';', $includes);
+    }
+
     private function buildUrl(string $path, array $query = []): string
     {
         $query['api_token'] = $this->config->getApplicationKey(); // For authentication
         $query['timezone'] = $this->timezone;
         $query['locale'] = $this->language;
+
+        if (isset($this->includes)) {
+            $query['include'] = $this->buildIncludeQuery($this->includes);
+        }
 
         return \sprintf('%s%s?%s', $this->config->getBaseUrl(), $path, http_build_query($query));
     }
