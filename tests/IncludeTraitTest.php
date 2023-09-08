@@ -25,6 +25,6 @@ class IncludeTraitTest extends AbstractTest
     public static function provideInvalidIncludesData(): \Generator
     {
         yield 'blank value' => [['countries', '']];
-        yield 'invalid type' => [['countries', 123]];
+        yield 'invalid type value' => [['countries', 123]];
     }
 }
