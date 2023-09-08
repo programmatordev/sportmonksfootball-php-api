@@ -15,7 +15,7 @@ class CountryCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection($response['data'], Country::class);
+        $this->data = $this->createEntityCollection(Country::class, $response['data']);
     }
 
     /**

@@ -26,6 +26,8 @@ class Country
 
     private ?string $imagePath;
 
+    private ?Continent $continent;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -39,6 +41,11 @@ class Country
         $this->longitude = $data['longitude'];
         $this->borders = $data['borders'];
         $this->imagePath = $data['image_path'];
+
+        // Includes
+        $this->continent = isset($data['continent'])
+            ? new Continent($data['continent'])
+            : null;
     }
 
     public function getId(): int
@@ -94,5 +101,10 @@ class Country
     public function getImagePath(): ?string
     {
         return $this->imagePath;
+    }
+
+    public function getContinent(): ?Continent
+    {
+        return $this->continent;
     }
 }

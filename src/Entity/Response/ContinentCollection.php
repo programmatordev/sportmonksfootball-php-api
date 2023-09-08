@@ -15,7 +15,7 @@ class ContinentCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection($response['data'], Continent::class);
+        $this->data = $this->createEntityCollection(Continent::class, $response['data']);
     }
 
     /**
