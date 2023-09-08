@@ -2,8 +2,12 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Language;
 
+use ProgrammatorDev\SportMonksFootball\Util\GetClassConstantsTrait;
+
 class Language
 {
+    use GetClassConstantsTrait;
+
     public const ARABIC = 'ar';
     public const CHINESE = 'zh';
     public const ENGLISH = 'en';
@@ -14,14 +18,6 @@ class Language
 
     public static function getOptions(): array
     {
-        return [
-            self::ARABIC,
-            self::GREEK,
-            self::ENGLISH,
-            self::PERSIAN,
-            self::JAPANESE,
-            self::RUSSIAN,
-            self::CHINESE,
-        ];
+        return (new Language)->getClassConstants(self::class);
     }
 }

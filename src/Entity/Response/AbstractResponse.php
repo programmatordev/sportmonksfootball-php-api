@@ -18,7 +18,7 @@ class AbstractResponse
 
     public function __construct(array $response)
     {
-        $this->subscriptions = $this->createEntityCollection($response['subscription'], Subscription::class);
+        $this->subscriptions = $this->createEntityCollection(Subscription::class, $response['subscription']);
         $this->rateLimit = new RateLimit($response['rate_limit']);
         $this->timezone = $response['timezone'];
     }

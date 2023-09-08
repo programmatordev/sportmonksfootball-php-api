@@ -19,7 +19,7 @@ class Subscription
     public function __construct(array $data)
     {
         $this->meta = $data['meta'];
-        $this->plans = $this->createEntityCollection($data['plans'], Plan::class);
+        $this->plans = $this->createEntityCollection(Plan::class, $data['plans']);
         $this->addOns = $data['add_ons'];
         $this->widgets = $data['widgets'];
     }
