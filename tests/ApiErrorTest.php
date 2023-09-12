@@ -10,7 +10,7 @@ use ProgrammatorDev\SportMonksFootball\Exception\IncludeDepthException;
 use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotAllowedException;
 use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotAvailableException;
 use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotFoundException;
-use ProgrammatorDev\SportMonksFootball\Exception\InnaplicableFilterException;
+use ProgrammatorDev\SportMonksFootball\Exception\FilterNotApplicableException;
 use ProgrammatorDev\SportMonksFootball\Exception\InsufficientIncludesException;
 use ProgrammatorDev\SportMonksFootball\Exception\InsufficientResourcesException;
 use ProgrammatorDev\SportMonksFootball\Exception\InvalidQueryParameterException;
@@ -65,7 +65,7 @@ class ApiErrorTest extends AbstractTest
         yield 'invalid query parameter exception' => [5006, InvalidQueryParameterException::class];
         yield 'insufficient resources exception' => [5007, InsufficientResourcesException::class];
         yield 'include depth exception' => [5008, IncludeDepthException::class];
-        yield 'innaplicable filter exception' => [5010, InnaplicableFilterException::class];
+        yield 'filter not applicable exception' => [5010, FilterNotApplicableException::class];
         yield 'include not available exception' => [5013, IncludeNotAvailableException::class];
         yield 'unexpected error exception' => [9999, UnexpectedErrorException::class];
     }

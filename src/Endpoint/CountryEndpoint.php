@@ -3,6 +3,7 @@
 namespace ProgrammatorDev\SportMonksFootball\Endpoint;
 
 use Http\Client\Exception;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\FilterTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\IncludeTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\CountryCollection;
@@ -15,6 +16,7 @@ class CountryEndpoint extends AbstractEndpoint
 {
     use LanguageTrait;
     use IncludeTrait;
+    use FilterTrait;
 
     protected int $cacheTtl = 60 * 60 * 24; // 1 day
 

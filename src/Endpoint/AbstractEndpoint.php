@@ -15,7 +15,7 @@ use ProgrammatorDev\SportMonksFootball\Exception\IncludeDepthException;
 use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotAllowedException;
 use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotAvailableException;
 use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotFoundException;
-use ProgrammatorDev\SportMonksFootball\Exception\InnaplicableFilterException;
+use ProgrammatorDev\SportMonksFootball\Exception\FilterNotApplicableException;
 use ProgrammatorDev\SportMonksFootball\Exception\InsufficientIncludesException;
 use ProgrammatorDev\SportMonksFootball\Exception\InsufficientResourcesException;
 use ProgrammatorDev\SportMonksFootball\Exception\InvalidQueryParameterException;
@@ -134,7 +134,7 @@ class AbstractEndpoint
         }
 
         if ($statusCode >= 400) {
-            // Filter errors by the provided "code" property (ignores status codes as they may be misleading)
+            // Filter error by the provided "code" property (ignores status codes as they may be misleading)
             // https://docs.sportmonks.com/football/api/error-codes/include-exceptions
             // https://docs.sportmonks.com/football/api/error-codes/filtering-and-complexity-exceptions
             // https://docs.sportmonks.com/football/api/error-codes/other-exceptions
@@ -149,7 +149,7 @@ class AbstractEndpoint
                     5006 => throw new InvalidQueryParameterException($message, $code, $link),
                     5007 => throw new InsufficientResourcesException($message, $code, $link),
                     5008 => throw new IncludeDepthException($message, $code, $link),
-                    5010 => throw new InnaplicableFilterException($message, $code, $link),
+                    5010 => throw new FilterNotApplicableException($message, $code, $link),
                     5013 => throw new IncludeNotAvailableException($message, $code, $link),
                     default => throw new UnexpectedErrorException($message, $code, $link)
                 };
@@ -179,7 +179,16 @@ class AbstractEndpoint
 
     private function buildIncludeQuery(array $includes): string
     {
+        // from: ['countries', 'regions']
+        // to: countries;regions
         return implode(';', $includes);
+    }
+
+    private function buildFiltersQuery(array $filters): string
+    {
+        // from: ['idAfter' => 100, 'regionCountries' => '200,300']
+        // to: idAfter:100;regionCountries:200,300
+        return str_replace('=', ':', http_build_query(data: $filters, arg_separator: ';'));
     }
 
     private function buildUrl(string $path, array $query = []): string
@@ -188,8 +197,12 @@ class AbstractEndpoint
         $query['timezone'] = $this->timezone;
         $query['locale'] = $this->language;
 
-        if (isset($this->includes)) {
+        if (!empty($this->includes)) {
             $query['include'] = $this->buildIncludeQuery($this->includes);
+        }
+
+        if (!empty($this->filters)) {
+            $query['filters'] = $this->buildFiltersQuery($this->filters);
         }
 
         return \sprintf('%s%s?%s', $this->config->getBaseUrl(), $path, http_build_query($query));
