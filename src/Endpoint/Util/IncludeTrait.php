@@ -15,10 +15,7 @@ trait IncludeTrait
      */
     public function withIncludes(array $includes): static
     {
-        Validator::all([
-            Validator::notBlank(),
-            Validator::type('string')
-        ])->assert($includes, 'includes');
+        Validator::eachValue(Validator::notBlank()->type('string'))->assert($includes, 'includes');
 
         $clone = clone $this;
         $clone->includes = $includes;
