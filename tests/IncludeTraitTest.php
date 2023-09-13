@@ -16,10 +16,10 @@ class IncludeTraitTest extends AbstractTest
     }
 
     #[DataProvider('provideInvalidIncludeData')]
-    public function testIncludeTraitWithIncludeWithInvalidValue(array $includes)
+    public function testIncludeTraitWithIncludeWithInvalidValue(array $include)
     {
         $this->expectException(ValidationException::class);
-        $this->givenApi()->continents()->withInclude($includes);
+        $this->givenApi()->continents()->withInclude($include);
     }
 
     public static function provideInvalidIncludeData(): \Generator
