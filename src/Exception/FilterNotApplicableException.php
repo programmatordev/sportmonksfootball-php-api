@@ -2,4 +2,4 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Exception;
 
-class InnaplicableFilterException extends ApiErrorException {}
+class FilterNotApplicableException extends ApiErrorException {}
