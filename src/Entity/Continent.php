@@ -10,19 +10,21 @@ class Continent
 
     private int $id;
 
-    private string $name;
+    private ?string $name;
 
-    private string $code;
+    private ?string $code;
 
     private ?array $countries;
 
     public function __construct(array $data)
     {
         $this->id = $data['id'];
-        $this->name = $data['name'];
-        $this->code = $data['code'];
 
-        // Includes
+        // Select
+        $this->name = $data['name'] ?? null;
+        $this->code = $data['code'] ?? null;
+
+        // Include
         $this->countries = isset($data['countries'])
             ? $this->createEntityCollection(Country::class, $data['countries'])
             : null;
@@ -33,12 +35,12 @@ class Continent
         return $this->id;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
 
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }

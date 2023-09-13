@@ -7,16 +7,18 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\Util\FilterTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\IncludeTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\PaginationValidatorTrait;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\SelectTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentItem;
 use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
-use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 
 class ContinentEndpoint extends AbstractEndpoint
 {
     use LanguageTrait;
+    use SelectTrait;
     use IncludeTrait;
+    use FilterTrait;
     use PaginationValidatorTrait;
 
     protected int $cacheTtl = 60 * 60 * 24; // 1 day

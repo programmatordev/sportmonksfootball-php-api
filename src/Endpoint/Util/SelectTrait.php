@@ -5,20 +5,20 @@ namespace ProgrammatorDev\SportMonksFootball\Endpoint\Util;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 
-trait IncludeTrait
+trait SelectTrait
 {
-    protected array $include = [];
+    protected array $select = [];
 
     /**
-     * @param string[] $include
+     * @param string[] $select
      * @throws ValidationException
      */
-    public function withInclude(array $include): static
+    public function withSelect(array $select): static
     {
-        Validator::eachValue(Validator::notBlank()->type('string'))->assert($include, 'include');
+        Validator::eachValue(Validator::notBlank()->type('string'))->assert($select, 'select');
 
         $clone = clone $this;
-        $clone->include = $include;
+        $clone->select = $select;
 
         return $clone;
     }
@@ -26,8 +26,8 @@ trait IncludeTrait
     /**
      * @return string[]
      */
-    public function getInclude(): array
+    public function getSelect(): array
     {
-        return $this->include;
+        return $this->select;
     }
 }
