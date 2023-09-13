@@ -179,18 +179,25 @@ class AbstractEndpoint
         return $path;
     }
 
-    private function buildIncludeQuery(array $includes): string
+    private function buildSelectQuery(array $select): string
+    {
+        // from: ['id', 'name']
+        // to: id;name
+        return \implode(';', $select);
+    }
+
+    private function buildIncludeQuery(array $include): string
     {
         // from: ['countries', 'regions']
         // to: countries;regions
-        return implode(';', $includes);
+        return \implode(';', $include);
     }
 
     private function buildFiltersQuery(array $filters): string
     {
         // from: ['idAfter' => 100, 'regionCountries' => '200,300']
         // to: idAfter:100;regionCountries:200,300
-        return str_replace('=', ':', http_build_query(data: $filters, arg_separator: ';'));
+        return \str_replace('=', ':', \http_build_query(data: $filters, arg_separator: ';'));
     }
 
     private function buildUrl(string $path, array $query = []): string
@@ -199,8 +206,12 @@ class AbstractEndpoint
         $query['timezone'] = $this->timezone;
         $query['locale'] = $this->language;
 
-        if (!empty($this->includes)) {
-            $query['include'] = $this->buildIncludeQuery($this->includes);
+        if (!empty($this->select)) {
+            $query['select'] = $this->buildSelectQuery($this->select);
+        }
+
+        if (!empty($this->include)) {
+            $query['include'] = $this->buildIncludeQuery($this->include);
         }
 
         if (!empty($this->filters)) {
@@ -213,6 +224,6 @@ class AbstractEndpoint
             $query['filters'] = $this->buildFiltersQuery($this->filters);
         }
 
-        return \sprintf('%s%s?%s', $this->config->getBaseUrl(), $path, http_build_query($query));
+        return \sprintf('%s%s?%s', $this->config->getBaseUrl(), $path, \http_build_query($query));
     }
 }

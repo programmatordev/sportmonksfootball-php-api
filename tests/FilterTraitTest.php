@@ -11,7 +11,7 @@ class FilterTraitTest extends AbstractTest
     {
         $this->assertSame(
             ['filter-1' => 100, 'filter-2' => 'value'],
-            $this->givenApi()->countries()->withFilters(['filter-1' => 100, 'filter-2' => 'value'])->getFilters()
+            $this->givenApi()->continents()->withFilters(['filter-1' => 100, 'filter-2' => 'value'])->getFilters()
         );
     }
 
@@ -19,7 +19,7 @@ class FilterTraitTest extends AbstractTest
     public function testFilterTraitWithFiltersWithInvalidValue(array $filters)
     {
         $this->expectException(ValidationException::class);
-        $this->givenApi()->countries()->withFilters($filters);
+        $this->givenApi()->continents()->withFilters($filters);
     }
 
     public static function provideInvalidFiltersData(): \Generator

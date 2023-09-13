@@ -8,7 +8,7 @@ class Country
 
     private int $continentId;
 
-    private string $name;
+    private ?string $name;
 
     private ?string $officialName;
 
@@ -32,17 +32,19 @@ class Country
     {
         $this->id = $data['id'];
         $this->continentId = $data['continent_id'];
-        $this->name = $data['name'];
-        $this->officialName = $data['official_name'];
-        $this->fifaName = $data['fifa_name'];
-        $this->iso2 = $data['iso2'];
-        $this->iso3 = $data['iso3'];
-        $this->latitude = $data['latitude'];
-        $this->longitude = $data['longitude'];
-        $this->borders = $data['borders'];
-        $this->imagePath = $data['image_path'];
 
-        // Includes
+        // Select
+        $this->name = $data['name'] ?? null;
+        $this->officialName = $data['official_name'] ?? null;
+        $this->fifaName = $data['fifa_name'] ?? null;
+        $this->iso2 = $data['iso2'] ?? null;
+        $this->iso3 = $data['iso3'] ?? null;
+        $this->latitude = $data['latitude'] ?? null;
+        $this->longitude = $data['longitude'] ?? null;
+        $this->borders = $data['borders'] ?? null;
+        $this->imagePath = $data['image_path'] ?? null;
+
+        // Include
         $this->continent = isset($data['continent'])
             ? new Continent($data['continent'])
             : null;
@@ -58,7 +60,7 @@ class Country
         return $this->continentId;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }

@@ -7,22 +7,22 @@ use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 
 class IncludeTraitTest extends AbstractTest
 {
-    public function testIncludeTraitWithIncludes()
+    public function testIncludeTraitWithInclude()
     {
         $this->assertSame(
             ['countries'],
-            $this->givenApi()->continents()->withIncludes(['countries'])->getIncludes()
+            $this->givenApi()->continents()->withInclude(['countries'])->getInclude()
         );
     }
 
-    #[DataProvider('provideInvalidIncludesData')]
-    public function testIncludeTraitWithIncludesWithInvalidValue(array $includes)
+    #[DataProvider('provideInvalidIncludeData')]
+    public function testIncludeTraitWithIncludeWithInvalidValue(array $include)
     {
         $this->expectException(ValidationException::class);
-        $this->givenApi()->continents()->withIncludes($includes);
+        $this->givenApi()->continents()->withInclude($include);
     }
 
-    public static function provideInvalidIncludesData(): \Generator
+    public static function provideInvalidIncludeData(): \Generator
     {
         yield 'blank value' => [['countries', '']];
         yield 'invalid type value' => [['countries', 123]];
