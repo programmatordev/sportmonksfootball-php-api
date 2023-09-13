@@ -31,8 +31,6 @@ use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
 use ProgrammatorDev\SportMonksFootball\HttpClient\Listener\LoggerCacheListener;
 use ProgrammatorDev\SportMonksFootball\HttpClient\ResponseMediator;
 use ProgrammatorDev\SportMonksFootball\SportMonksFootball;
-use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
-use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
