@@ -40,6 +40,8 @@ class AbstractEndpoint
 {
     use CacheTtlTrait;
 
+    protected const PAGINATION_PER_PAGE = 25;
+
     private Config $config;
 
     protected string $timezone;
@@ -202,6 +204,12 @@ class AbstractEndpoint
         }
 
         if (!empty($this->filters)) {
+            // Removes "per_page" query parameter if "populate" filter exists,
+            // otherwise it would be ignored
+            if (isset($this->filters['populate'])) {
+                unset($query['per_page']);
+            }
+
             $query['filters'] = $this->buildFiltersQuery($this->filters);
         }
 
