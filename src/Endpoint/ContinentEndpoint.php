@@ -11,6 +11,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\Util\SelectTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentItem;
 use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
+use ProgrammatorDev\SportMonksFootball\Pagination\Pagination;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 
 class ContinentEndpoint extends AbstractEndpoint
@@ -28,16 +29,21 @@ class ContinentEndpoint extends AbstractEndpoint
      * @throws ValidationException
      * @throws ApiErrorException
      */
-    public function getAll(int $page = 1, int $perPage = self::PAGINATION_PER_PAGE): ContinentCollection
+    public function getAll(
+        int $page = 1,
+        int $perPage = Pagination::PER_PAGE,
+        string $order = Pagination::ORDER_ASC
+    ): ContinentCollection
     {
-        $this->validatePagination($page, $perPage);
+        $this->validatePagination($page, $perPage, $order);
 
         $response = $this->sendRequest(
             method: 'GET',
             path: '/v3/core/continents',
             query: [
                 'page' => $page,
-                'per_page' => $perPage
+                'per_page' => $perPage,
+                'order' => $order
             ]
         );
 

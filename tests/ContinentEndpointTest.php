@@ -25,10 +25,10 @@ class ContinentEndpointTest extends AbstractTest
     }
 
     #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidPaginationData')]
-    public function testContinentGetAllWithInvalidPagination(int $page, int $perPage, string $expectedException)
+    public function testContinentGetAllWithInvalidPagination(int $page, int $perPage, string $order, string $expectedException)
     {
         $this->expectException($expectedException);
-        $this->givenApi()->continents()->getAll($page, $perPage);
+        $this->givenApi()->continents()->getAll($page, $perPage, $order);
     }
 
     public function testContinentEndpointGetById()
