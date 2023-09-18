@@ -39,7 +39,8 @@ Required for all requests. Check the [API Key](01-usage.md#api-key) section for 
 
 ### `timezone`
 
-Timezone used when retrieving data. Affects dates.
+Timezone used when retrieving data. 
+Check the [official documentation](https://docs.sportmonks.com/football/tutorials-and-guides/tutorials/timezone-parameters-on-different-endpoints) for more information.
 
 List of all supported timezones can be found [here](https://www.php.net/manual/en/timezones.php).
 

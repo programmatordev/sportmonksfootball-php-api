@@ -32,14 +32,15 @@ that returns all the available pagination data.
 
 ### Rate Limit
 
-All responses include the `getRateLimit()` method with the current quota usage (per entity/hour).
+All responses include the `getRateLimit()` method with the current quota usage.
 Check the [official documentation](https://docs.sportmonks.com/football/api/rate-limit) for more information.
 
 ## Endpoints
 
 ### Continents
 
-[Official Documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/continents)
+- [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/continents)
+- Cache default max age: `1 day`
 
 #### `getAll`
 
@@ -73,7 +74,8 @@ echo $continent->getData()->getName();
 
 ### Countries
 
-[Official Documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/countries)
+- [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/countries)
+- Cache default max age: `1 day`
 
 #### `getAll`
 
