@@ -1,5 +1,20 @@
 # Supported Endpoints
 
+## Responses
+
+All successful responses will return an [`<Entity>Item`](05-objects.md#ltentitygtitem) or an [`<Entity>Collection`](05-objects.md#ltentitygtcollection).
+
+The difference between an [`<Entity>Item`](05-objects.md#ltentitygtitem) and an [`<Entity>Collection`](05-objects.md#ltentitygtcollection)
+is that the [`<Entity>Item`](05-objects.md#ltentitygtitem) `getData()` method will return a single _Entity_ object,
+while the [`<Entity>Collection`](05-objects.md#ltentitygtcollection) `getData()` will return an array of _Entity_ objects.
+
+For example, when requesting a continent by id, the response will be a `ContinentItem` object and the `getData()` method will return a [`Continent`](05-objects.md#continent) object.
+The same way that one requesting all continents, the response will be a `ContinentCollection` object and the `getData()` method will return an array of [`Continent`](05-objects.md#continent) objects.
+Check the [responses objects](05-objects.md#responses) for more information.
+
+Another difference is that an [`<Entity>Collection`](05-objects.md#ltentitygtcollection) will also have the `getPagination()` method
+that returns all the available pagination data.
+
 ## Endpoints
 
 ### Continents
