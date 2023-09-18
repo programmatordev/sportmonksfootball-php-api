@@ -45,7 +45,7 @@ Check the [official documentation](https://docs.sportmonks.com/football/api/rate
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25): ContinentCollection
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): ContinentCollection
 ```
 
 Get all continents:
@@ -80,7 +80,7 @@ echo $continent->getData()->getName();
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25): CountryCollection
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): CountryCollection
 ```
 
 Get all countries:
@@ -110,7 +110,7 @@ echo $country->getData()->getName();
 #### `getBySearchQuery`
 
 ```php
-getBySearchQuery(string $query, int $page = 1, int $perPage = 25): CountryCollection
+getBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): CountryCollection
 ```
 
 Get countries by search query:

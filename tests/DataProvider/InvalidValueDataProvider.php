@@ -20,8 +20,9 @@ class InvalidValueDataProvider
 
     public static function provideInvalidPaginationData(): \Generator
     {
-        yield 'zero page' => [0, 25, ValidationException::class];
-        yield 'zero per page' => [1, 0, ValidationException::class];
+        yield 'zero page' => [0, 25, 'asc', ValidationException::class];
+        yield 'zero per page' => [1, 0, 'asc', ValidationException::class];
+        yield 'invalid order' => [1, 25, 'invalid', ValidationException::class];
     }
 
     public static function provideInvalidQueryData(): \Generator

@@ -25,10 +25,10 @@ class CountryEndpointTest extends AbstractTest
     }
 
     #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidPaginationData')]
-    public function testContinentGetAllWithInvalidPagination(int $page, int $perPage, string $expectedException)
+    public function testContinentGetAllWithInvalidPagination(int $page, int $perPage, string $order, string $expectedException)
     {
         $this->expectException($expectedException);
-        $this->givenApi()->countries()->getAll($page, $perPage);
+        $this->givenApi()->countries()->getAll($page, $perPage, $order);
     }
 
     public function testCountryEndpointGetById()
@@ -68,10 +68,10 @@ class CountryEndpointTest extends AbstractTest
     }
 
     #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidPaginationData')]
-    public function testContinentGetBySearchQueryWithInvalidPagination(int $page, int $perPage, string $expectedException)
+    public function testContinentGetBySearchQueryWithInvalidPagination(int $page, int $perPage, string $order, string $expectedException)
     {
         $this->expectException($expectedException);
-        $this->givenApi()->countries()->getBySearchQuery('test', $page, $perPage);
+        $this->givenApi()->countries()->getBySearchQuery('test', $page, $perPage, $order);
     }
 
     private function assertCountryResponse(Country $country): void

@@ -11,6 +11,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\Util\SelectTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\CountryCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\CountryItem;
 use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
+use ProgrammatorDev\SportMonksFootball\Pagination\Pagination;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 
@@ -29,16 +30,21 @@ class CountryEndpoint extends AbstractEndpoint
      * @throws ValidationException
      * @throws ApiErrorException
      */
-    public function getAll(int $page = 1, int $perPage = self::PAGINATION_PER_PAGE): CountryCollection
+    public function getAll(
+        int $page = 1,
+        int $perPage = Pagination::PER_PAGE,
+        string $order = Pagination::ORDER_ASC
+    ): CountryCollection
     {
-        $this->validatePagination($page, $perPage);
+        $this->validatePagination($page, $perPage, $order);
 
         $response = $this->sendRequest(
             method: 'GET',
             path: '/v3/core/countries',
             query: [
                 'page' => $page,
-                'per_page' => $perPage
+                'per_page' => $perPage,
+                'order' => $order
             ]
         );
 
@@ -66,11 +72,16 @@ class CountryEndpoint extends AbstractEndpoint
      * @throws ValidationException
      * @throws ApiErrorException
      */
-    public function getBySearchQuery(string $query, int $page = 1, int $perPage = self::PAGINATION_PER_PAGE): CountryCollection
+    public function getBySearchQuery(
+        string $query,
+        int $page = 1,
+        int $perPage = Pagination::PER_PAGE,
+        string $order = Pagination::ORDER_ASC
+    ): CountryCollection
     {
         Validator::notBlank()->assert($query, 'query');
 
-        $this->validatePagination($page, $perPage);
+        $this->validatePagination($page, $perPage, $order);
 
         $response = $this->sendRequest(
             method: 'GET',
@@ -79,7 +90,8 @@ class CountryEndpoint extends AbstractEndpoint
             ]),
             query: [
                 'page' => $page,
-                'per_page' => $perPage
+                'per_page' => $perPage,
+                'order' => $order
             ]
         );
 

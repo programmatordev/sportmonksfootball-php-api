@@ -40,8 +40,6 @@ class AbstractEndpoint
 {
     use CacheTtlTrait;
 
-    protected const PAGINATION_PER_PAGE = 25;
-
     private Config $config;
 
     protected string $timezone;
