@@ -1,19 +1,39 @@
 # Supported Endpoints
 
+- [Responses](#responses)
+- [Endpoints](#endpoints)
+  - [Continents](#continents)
+  - [Countries](#countries)
+- [Select, Include and Filters](#select-include-and-filters)
+  - [withSelect](#withselect)
+  - [withInclude](#withinclude)
+  - [withFilters](#withfilters)
+- [Common Methods](#common-methods)
+  - [withTimezone](#withtimezone)
+  - [withLanguage](#withlanguage)
+  - [withCacheTtl](#withcachettl)
+
 ## Responses
 
 All successful responses will return an [`<Entity>Item`](05-objects.md#ltentitygtitem) or an [`<Entity>Collection`](05-objects.md#ltentitygtcollection).
 
-The difference between an [`<Entity>Item`](05-objects.md#ltentitygtitem) and an [`<Entity>Collection`](05-objects.md#ltentitygtcollection)
+One of the differences between an [`<Entity>Item`](05-objects.md#ltentitygtitem) and an [`<Entity>Collection`](05-objects.md#ltentitygtcollection)
 is that the [`<Entity>Item`](05-objects.md#ltentitygtitem) `getData()` method will return a single _Entity_ object,
-while the [`<Entity>Collection`](05-objects.md#ltentitygtcollection) `getData()` will return an array of _Entity_ objects.
+while the [`<Entity>Collection`](05-objects.md#ltentitygtcollection) `getData()` method will return an array of _Entity_ objects.
 
 For example, when requesting a continent by id, the response will be a `ContinentItem` object and the `getData()` method will return a [`Continent`](05-objects.md#continent) object.
-The same way that one requesting all continents, the response will be a `ContinentCollection` object and the `getData()` method will return an array of [`Continent`](05-objects.md#continent) objects.
+The same way that when requesting all continents, the response will be a `ContinentCollection` object and the `getData()` method will return an array of [`Continent`](05-objects.md#continent) objects.
 Check the [responses objects](05-objects.md#responses) for more information.
 
-Another difference is that an [`<Entity>Collection`](05-objects.md#ltentitygtcollection) will also have the `getPagination()` method
+### Pagination
+
+All [`<Entity>Collection`](05-objects.md#ltentitygtcollection) responses have the `getPagination()` method
 that returns all the available pagination data.
+
+### Rate Limit
+
+All responses include the `getRateLimit()` method with the current quota usage (per entity/hour).
+Check the [official documentation](https://docs.sportmonks.com/football/api/rate-limit) for more information.
 
 ## Endpoints
 

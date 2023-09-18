@@ -7,7 +7,7 @@
 
 To handle API response errors, multiple exceptions are provided.
 
-All API error do not count towards the rate limit, except for the `NoResultsFoundException`.
+All API errors do not count towards the rate limit, except for the `NoResultsFoundException`.
 For this reason, this exception (only) includes the `getRateLimit()`, `getSubscriptions()` and `getTimezone()` methods.
 
 You can see all available exceptions below:
