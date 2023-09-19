@@ -4,6 +4,7 @@
   - [&lt;Entity&gt;Item](#ltentitygtitem)
   - [&lt;Entity&gt;Collection](#ltentitygtcollection)
 - [Entities](#entities)
+  - [City](#city)
   - [Continent](#continent)
   - [Country](#country)
   - [Pagination](#pagination)
@@ -30,6 +31,16 @@
 - `getTimezone()`: `string`
 
 ## Entities
+
+### City
+
+- `getId()`: `int`
+- `getRegionId()`: `int`
+- `getCountryId()`: `?int`
+- `getName()`: `?string`
+- `getLatitude()`: `?float`
+- `getLongitude()`: `?float`
+- `getRegion()`: [`?Region`](#region)
 
 ### Continent
 
@@ -80,6 +91,7 @@
 - `getCountryId()`: `int`
 - `getName()`: `?string`
 - `getCountry()`: [`?Country`](#country)
+- `getCities()`: [`?City[]`](#city)
 
 ### Subscription
 

@@ -2,8 +2,12 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
+use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+
 class Region
 {
+    use CreateEntityCollectionTrait;
+
     private int $id;
 
     private int $countryId;
@@ -11,6 +15,9 @@ class Region
     private ?string $name;
 
     private ?Country $country;
+
+    /** @var ?City[] */
+    private ?array $cities;
 
     public function __construct(array $data)
     {
@@ -23,6 +30,9 @@ class Region
         // Include
         $this->country = isset($data['country'])
             ? new Country($data['country'])
+            : null;
+        $this->cities = isset($data['cities'])
+            ? $this->createEntityCollection(City::class, $data['cities'])
             : null;
     }
 
@@ -44,5 +54,10 @@ class Region
     public function getCountry(): ?Country
     {
         return $this->country;
+    }
+
+    public function getCities(): ?array
+    {
+        return $this->cities;
     }
 }

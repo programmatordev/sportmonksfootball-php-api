@@ -9,6 +9,7 @@ class ContinentCollection extends AbstractCollectionResponse
 {
     use CreateEntityCollectionTrait;
 
+    /** @var Continent[] */
     private array $data;
 
     public function __construct(array $response)
@@ -18,9 +19,6 @@ class ContinentCollection extends AbstractCollectionResponse
         $this->data = $this->createEntityCollection(Continent::class, $response['data']);
     }
 
-    /**
-     * @return Continent[]
-     */
     public function getData(): array
     {
         return $this->data;
