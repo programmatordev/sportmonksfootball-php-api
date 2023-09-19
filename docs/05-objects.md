@@ -52,7 +52,7 @@
 - `getBorders()`: `?array`
 - `getImagePath()`: `?string`
 - `getContinent()`: [`?Continent`](#continent)
-- `getRegions()`: [`?Regions[]`](#region)
+- `getRegions()`: [`?Region[]`](#region)
 
 ### Pagination
 
