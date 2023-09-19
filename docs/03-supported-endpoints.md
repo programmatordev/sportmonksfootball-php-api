@@ -4,6 +4,7 @@
 - [Endpoints](#endpoints)
   - [Continents](#continents)
   - [Countries](#countries)
+  - [Regions](#regions)
 - [Select, Include and Filters](#select-include-and-filters)
   - [withSelect](#withselect)
   - [withInclude](#withinclude)
@@ -120,6 +121,57 @@ $countries = $sportMonksFootball->countries()->getBySearchQuery('portugal');
 
 foreach ($countries->getData() as $country) {
     echo $country->getName();
+}
+```
+
+### Regions
+
+- [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/regions)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): RegionCollection
+```
+
+Get all regions:
+
+```php
+$regions = $sportMonksFootball->regions()->getAll();
+
+foreach ($regions->getData() as $region) {
+    echo $region->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): RegionItem
+```
+
+Get region by id:
+
+```php
+$region = $sportMonksFootball->regions()->getById(1);
+
+echo $region->getData()->getName();
+```
+
+#### `getBySearchQuery`
+
+```php
+getBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): RegionCollection
+```
+
+Get regions by search query:
+
+```php
+$regions = $sportMonksFootball->regions()->getBySearchQuery('lisboa');
+
+foreach ($regions->getData() as $region) {
+    echo $region->getName();
 }
 ```
 
