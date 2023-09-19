@@ -9,6 +9,7 @@
   - [Pagination](#pagination)
   - [Plan](#plan)
   - [RateLimit](#ratelimit)
+  - [Region](#region)
   - [Subscription](#subscription)
 
 ## Responses
@@ -35,7 +36,7 @@
 - `getId()`: `int`
 - `getName()`: `?string`
 - `getCode()`: `?string`
-- `getCountry()`: [`?Country`](#country)
+- `getCountries()`: [`?Country[]`](#country)
 
 ### Country
 
@@ -51,6 +52,7 @@
 - `getBorders()`: `?array`
 - `getImagePath()`: `?string`
 - `getContinent()`: [`?Continent`](#continent)
+- `getRegions()`: [`?Regions[]`](#region)
 
 ### Pagination
 
@@ -71,6 +73,13 @@
 - `getSecondsToReset()`: `int`
 - `getRemainingNumRequests()`: `int`
 - `getRequestedEntity()`: `string`
+
+### Region
+
+- `getId()`: `int`
+- `getCountryId()`: `int`
+- `getName()`: `?string`
+- `getCountry()`: [`?Country`](#country)
 
 ### Subscription
 
