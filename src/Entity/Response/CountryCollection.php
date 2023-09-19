@@ -9,6 +9,7 @@ class CountryCollection extends AbstractCollectionResponse
 {
     use CreateEntityCollectionTrait;
 
+    /** @var Country[] */
     private array $data;
 
     public function __construct(array $response)
@@ -18,9 +19,6 @@ class CountryCollection extends AbstractCollectionResponse
         $this->data = $this->createEntityCollection(Country::class, $response['data']);
     }
 
-    /**
-     * @return Country[]
-     */
     public function getData(): array
     {
         return $this->data;
