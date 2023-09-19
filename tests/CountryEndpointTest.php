@@ -25,7 +25,7 @@ class CountryEndpointTest extends AbstractTest
     }
 
     #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidPaginationData')]
-    public function testContinentGetAllWithInvalidPagination(int $page, int $perPage, string $order, string $expectedException)
+    public function testCountryGetAllWithInvalidPagination(int $page, int $perPage, string $order, string $expectedException)
     {
         $this->expectException($expectedException);
         $this->givenApi()->countries()->getAll($page, $perPage, $order);
@@ -61,14 +61,14 @@ class CountryEndpointTest extends AbstractTest
     }
 
     #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidQueryData')]
-    public function testContinentGetBySearchQueryWithInvalidQuery(string $query, string $expectedException)
+    public function testCountryGetBySearchQueryWithInvalidQuery(string $query, string $expectedException)
     {
         $this->expectException($expectedException);
         $this->givenApi()->countries()->getBySearchQuery($query);
     }
 
     #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidPaginationData')]
-    public function testContinentGetBySearchQueryWithInvalidPagination(int $page, int $perPage, string $order, string $expectedException)
+    public function testCountryGetBySearchQueryWithInvalidPagination(int $page, int $perPage, string $order, string $expectedException)
     {
         $this->expectException($expectedException);
         $this->givenApi()->countries()->getBySearchQuery('test', $page, $perPage, $order);

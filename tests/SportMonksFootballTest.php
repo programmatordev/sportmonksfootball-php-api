@@ -2,18 +2,25 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Test;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use ProgrammatorDev\SportMonksFootball\Config;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
 
 class SportMonksFootballTest extends AbstractTest
 {
-    public function testSportMonksFootballConfig()
+    #[DataProvider('provideMethodsData')]
+    public function testSportMonksFootballMethods(string $instance, string $methodName)
     {
-        $this->assertInstanceOf(Config::class, $this->givenApi()->config());
+        $this->assertInstanceOf($instance, $this->givenApi()->$methodName());
     }
 
-    public function testSportMonksFootballContinents()
+    public static function provideMethodsData(): \Generator
     {
-        $this->assertInstanceOf(ContinentEndpoint::class, $this->givenApi()->continents());
+        yield 'config' => [Config::class, 'config'];
+        yield 'continents' => [ContinentEndpoint::class, 'continents'];
+        yield 'countries' => [CountryEndpoint::class, 'countries'];
+        yield 'regions' => [RegionEndpoint::class, 'regions'];
     }
 }
