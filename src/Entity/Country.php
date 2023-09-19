@@ -32,6 +32,7 @@ class Country
 
     private ?Continent $continent;
 
+    /** @var ?Region[] */
     private ?array $regions;
 
     public function __construct(array $data)
@@ -119,9 +120,6 @@ class Country
         return $this->continent;
     }
 
-    /**
-     * @return ?Region[]
-     */
     public function getRegions(): ?array
     {
         return $this->regions;

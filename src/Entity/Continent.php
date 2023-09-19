@@ -14,6 +14,7 @@ class Continent
 
     private ?string $code;
 
+    /** @var ?Country[] */
     private ?array $countries;
 
     public function __construct(array $data)
@@ -45,9 +46,6 @@ class Continent
         return $this->code;
     }
 
-    /**
-     * @return ?Country[]
-     */
     public function getCountries(): ?array
     {
         return $this->countries;
