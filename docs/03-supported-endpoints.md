@@ -1,7 +1,9 @@
 # Supported Endpoints
 
 - [Responses](#responses)
-- [Endpoints](#endpoints)
+- [Football Endpoints](#football-endpoints)
+- [Core Endpoints](#core-endpoints)
+  - [Cities](#cities)
   - [Continents](#continents)
   - [Countries](#countries)
   - [Regions](#regions)
@@ -36,7 +38,60 @@ that returns all the available pagination data.
 All responses include the `getRateLimit()` method with the current quota usage.
 Check the [official documentation](https://docs.sportmonks.com/football/api/rate-limit) for more information.
 
-## Endpoints
+## Football Endpoints
+
+## Core Endpoints
+
+### Cities
+
+- [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/cities)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): CityCollection
+```
+
+Get all cities:
+
+```php
+$cities = $sportMonksFootball->cities()->getAll();
+
+foreach ($cities->getData() as $city) {
+    echo $city->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): CityItem
+```
+
+Get city by id:
+
+```php
+$city = $sportMonksFootball->cities()->getById(1);
+
+echo $city->getData()->getName();
+```
+
+#### `getBySearchQuery`
+
+```php
+getBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): CityCollection
+```
+
+Get cities by search query:
+
+```php
+$cities = $sportMonksFootball->cities()->getBySearchQuery('lisbon');
+
+foreach ($cities->getData() as $city) {
+    echo $city->getName();
+}
+```
 
 ### Continents
 
