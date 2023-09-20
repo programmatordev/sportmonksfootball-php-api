@@ -13,7 +13,7 @@ class CountryEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::COUNTRY_COLLECTION_RESPONSE
+                body: MockResponse::buildCollectionResponse(MockResponse::COUNTRY_COLLECTION_DATA)
             )
         );
 
@@ -35,7 +35,7 @@ class CountryEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::COUNTRY_ITEM_RESPONSE
+                body: MockResponse::buildItemResponse(MockResponse::COUNTRY_ITEM_DATA)
             )
         );
 
@@ -49,7 +49,7 @@ class CountryEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::COUNTRY_COLLECTION_RESPONSE
+                body: MockResponse::buildCollectionResponse(MockResponse::COUNTRY_COLLECTION_DATA)
             )
         );
 

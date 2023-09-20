@@ -57,7 +57,7 @@ class RegionEndpoint extends AbstractEndpoint
     {
         $response = $this->sendRequest(
             method: 'GET',
-            path: $this->buildPath('/v3/core/regions/{id}', [
+            path: $this->formatPath('/v3/core/regions/{id}', [
                 'id' => $id
             ])
         );
@@ -83,7 +83,7 @@ class RegionEndpoint extends AbstractEndpoint
 
         $response = $this->sendRequest(
             method: 'GET',
-            path: $this->buildPath('/v3/core/regions/search/{query}', [
+            path: $this->formatPath('/v3/core/regions/search/{query}', [
                 'query' => $query
             ]),
             query: [

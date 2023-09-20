@@ -168,7 +168,7 @@ class AbstractEndpoint
         }
     }
 
-    protected function buildPath(string $path, array $parameters): string
+    protected function formatPath(string $path, array $parameters): string
     {
         foreach ($parameters as $parameter => $value) {
             $path = \str_replace(\sprintf("{%s}", $parameter), $value, $path);

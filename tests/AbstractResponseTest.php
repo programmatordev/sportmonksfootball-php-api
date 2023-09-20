@@ -15,7 +15,7 @@ class AbstractResponseTest extends AbstractTest
 {
     public function testAbstractResponse()
     {
-        $response = new Response(body: MockResponse::ABSTRACT_RESPONSE);
+        $response = new Response(body: MockResponse::buildItemResponse('[]'));
         $abstractResponse = new AbstractResponse(ResponseMediator::toArray($response));
 
         $this->assertAbstractResponse($abstractResponse);
@@ -23,7 +23,7 @@ class AbstractResponseTest extends AbstractTest
 
     public function testAbstractCollectionResponse()
     {
-        $response = new Response(body: MockResponse::ABSTRACT_RESPONSE);
+        $response = new Response(body: MockResponse::buildCollectionResponse('[]'));
         $abstractResponse = new AbstractCollectionResponse(ResponseMediator::toArray($response));
 
         $pagination = $abstractResponse->getPagination();
@@ -55,7 +55,7 @@ class AbstractResponseTest extends AbstractTest
         $this->assertInstanceOf(RateLimit::class, $rateLimit);
         $this->assertSame(3600, $rateLimit->getSecondsToReset());
         $this->assertSame(2999, $rateLimit->getRemainingNumRequests());
-        $this->assertSame('Continent', $rateLimit->getRequestedEntity());
+        $this->assertSame('Test', $rateLimit->getRequestedEntity());
 
         $this->assertSame('UTC', $abstractResponse->getTimezone());
     }

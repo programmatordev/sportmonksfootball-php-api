@@ -13,7 +13,7 @@ class CityEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::CITY_COLLECTION_RESPONSE
+                body: MockResponse::buildCollectionResponse(MockResponse::CITY_COLLECTION_DATA)
             )
         );
 
@@ -35,7 +35,7 @@ class CityEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::CITY_ITEM_RESPONSE
+                body: MockResponse::buildItemResponse(MockResponse::CITY_ITEM_DATA)
             )
         );
 
@@ -49,7 +49,7 @@ class CityEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::CITY_COLLECTION_RESPONSE
+                body: MockResponse::buildCollectionResponse(MockResponse::CITY_COLLECTION_DATA)
             )
         );
 

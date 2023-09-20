@@ -13,7 +13,7 @@ class RegionEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::REGION_COLLECTION_RESPONSE
+                body: MockResponse::buildCollectionResponse(MockResponse::REGION_COLLECTION_DATA)
             )
         );
 
@@ -35,7 +35,7 @@ class RegionEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::REGION_ITEM_RESPONSE
+                body: MockResponse::buildItemResponse(MockResponse::REGION_ITEM_DATA)
             )
         );
 
@@ -49,7 +49,7 @@ class RegionEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::REGION_COLLECTION_RESPONSE
+                body: MockResponse::buildCollectionResponse(MockResponse::REGION_COLLECTION_DATA)
             )
         );
 

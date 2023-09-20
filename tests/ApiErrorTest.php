@@ -44,7 +44,7 @@ class ApiErrorTest extends AbstractTest
         $this->mockHttpClient->addResponse(
             new Response(
                 status: 422,
-                body: MockResponse::buildResponse(MockResponse::ERROR_PROPERTY_CODE, [
+                body: MockResponse::formatResponse(MockResponse::ERROR_PROPERTY_CODE, [
                     'code' => $code
                 ])
             )

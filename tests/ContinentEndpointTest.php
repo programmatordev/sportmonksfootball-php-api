@@ -13,7 +13,7 @@ class ContinentEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::CONTINENT_COLLECTION_RESPONSE
+                body: MockResponse::buildCollectionResponse(MockResponse::CONTINENT_COLLECTION_DATA)
             )
         );
 
@@ -35,7 +35,7 @@ class ContinentEndpointTest extends AbstractTest
     {
         $this->mockHttpClient->addResponse(
             new Response(
-                body: MockResponse::CONTINENT_ITEM_RESPONSE
+                body: MockResponse::buildItemResponse(MockResponse::CONTINENT_ITEM_DATA)
             )
         );
 

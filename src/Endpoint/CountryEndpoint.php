@@ -59,7 +59,7 @@ class CountryEndpoint extends AbstractEndpoint
     {
         $response = $this->sendRequest(
             method: 'GET',
-            path: $this->buildPath('/v3/core/countries/{id}', [
+            path: $this->formatPath('/v3/core/countries/{id}', [
                 'id' => $id
             ])
         );
@@ -85,7 +85,7 @@ class CountryEndpoint extends AbstractEndpoint
 
         $response = $this->sendRequest(
             method: 'GET',
-            path: $this->buildPath('/v3/core/countries/search/{query}', [
+            path: $this->formatPath('/v3/core/countries/search/{query}', [
                 'query' => $query
             ]),
             query: [

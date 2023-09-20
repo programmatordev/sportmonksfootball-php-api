@@ -59,7 +59,7 @@ class CityEndpoint extends AbstractEndpoint
     {
         $response = $this->sendRequest(
             method: 'GET',
-            path: $this->buildPath('/v3/core/cities/{id}', [
+            path: $this->formatPath('/v3/core/cities/{id}', [
                 'id' => $id
             ])
         );
@@ -85,7 +85,7 @@ class CityEndpoint extends AbstractEndpoint
 
         $response = $this->sendRequest(
             method: 'GET',
-            path: $this->buildPath('/v3/core/cities/search/{query}', [
+            path: $this->formatPath('/v3/core/cities/search/{query}', [
                 'query' => $query
             ]),
             query: [

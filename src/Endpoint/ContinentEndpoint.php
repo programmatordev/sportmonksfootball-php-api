@@ -58,7 +58,7 @@ class ContinentEndpoint extends AbstractEndpoint
     {
         $response = $this->sendRequest(
             method: 'GET',
-            path: $this->buildPath('/v3/core/continents/{id}', [
+            path: $this->formatPath('/v3/core/continents/{id}', [
                 'id' => $id
             ])
         );
