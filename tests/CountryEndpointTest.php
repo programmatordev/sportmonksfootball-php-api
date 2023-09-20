@@ -2,79 +2,63 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Test;
 
-use Nyholm\Psr7\Response;
-use PHPUnit\Framework\Attributes\DataProviderExternal;
 use ProgrammatorDev\SportMonksFootball\Entity\Country;
-use ProgrammatorDev\SportMonksFootball\Test\DataProvider\InvalidValueDataProvider;
+use ProgrammatorDev\SportMonksFootball\Test\Util\TestEndpointCollectionResponseTrait;
+use ProgrammatorDev\SportMonksFootball\Test\Util\TestEndpointInvalidPaginationTrait;
+use ProgrammatorDev\SportMonksFootball\Test\Util\TestEndpointInvalidSearchQueryTrait;
+use ProgrammatorDev\SportMonksFootball\Test\Util\TestEndpointItemResponseTrait;
 
 class CountryEndpointTest extends AbstractTest
 {
-    public function testCountryEndpointGetAll()
+    use TestEndpointItemResponseTrait;
+    use TestEndpointCollectionResponseTrait;
+    use TestEndpointInvalidPaginationTrait;
+    use TestEndpointInvalidSearchQueryTrait;
+
+    public static function provideEndpointItemResponseData(): \Generator
     {
-        $this->mockHttpClient->addResponse(
-            new Response(
-                body: MockResponse::buildCollectionResponse(MockResponse::COUNTRY_COLLECTION_DATA)
-            )
-        );
-
-        $response = $this->givenApi()->countries()->getAll();
-
-        $data = $response->getData();
-        $this->assertContainsOnlyInstancesOf(Country::class, $data);
-        $this->assertCountryResponse($data[0]);
+        yield 'get by id' => [
+            MockResponse::COUNTRY_ITEM_DATA,
+            'countries',
+            'getById',
+            [1],
+            Country::class,
+            'assertResponse'
+        ];
     }
 
-    #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidPaginationData')]
-    public function testCountryGetAllWithInvalidPagination(int $page, int $perPage, string $order, string $expectedException)
+    public static function provideEndpointCollectionResponseData(): \Generator
     {
-        $this->expectException($expectedException);
-        $this->givenApi()->countries()->getAll($page, $perPage, $order);
+        yield 'get all' => [
+            MockResponse::COUNTRY_COLLECTION_DATA,
+            'countries',
+            'getAll',
+            [],
+            Country::class,
+            'assertResponse'
+        ];
+        yield 'get by search query' => [
+            MockResponse::COUNTRY_COLLECTION_DATA,
+            'countries',
+            'getBySearchQuery',
+            ['test'],
+            Country::class,
+            'assertResponse'
+        ];
     }
 
-    public function testCountryEndpointGetById()
+    public static function provideEndpointInvalidPaginationData(): \Generator
     {
-        $this->mockHttpClient->addResponse(
-            new Response(
-                body: MockResponse::buildItemResponse(MockResponse::COUNTRY_ITEM_DATA)
-            )
-        );
-
-        $response = $this->givenApi()->countries()->getById(1);
-
-        $data = $response->getData();
-        $this->assertCountryResponse($data);
+        yield 'get all' => ['countries', 'getAll', []];
+        yield 'get by search query' => ['countries', 'getBySearchQuery', ['test']];
     }
 
-    public function testCountryEndpointGetBySearchQuery()
+    public static function provideEndpointInvalidSearchQueryData(): \Generator
     {
-        $this->mockHttpClient->addResponse(
-            new Response(
-                body: MockResponse::buildCollectionResponse(MockResponse::COUNTRY_COLLECTION_DATA)
-            )
-        );
-
-        $response = $this->givenApi()->countries()->getBySearchQuery('test');
-
-        $data = $response->getData();
-        $this->assertContainsOnlyInstancesOf(Country::class, $data);
-        $this->assertCountryResponse($data[0]);
+        yield 'get by search query' => ['countries', 'getBySearchQuery'];
     }
 
-    #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidQueryData')]
-    public function testCountryGetBySearchQueryWithInvalidQuery(string $query, string $expectedException)
-    {
-        $this->expectException($expectedException);
-        $this->givenApi()->countries()->getBySearchQuery($query);
-    }
-
-    #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidPaginationData')]
-    public function testCountryGetBySearchQueryWithInvalidPagination(int $page, int $perPage, string $order, string $expectedException)
-    {
-        $this->expectException($expectedException);
-        $this->givenApi()->countries()->getBySearchQuery('test', $page, $perPage, $order);
-    }
-
-    private function assertCountryResponse(Country $country): void
+    private function assertResponse(Country $country): void
     {
         $this->assertSame(2, $country->getId());
         $this->assertSame(1, $country->getContinentId());
