@@ -12,7 +12,9 @@ class AbstractCollectionResponse extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->pagination = new Pagination($response['pagination']);
+        $this->pagination = isset($response['pagination'])
+            ? new Pagination($response['pagination'])
+            : null;
     }
 
     public function getPagination(): ?Pagination

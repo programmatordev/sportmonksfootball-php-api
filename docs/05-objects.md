@@ -1,19 +1,21 @@
 # Objects
 
-- [Responses](#responses)
+- [Response Entities](#response-entities)
   - [&lt;Entity&gt;Item](#ltentitygtitem)
   - [&lt;Entity&gt;Collection](#ltentitygtcollection)
-- [Entities](#entities)
-  - [City](#city)
-  - [Continent](#continent)
-  - [Country](#country)
   - [Pagination](#pagination)
   - [Plan](#plan)
   - [RateLimit](#ratelimit)
-  - [Region](#region)
   - [Subscription](#subscription)
+- [Core Entities](#core-entities)
+  - [City](#city)
+  - [Continent](#continent)
+  - [Country](#country)
+  - [Entity](#entity)
+  - [Region](#region)
+  - [Type](#type)
 
-## Responses
+## Response Entities
 
 ### &lt;Entity&gt;Item
 
@@ -30,7 +32,34 @@
 - `getRateLimit()`: [`RateLimit`](#ratelimit)
 - `getTimezone()`: `string`
 
-## Entities
+### Pagination
+
+- `getCount()`: `int`
+- `getPerPage()`: `int`
+- `getCurrentPage()`: `int`
+- `getNextPage()`: `?string`
+- `hasMore()`: `bool`
+
+### Plan
+
+- `getName()`: `string`
+- `getSport()`: `string`
+- `getCategory()`: `string`
+
+### RateLimit
+
+- `getSecondsToReset()`: `int`
+- `getRemainingNumRequests()`: `int`
+- `getRequestedEntity()`: `string`
+
+### Subscription
+
+- `getMeta()`: `array`
+- `getPlans()`: [`Plan[]`](#plan)
+- `getAddOns()`: `array`
+- `getWidgets()`: `array`
+
+## Core Entities
 
 ### City
 
@@ -65,25 +94,11 @@
 - `getContinent()`: [`?Continent`](#continent)
 - `getRegions()`: [`?Region[]`](#region)
 
-### Pagination
-
-- `getCount()`: `int`
-- `getPerPage()`: `int`
-- `getCurrentPage()`: `int`
-- `getNextPage()`: `?string`
-- `hasMore()`: `bool`
-
-### Plan
+### Entity
 
 - `getName()`: `string`
-- `getSport()`: `string`
-- `getCategory()`: `string`
-
-### RateLimit
-
-- `getSecondsToReset()`: `int`
-- `getRemainingNumRequests()`: `int`
-- `getRequestedEntity()`: `string`
+- `getUpdatedAt()`: `\DateTimeImmutable`
+- `getTypes()`: [`Type[]`](#type)
 
 ### Region
 
@@ -93,9 +108,11 @@
 - `getCountry()`: [`?Country`](#country)
 - `getCities()`: [`?City[]`](#city)
 
-### Subscription
+### Type
 
-- `getMeta()`: `array`
-- `getPlans()`: [`Plan[]`](#plan)
-- `getAddOns()`: `array`
-- `getWidgets()`: `array`
+- `getId()`: `int`
+- `getName()`: `string`
+- `getCode()`: `string`
+- `getDeveloperName()`: `string`
+- `getModelType()`: `string`
+- `getStatGroup()`: `?string`

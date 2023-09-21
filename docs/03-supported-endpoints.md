@@ -7,6 +7,7 @@
   - [Continents](#continents)
   - [Countries](#countries)
   - [Regions](#regions)
+  - [Types](#types)
 - [Select, Include and Filters](#select-include-and-filters)
   - [withSelect](#withselect)
   - [withInclude](#withinclude)
@@ -227,6 +228,61 @@ $regions = $sportMonksFootball->regions()->getBySearchQuery('lisboa');
 
 foreach ($regions->getData() as $region) {
     echo $region->getName();
+}
+```
+
+### Types
+
+- [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/types)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): TypeCollection
+```
+
+Get all types:
+
+```php
+$types = $sportMonksFootball->types()->getAll();
+
+foreach ($types->getData() as $type) {
+    echo $type->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): TypeItem
+```
+
+Get type by id:
+
+```php
+$type = $sportMonksFootball->types()->getById(1);
+
+echo $type->getData()->getName();
+```
+
+#### `getByEntity`
+
+```php
+getByEntity(): EntityCollection
+```
+
+Get types grouped by entity:
+
+```php
+$entities = $sportMonksFootball->types()->getByEntity();
+
+foreach ($entities->getData() as $entity) {
+    echo $entity->getName();
+    
+    foreach ($entity->getTypes() as $type) {
+        echo $type->getName()
+    }
 }
 ```
 

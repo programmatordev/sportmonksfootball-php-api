@@ -8,6 +8,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\CityEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
 
 class SportMonksFootballTest extends AbstractTest
 {
@@ -24,5 +25,6 @@ class SportMonksFootballTest extends AbstractTest
         yield 'continents' => [ContinentEndpoint::class, 'continents'];
         yield 'countries' => [CountryEndpoint::class, 'countries'];
         yield 'regions' => [RegionEndpoint::class, 'regions'];
+        yield 'types' => [TypeEndpoint::class, 'types'];
     }
 }
