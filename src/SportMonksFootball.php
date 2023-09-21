@@ -6,6 +6,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\CityEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
 
 class SportMonksFootball
 {
@@ -34,5 +35,10 @@ class SportMonksFootball
     public function regions(): RegionEndpoint
     {
         return new RegionEndpoint($this);
+    }
+
+    public function types(): TypeEndpoint
+    {
+        return new TypeEndpoint($this);
     }
 }
