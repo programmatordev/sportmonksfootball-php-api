@@ -29,6 +29,7 @@
         "nyholm/psr7": "^1.8",
         "php-http/mock-client": "^1.6",
         "phpunit/phpunit": "^10.0",
+        "rawr/phpunit-data-provider": "^3.2",
         "symfony/cache": "^6.3",
         "symfony/http-client": "^6.3",
         "symfony/var-dumper": "^6.3"

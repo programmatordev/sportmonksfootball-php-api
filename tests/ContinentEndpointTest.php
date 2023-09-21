@@ -2,50 +2,47 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Test;
 
-use Nyholm\Psr7\Response;
-use PHPUnit\Framework\Attributes\DataProviderExternal;
 use ProgrammatorDev\SportMonksFootball\Entity\Continent;
-use ProgrammatorDev\SportMonksFootball\Test\DataProvider\InvalidValueDataProvider;
+use ProgrammatorDev\SportMonksFootball\Test\Util\TestEndpointCollectionResponseTrait;
+use ProgrammatorDev\SportMonksFootball\Test\Util\TestEndpointInvalidPaginationTrait;
+use ProgrammatorDev\SportMonksFootball\Test\Util\TestEndpointItemResponseTrait;
 
 class ContinentEndpointTest extends AbstractTest
 {
-    public function testContinentEndpointGetAll()
+    use TestEndpointItemResponseTrait;
+    use TestEndpointCollectionResponseTrait;
+    use TestEndpointInvalidPaginationTrait;
+
+    public static function provideEndpointItemResponseData(): \Generator
     {
-        $this->mockHttpClient->addResponse(
-            new Response(
-                body: MockResponse::buildCollectionResponse(MockResponse::CONTINENT_COLLECTION_DATA)
-            )
-        );
-
-        $response = $this->givenApi()->continents()->getAll();
-
-        $data = $response->getData();
-        $this->assertContainsOnlyInstancesOf(Continent::class, $data);
-        $this->assertContinentResponse($data[0]);
+        yield 'get by id' => [
+            MockResponse::CONTINENT_ITEM_DATA,
+            'continents',
+            'getById',
+            [1],
+            Continent::class,
+            'assertResponse'
+        ];
     }
 
-    #[DataProviderExternal(InvalidValueDataProvider::class, 'provideInvalidPaginationData')]
-    public function testContinentGetAllWithInvalidPagination(int $page, int $perPage, string $order, string $expectedException)
+    public static function provideEndpointCollectionResponseData(): \Generator
     {
-        $this->expectException($expectedException);
-        $this->givenApi()->continents()->getAll($page, $perPage, $order);
+        yield 'get all' => [
+            MockResponse::CONTINENT_COLLECTION_DATA,
+            'continents',
+            'getAll',
+            [],
+            Continent::class,
+            'assertResponse'
+        ];
     }
 
-    public function testContinentEndpointGetById()
+    public static function provideEndpointInvalidPaginationData(): \Generator
     {
-        $this->mockHttpClient->addResponse(
-            new Response(
-                body: MockResponse::buildItemResponse(MockResponse::CONTINENT_ITEM_DATA)
-            )
-        );
-
-        $response = $this->givenApi()->continents()->getById(1);
-
-        $data = $response->getData();
-        $this->assertContinentResponse($data);
+        yield 'get all' => ['continents', 'getAll', []];
     }
 
-    private function assertContinentResponse(Continent $continent): void
+    private function assertResponse(Continent $continent): void
     {
         $this->assertSame(1, $continent->getId());
         $this->assertSame('Europe', $continent->getName());
