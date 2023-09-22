@@ -2,7 +2,7 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Test;
 
-use ProgrammatorDev\SportMonksFootball\Entity\Entity;
+use ProgrammatorDev\SportMonksFootball\Entity\TypeEntity;
 use ProgrammatorDev\SportMonksFootball\Entity\Type;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestEndpointCollectionResponseTrait;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestEndpointInvalidPaginationTrait;
@@ -36,12 +36,12 @@ class TypeEndpointTest extends AbstractTest
             Type::class,
             'assertTypeResponse'
         ];
-        yield 'get by entity' => [
+        yield 'get all by entity' => [
             MockResponse::ENTITY_COLLECTION_DATA,
             'types',
-            'getByEntity',
+            'getAllByEntity',
             [],
-            Entity::class,
+            TypeEntity::class,
             'assertEntityResponse'
         ];
     }
@@ -61,7 +61,7 @@ class TypeEndpointTest extends AbstractTest
         $this->assertSame(null, $type->getStatGroup());
     }
 
-    private function assertEntityResponse(Entity $entity): void
+    private function assertEntityResponse(TypeEntity $entity): void
     {
         $this->assertSame('CoachStatisticDetail', $entity->getName());
         $this->assertSame('2023-09-21 16:20:39', $entity->getUpdatedAt()->format('Y-m-d H:i:s'));

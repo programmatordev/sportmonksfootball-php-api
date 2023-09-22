@@ -266,16 +266,16 @@ $type = $sportMonksFootball->types()->getById(1);
 echo $type->getData()->getName();
 ```
 
-#### `getByEntity`
+#### `getAllByEntity`
 
 ```php
-getByEntity(): EntityCollection
+getAllByEntity(): TypeEntityCollection
 ```
 
-Get types grouped by entity:
+Get all types grouped by entity:
 
 ```php
-$entities = $sportMonksFootball->types()->getByEntity();
+$entities = $sportMonksFootball->types()->getAllByEntity();
 
 foreach ($entities->getData() as $entity) {
     echo $entity->getName();

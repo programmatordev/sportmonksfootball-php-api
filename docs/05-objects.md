@@ -11,9 +11,9 @@
   - [City](#city)
   - [Continent](#continent)
   - [Country](#country)
-  - [Entity](#entity)
   - [Region](#region)
   - [Type](#type)
+  - [TypeEntity](#typeentity)
 
 ## Response Entities
 
@@ -94,12 +94,6 @@
 - `getContinent()`: [`?Continent`](#continent)
 - `getRegions()`: [`?Region[]`](#region)
 
-### Entity
-
-- `getName()`: `string`
-- `getUpdatedAt()`: `\DateTimeImmutable`
-- `getTypes()`: [`Type[]`](#type)
-
 ### Region
 
 - `getId()`: `int`
@@ -116,3 +110,9 @@
 - `getDeveloperName()`: `string`
 - `getModelType()`: `string`
 - `getStatGroup()`: `?string`
+
+### TypeEntity
+
+- `getName()`: `string`
+- `getUpdatedAt()`: `\DateTimeImmutable`
+- `getTypes()`: [`Type[]`](#type)

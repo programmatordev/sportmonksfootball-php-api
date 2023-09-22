@@ -5,7 +5,7 @@ namespace ProgrammatorDev\SportMonksFootball\Endpoint;
 use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\PaginationValidatorTrait;
-use ProgrammatorDev\SportMonksFootball\Entity\Response\EntityCollection;
+use ProgrammatorDev\SportMonksFootball\Entity\Response\TypeEntityCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\TypeCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\TypeItem;
 use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
@@ -65,13 +65,13 @@ class TypeEndpoint extends AbstractEndpoint
      * @throws Exception
      * @throws ApiErrorException
      */
-    public function getByEntity(): EntityCollection
+    public function getAllByEntity(): TypeEntityCollection
     {
         $response = $this->sendRequest(
             method: 'GET',
             path: '/v3/core/types/entities'
         );
 
-        return new EntityCollection($response);
+        return new TypeEntityCollection($response);
     }
 }
