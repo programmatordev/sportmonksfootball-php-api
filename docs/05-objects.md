@@ -11,6 +11,7 @@
   - [City](#city)
   - [Continent](#continent)
   - [Country](#country)
+  - [FilterEntity](#filterentity)
   - [Region](#region)
   - [Type](#type)
   - [TypeEntity](#typeentity)
@@ -93,6 +94,11 @@
 - `getImagePath()`: `?string`
 - `getContinent()`: [`?Continent`](#continent)
 - `getRegions()`: [`?Region[]`](#region)
+
+### FilterEntity
+
+- `getName()`: `string`
+- `getFilters()`: `array`
 
 ### Region
 
