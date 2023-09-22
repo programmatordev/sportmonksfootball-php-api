@@ -4,7 +4,7 @@ namespace ProgrammatorDev\SportMonksFootball\Entity;
 
 use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
 
-class Entity
+class TypeEntity
 {
     use CreateEntityCollectionTrait;
 

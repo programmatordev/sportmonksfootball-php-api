@@ -6,8 +6,8 @@ trait CreateEntityCollectionTrait
 {
     private function createEntityCollection(string $entityClass, array $data): array
     {
-        return \array_map(function(array $dataValue, int|string $dataKey) use ($entityClass) {
-            return new $entityClass($dataValue, $dataKey);
+        return \array_map(function(array $value, int|string $key) use ($entityClass) {
+            return new $entityClass($value, $key);
         }, $data, \array_keys($data));
     }
 }

@@ -11,22 +11,23 @@
   - [City](#city)
   - [Continent](#continent)
   - [Country](#country)
-  - [Entity](#entity)
+  - [FilterEntity](#filterentity)
   - [Region](#region)
   - [Type](#type)
+  - [TypeEntity](#typeentity)
 
 ## Response Entities
 
 ### &lt;Entity&gt;Item
 
-- `getData()`: _Entity_ object
+- `getData()`: _&lt;Entity&gt;_ object
 - `getSubscriptions()`: [`Subscription[]`](#subscription)
 - `getRateLimit()`: [`RateLimit`](#ratelimit)
 - `getTimezone()`: `string`
 
 ### &lt;Entity&gt;Collection
 
-- `getData()`: Array of _Entity_ objects
+- `getData()`: Array of _&lt;Entity&gt;_ objects
 - `getPagination()`: [`Pagination`](#pagination)
 - `getSubscriptions()`: [`Subscription[]`](#subscription)
 - `getRateLimit()`: [`RateLimit`](#ratelimit)
@@ -94,11 +95,10 @@
 - `getContinent()`: [`?Continent`](#continent)
 - `getRegions()`: [`?Region[]`](#region)
 
-### Entity
+### FilterEntity
 
 - `getName()`: `string`
-- `getUpdatedAt()`: `\DateTimeImmutable`
-- `getTypes()`: [`Type[]`](#type)
+- `getFilters()`: `array`
 
 ### Region
 
@@ -116,3 +116,9 @@
 - `getDeveloperName()`: `string`
 - `getModelType()`: `string`
 - `getStatGroup()`: `?string`
+
+### TypeEntity
+
+- `getName()`: `string`
+- `getUpdatedAt()`: `\DateTimeImmutable`
+- `getTypes()`: [`Type[]`](#type)

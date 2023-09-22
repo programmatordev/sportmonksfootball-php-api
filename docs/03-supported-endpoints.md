@@ -6,6 +6,7 @@
   - [Cities](#cities)
   - [Continents](#continents)
   - [Countries](#countries)
+  - [Filters](#filters)
   - [Regions](#regions)
   - [Types](#types)
 - [Select, Include and Filters](#select-include-and-filters)
@@ -180,6 +181,31 @@ foreach ($countries->getData() as $country) {
 }
 ```
 
+### Filters
+
+- [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/filters)
+- Cache default max age: `1 day`
+
+#### `getAllByEntity`
+
+```php
+getAllByEntity(): FilterEntityCollection
+```
+
+Get all filters grouped by entity:
+
+```php
+$entities = $sportMonksFootball->filters()->getAllByEntity();
+
+foreach ($entities->getData() as $entity) {
+    echo $entity->getName();
+    
+    foreach ($entity->getFilters() as $filter) {
+        echo $filter
+    }
+}
+```
+
 ### Regions
 
 - [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/regions)
@@ -266,16 +292,16 @@ $type = $sportMonksFootball->types()->getById(1);
 echo $type->getData()->getName();
 ```
 
-#### `getByEntity`
+#### `getAllByEntity`
 
 ```php
-getByEntity(): EntityCollection
+getAllByEntity(): TypeEntityCollection
 ```
 
-Get types grouped by entity:
+Get all types grouped by entity:
 
 ```php
-$entities = $sportMonksFootball->types()->getByEntity();
+$entities = $sportMonksFootball->types()->getAllByEntity();
 
 foreach ($entities->getData() as $entity) {
     echo $entity->getName();
