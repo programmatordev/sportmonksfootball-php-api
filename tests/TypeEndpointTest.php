@@ -37,7 +37,7 @@ class TypeEndpointTest extends AbstractTest
             'assertTypeResponse'
         ];
         yield 'get all by entity' => [
-            MockResponse::ENTITY_COLLECTION_DATA,
+            MockResponse::TYPE_ENTITY_COLLECTION_DATA,
             'types',
             'getAllByEntity',
             [],
