@@ -20,14 +20,14 @@
 
 ### &lt;Entity&gt;Item
 
-- `getData()`: _Entity_ object
+- `getData()`: _&lt;Entity&gt;_ object
 - `getSubscriptions()`: [`Subscription[]`](#subscription)
 - `getRateLimit()`: [`RateLimit`](#ratelimit)
 - `getTimezone()`: `string`
 
 ### &lt;Entity&gt;Collection
 
-- `getData()`: Array of _Entity_ objects
+- `getData()`: Array of _&lt;Entity&gt;_ objects
 - `getPagination()`: [`Pagination`](#pagination)
 - `getSubscriptions()`: [`Subscription[]`](#subscription)
 - `getRateLimit()`: [`RateLimit`](#ratelimit)
