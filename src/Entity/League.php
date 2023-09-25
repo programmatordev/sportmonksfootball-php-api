@@ -28,6 +28,8 @@ class League
 
     private ?bool $hasJerseys;
 
+    private ?Sport $sport;
+
     private ?Country $country;
 
     public function __construct(array $data)
@@ -43,16 +45,13 @@ class League
         $this->imagePath = $data['image_path'] ?? null;
         $this->type = $data['type'] ?? null;
         $this->subType = $data['sub_type'] ?? null;
-        $this->lastPlayedAt = isset($data['last_played_at'])
-            ? new \DateTimeImmutable($data['last_played_at'])
-            : null;
+        $this->lastPlayedAt = isset($data['last_played_at']) ? new \DateTimeImmutable($data['last_played_at']) : null;
         $this->category = $data['category'] ?? null;
         $this->hasJerseys = $data['has_jerseys'] ?? null;
 
         // Include
-        $this->country = isset($data['country'])
-            ? new Country($data['country'])
-            : null;
+        $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
+        $this->country = isset($data['country']) ? new Country($data['country']) : null;
 
         // sport, country, stages, latest, upcoming, inplay, today, currentSeason, seasons
     }
@@ -115,6 +114,11 @@ class League
     public function hasJerseys(): ?bool
     {
         return $this->hasJerseys;
+    }
+
+    public function getSport(): ?Sport
+    {
+        return $this->sport;
     }
 
     public function getCountry(): ?Country

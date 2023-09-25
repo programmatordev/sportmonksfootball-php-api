@@ -108,6 +108,12 @@
 - `getCountry()`: [`?Country`](#country)
 - `getCities()`: [`?City[]`](#city)
 
+### Sport
+
+- `getId()`: `int`
+- `getName()`: `?string`
+- `getCode()`: `?string`
+
 ### Type
 
 - `getId()`: `int`
