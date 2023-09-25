@@ -39,6 +39,18 @@ class League
     /** @var ?Stage[] */
     private ?array $stages;
 
+    /** @var ?Fixture[] */
+    private ?array $latestFixtures;
+
+    /** @var ?Fixture[] */
+    private ?array $upcomingFixtures;
+
+    /** @var ?Fixture[] */
+    private ?array $inplayFixtures;
+
+    /** @var ?Fixture[] */
+    private ?array $todayFixtures;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -60,8 +72,12 @@ class League
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
         $this->country = isset($data['country']) ? new Country($data['country']) : null;
         $this->stages = isset($data['stages']) ? $this->createEntityCollection(Stage::class, $data['stages']) : null;
+        $this->latestFixtures = isset($data['latest']) ? $this->createEntityCollection(Fixture::class, $data['latest']) : null;
+        $this->upcomingFixtures = isset($data['upcoming']) ? $this->createEntityCollection(Fixture::class, $data['upcoming']) : null;
+        $this->inplayFixtures = isset($data['inplay']) ? $this->createEntityCollection(Fixture::class, $data['inplay']) : null;
+        $this->todayFixtures = isset($data['today']) ? $this->createEntityCollection(Fixture::class, $data['today']) : null;
 
-        // TODO latest, upcoming, inplay, today, currentSeason, seasons
+        // TODO currentSeason, seasons
     }
 
     public function getId(): int
@@ -137,5 +153,25 @@ class League
     public function getStages(): ?array
     {
         return $this->stages;
+    }
+
+    public function getLatestFixtures(): ?array
+    {
+        return $this->latestFixtures;
+    }
+
+    public function getUpcomingFixtures(): ?array
+    {
+        return $this->upcomingFixtures;
+    }
+
+    public function getInplayFixtures(): ?array
+    {
+        return $this->inplayFixtures;
+    }
+
+    public function getTodayFixtures(): ?array
+    {
+        return $this->todayFixtures;
     }
 }

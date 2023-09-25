@@ -135,6 +135,30 @@
 
 ## Football Entities
 
+### Fixture
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getLeagueId()`: `int`
+- `getSeasonId()`: `int`
+- `getStageId()`: `int`
+- `getGroupId()`: `?int`
+- `getAggregateId()`: `?int`
+- `getRoundId()`: `?int`
+- `getStateId()`: `int`
+- `getVenueId()`: `?int`
+- `getName()`: `?string`
+- `getStartingAt()`: `?\DateTimeImmutable`
+- `getResultInfo()`: `?string`
+- `getLeg()`: `?string`
+- `getDetails()`: `?string`
+- `getLength()`: `?int`
+- `isPlaceholder()`: `?bool`
+- `hasOdds()`: `?bool`
+- `getSport()`: [`?Sport`](#sport)
+- `getStage()`: [`?Stage`](#stage)
+- `getLeague()`: [`?League`](#league)
+
 ### League
 
 - `getId()`: `int`
@@ -152,6 +176,10 @@
 - `getSport()`: [`?Sport`](#sport)
 - `getCountry()`: [`?Country`](#country)
 - `getStages()`: [`?Stage[]`](#stage)
+- `getLatestFixtures()`: [`?Fixture[]`](#fixture)
+- `getUpcomingFixtures()`: [`?Fixture[]`](#fixture)
+- `getInplayFixtures()`: [`?Fixture[]`](#fixture)
+- `getTodayFixtures()`: [`?Fixture[]`](#fixture)
 
 ### Stage
 
