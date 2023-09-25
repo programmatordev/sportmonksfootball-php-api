@@ -8,7 +8,7 @@ use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 
 class FilterEndpoint extends AbstractEndpoint
 {
-    protected int $cacheTtl = 60 * 60 * 24; // 1 day
+    protected int $cacheTtl = 3600 * 24; // 1 day
 
     /**
      * @throws Exception

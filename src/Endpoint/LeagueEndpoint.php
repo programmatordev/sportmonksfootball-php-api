@@ -8,13 +8,12 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\Util\IncludeTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\PaginationValidatorTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\SelectTrait;
-use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentCollection;
-use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentItem;
+use ProgrammatorDev\SportMonksFootball\Entity\Response\LeagueCollection;
 use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 use ProgrammatorDev\SportMonksFootball\Pagination\Pagination;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 
-class ContinentEndpoint extends AbstractEndpoint
+class LeagueEndpoint extends AbstractEndpoint
 {
     use LanguageTrait;
     use SelectTrait;
@@ -22,7 +21,7 @@ class ContinentEndpoint extends AbstractEndpoint
     use FilterTrait;
     use PaginationValidatorTrait;
 
-    protected int $cacheTtl = 3600 * 24; // 1 day
+    protected int $cacheTtl = 3600; // 1 hour
 
     /**
      * @throws Exception
@@ -33,13 +32,13 @@ class ContinentEndpoint extends AbstractEndpoint
         int $page = 1,
         int $perPage = Pagination::PER_PAGE,
         string $order = Pagination::ORDER_ASC
-    ): ContinentCollection
+    ): LeagueCollection
     {
         $this->validatePagination($page, $perPage, $order);
 
         $response = $this->sendRequest(
             method: 'GET',
-            path: '/v3/core/continents',
+            path: '/v3/football/leagues',
             query: [
                 'page' => $page,
                 'per_page' => $perPage,
@@ -47,22 +46,6 @@ class ContinentEndpoint extends AbstractEndpoint
             ]
         );
 
-        return new ContinentCollection($response);
-    }
-
-    /**
-     * @throws Exception
-     * @throws ApiErrorException
-     */
-    public function getById(int $id): ContinentItem
-    {
-        $response = $this->sendRequest(
-            method: 'GET',
-            path: $this->formatPath('/v3/core/continents/{id}', [
-                'id' => $id
-            ])
-        );
-
-        return new ContinentItem($response);
+        return new LeagueCollection($response);
     }
 }

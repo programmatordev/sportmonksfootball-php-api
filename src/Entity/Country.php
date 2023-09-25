@@ -35,6 +35,9 @@ class Country
     /** @var ?Region[] */
     private ?array $regions;
 
+    /** @var ?League[] */
+    private ?array $leagues;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -57,6 +60,9 @@ class Country
             : null;
         $this->regions = isset($data['regions'])
             ? $this->createEntityCollection(Region::class, $data['regions'])
+            : null;
+        $this->leagues = isset($data['leagues'])
+            ? $this->createEntityCollection(League::class, $data['leagues'])
             : null;
     }
 
@@ -125,4 +131,8 @@ class Country
         return $this->regions;
     }
 
+    public function getLeagues(): ?array
+    {
+        return $this->leagues;
+    }
 }
