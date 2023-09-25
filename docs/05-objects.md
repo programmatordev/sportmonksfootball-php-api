@@ -28,7 +28,7 @@
 ### &lt;Entity&gt;Collection
 
 - `getData()`: Array of _&lt;Entity&gt;_ objects
-- `getPagination()`: [`Pagination`](#pagination)
+- `getPagination()`: [`?Pagination`](#pagination)
 - `getSubscriptions()`: [`Subscription[]`](#subscription)
 - `getRateLimit()`: [`RateLimit`](#ratelimit)
 - `getTimezone()`: `string`

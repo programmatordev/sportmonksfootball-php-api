@@ -6,16 +6,18 @@ use ProgrammatorDev\SportMonksFootball\Entity\Pagination;
 
 class AbstractCollectionResponse extends AbstractResponse
 {
-    private Pagination $pagination;
+    private ?Pagination $pagination;
 
     public function __construct(array $response)
     {
         parent::__construct($response);
 
-        $this->pagination = new Pagination($response['pagination']);
+        $this->pagination = isset($response['pagination'])
+            ? new Pagination($response['pagination'])
+            : null;
     }
 
-    public function getPagination(): Pagination
+    public function getPagination(): ?Pagination
     {
         return $this->pagination;
     }
