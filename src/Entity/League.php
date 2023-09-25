@@ -51,6 +51,11 @@ class League
     /** @var ?Fixture[] */
     private ?array $todayFixtures;
 
+    private ?Season $currentSeason;
+
+    /** @var ?Season[] */
+    private ?array $seasons;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -76,8 +81,8 @@ class League
         $this->upcomingFixtures = isset($data['upcoming']) ? $this->createEntityCollection(Fixture::class, $data['upcoming']) : null;
         $this->inplayFixtures = isset($data['inplay']) ? $this->createEntityCollection(Fixture::class, $data['inplay']) : null;
         $this->todayFixtures = isset($data['today']) ? $this->createEntityCollection(Fixture::class, $data['today']) : null;
-
-        // TODO currentSeason, seasons
+        $this->currentSeason = isset($data['currentseason']) ? new Season($data['currentseason']) : null;
+        $this->seasons = isset($data['seasons']) ? $this->createEntityCollection(Season::class, $data['seasons']) : null;
     }
 
     public function getId(): int

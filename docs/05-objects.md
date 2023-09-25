@@ -180,6 +180,28 @@
 - `getUpcomingFixtures()`: [`?Fixture[]`](#fixture)
 - `getInplayFixtures()`: [`?Fixture[]`](#fixture)
 - `getTodayFixtures()`: [`?Fixture[]`](#fixture)
+- `getCurrentSeason()`: [`?Season`](#season)
+- `getSeasons()`: [`?Season[]`](#season)
+
+### Season
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getLeagueId()`: `int`
+- `getTieBreakerRuleId()`: `?int`
+- `getName()`: `?string`
+- `isFinished()`: `?bool`
+- `isPending()`: `?bool`
+- `isCurrent()`: `?bool`
+- `getStartingAt()`: `?\DateTimeImmutable`
+- `getEndingAt()`: `?\DateTimeImmutable`
+- `getStandingsRecalculatedAt()`: `?\DateTimeImmutable`
+- `hasGamesInCurrentWeek()`: `?bool`
+- `getSport()`: [`?Sport`](#sport)
+- `getLeague()`: [`?League`](#league)
+- `getStages()`: [`?Stage[]`](#stage)
+- `getCurrentStage()`: [`?Stage`](#stage)
+- `getFixtures()`: [`?Fixture[]`](#fixture)
 
 ### Stage
 
