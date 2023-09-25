@@ -13,8 +13,12 @@
   - [Country](#country)
   - [FilterEntity](#filterentity)
   - [Region](#region)
+  - [Sport](#sport)
   - [Type](#type)
   - [TypeEntity](#typeentity)
+- [Football Entities](#football-entities)
+  - [League](#league)
+  - [Stage](#stage)
 
 ## Response Entities
 
@@ -128,3 +132,42 @@
 - `getName()`: `string`
 - `getUpdatedAt()`: `\DateTimeImmutable`
 - `getTypes()`: [`Type[]`](#type)
+
+## Football Entities
+
+### League
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getCountryId()`: `?int`
+- `getName()`: `?string`
+- `isActive()`: `?bool`
+- `getShortCode()`: `?string`
+- `getImagePath()`: `?string`
+- `getType()`: `?string`
+- `getSubType()`: `?string`
+- `getLastPlayedAt()`: `?\DateTimeImmutable`
+- `getCategory()`: `?int`
+- `hasJerseys()`: `?bool`
+- `getSport()`: [`?Sport`](#sport)
+- `getCountry()`: [`?Country`](#country)
+- `getStages()`: [`?Stage[]`](#stage)
+
+### Stage
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getLeagueId()`: `int`
+- `getSeasonId()`: `int`
+- `getTypeId()`: `int`
+- `getName()`: `?string`
+- `getSortOrder()`: `?int`
+- `hasFinished()`: `?bool`
+- `isCurrent()`: `?bool`
+- `getStartingAt()`: `?\DateTimeImmutable`
+- `getEndingAt()`: `?\DateTimeImmutable`
+- `hasGamesInCurrentWeek()`: `?bool`
+- `getTieBreakerRuleId()`: `?bool`
+- `getLeague()`: [`?League`](#league)
+- `getType()`: [`?Type`](#type)
+- `getSport()`: [`?Sport`](#sport)

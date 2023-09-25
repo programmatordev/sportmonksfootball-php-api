@@ -2,8 +2,12 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
+use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+
 class League
 {
+    use CreateEntityCollectionTrait;
+
     private int $id;
 
     private int $sportId;
@@ -12,7 +16,7 @@ class League
 
     private ?string $name;
 
-    private ?bool $active;
+    private ?bool $isActive;
 
     private ?string $shortCode;
 
@@ -32,6 +36,9 @@ class League
 
     private ?Country $country;
 
+    /** @var ?Stage[] */
+    private ?array $stages;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -40,7 +47,7 @@ class League
 
         // Select
         $this->name = $data['name'] ?? null;
-        $this->active = $data['active'] ?? null;
+        $this->isActive = $data['active'] ?? null;
         $this->shortCode = $data['short_code'] ?? null;
         $this->imagePath = $data['image_path'] ?? null;
         $this->type = $data['type'] ?? null;
@@ -52,8 +59,9 @@ class League
         // Include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
         $this->country = isset($data['country']) ? new Country($data['country']) : null;
+        $this->stages = isset($data['stages']) ? $this->createEntityCollection(Stage::class, $data['stages']) : null;
 
-        // sport, country, stages, latest, upcoming, inplay, today, currentSeason, seasons
+        // TODO latest, upcoming, inplay, today, currentSeason, seasons
     }
 
     public function getId(): int
@@ -76,9 +84,9 @@ class League
         return $this->name;
     }
 
-    public function getActive(): ?bool
+    public function isActive(): ?bool
     {
-        return $this->active;
+        return $this->isActive;
     }
 
     public function getShortCode(): ?string
@@ -124,5 +132,10 @@ class League
     public function getCountry(): ?Country
     {
         return $this->country;
+    }
+
+    public function getStages(): ?array
+    {
+        return $this->stages;
     }
 }
