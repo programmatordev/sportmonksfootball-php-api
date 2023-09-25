@@ -45,7 +45,7 @@ class League
         $this->sportId = $data['sport_id'];
         $this->countryId = $data['country_id'];
 
-        // Select
+        // select
         $this->name = $data['name'] ?? null;
         $this->isActive = $data['active'] ?? null;
         $this->shortCode = $data['short_code'] ?? null;
@@ -56,7 +56,7 @@ class League
         $this->category = $data['category'] ?? null;
         $this->hasJerseys = $data['has_jerseys'] ?? null;
 
-        // Include
+        // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
         $this->country = isset($data['country']) ? new Country($data['country']) : null;
         $this->stages = isset($data['stages']) ? $this->createEntityCollection(Stage::class, $data['stages']) : null;

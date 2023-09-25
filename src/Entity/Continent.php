@@ -21,14 +21,12 @@ class Continent
     {
         $this->id = $data['id'];
 
-        // Select
+        // select
         $this->name = $data['name'] ?? null;
         $this->code = $data['code'] ?? null;
 
-        // Include
-        $this->countries = isset($data['countries'])
-            ? $this->createEntityCollection(Country::class, $data['countries'])
-            : null;
+        // include
+        $this->countries = isset($data['countries']) ? $this->createEntityCollection(Country::class, $data['countries']) : null;
     }
 
     public function getId(): int

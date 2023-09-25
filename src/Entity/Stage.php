@@ -44,7 +44,7 @@ class Stage
         $this->seasonId = $data['season_id'];
         $this->typeId = $data['type_id'];
 
-        // Select
+        // select
         $this->name = $data['name'] ?? null;
         $this->sortOrder = $data['sort_order'] ?? null;
         $this->hasFinished = $data['finished'] ?? null;
@@ -54,7 +54,7 @@ class Stage
         $this->hasGamesInCurrentWeek = $data['games_in_current_week'] ?? null;
         $this->tieBreakerRuleId = $data['tie_breaker_rule_id'] ?? null;
 
-        // Include
+        // include
         $this->league = isset($data['league']) ? new League($data['league']) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;

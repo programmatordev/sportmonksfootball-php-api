@@ -14,7 +14,7 @@ class Sport
     {
         $this->id = $data['id'];
 
-        // Select
+        // select
         $this->name = $data['name'] ?? null;
         $this->code = $data['code'] ?? null;
     }

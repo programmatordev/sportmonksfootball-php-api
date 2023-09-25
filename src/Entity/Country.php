@@ -43,7 +43,7 @@ class Country
         $this->id = $data['id'];
         $this->continentId = $data['continent_id'];
 
-        // Select
+        // select
         $this->name = $data['name'] ?? null;
         $this->officialName = $data['official_name'] ?? null;
         $this->fifaName = $data['fifa_name'] ?? null;
@@ -54,16 +54,10 @@ class Country
         $this->borders = $data['borders'] ?? null;
         $this->imagePath = $data['image_path'] ?? null;
 
-        // Include
-        $this->continent = isset($data['continent'])
-            ? new Continent($data['continent'])
-            : null;
-        $this->regions = isset($data['regions'])
-            ? $this->createEntityCollection(Region::class, $data['regions'])
-            : null;
-        $this->leagues = isset($data['leagues'])
-            ? $this->createEntityCollection(League::class, $data['leagues'])
-            : null;
+        // include
+        $this->continent = isset($data['continent']) ? new Continent($data['continent']) : null;
+        $this->regions = isset($data['regions']) ? $this->createEntityCollection(Region::class, $data['regions']) : null;
+        $this->leagues = isset($data['leagues']) ? $this->createEntityCollection(League::class, $data['leagues']) : null;
     }
 
     public function getId(): int
