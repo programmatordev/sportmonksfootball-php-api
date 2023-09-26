@@ -5,7 +5,7 @@ namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 use ProgrammatorDev\SportMonksFootball\Entity\FilterEntity;
 use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
 
-class FilterEntityCollection extends AbstractResponse
+class FilterEntityCollection extends AbstractCollectionResponse
 {
     use CreateEntityCollectionTrait;
 

@@ -23,7 +23,7 @@ class CityEndpoint extends AbstractEndpoint
     use FilterTrait;
     use PaginationValidatorTrait;
 
-    protected int $cacheTtl = 60 * 60 * 24; // 1 day
+    protected int $cacheTtl = 3600 * 24; // 1 day
 
     /**
      * @throws Exception

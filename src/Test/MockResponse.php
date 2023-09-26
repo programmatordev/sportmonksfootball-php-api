@@ -18,6 +18,9 @@ class MockResponse
 
     public const FILTER_ENTITY_COLLECTION_DATA = '{"aggregate":["aggregateLeagues","aggregateSeasons","aggregateStages"],"coach":["coachCountries"]}';
 
+    public const LEAGUE_ITEM_DATA = '{"id":271,"sport_id":1,"country_id":320,"name":"Superliga","active":true,"short_code":"DNK SL","image_path":"https:\/\/cdn.sportmonks.com\/images\/soccer\/leagues\/271.png","type":"league","sub_type":"domestic","last_played_at":"2023-09-25 17:00:00","category":2,"has_jerseys":false}';
+    public const LEAGUE_COLLECTION_DATA = '[{"id":271,"sport_id":1,"country_id":320,"name":"Superliga","active":true,"short_code":"DNK SL","image_path":"https:\/\/cdn.sportmonks.com\/images\/soccer\/leagues\/271.png","type":"league","sub_type":"domestic","last_played_at":"2023-09-25 17:00:00","category":2,"has_jerseys":false},{"id":501,"sport_id":1,"country_id":1161,"name":"Premiership","active":true,"short_code":"SCO P","image_path":"https:\/\/cdn.sportmonks.com\/images\/soccer\/leagues\/501.png","type":"league","sub_type":"domestic","last_played_at":"2023-09-24 14:00:00","category":2,"has_jerseys":false}]';
+
     public const REGION_ITEM_DATA = '{"id":1,"country_id":107,"name":"Al Qadisiyah"}';
     public const REGION_COLLECTION_DATA = '[{"id":1,"country_id":107,"name":"Al Qadisiyah"},{"id":2,"country_id":802,"name":"HaTsafon"}]';
 

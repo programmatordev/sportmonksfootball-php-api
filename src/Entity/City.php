@@ -23,16 +23,14 @@ class City
         $this->id = $data['id'];
         $this->regionId = $data['region_id'];
 
-        // Select
+        // select
         $this->countryId = $data['country_id'] ?? null;
         $this->name = $data['name'] ?? null;
         $this->latitude = $data['latitude'] ?? null;
         $this->longitude = $data['longitude'] ?? null;
 
-        // Include
-        $this->region = isset($data['region'])
-            ? new Region($data['region'])
-            : null;
+        // include
+        $this->region = isset($data['region']) ? new Region($data['region']) : null;
     }
 
     public function getId(): int

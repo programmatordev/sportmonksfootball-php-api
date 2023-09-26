@@ -2,20 +2,13 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
-
-class Continent
+class Sport
 {
-    use CreateEntityCollectionTrait;
-
     private int $id;
 
     private ?string $name;
 
     private ?string $code;
-
-    /** @var ?Country[] */
-    private ?array $countries;
 
     public function __construct(array $data)
     {
@@ -24,9 +17,6 @@ class Continent
         // select
         $this->name = $data['name'] ?? null;
         $this->code = $data['code'] ?? null;
-
-        // include
-        $this->countries = isset($data['countries']) ? $this->createEntityCollection(Country::class, $data['countries']) : null;
     }
 
     public function getId(): int
@@ -43,10 +33,4 @@ class Continent
     {
         return $this->code;
     }
-
-    public function getCountries(): ?array
-    {
-        return $this->countries;
-    }
-
 }

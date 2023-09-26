@@ -24,16 +24,12 @@ class Region
         $this->id = $data['id'];
         $this->countryId = $data['country_id'];
 
-        // Select
+        // select
         $this->name = $data['name'] ?? null;
 
-        // Include
-        $this->country = isset($data['country'])
-            ? new Country($data['country'])
-            : null;
-        $this->cities = isset($data['cities'])
-            ? $this->createEntityCollection(City::class, $data['cities'])
-            : null;
+        // include
+        $this->country = isset($data['country']) ? new Country($data['country']) : null;
+        $this->cities = isset($data['cities']) ? $this->createEntityCollection(City::class, $data['cities']) : null;
     }
 
     public function getId(): int

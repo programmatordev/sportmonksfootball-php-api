@@ -2,6 +2,7 @@
 
 - [Responses](#responses)
 - [Football Endpoints](#football-endpoints)
+  - [Leagues](#leagues)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
   - [Continents](#continents)
@@ -42,6 +43,136 @@ Check the [official documentation](https://docs.sportmonks.com/football/api/rate
 
 ## Football Endpoints
 
+### Leagues
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/leagues)
+- Cache default max age: `1 hour`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+```
+
+Get all leagues:
+
+```php
+$leagues = $sportMonksFootball->leagues()->getAll();
+
+foreach ($leagues->getData() as $league) {
+    echo $league->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): LeagueItem
+```
+
+Get league by id:
+
+```php
+$league = $sportMonksFootball->leagues()->getById(1);
+echo $league->getData()->getName();
+```
+
+#### `getAllLive`
+
+```php
+getAllLive(): LeagueCollection
+```
+
+Get all leagues currently live:
+
+```php
+$leagues = $sportMonksFootball->leagues()->getAllLive();
+
+foreach ($leagues->getData() as $league) {
+    echo $league->getName();
+}
+```
+
+#### `getAllByFixtureDate`
+
+```php
+getAllByFixtureDate(\DateTimeInterface $date, int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+```
+
+Get all leagues with fixtures by date:
+
+```php
+$leagues = $sportMonksFootball->leagues()->getAllByFixtureDate(new DateTime('today'));
+
+foreach ($leagues->getData() as $league) {
+    echo $league->getName();
+}
+```
+
+#### `getAllByCountryId`
+
+```php
+getAllByCountryId(int $countryId, int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+```
+
+Get all leagues by country id:
+
+```php
+$leagues = $sportMonksFootball->leagues()->getAllByCountryId(1);
+
+foreach ($leagues->getData() as $league) {
+    echo $league->getName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+```
+
+Get all leagues by search query:
+
+```php
+$leagues = $sportMonksFootball->leagues()->getAllBySearchQuery('premiership');
+
+foreach ($leagues->getData() as $league) {
+    echo $league->getName();
+}
+```
+
+#### `getAllByTeamId`
+
+```php
+getAllByTeamId(int $teamId, int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+```
+
+Get all current and historical leagues by team id:
+
+```php
+$leagues = $sportMonksFootball->leagues()->getAllByTeamId(1);
+
+foreach ($leagues->getData() as $league) {
+    echo $league->getName();
+}
+```
+
+#### `getAllCurrentByTeamId`
+
+```php
+getAllCurrentByTeamId(int $teamId, int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+```
+
+Get all current leagues by team id:
+
+```php
+$leagues = $sportMonksFootball->leagues()->getAllCurrentByTeamId(1);
+
+foreach ($leagues->getData() as $league) {
+    echo $league->getName();
+}
+```
+
 ## Core Endpoints
 
 ### Cities
@@ -75,7 +206,6 @@ Get city by id:
 
 ```php
 $city = $sportMonksFootball->cities()->getById(1);
-
 echo $city->getData()->getName();
 ```
 
@@ -126,7 +256,6 @@ Get continent by id:
 
 ```php
 $continent = $sportMonksFootball->continents()->getById(1);
-
 echo $continent->getData()->getName();
 ```
 
@@ -161,7 +290,6 @@ Get country by id:
 
 ```php
 $country = $sportMonksFootball->countries()->getById(1);
-
 echo $country->getData()->getName();
 ```
 
@@ -237,7 +365,6 @@ Get region by id:
 
 ```php
 $region = $sportMonksFootball->regions()->getById(1);
-
 echo $region->getData()->getName();
 ```
 
