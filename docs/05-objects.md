@@ -7,6 +7,11 @@
   - [Plan](#plan)
   - [RateLimit](#ratelimit)
   - [Subscription](#subscription)
+- [Football Entities](#football-entities)
+  - [Fixture](#fixture)
+  - [League](#league)
+  - [Season](#season)
+  - [Stage](#stage)
 - [Core Entities](#core-entities)
   - [City](#city)
   - [Continent](#continent)
@@ -16,9 +21,6 @@
   - [Sport](#sport)
   - [Type](#type)
   - [TypeEntity](#typeentity)
-- [Football Entities](#football-entities)
-  - [League](#league)
-  - [Stage](#stage)
 
 ## Response Entities
 
@@ -63,75 +65,6 @@
 - `getPlans()`: [`Plan[]`](#plan)
 - `getAddOns()`: `array`
 - `getWidgets()`: `array`
-
-## Core Entities
-
-### City
-
-- `getId()`: `int`
-- `getRegionId()`: `int`
-- `getCountryId()`: `?int`
-- `getName()`: `?string`
-- `getLatitude()`: `?float`
-- `getLongitude()`: `?float`
-- `getRegion()`: [`?Region`](#region)
-
-### Continent
-
-- `getId()`: `int`
-- `getName()`: `?string`
-- `getCode()`: `?string`
-- `getCountries()`: [`?Country[]`](#country)
-
-### Country
-
-- `getId()`: `int`
-- `getContinentId()`: `int`
-- `getName()`: `?string`
-- `getOfficialName()`: `?string`
-- `getFifaName()`: `?string`
-- `getIso2()`: `?string`
-- `getIso3()`: `?string`
-- `getLatitude()`: `?float`
-- `getLongitude()`: `?float`
-- `getBorders()`: `?array`
-- `getImagePath()`: `?string`
-- `getContinent()`: [`?Continent`](#continent)
-- `getRegions()`: [`?Region[]`](#region)
-
-### FilterEntity
-
-- `getName()`: `string`
-- `getFilters()`: `array`
-
-### Region
-
-- `getId()`: `int`
-- `getCountryId()`: `int`
-- `getName()`: `?string`
-- `getCountry()`: [`?Country`](#country)
-- `getCities()`: [`?City[]`](#city)
-
-### Sport
-
-- `getId()`: `int`
-- `getName()`: `?string`
-- `getCode()`: `?string`
-
-### Type
-
-- `getId()`: `int`
-- `getName()`: `string`
-- `getCode()`: `string`
-- `getDeveloperName()`: `string`
-- `getModelType()`: `string`
-- `getStatGroup()`: `?string`
-
-### TypeEntity
-
-- `getName()`: `string`
-- `getUpdatedAt()`: `\DateTimeImmutable`
-- `getTypes()`: [`Type[]`](#type)
 
 ## Football Entities
 
@@ -221,3 +154,72 @@
 - `getLeague()`: [`?League`](#league)
 - `getType()`: [`?Type`](#type)
 - `getSport()`: [`?Sport`](#sport)
+
+## Core Entities
+
+### City
+
+- `getId()`: `int`
+- `getRegionId()`: `int`
+- `getCountryId()`: `?int`
+- `getName()`: `?string`
+- `getLatitude()`: `?float`
+- `getLongitude()`: `?float`
+- `getRegion()`: [`?Region`](#region)
+
+### Continent
+
+- `getId()`: `int`
+- `getName()`: `?string`
+- `getCode()`: `?string`
+- `getCountries()`: [`?Country[]`](#country)
+
+### Country
+
+- `getId()`: `int`
+- `getContinentId()`: `int`
+- `getName()`: `?string`
+- `getOfficialName()`: `?string`
+- `getFifaName()`: `?string`
+- `getIso2()`: `?string`
+- `getIso3()`: `?string`
+- `getLatitude()`: `?float`
+- `getLongitude()`: `?float`
+- `getBorders()`: `?array`
+- `getImagePath()`: `?string`
+- `getContinent()`: [`?Continent`](#continent)
+- `getRegions()`: [`?Region[]`](#region)
+
+### FilterEntity
+
+- `getName()`: `string`
+- `getFilters()`: `array`
+
+### Region
+
+- `getId()`: `int`
+- `getCountryId()`: `int`
+- `getName()`: `?string`
+- `getCountry()`: [`?Country`](#country)
+- `getCities()`: [`?City[]`](#city)
+
+### Sport
+
+- `getId()`: `int`
+- `getName()`: `?string`
+- `getCode()`: `?string`
+
+### Type
+
+- `getId()`: `int`
+- `getName()`: `string`
+- `getCode()`: `string`
+- `getDeveloperName()`: `string`
+- `getModelType()`: `string`
+- `getStatGroup()`: `?string`
+
+### TypeEntity
+
+- `getName()`: `string`
+- `getUpdatedAt()`: `\DateTimeImmutable`
+- `getTypes()`: [`Type[]`](#type)

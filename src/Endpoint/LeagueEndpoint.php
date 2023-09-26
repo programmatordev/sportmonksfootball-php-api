@@ -86,7 +86,7 @@ class LeagueEndpoint extends AbstractEndpoint
      * @throws ApiErrorException
      * @throws ValidationException
      */
-    public function getAllByDate(
+    public function getAllByFixtureDate(
         \DateTimeInterface $date,
         int $page = 1,
         int $perPage = Pagination::PER_PAGE,
