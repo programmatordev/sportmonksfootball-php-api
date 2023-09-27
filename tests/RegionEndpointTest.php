@@ -37,10 +37,10 @@ class RegionEndpointTest extends AbstractTest
             Region::class,
             'assertResponse'
         ];
-        yield 'get by search query' => [
+        yield 'get all by search query' => [
             MockResponse::REGION_COLLECTION_DATA,
             'regions',
-            'getBySearchQuery',
+            'getAllBySearchQuery',
             ['test'],
             Region::class,
             'assertResponse'
@@ -50,12 +50,12 @@ class RegionEndpointTest extends AbstractTest
     public static function provideEndpointInvalidPaginationData(): \Generator
     {
         yield 'get all' => ['regions', 'getAll', []];
-        yield 'get by search query' => ['regions', 'getBySearchQuery', ['test']];
+        yield 'get all by search query' => ['regions', 'getAllBySearchQuery', ['test']];
     }
 
     public static function provideEndpointInvalidSearchQueryData(): \Generator
     {
-        yield 'get by search query' => ['regions', 'getBySearchQuery'];
+        yield 'get all by search query' => ['regions', 'getAllBySearchQuery'];
     }
 
     private function assertResponse(Region $region): void

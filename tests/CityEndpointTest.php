@@ -37,10 +37,10 @@ class CityEndpointTest extends AbstractTest
             City::class,
             'assertResponse'
         ];
-        yield 'get by search query' => [
+        yield 'get all by search query' => [
             MockResponse::CITY_COLLECTION_DATA,
             'cities',
-            'getBySearchQuery',
+            'getAllBySearchQuery',
             ['test'],
             City::class,
             'assertResponse'
@@ -50,12 +50,12 @@ class CityEndpointTest extends AbstractTest
     public static function provideEndpointInvalidPaginationData(): \Generator
     {
         yield 'get all' => ['cities', 'getAll', []];
-        yield 'get by search query' => ['cities', 'getBySearchQuery', ['test']];
+        yield 'get all by search query' => ['cities', 'getAllBySearchQuery', ['test']];
     }
 
     public static function provideEndpointInvalidSearchQueryData(): \Generator
     {
-        yield 'get by search query' => ['cities', 'getBySearchQuery'];
+        yield 'get all by search query' => ['cities', 'getAllBySearchQuery'];
     }
 
     private function assertResponse(City $city): void
