@@ -44,6 +44,9 @@ class Season
     /** @var ?Fixture[] */
     private ?array $fixtures;
 
+    /** @var ?Team[] */
+    private ?array $teams;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -67,8 +70,9 @@ class Season
         $this->stages = isset($data['stages']) ? $this->createEntityCollection(Stage::class, $data['stages']) : null;
         $this->currentStage = isset($data['currentstage']) ? new Stage($data['currentstage']) : null;
         $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
+        $this->teams = isset($data['teams']) ? $this->createEntityCollection(Team::class, $data['teams']) : null;
 
-        // TODO teams, groups, statistics, topscorers
+        // TODO groups, statistics, topscorers
     }
 
     public function getId(): int
@@ -154,5 +158,10 @@ class Season
     public function getFixtures(): ?array
     {
         return $this->fixtures;
+    }
+
+    public function getTeams(): ?array
+    {
+        return $this->teams;
     }
 }

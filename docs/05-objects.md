@@ -136,6 +136,7 @@
 - `getStages()`: [`?Stage[]`](#stage)
 - `getCurrentStage()`: [`?Stage`](#stage)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
+- `getTeams()`: [`?Team[]`](#team)
 
 ### Stage
 
@@ -163,6 +164,27 @@
 - `getName()`: `?string`
 - `getShortName()`: `?string`
 - `getDeveloperName()`: `?string`
+
+### Team
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getCountryId()`: `int`
+- `getVenueId()`: `?int`
+- `getGender()`: `?string`
+- `getName()`: `?string`
+- `getShortCode()`: `?string`
+- `getImagePath()`: `?string`
+- `getFounded()`: `?int`
+- `getType()`: `?string`
+- `isPlaceholder()`: `?bool`
+- `getLastPlayedAt()`: `?\DateTimeImmutable`
+- `getSport()`: [`?Sport`](#sport)
+- `getCountry()`: [`?Country`](#country)
+- `getLatestFixtures()`: [`?Fixture[]`](#fixture)
+- `getUpcomingFixtures()`: [`?Fixture[]`](#fixture)
+- `getSeasons()`: [`?Season[]`](#season)
+- `getActiveSeasons()`: [`?Season[]`](#season)
 
 ## Core Entities
 
