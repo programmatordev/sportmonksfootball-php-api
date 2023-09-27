@@ -9,10 +9,12 @@
   - [Subscription](#subscription)
 - [Football Entities](#football-entities)
   - [Fixture](#fixture)
+  - [Group](#group)
   - [League](#league)
   - [Season](#season)
   - [Stage](#stage)
   - [State](#state)
+  - [Team](#team)
 - [Core Entities](#core-entities)
   - [City](#city)
   - [Continent](#continent)
@@ -93,6 +95,21 @@
 - `getStage()`: [`?Stage`](#stage)
 - `getLeague()`: [`?League`](#league)
 
+### Group
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getLeagueId()`: `int`
+- `getSeasonId()`: `int`
+- `getStageId()`: `int`
+- `getName()`: `?string`
+- `getStartingAt()`: `?\DateTimeImmutable`
+- `getEndingAt()`: `?\DateTimeImmutable`
+- `hasGamesInCurrentWeek()`: `?bool`
+- `isCurrent()`: `?bool`
+- `isFinished()`: `?bool`
+- `isPending()`: `?bool`
+
 ### League
 
 - `getId()`: `int`
@@ -137,6 +154,7 @@
 - `getCurrentStage()`: [`?Stage`](#stage)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
 - `getTeams()`: [`?Team[]`](#team)
+- `getGroups()`: [`?Group[]`](#group)
 
 ### Stage
 
