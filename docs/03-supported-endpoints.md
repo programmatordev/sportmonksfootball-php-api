@@ -209,16 +209,16 @@ $city = $sportMonksFootball->cities()->getById(1);
 echo $city->getData()->getName();
 ```
 
-#### `getBySearchQuery`
+#### `getAllBySearchQuery`
 
 ```php
-getBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): CityCollection
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): CityCollection
 ```
 
-Get cities by search query:
+Get all cities by search query:
 
 ```php
-$cities = $sportMonksFootball->cities()->getBySearchQuery('lisbon');
+$cities = $sportMonksFootball->cities()->getAllBySearchQuery('lisbon');
 
 foreach ($cities->getData() as $city) {
     echo $city->getName();
@@ -293,16 +293,16 @@ $country = $sportMonksFootball->countries()->getById(1);
 echo $country->getData()->getName();
 ```
 
-#### `getBySearchQuery`
+#### `getAllBySearchQuery`
 
 ```php
-getBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): CountryCollection
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): CountryCollection
 ```
 
-Get countries by search query:
+Get all countries by search query:
 
 ```php
-$countries = $sportMonksFootball->countries()->getBySearchQuery('portugal');
+$countries = $sportMonksFootball->countries()->getAllBySearchQuery('portugal');
 
 foreach ($countries->getData() as $country) {
     echo $country->getName();
@@ -368,16 +368,16 @@ $region = $sportMonksFootball->regions()->getById(1);
 echo $region->getData()->getName();
 ```
 
-#### `getBySearchQuery`
+#### `getAllBySearchQuery`
 
 ```php
-getBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): RegionCollection
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): RegionCollection
 ```
 
-Get regions by search query:
+Get all regions by search query:
 
 ```php
-$regions = $sportMonksFootball->regions()->getBySearchQuery('lisboa');
+$regions = $sportMonksFootball->regions()->getAllBySearchQuery('lisboa');
 
 foreach ($regions->getData() as $region) {
     echo $region->getName();

@@ -70,7 +70,7 @@ class RegionEndpoint extends AbstractEndpoint
      * @throws ValidationException
      * @throws ApiErrorException
      */
-    public function getBySearchQuery(
+    public function getAllBySearchQuery(
         string $query,
         int $page = 1,
         int $perPage = Pagination::PER_PAGE,

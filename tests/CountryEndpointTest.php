@@ -37,10 +37,10 @@ class CountryEndpointTest extends AbstractTest
             Country::class,
             'assertResponse'
         ];
-        yield 'get by search query' => [
+        yield 'get all by search query' => [
             MockResponse::COUNTRY_COLLECTION_DATA,
             'countries',
-            'getBySearchQuery',
+            'getAllBySearchQuery',
             ['test'],
             Country::class,
             'assertResponse'
@@ -50,12 +50,12 @@ class CountryEndpointTest extends AbstractTest
     public static function provideEndpointInvalidPaginationData(): \Generator
     {
         yield 'get all' => ['countries', 'getAll', []];
-        yield 'get by search query' => ['countries', 'getBySearchQuery', ['test']];
+        yield 'get all by search query' => ['countries', 'getAllBySearchQuery', ['test']];
     }
 
     public static function provideEndpointInvalidSearchQueryData(): \Generator
     {
-        yield 'get by search query' => ['countries', 'getBySearchQuery'];
+        yield 'get all by search query' => ['countries', 'getAllBySearchQuery'];
     }
 
     private function assertResponse(Country $country): void
