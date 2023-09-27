@@ -3,6 +3,7 @@
 - [Responses](#responses)
 - [Football Endpoints](#football-endpoints)
   - [Leagues](#leagues)
+  - [States](#states)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
   - [Continents](#continents)
@@ -171,6 +172,40 @@ $leagues = $sportMonksFootball->leagues()->getAllCurrentByTeamId(1);
 foreach ($leagues->getData() as $league) {
     echo $league->getName();
 }
+```
+
+### States
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/states)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): StateCollection
+```
+
+Get all states:
+
+```php
+$states = $sportMonksFootball->states()->getAll();
+
+foreach ($states->getData() as $state) {
+    echo $state->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): StateItem
+```
+
+Get state by id:
+
+```php
+$state = $sportMonksFootball->states()->getById(1);
+echo $state->getData()->getName();
 ```
 
 ## Core Endpoints

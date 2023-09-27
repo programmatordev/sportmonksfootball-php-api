@@ -12,6 +12,7 @@
   - [League](#league)
   - [Season](#season)
   - [Stage](#stage)
+  - [State](#state)
 - [Core Entities](#core-entities)
   - [City](#city)
   - [Continent](#continent)
@@ -154,6 +155,14 @@
 - `getLeague()`: [`?League`](#league)
 - `getType()`: [`?Type`](#type)
 - `getSport()`: [`?Sport`](#sport)
+
+### State
+
+- `getId()`: `int`
+- `getState()`: `?string`
+- `getName()`: `?string`
+- `getShortName()`: `?string`
+- `getDeveloperName()`: `?string`
 
 ## Core Entities
 
