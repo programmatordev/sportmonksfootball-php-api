@@ -8,6 +8,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\LeagueEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
 
 class SportMonksFootball
@@ -47,6 +48,11 @@ class SportMonksFootball
     public function regions(): RegionEndpoint
     {
         return new RegionEndpoint($this);
+    }
+
+    public function states(): StateEndpoint
+    {
+        return new StateEndpoint($this);
     }
 
     public function types(): TypeEndpoint
