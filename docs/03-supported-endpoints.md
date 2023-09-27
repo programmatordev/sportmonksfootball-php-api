@@ -4,6 +4,7 @@
 - [Football Endpoints](#football-endpoints)
   - [Leagues](#leagues)
   - [States](#states)
+  - [Seasons](#seasons)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
   - [Continents](#continents)
@@ -171,6 +172,72 @@ $leagues = $sportMonksFootball->leagues()->getAllCurrentByTeamId(1);
 
 foreach ($leagues->getData() as $league) {
     echo $league->getName();
+}
+```
+
+### Seasons
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/seasons)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): SeasonCollection
+```
+
+Get all seasons:
+
+```php
+$seasons = $sportMonksFootball->seasons()->getAll();
+
+foreach ($seasons->getData() as $season) {
+    echo $season->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): SeasonItem
+```
+
+Get season by id:
+
+```php
+$seasons = $sportMonksFootball->seasons()->getById(1);
+echo $season->getData()->getName();
+```
+
+#### `getAllByTeamId`
+
+```php
+getAllByTeamId(int $teamId): SeasonCollection
+```
+
+Get all seasons by team id:
+
+```php
+$seasons = $sportMonksFootball->seasons()->getAllByTeamId(1);
+
+foreach ($seasons->getData() as $season) {
+    echo $season->getName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): SeasonCollection
+```
+
+Get all seasons by search query:
+
+```php
+$seasons = $sportMonksFootball->seasons()->getAllBySearchQuery('2023/2024');
+
+foreach ($seasons->getData() as $season) {
+    echo $season->getName();
 }
 ```
 

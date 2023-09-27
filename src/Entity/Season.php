@@ -44,6 +44,12 @@ class Season
     /** @var ?Fixture[] */
     private ?array $fixtures;
 
+    /** @var ?Team[] */
+    private ?array $teams;
+
+    /** @var ?Group[] */
+    private ?array $groups;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -58,7 +64,7 @@ class Season
         $this->isCurrent = $data['is_current'] ?? null;
         $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
         $this->endingAt = isset($data['ending_at']) ? new \DateTimeImmutable($data['ending_at']) : null;
-        $this->standingsRecalculatedAt = isset($data['standing_recalculated_at']) ? new \DateTimeImmutable($data['standing_recalculated_at']) : null;
+        $this->standingsRecalculatedAt = isset($data['standings_recalculated_at']) ? new \DateTimeImmutable($data['standings_recalculated_at']) : null;
         $this->hasGamesInCurrentWeek = $data['games_in_current_week'] ?? null;
 
         // include
@@ -67,8 +73,10 @@ class Season
         $this->stages = isset($data['stages']) ? $this->createEntityCollection(Stage::class, $data['stages']) : null;
         $this->currentStage = isset($data['currentstage']) ? new Stage($data['currentstage']) : null;
         $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
+        $this->teams = isset($data['teams']) ? $this->createEntityCollection(Team::class, $data['teams']) : null;
+        $this->groups = isset($data['groups']) ? $this->createEntityCollection(Group::class, $data['groups']) : null;
 
-        // TODO teams, groups, statistics, topscorers
+        // TODO statistics, topscorers
     }
 
     public function getId(): int
@@ -154,5 +162,15 @@ class Season
     public function getFixtures(): ?array
     {
         return $this->fixtures;
+    }
+
+    public function getTeams(): ?array
+    {
+        return $this->teams;
+    }
+
+    public function getGroups(): ?array
+    {
+        return $this->groups;
     }
 }

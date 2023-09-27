@@ -9,10 +9,12 @@
   - [Subscription](#subscription)
 - [Football Entities](#football-entities)
   - [Fixture](#fixture)
+  - [Group](#group)
   - [League](#league)
   - [Season](#season)
   - [Stage](#stage)
   - [State](#state)
+  - [Team](#team)
 - [Core Entities](#core-entities)
   - [City](#city)
   - [Continent](#continent)
@@ -93,6 +95,21 @@
 - `getStage()`: [`?Stage`](#stage)
 - `getLeague()`: [`?League`](#league)
 
+### Group
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getLeagueId()`: `int`
+- `getSeasonId()`: `int`
+- `getStageId()`: `int`
+- `getName()`: `?string`
+- `getStartingAt()`: `?\DateTimeImmutable`
+- `getEndingAt()`: `?\DateTimeImmutable`
+- `hasGamesInCurrentWeek()`: `?bool`
+- `isCurrent()`: `?bool`
+- `isFinished()`: `?bool`
+- `isPending()`: `?bool`
+
 ### League
 
 - `getId()`: `int`
@@ -136,6 +153,8 @@
 - `getStages()`: [`?Stage[]`](#stage)
 - `getCurrentStage()`: [`?Stage`](#stage)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
+- `getTeams()`: [`?Team[]`](#team)
+- `getGroups()`: [`?Group[]`](#group)
 
 ### Stage
 
@@ -163,6 +182,27 @@
 - `getName()`: `?string`
 - `getShortName()`: `?string`
 - `getDeveloperName()`: `?string`
+
+### Team
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getCountryId()`: `int`
+- `getVenueId()`: `?int`
+- `getGender()`: `?string`
+- `getName()`: `?string`
+- `getShortCode()`: `?string`
+- `getImagePath()`: `?string`
+- `getFounded()`: `?int`
+- `getType()`: `?string`
+- `isPlaceholder()`: `?bool`
+- `getLastPlayedAt()`: `?\DateTimeImmutable`
+- `getSport()`: [`?Sport`](#sport)
+- `getCountry()`: [`?Country`](#country)
+- `getLatestFixtures()`: [`?Fixture[]`](#fixture)
+- `getUpcomingFixtures()`: [`?Fixture[]`](#fixture)
+- `getSeasons()`: [`?Season[]`](#season)
+- `getActiveSeasons()`: [`?Season[]`](#season)
 
 ## Core Entities
 

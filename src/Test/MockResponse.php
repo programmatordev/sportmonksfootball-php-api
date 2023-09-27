@@ -24,6 +24,9 @@ class MockResponse
     public const REGION_ITEM_DATA = '{"id":1,"country_id":107,"name":"Al Qadisiyah"}';
     public const REGION_COLLECTION_DATA = '[{"id":1,"country_id":107,"name":"Al Qadisiyah"},{"id":2,"country_id":802,"name":"HaTsafon"}]';
 
+    public const SEASON_ITEM_DATA = '{"id":759,"sport_id":1,"league_id":271,"tie_breaker_rule_id":169,"name":"2016\/2017","finished":true,"pending":false,"is_current":false,"starting_at":"2016-07-15","ending_at":"2017-06-01","standings_recalculated_at":"2023-05-24 08:38:01","games_in_current_week":false}';
+    public const SEASON_COLLECTION_DATA = '[{"id":759,"sport_id":1,"league_id":271,"tie_breaker_rule_id":169,"name":"2016\/2017","finished":true,"pending":false,"is_current":false,"starting_at":"2016-07-15","ending_at":"2017-06-01","standings_recalculated_at":"2023-05-24 08:38:01","games_in_current_week":false},{"id":819,"sport_id":1,"league_id":513,"tie_breaker_rule_id":169,"name":"2015\/2016","finished":true,"pending":false,"is_current":false,"starting_at":"2016-05-04","ending_at":"2016-05-22","standings_recalculated_at":"2022-09-27 08:13:05.900028","games_in_current_week":false}]';
+
     public const STATE_ITEM_DATA = '{"id":1,"state":"NS","name":"Not Started","short_name":"NS","developer_name":"NS"}';
     public const STATE_COLLECTION_DATA = '[{"id":1,"state":"NS","name":"Not Started","short_name":"NS","developer_name":"NS"},{"id":2,"state":"INPLAY_1ST_HALF","name":"1st Half","short_name":"1st","developer_name":"INPLAY_1ST_HALF"}]';
 
