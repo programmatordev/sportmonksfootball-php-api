@@ -64,7 +64,7 @@ class Season
         $this->isCurrent = $data['is_current'] ?? null;
         $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
         $this->endingAt = isset($data['ending_at']) ? new \DateTimeImmutable($data['ending_at']) : null;
-        $this->standingsRecalculatedAt = isset($data['standing_recalculated_at']) ? new \DateTimeImmutable($data['standing_recalculated_at']) : null;
+        $this->standingsRecalculatedAt = isset($data['standings_recalculated_at']) ? new \DateTimeImmutable($data['standings_recalculated_at']) : null;
         $this->hasGamesInCurrentWeek = $data['games_in_current_week'] ?? null;
 
         // include
