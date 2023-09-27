@@ -24,6 +24,9 @@ class MockResponse
     public const REGION_ITEM_DATA = '{"id":1,"country_id":107,"name":"Al Qadisiyah"}';
     public const REGION_COLLECTION_DATA = '[{"id":1,"country_id":107,"name":"Al Qadisiyah"},{"id":2,"country_id":802,"name":"HaTsafon"}]';
 
+    public const STATE_ITEM_DATA = '{"id":1,"state":"NS","name":"Not Started","short_name":"NS","developer_name":"NS"}';
+    public const STATE_COLLECTION_DATA = '[{"id":1,"state":"NS","name":"Not Started","short_name":"NS","developer_name":"NS"},{"id":2,"state":"INPLAY_1ST_HALF","name":"1st Half","short_name":"1st","developer_name":"INPLAY_1ST_HALF"}]';
+
     public const TYPE_ITEM_DATA = '{"id":1,"name":"1st Half","code":"1st-half","developer_name":"1ST_HALF","model_type":"period","stat_group":null}';
     public const TYPE_COLLECTION_DATA = '[{"id":1,"name":"1st Half","code":"1st-half","developer_name":"1ST_HALF","model_type":"period","stat_group":null},{"id":2,"name":"2nd Half","code":"2nd-half","developer_name":"2ND_HALF","model_type":"period","stat_group":null}]';
     public const TYPE_ENTITY_COLLECTION_DATA = '{"CoachStatisticDetail":{"updated_at":"2023-09-21T16:20:39.000000Z","types":[{"id":59,"name":"Substitutions","code":"substitutions","developer_name":"SUBSTITUTIONS","model_type":"statistic","stat_group":"overall"},{"id":83,"name":"Redcards","code":"redcards","developer_name":"REDCARDS","model_type":"statistic","stat_group":"overall"}]},"Event":{"updated_at":"2023-09-21T16:20:40.000000Z","types":[{"id":10,"name":"VAR","code":"VAR","developer_name":"VAR","model_type":"event","stat_group":null},{"id":14,"name":"Goal","code":"goal","developer_name":"GOAL","model_type":"event","stat_group":null}]}}';
