@@ -3,7 +3,7 @@
 namespace ProgrammatorDev\SportMonksFootball\Endpoint;
 
 use Http\Client\Exception;
-use ProgrammatorDev\SportMonksFootball\Endpoint\Util\PaginationValidatorTrait;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\ValidatorTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\SelectTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\StateCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\StateItem;
@@ -14,7 +14,7 @@ use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 class StateEndpoint extends AbstractEndpoint
 {
     use SelectTrait;
-    use PaginationValidatorTrait;
+    use ValidatorTrait;
 
     protected int $cacheTtl = 3600 * 24; // 1 day
 

@@ -6,8 +6,16 @@ use ProgrammatorDev\SportMonksFootball\Pagination\Pagination;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 
-trait PaginationValidatorTrait
+trait ValidatorTrait
 {
+    /**
+     * @throws ValidationException
+     */
+    private function validateSearchQuery(string $query): void
+    {
+        Validator::notBlank()->assert($query, 'query');
+    }
+
     /**
      * @throws ValidationException
      */

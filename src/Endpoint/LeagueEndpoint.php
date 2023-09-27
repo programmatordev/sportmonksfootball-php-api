@@ -6,14 +6,13 @@ use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\FilterTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\IncludeTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
-use ProgrammatorDev\SportMonksFootball\Endpoint\Util\PaginationValidatorTrait;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\ValidatorTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\SelectTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\LeagueCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\LeagueItem;
 use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 use ProgrammatorDev\SportMonksFootball\Pagination\Pagination;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
-use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 
 class LeagueEndpoint extends AbstractEndpoint
 {
@@ -21,7 +20,7 @@ class LeagueEndpoint extends AbstractEndpoint
     use SelectTrait;
     use IncludeTrait;
     use FilterTrait;
-    use PaginationValidatorTrait;
+    use ValidatorTrait;
 
     protected int $cacheTtl = 3600; // 1 hour
 
@@ -151,8 +150,7 @@ class LeagueEndpoint extends AbstractEndpoint
         string $order = Pagination::ORDER_ASC
     ): LeagueCollection
     {
-        Validator::notBlank()->assert($query, 'query');
-
+        $this->validateSearchQuery($query);
         $this->validatePagination($page, $perPage, $order);
 
         $response = $this->sendRequest(
