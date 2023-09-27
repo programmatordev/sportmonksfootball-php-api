@@ -71,7 +71,7 @@ class Team
         $this->latestFixtures = isset($data['latest']) ? $this->createEntityCollection(Fixture::class, $data['latest']) : null;
         $this->upcomingFixtures = isset($data['upcoming']) ? $this->createEntityCollection(Fixture::class, $data['upcoming']) : null;
         $this->seasons = isset($data['seasons']) ? $this->createEntityCollection(Season::class, $data['seasons']) : null;
-        $this->activeSeasons = isset($data['seasons']) ? $this->createEntityCollection(Season::class, $data['seasons']) : null;
+        $this->activeSeasons = isset($data['activeseasons']) ? $this->createEntityCollection(Season::class, $data['activeseasons']) : null;
 
         // TODO venue, coaches, rivals, players
         // sidelined,
