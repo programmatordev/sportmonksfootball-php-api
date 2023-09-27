@@ -4,7 +4,7 @@ namespace ProgrammatorDev\SportMonksFootball\Endpoint;
 
 use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
-use ProgrammatorDev\SportMonksFootball\Endpoint\Util\PaginationValidatorTrait;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\ValidatorTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\TypeEntityCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\TypeCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\TypeItem;
@@ -15,7 +15,7 @@ use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 class TypeEndpoint extends AbstractEndpoint
 {
     use LanguageTrait;
-    use PaginationValidatorTrait;
+    use ValidatorTrait;
 
     protected int $cacheTtl = 3600 * 24; // 1 day
 

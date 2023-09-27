@@ -6,7 +6,7 @@ use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\FilterTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\IncludeTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
-use ProgrammatorDev\SportMonksFootball\Endpoint\Util\PaginationValidatorTrait;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\ValidatorTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\SelectTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\ContinentItem;
@@ -20,7 +20,7 @@ class ContinentEndpoint extends AbstractEndpoint
     use SelectTrait;
     use IncludeTrait;
     use FilterTrait;
-    use PaginationValidatorTrait;
+    use ValidatorTrait;
 
     protected int $cacheTtl = 3600 * 24; // 1 day
 

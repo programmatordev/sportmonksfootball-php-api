@@ -5,21 +5,20 @@ namespace ProgrammatorDev\SportMonksFootball\Endpoint;
 use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\FilterTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\IncludeTrait;
-use ProgrammatorDev\SportMonksFootball\Endpoint\Util\PaginationValidatorTrait;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\ValidatorTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\SelectTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\RegionCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\RegionItem;
 use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 use ProgrammatorDev\SportMonksFootball\Pagination\Pagination;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
-use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 
 class RegionEndpoint extends AbstractEndpoint
 {
     use SelectTrait;
     use IncludeTrait;
     use FilterTrait;
-    use PaginationValidatorTrait;
+    use ValidatorTrait;
 
     protected int $cacheTtl = 3600 * 24; // 1 day
 
@@ -77,8 +76,7 @@ class RegionEndpoint extends AbstractEndpoint
         string $order = Pagination::ORDER_ASC
     ): RegionCollection
     {
-        Validator::notBlank()->assert($query, 'query');
-
+        $this->validateSearchQuery($query);
         $this->validatePagination($page, $perPage, $order);
 
         $response = $this->sendRequest(
