@@ -47,6 +47,9 @@ class Season
     /** @var ?Team[] */
     private ?array $teams;
 
+    /** @var ?Group[] */
+    private ?array $groups;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -71,8 +74,9 @@ class Season
         $this->currentStage = isset($data['currentstage']) ? new Stage($data['currentstage']) : null;
         $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
         $this->teams = isset($data['teams']) ? $this->createEntityCollection(Team::class, $data['teams']) : null;
+        $this->groups = isset($data['groups']) ? $this->createEntityCollection(Group::class, $data['groups']) : null;
 
-        // TODO groups, statistics, topscorers
+        // TODO statistics, topscorers
     }
 
     public function getId(): int
@@ -163,5 +167,10 @@ class Season
     public function getTeams(): ?array
     {
         return $this->teams;
+    }
+
+    public function getGroups(): ?array
+    {
+        return $this->groups;
     }
 }
