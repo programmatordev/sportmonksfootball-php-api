@@ -5,6 +5,7 @@ namespace ProgrammatorDev\SportMonksFootball\Endpoint;
 use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\FilterTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\IncludeTrait;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\ValidatorTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\SelectTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\RegionCollection;
@@ -15,6 +16,7 @@ use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 
 class RegionEndpoint extends AbstractEndpoint
 {
+    use LanguageTrait;
     use SelectTrait;
     use IncludeTrait;
     use FilterTrait;
