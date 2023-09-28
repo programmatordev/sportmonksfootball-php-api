@@ -2,8 +2,12 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-class Group
+use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+
+class Round
 {
+    use CreateEntityCollectionTrait;
+
     private int $id;
 
     private int $sportId;
@@ -16,17 +20,26 @@ class Group
 
     private ?string $name;
 
+    private ?bool $hasFinished;
+
+    private ?bool $isCurrent;
+
     private ?\DateTimeImmutable $startingAt;
 
     private ?\DateTimeImmutable $endingAt;
 
     private ?bool $hasGamesInCurrentWeek;
 
-    private ?bool $isCurrent;
+    private ?Sport $sport;
 
-    private ?bool $hasFinished;
+    private ?League $league;
 
-    private ?bool $isPending;
+    private ?Season $season;
+
+    private ?Stage $stage;
+
+    /** @var ?Fixture[] */
+    private ?array $fixtures;
 
     public function __construct(array $data)
     {
@@ -36,13 +49,22 @@ class Group
         $this->seasonId = $data['season_id'];
         $this->stageId = $data['stage_id'];
 
+        // select
         $this->name = $data['name'] ?? null;
+        $this->hasFinished = $data['finished'] ?? null;
+        $this->isCurrent = $data['is_current'] ?? null;
         $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
         $this->endingAt = isset($data['ending_at']) ? new \DateTimeImmutable($data['ending_at']) : null;
         $this->hasGamesInCurrentWeek = $data['games_in_current_week'] ?? null;
-        $this->isCurrent = $data['is_current'] ?? null;
-        $this->hasFinished = $data['finished'] ?? null;
-        $this->isPending = $data['pending'] ?? null;
+
+        // include
+        $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
+        $this->league = isset($data['league']) ? new League($data['league']) : null;
+        $this->season = isset($data['season']) ? new Season($data['season']) : null;
+        $this->stage = isset($data['stage']) ? new Stage($data['stage']) : null;
+        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
+
+        // TODO statistics
     }
 
     public function getId(): int
@@ -75,6 +97,16 @@ class Group
         return $this->name;
     }
 
+    public function hasFinished(): ?bool
+    {
+        return $this->hasFinished;
+    }
+
+    public function isCurrent(): ?bool
+    {
+        return $this->isCurrent;
+    }
+
     public function getStartingAt(): ?\DateTimeImmutable
     {
         return $this->startingAt;
@@ -90,18 +122,28 @@ class Group
         return $this->hasGamesInCurrentWeek;
     }
 
-    public function isCurrent(): ?bool
+    public function getSport(): ?Sport
     {
-        return $this->isCurrent;
+        return $this->sport;
     }
 
-    public function hasFinished(): ?bool
+    public function getLeague(): ?League
     {
-        return $this->hasFinished;
+        return $this->league;
     }
 
-    public function isPending(): ?bool
+    public function getSeason(): ?Season
     {
-        return $this->isPending;
+        return $this->season;
+    }
+
+    public function getStage(): ?Stage
+    {
+        return $this->stage;
+    }
+
+    public function getFixtures(): ?array
+    {
+        return $this->fixtures;
     }
 }

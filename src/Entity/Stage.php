@@ -2,8 +2,12 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
+use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+
 class Stage
 {
+    use CreateEntityCollectionTrait;
+
     private int $id;
 
     private int $sportId;
@@ -36,6 +40,22 @@ class Stage
 
     private ?Sport $sport;
 
+    private ?Season $season;
+
+    /** @var ?Round[] */
+    private ?array $rounds;
+
+    private ?Round $currentRound;
+
+    /** @var ?Group[] */
+    private ?array $groups;
+
+    /** @var ?Fixture[] */
+    private ?array $fixtures;
+
+    /** @var ?Aggregate[] */
+    private ?array $aggregates;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -58,8 +78,14 @@ class Stage
         $this->league = isset($data['league']) ? new League($data['league']) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
+        $this->season = isset($data['season']) ? new Season($data['season']) : null;
+        $this->rounds = isset($data['rounds']) ? $this->createEntityCollection(Round::class, $data['rounds']) : null;
+        $this->currentRound = isset($data['currentround']) ? new Round($data['currentround']) : null;
+        $this->groups = isset($data['groups']) ? $this->createEntityCollection(Group::class, $data['groups']) : null;
+        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
+        $this->aggregates = isset($data['aggregates']) ? $this->createEntityCollection(Aggregate::class, $data['aggregates']) : null;
 
-        // TODO season, rounds, currentRound, groups, fixtures, aggregates, topscorers, statistics
+        // TODO topscorers, statistics
     }
 
     public function getId(): int
@@ -97,12 +123,12 @@ class Stage
         return $this->sortOrder;
     }
 
-    public function getHasFinished(): ?bool
+    public function hasFinished(): ?bool
     {
         return $this->hasFinished;
     }
 
-    public function getIsCurrent(): ?bool
+    public function isCurrent(): ?bool
     {
         return $this->isCurrent;
     }
@@ -140,5 +166,35 @@ class Stage
     public function getSport(): ?Sport
     {
         return $this->sport;
+    }
+
+    public function getSeason(): ?Season
+    {
+        return $this->season;
+    }
+
+    public function getRounds(): ?array
+    {
+        return $this->rounds;
+    }
+
+    public function getCurrentRound(): ?Round
+    {
+        return $this->currentRound;
+    }
+
+    public function getGroups(): ?array
+    {
+        return $this->groups;
+    }
+
+    public function getFixtures(): ?array
+    {
+        return $this->fixtures;
+    }
+
+    public function getAggregates(): ?array
+    {
+        return $this->aggregates;
     }
 }
