@@ -18,7 +18,7 @@ class Season
 
     private ?string $name;
 
-    private ?bool $isFinished;
+    private ?bool $hasFinished;
 
     private ?bool $isPending;
 
@@ -59,7 +59,7 @@ class Season
         // select
         $this->tieBreakerRuleId = $data['tie_breaker_rule_id'] ?? null;
         $this->name = $data['name'] ?? null;
-        $this->isFinished = $data['finished'] ?? null;
+        $this->hasFinished = $data['finished'] ?? null;
         $this->isPending = $data['pending'] ?? null;
         $this->isCurrent = $data['is_current'] ?? null;
         $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
@@ -104,9 +104,9 @@ class Season
         return $this->name;
     }
 
-    public function isFinished(): ?bool
+    public function hasFinished(): ?bool
     {
-        return $this->isFinished;
+        return $this->hasFinished;
     }
 
     public function isPending(): ?bool

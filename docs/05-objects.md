@@ -124,7 +124,7 @@
 - `getEndingAt()`: `?\DateTimeImmutable`
 - `hasGamesInCurrentWeek()`: `?bool`
 - `isCurrent()`: `?bool`
-- `isFinished()`: `?bool`
+- `hasFinished()`: `?bool`
 - `isPending()`: `?bool`
 
 ### League
@@ -159,7 +159,7 @@
 - `getSeasonId()`: `int`
 - `getStageId()`: `int`
 - `getName()`: `?string`
-- `isFinished()`: `?bool`
+- `hasFinished()`: `?bool`
 - `isCurrent()`: `?bool`
 - `getStartingAt()`: `?\DateTimeImmutable`
 - `getEndingAt()`: `?\DateTimeImmutable`
@@ -177,7 +177,7 @@
 - `getLeagueId()`: `int`
 - `getTieBreakerRuleId()`: `?int`
 - `getName()`: `?string`
-- `isFinished()`: `?bool`
+- `hasFinished()`: `?bool`
 - `isPending()`: `?bool`
 - `isCurrent()`: `?bool`
 - `getStartingAt()`: `?\DateTimeImmutable`

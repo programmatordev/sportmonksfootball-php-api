@@ -20,7 +20,7 @@ class Round
 
     private ?string $name;
 
-    private ?bool $isFinished;
+    private ?bool $hasFinished;
 
     private ?bool $isCurrent;
 
@@ -51,7 +51,7 @@ class Round
 
         // select
         $this->name = $data['name'] ?? null;
-        $this->isFinished = $data['finished'] ?? null;
+        $this->hasFinished = $data['finished'] ?? null;
         $this->isCurrent = $data['is_current'] ?? null;
         $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
         $this->endingAt = isset($data['ending_at']) ? new \DateTimeImmutable($data['ending_at']) : null;
@@ -97,9 +97,9 @@ class Round
         return $this->name;
     }
 
-    public function isFinished(): ?bool
+    public function hasFinished(): ?bool
     {
-        return $this->isFinished;
+        return $this->hasFinished;
     }
 
     public function isCurrent(): ?bool

@@ -73,7 +73,7 @@ class SeasonEndpointTest extends AbstractTest
         $this->assertSame(271, $season->getLeagueId());
         $this->assertSame(169, $season->getTieBreakerRuleId());
         $this->assertSame('2016/2017', $season->getName());
-        $this->assertSame(true, $season->isFinished());
+        $this->assertSame(true, $season->hasFinished());
         $this->assertSame(false, $season->isPending());
         $this->assertSame(false, $season->isCurrent());
         $this->assertSame('2016-07-15 00:00:00', $season->getStartingAt()->format('Y-m-d H:i:s'));

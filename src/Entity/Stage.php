@@ -123,12 +123,12 @@ class Stage
         return $this->sortOrder;
     }
 
-    public function getHasFinished(): ?bool
+    public function hasFinished(): ?bool
     {
         return $this->hasFinished;
     }
 
-    public function getIsCurrent(): ?bool
+    public function isCurrent(): ?bool
     {
         return $this->isCurrent;
     }

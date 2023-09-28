@@ -24,7 +24,7 @@ class Group
 
     private ?bool $isCurrent;
 
-    private ?bool $isFinished;
+    private ?bool $hasFinished;
 
     private ?bool $isPending;
 
@@ -41,7 +41,7 @@ class Group
         $this->endingAt = isset($data['ending_at']) ? new \DateTimeImmutable($data['ending_at']) : null;
         $this->hasGamesInCurrentWeek = $data['games_in_current_week'] ?? null;
         $this->isCurrent = $data['is_current'] ?? null;
-        $this->isFinished = $data['finished'] ?? null;
+        $this->hasFinished = $data['finished'] ?? null;
         $this->isPending = $data['pending'] ?? null;
     }
 
@@ -95,9 +95,9 @@ class Group
         return $this->isCurrent;
     }
 
-    public function isFinished(): ?bool
+    public function hasFinished(): ?bool
     {
-        return $this->isFinished;
+        return $this->hasFinished;
     }
 
     public function isPending(): ?bool
