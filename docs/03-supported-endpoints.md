@@ -5,6 +5,7 @@
   - [Leagues](#leagues)
   - [Schedules](#schedules)
   - [Seasons](#seasons)
+  - [Stages](#stages)
   - [States](#states)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
@@ -316,6 +317,72 @@ $seasons = $sportMonksFootball->seasons()->getAllBySearchQuery('2023/2024');
 
 foreach ($seasons->getData() as $season) {
     echo $season->getName();
+}
+```
+
+### Stages
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/stages)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): StageCollection
+```
+
+Get all stages:
+
+```php
+$stages = $sportMonksFootball->stages()->getAll();
+
+foreach ($stages->getData() as $stage) {
+    echo $stage->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): StageItem
+```
+
+Get stage by id:
+
+```php
+$stage = $sportMonksFootball->stages()->getById(1);
+echo $stage->getData()->getName();
+```
+
+#### `getAllBySeasonId`
+
+```php
+getAllBySeasonId(int $seasonId): StageCollection
+```
+
+Get all stages by season id:
+
+```php
+$stages = $sportMonksFootball->stages()->getAllBySeasonId(1);
+
+foreach ($stages->getData() as $stage) {
+    echo $stage->getName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): StageCollection
+```
+
+Get all stages by search query:
+
+```php
+$stages = $sportMonksFootball->stages()->getAllBySearchQuery('champions');
+
+foreach ($stages->getData() as $stage) {
+    echo $stage->getName();
 }
 ```
 

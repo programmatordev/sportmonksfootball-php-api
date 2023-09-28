@@ -10,6 +10,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\LeagueEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ScheduleEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\SeasonEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\StageEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
 
@@ -60,6 +61,11 @@ class SportMonksFootball
     public function seasons(): SeasonEndpoint
     {
         return new SeasonEndpoint($this);
+    }
+
+    public function stages(): StageEndpoint
+    {
+        return new StageEndpoint($this);
     }
 
     public function states(): StateEndpoint
