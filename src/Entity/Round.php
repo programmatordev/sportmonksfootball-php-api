@@ -4,7 +4,7 @@ namespace ProgrammatorDev\SportMonksFootball\Entity;
 
 use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
 
-class Stage
+class Round
 {
     use CreateEntityCollectionTrait;
 
@@ -16,13 +16,11 @@ class Stage
 
     private int $seasonId;
 
-    private int $typeId;
+    private int $stageId;
 
     private ?string $name;
 
-    private ?int $sortOrder;
-
-    private ?bool $hasFinished;
+    private ?bool $isFinished;
 
     private ?bool $isCurrent;
 
@@ -32,29 +30,16 @@ class Stage
 
     private ?bool $hasGamesInCurrentWeek;
 
-    private ?int $tieBreakerRuleId;
+    private ?Sport $sport;
 
     private ?League $league;
 
-    private ?Type $type;
-
-    private ?Sport $sport;
-
     private ?Season $season;
 
-    /** @var ?Round[] */
-    private ?array $rounds;
-
-    private ?Round $currentRound;
-
-    /** @var ?Group[] */
-    private ?array $groups;
+    private ?Stage $stage;
 
     /** @var ?Fixture[] */
     private ?array $fixtures;
-
-    /** @var ?Aggregate[] */
-    private ?array $aggregates;
 
     public function __construct(array $data)
     {
@@ -62,30 +47,24 @@ class Stage
         $this->sportId = $data['sport_id'];
         $this->leagueId = $data['league_id'];
         $this->seasonId = $data['season_id'];
-        $this->typeId = $data['type_id'];
+        $this->stageId = $data['stage_id'];
 
         // select
         $this->name = $data['name'] ?? null;
-        $this->sortOrder = $data['sort_order'] ?? null;
-        $this->hasFinished = $data['finished'] ?? null;
+        $this->isFinished = $data['finished'] ?? null;
         $this->isCurrent = $data['is_current'] ?? null;
         $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
         $this->endingAt = isset($data['ending_at']) ? new \DateTimeImmutable($data['ending_at']) : null;
         $this->hasGamesInCurrentWeek = $data['games_in_current_week'] ?? null;
-        $this->tieBreakerRuleId = $data['tie_breaker_rule_id'] ?? null;
 
         // include
-        $this->league = isset($data['league']) ? new League($data['league']) : null;
-        $this->type = isset($data['type']) ? new Type($data['type']) : null;
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
+        $this->league = isset($data['league']) ? new League($data['league']) : null;
         $this->season = isset($data['season']) ? new Season($data['season']) : null;
-        $this->rounds = isset($data['rounds']) ? $this->createEntityCollection(Round::class, $data['rounds']) : null;
-        $this->currentRound = isset($data['currentround']) ? new Round($data['currentround']) : null;
-        $this->groups = isset($data['groups']) ? $this->createEntityCollection(Group::class, $data['groups']) : null;
+        $this->stage = isset($data['stage']) ? new Stage($data['stage']) : null;
         $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
-        $this->aggregates = isset($data['aggregates']) ? $this->createEntityCollection(Aggregate::class, $data['aggregates']) : null;
 
-        // TODO topscorers, statistics
+        // TODO statistics
     }
 
     public function getId(): int
@@ -108,9 +87,9 @@ class Stage
         return $this->seasonId;
     }
 
-    public function getTypeId(): int
+    public function getStageId(): int
     {
-        return $this->typeId;
+        return $this->stageId;
     }
 
     public function getName(): ?string
@@ -118,17 +97,12 @@ class Stage
         return $this->name;
     }
 
-    public function getSortOrder(): ?int
+    public function isFinished(): ?bool
     {
-        return $this->sortOrder;
+        return $this->isFinished;
     }
 
-    public function getHasFinished(): ?bool
-    {
-        return $this->hasFinished;
-    }
-
-    public function getIsCurrent(): ?bool
+    public function isCurrent(): ?bool
     {
         return $this->isCurrent;
     }
@@ -148,9 +122,9 @@ class Stage
         return $this->hasGamesInCurrentWeek;
     }
 
-    public function getTieBreakerRuleId(): ?int
+    public function getSport(): ?Sport
     {
-        return $this->tieBreakerRuleId;
+        return $this->sport;
     }
 
     public function getLeague(): ?League
@@ -158,43 +132,18 @@ class Stage
         return $this->league;
     }
 
-    public function getType(): ?Type
-    {
-        return $this->type;
-    }
-
-    public function getSport(): ?Sport
-    {
-        return $this->sport;
-    }
-
     public function getSeason(): ?Season
     {
         return $this->season;
     }
 
-    public function getRounds(): ?array
+    public function getStage(): ?Stage
     {
-        return $this->rounds;
-    }
-
-    public function getCurrentRound(): ?Round
-    {
-        return $this->currentRound;
-    }
-
-    public function getGroups(): ?array
-    {
-        return $this->groups;
+        return $this->stage;
     }
 
     public function getFixtures(): ?array
     {
         return $this->fixtures;
-    }
-
-    public function getAggregates(): ?array
-    {
-        return $this->aggregates;
     }
 }
