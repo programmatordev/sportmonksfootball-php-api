@@ -24,6 +24,9 @@ class MockResponse
     public const REGION_ITEM_DATA = '{"id":1,"country_id":107,"name":"Al Qadisiyah"}';
     public const REGION_COLLECTION_DATA = '[{"id":1,"country_id":107,"name":"Al Qadisiyah"},{"id":2,"country_id":802,"name":"HaTsafon"}]';
 
+    public const ROUND_ITEM_DATA = '{"id":23317,"sport_id":1,"league_id":271,"season_id":1273,"stage_id":1086,"name":"1","finished":true,"is_current":false,"starting_at":"2005-07-19","ending_at":"2005-07-24","games_in_current_week":false}';
+    public const ROUND_COLLECTION_DATA = '[{"id":23317,"sport_id":1,"league_id":271,"season_id":1273,"stage_id":1086,"name":"1","finished":true,"is_current":false,"starting_at":"2005-07-19","ending_at":"2005-07-24","games_in_current_week":false},{"id":23318,"sport_id":1,"league_id":271,"season_id":1273,"stage_id":1086,"name":"2","finished":true,"is_current":false,"starting_at":"2005-07-24","ending_at":"2005-07-31","games_in_current_week":false}]';
+
     public const SEASON_ITEM_DATA = '{"id":759,"sport_id":1,"league_id":271,"tie_breaker_rule_id":169,"name":"2016\/2017","finished":true,"pending":false,"is_current":false,"starting_at":"2016-07-15","ending_at":"2017-06-01","standings_recalculated_at":"2023-05-24 08:38:01","games_in_current_week":false}';
     public const SEASON_COLLECTION_DATA = '[{"id":759,"sport_id":1,"league_id":271,"tie_breaker_rule_id":169,"name":"2016\/2017","finished":true,"pending":false,"is_current":false,"starting_at":"2016-07-15","ending_at":"2017-06-01","standings_recalculated_at":"2023-05-24 08:38:01","games_in_current_week":false},{"id":819,"sport_id":1,"league_id":513,"tie_breaker_rule_id":169,"name":"2015\/2016","finished":true,"pending":false,"is_current":false,"starting_at":"2016-05-04","ending_at":"2016-05-22","standings_recalculated_at":"2022-09-27 08:13:05.900028","games_in_current_week":false}]';
 

@@ -3,6 +3,7 @@
 - [Responses](#responses)
 - [Football Endpoints](#football-endpoints)
   - [Leagues](#leagues)
+  - [Rounds](#rounds)
   - [Schedules](#schedules)
   - [Seasons](#seasons)
   - [Stages](#stages)
@@ -174,6 +175,72 @@ $leagues = $sportMonksFootball->leagues()->getAllCurrentByTeamId(1);
 
 foreach ($leagues->getData() as $league) {
     echo $league->getName();
+}
+```
+
+### Rounds
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/rounds)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): RoundCollection
+```
+
+Get all rounds:
+
+```php
+$rounds = $sportMonksFootball->rounds()->getAll();
+
+foreach ($rounds->getData() as $round) {
+    echo $round->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): RoundItem
+```
+
+Get round by id:
+
+```php
+$round = $sportMonksFootball->rounds()->getById(1);
+echo $round->getData()->getName();
+```
+
+#### `getAllBySeasonId`
+
+```php
+getAllBySeasonId(int $seasonId): RoundCollection
+```
+
+Get all rounds by season id:
+
+```php
+$rounds = $sportMonksFootball->rounds()->getAllBySeasonId(1);
+
+foreach ($rounds->getData() as $round) {
+    echo $round->getName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): RoundCollection
+```
+
+Get all rounds by search query:
+
+```php
+$rounds = $sportMonksFootball->rounds()->getAllBySearchQuery('30');
+
+foreach ($rounds->getData() as $round) {
+    echo $round->getName();
 }
 ```
 
