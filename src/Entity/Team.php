@@ -48,6 +48,26 @@ class Team
     /** @var ?Season[] */
     private ?array $activeSeasons;
 
+    private ?Venue $venue;
+
+    /** @var ?Team[] */
+    private ?array $rivals;
+
+    /** @var ?Squad[] */
+    private ?array $players;
+
+    /** @var ?Sidelined[] */
+    private ?array $sidelined;
+
+    /** @var ?Sidelined[] */
+    private ?array $sidelinedHistory;
+
+    /** @var ?ParticipantTrophy[] */
+    private ?array $trophies;
+
+    /** @var ?Social[] */
+    private ?array $socials;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -72,10 +92,15 @@ class Team
         $this->upcomingFixtures = isset($data['upcoming']) ? $this->createEntityCollection(Fixture::class, $data['upcoming']) : null;
         $this->seasons = isset($data['seasons']) ? $this->createEntityCollection(Season::class, $data['seasons']) : null;
         $this->activeSeasons = isset($data['activeseasons']) ? $this->createEntityCollection(Season::class, $data['activeseasons']) : null;
+        $this->venue = isset($data['venue']) ? new Venue($data['venue']) : null;
+        $this->rivals = isset($data['rivals']) ? $this->createEntityCollection(Team::class, $data['rivals']) : null;
+        $this->players = isset($data['players']) ? $this->createEntityCollection(Squad::class, $data['players']) : null;
+        $this->sidelined = isset($data['sidelined']) ? $this->createEntityCollection(Sidelined::class, $data['sidelined']) : null;
+        $this->sidelinedHistory = isset($data['sidelinedhistory']) ? $this->createEntityCollection(Sidelined::class, $data['sidelinedhistory']) : null;
+        $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies']) : null;
+        $this->socials = isset($data['socials']) ? $this->createEntityCollection(Social::class, $data['socials']) : null;
 
-        // TODO venue, coaches, rivals, players
-        // sidelined,
-        // sidelinedHistory, statistics, trophies, socials
+        // TODO coaches(?), statistics
     }
 
     public function getId(): int
@@ -166,5 +191,40 @@ class Team
     public function getActiveSeasons(): ?array
     {
         return $this->activeSeasons;
+    }
+
+    public function getVenue(): ?Venue
+    {
+        return $this->venue;
+    }
+
+    public function getRivals(): ?array
+    {
+        return $this->rivals;
+    }
+
+    public function getPlayers(): ?array
+    {
+        return $this->players;
+    }
+
+    public function getSidelined(): ?array
+    {
+        return $this->sidelined;
+    }
+
+    public function getSidelinedHistory(): ?array
+    {
+        return $this->sidelinedHistory;
+    }
+
+    public function getTrophies(): ?array
+    {
+        return $this->trophies;
+    }
+
+    public function getSocials(): ?array
+    {
+        return $this->socials;
     }
 }
