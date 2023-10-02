@@ -197,7 +197,7 @@ Get all players:
 $players = $sportMonksFootball->players()->getAll();
 
 foreach ($players->getData() as $player) {
-    echo $player->getName();
+    echo $player->getDisplayName();
 }
 ```
 
@@ -211,7 +211,7 @@ Get player by id:
 
 ```php
 $player = $sportMonksFootball->players()->getById(1);
-echo $player->getData()->getName();
+echo $player->getData()->getDisplayName();
 ```
 
 #### `getAllByCountryId`
@@ -226,7 +226,7 @@ Get all players by country id:
 $players = $sportMonksFootball->players()->getAllByCountryId(1);
 
 foreach ($players->getData() as $player) {
-    echo $player->getName();
+    echo $player->getDisplayName();
 }
 ```
 
@@ -242,7 +242,7 @@ Get all players by search query:
 $players = $sportMonksFootball->players()->getAllBySearchQuery('esgaio');
 
 foreach ($players->getData() as $player) {
-    echo $player->getName();
+    echo $player->getDisplayName();
 }
 ```
 
@@ -258,7 +258,7 @@ Get all players that received updates in the last couple of hours:
 $players = $sportMonksFootball->players()->getAllLastUpdated();
 
 foreach ($players->getData() as $player) {
-    echo $player->getName();
+    echo $player->getDisplayName();
 }
 ```
 
