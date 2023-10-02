@@ -14,6 +14,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\ScheduleEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\SeasonEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StageEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
 
 class SportMonksFootballTest extends AbstractTest
@@ -37,6 +38,7 @@ class SportMonksFootballTest extends AbstractTest
         yield 'seasons' => [SeasonEndpoint::class, 'seasons'];
         yield 'stages' => [StageEndpoint::class, 'stages'];
         yield 'states' => [StateEndpoint::class, 'states'];
+        yield 'teams' => [TeamEndpoint::class, 'teams'];
         yield 'types' => [TypeEndpoint::class, 'types'];
     }
 }
