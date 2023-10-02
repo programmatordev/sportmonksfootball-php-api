@@ -8,6 +8,7 @@
   - [Seasons](#seasons)
   - [Stages](#stages)
   - [States](#states)
+  - [Teams](#teams)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
   - [Continents](#continents)
@@ -485,6 +486,88 @@ Get state by id:
 ```php
 $state = $sportMonksFootball->states()->getById(1);
 echo $state->getData()->getName();
+```
+
+### Teams
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/teams)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): TeamCollection
+```
+
+Get all teams:
+
+```php
+$teams = $sportMonksFootball->teams()->getAll();
+
+foreach ($teams->getData() as $team) {
+    echo $team->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): TeamItem
+```
+
+Get team by id:
+
+```php
+$team = $sportMonksFootball->teams()->getById(1);
+echo $team->getData()->getName();
+```
+
+#### `getAllByCountryId`
+
+```php
+getAllByCountryId(int $countryId, int $page = 1, int $perPage = 25, string $order = 'asc'): TeamCollection
+```
+
+Get all teams by country id:
+
+```php
+$teams = $sportMonksFootball->teams()->getAllByCountryId(1);
+
+foreach ($teams->getData() as $team) {
+    echo $team->getName();
+}
+```
+
+#### `getAllBySeasonId`
+
+```php
+getAllBySeasonId(int $seasonId): TeamCollection
+```
+
+Get all teams by season id:
+
+```php
+$teams = $sportMonksFootball->teams()->getAllBySeasonId(1);
+
+foreach ($teams->getData() as $team) {
+    echo $team->getName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): TeamCollection
+```
+
+Get all teams by search query:
+
+```php
+$teams = $sportMonksFootball->teams()->getAllBySearchQuery('sporting');
+
+foreach ($teams->getData() as $team) {
+    echo $team->getName();
+}
 ```
 
 ## Core Endpoints
