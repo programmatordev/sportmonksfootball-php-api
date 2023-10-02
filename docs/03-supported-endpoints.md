@@ -3,6 +3,7 @@
 - [Responses](#responses)
 - [Football Endpoints](#football-endpoints)
   - [Leagues](#leagues)
+  - [Players](#players)
   - [Rounds](#rounds)
   - [Schedules](#schedules)
   - [Seasons](#seasons)
@@ -176,6 +177,88 @@ $leagues = $sportMonksFootball->leagues()->getAllCurrentByTeamId(1);
 
 foreach ($leagues->getData() as $league) {
     echo $league->getName();
+}
+```
+
+### Players
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/players)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): PlayerCollection
+```
+
+Get all players:
+
+```php
+$players = $sportMonksFootball->players()->getAll();
+
+foreach ($players->getData() as $player) {
+    echo $player->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): PlayerItem
+```
+
+Get player by id:
+
+```php
+$player = $sportMonksFootball->players()->getById(1);
+echo $player->getData()->getName();
+```
+
+#### `getAllByCountryId`
+
+```php
+getAllByCountryId(int $countryId, int $page = 1, int $perPage = 25, string $order = 'asc'): PlayerCollection
+```
+
+Get all players by country id:
+
+```php
+$players = $sportMonksFootball->players()->getAllByCountryId(1);
+
+foreach ($players->getData() as $player) {
+    echo $player->getName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): PlayerCollection
+```
+
+Get all players by search query:
+
+```php
+$players = $sportMonksFootball->players()->getAllBySearchQuery('esgaio');
+
+foreach ($players->getData() as $player) {
+    echo $player->getName();
+}
+```
+
+#### `getAllLastUpdated`
+
+```php
+getAllLastUpdated(): PlayerCollection
+```
+
+Get all players that received updates in the last couple of hours:
+
+```php
+$players = $sportMonksFootball->players()->getAllLastUpdated();
+
+foreach ($players->getData() as $player) {
+    echo $player->getName();
 }
 ```
 

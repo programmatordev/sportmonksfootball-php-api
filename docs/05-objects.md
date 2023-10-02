@@ -12,7 +12,10 @@
   - [Fixture](#fixture)
   - [Group](#group)
   - [League](#league)
+  - [Lineup](#lineup)
+  - [Metadata](#metadata)
   - [ParticipantTrophy](#participanttrophy)
+  - [Player](#player)
   - [Round](#round)
   - [Season](#season)
   - [Sidelined](#sidelined)
@@ -21,6 +24,7 @@
   - [Stage](#stage)
   - [State](#state)
   - [Team](#team)
+  - [Transfer](#transfer)
   - [Venue](#venue)
 - [Core Entities](#core-entities)
   - [City](#city)
@@ -156,6 +160,34 @@
 - `getCurrentSeason()`: [`?Season`](#season)
 - `getSeasons()`: [`?Season[]`](#season)
 
+### Lineup
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getPlayerId()`: `int`
+- `getTypeId()`: `int`
+- `getPositionId()`: `?int`
+- `getTeamId()`: `?int`
+- `getSportId()`: `?int`
+- `getFormationField()`: `?string`
+- `getFormationPosition()`: `?int`
+- `getPlayerName()`: `?string`
+- `getJerseyNumber()`: `?int`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getPlayer()`: [`?Player`](#player)
+- `getType()`: [`?Type`](#type)
+- `getPosition()`: [`?Type`](#type)
+- `getDetailedPosition()`: [`?Type`](#type)
+
+### Metadata
+
+- `getId()`: `int`
+- `getMetadatableId()`: `int`
+- `getTypeId()`: `int`
+- `getValueType()`: `string`
+- `getValues()`: `mixed`
+- `getType()`: [`?Type`](#type)
+
 ### ParticipantTrophy
 
 - `getId()`: `int`
@@ -166,6 +198,40 @@
 - `getTeam()`: [`?Team`](#team)
 - `getLeague()`: [`?League`](#league)
 - `getSeason()`: [`?Season`](#season)
+
+### Player
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getCountryId()`: `int`
+- `getNationalityId()`: `int`
+- `getCityId()`: `?int`
+- `getPositionId()`: `?int`
+- `getDetailedPositionId()`: `?int`
+- `getTypeId()`: `?int`
+- `getCommonName()`: `?string`
+- `getFirstName()`: `?string`
+- `getLastName()`: `?string`
+- `getName()`: `?string`
+- `getDisplayName()`: `?string`
+- `getImagePath()`: `?string`
+- `getHeight()`: `?int`
+- `getWeight()`: `?int`
+- `getDateOfBirth()`: `?\DateTimeImmutable`
+- `getGender()`: `?string`
+- `getSport()`: [`?Sport`](#sport)
+- `getCountry()`: [`?Country`](#country)
+- `getCity()`: [`?City`](#city)
+- `getNationality()`: [`?Country`](#country)
+- `getTeams()`: [`?Squad[]`](#squad)
+- `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
+- `getTransfers()`: [`?Transfer[]`](#transfer)
+- `getPendingTransfers()`: [`?Transfer[]`](#transfer)
+- `getPosition()`: [`?Type`](#type)
+- `getDetailedPosition()`: [`?Type`](#type)
+- `getLineups()`: [`?Lineup[]`](#lineup)
+- `getLatestLineups()`: [`?Lineup[]`](#lineup)
+- `getMetadata()`: [`?Metadata[]`](#metadata)
 
 ### Round
 
@@ -305,6 +371,28 @@
 - `getSidelinedHistory()`: [`?Sidelined[]`](#sidelined)
 - `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
 - `getSocials()`: [`?Social[]`](#social)
+
+### Transfer
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getPlayerId()`: `int`
+- `getTypeId()`: `int`
+- `getFromTeamId()`: `int`
+- `getToTeamId()`: `int`
+- `getPositionId()`: `?int`
+- `getDetailedPositionId()`: `?int`
+- `getDate()`: `?\DateTimeImmutable`
+- `hasCareerEnded()`: `?bool`
+- `isCompleted()`: `?bool`
+- `getAmount()`: `?int`
+- `getSport()`: [`?Sport`](#sport)
+- `getPlayer()`: [`?Player`](#player)
+- `getType()`: [`?Type`](#type)
+- `getFromTeam()`: [`?Team`](#team)
+- `getToTeam()`: [`?Team`](#team)
+- `getPosition()`: [`?Type`](#type)
+- `getDetailedPosition()`: [`?Type`](#type)
 
 ### Venue
 
