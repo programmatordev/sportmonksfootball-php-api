@@ -7,6 +7,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\LeagueEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\PlayerEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RoundEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ScheduleEndpoint;
@@ -48,6 +49,11 @@ class SportMonksFootball
     public function leagues(): LeagueEndpoint
     {
         return new LeagueEndpoint($this);
+    }
+
+    public function players(): PlayerEndpoint
+    {
+        return new PlayerEndpoint($this);
     }
 
     public function regions(): RegionEndpoint

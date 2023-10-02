@@ -12,7 +12,7 @@ class Team
 
     private int $sportId;
 
-    private int $countryId;
+    private ?int $countryId;
 
     private ?int $venueId;
 
@@ -72,7 +72,7 @@ class Team
     {
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
-        $this->countryId = $data['country_id'];
+        $this->countryId = $data['country_id'] ?? null;
         $this->venueId = $data['venue_id'] ?? null;
 
         // select
