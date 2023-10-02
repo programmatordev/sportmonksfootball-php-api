@@ -12,11 +12,16 @@
   - [Fixture](#fixture)
   - [Group](#group)
   - [League](#league)
+  - [ParticipantTrophy](#participanttrophy)
   - [Round](#round)
   - [Season](#season)
+  - [Sidelined](#sidelined)
+  - [Social](#social)
+  - [Squad](#squad)
   - [Stage](#stage)
   - [State](#state)
   - [Team](#team)
+  - [Venue](#venue)
 - [Core Entities](#core-entities)
   - [City](#city)
   - [Continent](#continent)
@@ -151,6 +156,17 @@
 - `getCurrentSeason()`: [`?Season`](#season)
 - `getSeasons()`: [`?Season[]`](#season)
 
+### ParticipantTrophy
+
+- `getId()`: `int`
+- `getParticipantId()`: `int`
+- `getLeagueId()`: `int`
+- `getSeasonId()`: `int`
+- `getTrophyId()`: `int`
+- `getTeam()`: [`?Team`](#team)
+- `getLeague()`: [`?League`](#league)
+- `getSeason()`: [`?Season`](#season)
+
 ### Round
 
 - `getId()`: `int`
@@ -191,6 +207,43 @@
 - `getFixtures()`: [`?Fixture[]`](#fixture)
 - `getTeams()`: [`?Team[]`](#team)
 - `getGroups()`: [`?Group[]`](#group)
+
+### Sidelined
+
+- `getId()`: `int`
+- `getPlayerId()`: `int`
+- `getTypeId()`: `int`
+- `getTeamId()`: `int`
+- `getSeasonId()`: `?int`
+- `getCategory()`: `?string`
+- `getStartingAt()`: `?\DateTimeImmutable`
+- `getEndingAt()`: `?\DateTimeImmutable`
+- `getGamesMissed()`: `?int`
+- `isCompleted()`: `?bool`
+- `getTeam()`: [`?Team`](#team)
+- `getSeason()`: [`?Season`](#season)
+- `getType()`: [`?Type`](#type)
+
+### Social
+
+- `getId()`: `int`
+- `getSocialId()`: `int`
+- `getSocialChannelId()`: `int`
+- `getValue()`: `string`
+
+### Squad
+
+- `getId()`: `int`
+- `getTransferId()`: `?int`
+- `getPlayerId()`: `int`
+- `getTeamId()`: `int`
+- `getPosition()`: `int`
+- `getDetailedPositionId()`: `?int`
+- `getStartingAt()`: `?\DateTimeImmutable`
+- `getEndingAt()`: `?\DateTimeImmutable`
+- `isCaptain()`: `?bool`
+- `getJerseyNumber()`: `?int`
+- `getTeam()`: [`?Team`](#team)
 
 ### Stage
 
@@ -235,7 +288,7 @@
 - `getName()`: `?string`
 - `getShortCode()`: `?string`
 - `getImagePath()`: `?string`
-- `getFounded()`: `?int`
+- `getFoundedAt()`: `?int`
 - `getType()`: `?string`
 - `isPlaceholder()`: `?bool`
 - `getLastPlayedAt()`: `?\DateTimeImmutable`
@@ -245,6 +298,32 @@
 - `getUpcomingFixtures()`: [`?Fixture[]`](#fixture)
 - `getSeasons()`: [`?Season[]`](#season)
 - `getActiveSeasons()`: [`?Season[]`](#season)
+- `getVenue()`: [`?Venue`](#venue)
+- `getRivals()`: [`?Team[]`](#team)
+- `getPlayers()`: [`?Squad[]`](#squad)
+- `getSidelined()`: [`?Sidelined[]`](#sidelined)
+- `getSidelinedHistory()`: [`?Sidelined[]`](#sidelined)
+- `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
+- `getSocials()`: [`?Social[]`](#social)
+
+### Venue
+
+- `getId()`: `int`
+- `getCountryId()`: `?int`
+- `getCityId()`: `?int`
+- `getName()`: `?string`
+- `getAddress()`: `?string`
+- `getZipCode()`: `?string`
+- `getLatitude()`: `?float`
+- `getLongitude()`: `?float`
+- `getCapacity()`: `?int`
+- `getImagePath()`: `?string`
+- `getCityName()`: `?string`
+- `getSurface()`: `?string`
+- `isNationalTeam()`: `?bool`
+- `getCountry()`: [`?Country`](#country)
+- `getCity()`: [`?City`](#city)
+- `getFixtures()`: [`?Fixture[]`](#fixture)
 
 ## Core Entities
 
