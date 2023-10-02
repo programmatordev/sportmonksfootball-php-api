@@ -288,7 +288,7 @@
 - `getName()`: `?string`
 - `getShortCode()`: `?string`
 - `getImagePath()`: `?string`
-- `getFounded()`: `?int`
+- `getFoundedAt()`: `?int`
 - `getType()`: `?string`
 - `isPlaceholder()`: `?bool`
 - `getLastPlayedAt()`: `?\DateTimeImmutable`

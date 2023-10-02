@@ -24,7 +24,7 @@ class Team
 
     private ?string $imagePath;
 
-    private ?int $founded;
+    private ?int $foundedAt;
 
     private ?string $type;
 
@@ -80,7 +80,7 @@ class Team
         $this->name = $data['name'] ?? null;
         $this->shortCode = $data['short_code'] ?? null;
         $this->imagePath = $data['image_path'] ?? null;
-        $this->founded = $data['founded'] ?? null;
+        $this->foundedAt = $data['founded'] ?? null;
         $this->type = $data['type'] ?? null;
         $this->isPlaceholder = $data['placeholder'] ?? null;
         $this->lastPlayedAt = isset($data['last_played_at']) ? new \DateTimeImmutable($data['last_played_at']) : null;
@@ -143,9 +143,9 @@ class Team
         return $this->imagePath;
     }
 
-    public function getFounded(): ?int
+    public function getFoundedAt(): ?int
     {
-        return $this->founded;
+        return $this->foundedAt;
     }
 
     public function getType(): ?string
