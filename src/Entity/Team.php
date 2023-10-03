@@ -53,7 +53,7 @@ class Team
     /** @var ?Team[] */
     private ?array $rivals;
 
-    /** @var ?Squad[] */
+    /** @var ?TeamSquad[] */
     private ?array $players;
 
     /** @var ?Sidelined[] */
@@ -94,7 +94,7 @@ class Team
         $this->activeSeasons = isset($data['activeseasons']) ? $this->createEntityCollection(Season::class, $data['activeseasons']) : null;
         $this->venue = isset($data['venue']) ? new Venue($data['venue']) : null;
         $this->rivals = isset($data['rivals']) ? $this->createEntityCollection(Team::class, $data['rivals']) : null;
-        $this->players = isset($data['players']) ? $this->createEntityCollection(Squad::class, $data['players']) : null;
+        $this->players = isset($data['players']) ? $this->createEntityCollection(TeamSquad::class, $data['players']) : null;
         $this->sidelined = isset($data['sidelined']) ? $this->createEntityCollection(Sidelined::class, $data['sidelined']) : null;
         $this->sidelinedHistory = isset($data['sidelinedhistory']) ? $this->createEntityCollection(Sidelined::class, $data['sidelinedhistory']) : null;
         $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies']) : null;

@@ -52,7 +52,7 @@ class Player
 
     private ?Country $nationality;
 
-    /** @var ?Squad[] */
+    /** @var ?TeamSquad[] */
     private ?array $teams;
 
     /** @var ?ParticipantTrophy[] */
@@ -105,7 +105,7 @@ class Player
         $this->country = isset($data['country']) ? new Country($data['country']) : null;
         $this->city = isset($data['city']) ? new City($data['city']) : null;
         $this->nationality = isset($data['nationality']) ? new Country($data['nationality']) : null;
-        $this->teams = isset($data['teams']) ? $this->createEntityCollection(Squad::class, $data['teams']) : null;
+        $this->teams = isset($data['teams']) ? $this->createEntityCollection(TeamSquad::class, $data['teams']) : null;
         $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies']) : null;
         $this->transfers = isset($data['transfers']) ? $this->createEntityCollection(Transfer::class, $data['transfers']) : null;
         $this->pendingTransfers = isset($data['pendingtransfers']) ? $this->createEntityCollection(Transfer::class, $data['pendingtransfers']) : null;

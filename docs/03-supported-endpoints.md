@@ -10,6 +10,7 @@
   - [Stages](#stages)
   - [States](#states)
   - [Teams](#teams)
+  - [Team Squads](#team-squads)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
   - [Continents](#continents)
@@ -650,6 +651,43 @@ $teams = $sportMonksFootball->teams()->getAllBySearchQuery('sporting');
 
 foreach ($teams->getData() as $team) {
     echo $team->getName();
+}
+```
+
+### Team Squads
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/team-squads)
+- Cache default max age: `1 day`
+
+#### `getAllByTeamId`
+
+```php
+getAllByTeamId(int $teamId): TeamSquadCollection
+```
+
+Get complete team squad by team id:
+
+```php
+$squad = $sportMonksFootball->teamSquads()->getAllByTeamId(1);
+
+foreach ($squad->getData() as $player) {
+    echo $player->getPlayerId();
+}
+```
+
+#### `getAllBySeasonIdAndTeamId`
+
+```php
+getAllBySeasonIdAndTeamId(int $seasonId, int $teamId): TeamSquadCollection
+```
+
+Get complete team squad of one team by season id and team id:
+
+```php
+$squad = $sportMonksFootball->teamSquads()->getAllBySeasonIdAndTeamId(1, 1);
+
+foreach ($squad->getData() as $player) {
+    echo $player->getPlayerId();
 }
 ```
 

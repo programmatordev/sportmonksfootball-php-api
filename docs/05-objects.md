@@ -20,10 +20,10 @@
   - [Season](#season)
   - [Sidelined](#sidelined)
   - [Social](#social)
-  - [Squad](#squad)
   - [Stage](#stage)
   - [State](#state)
   - [Team](#team)
+  - [TeamSquad](#teamsquad)
   - [Transfer](#transfer)
   - [Venue](#venue)
 - [Core Entities](#core-entities)
@@ -223,7 +223,7 @@
 - `getCountry()`: [`?Country`](#country)
 - `getCity()`: [`?City`](#city)
 - `getNationality()`: [`?Country`](#country)
-- `getTeams()`: [`?Squad[]`](#squad)
+- `getTeams()`: [`?TeamSquad[]`](#teamsquad)
 - `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
 - `getTransfers()`: [`?Transfer[]`](#transfer)
 - `getPendingTransfers()`: [`?Transfer[]`](#transfer)
@@ -297,20 +297,6 @@
 - `getSocialChannelId()`: `int`
 - `getValue()`: `string`
 
-### Squad
-
-- `getId()`: `int`
-- `getTransferId()`: `?int`
-- `getPlayerId()`: `int`
-- `getTeamId()`: `int`
-- `getPosition()`: `int`
-- `getDetailedPositionId()`: `?int`
-- `getStartingAt()`: `?\DateTimeImmutable`
-- `getEndingAt()`: `?\DateTimeImmutable`
-- `isCaptain()`: `?bool`
-- `getJerseyNumber()`: `?int`
-- `getTeam()`: [`?Team`](#team)
-
 ### Stage
 
 - `getId()`: `int`
@@ -366,11 +352,29 @@
 - `getActiveSeasons()`: [`?Season[]`](#season)
 - `getVenue()`: [`?Venue`](#venue)
 - `getRivals()`: [`?Team[]`](#team)
-- `getPlayers()`: [`?Squad[]`](#squad)
+- `getPlayers()`: [`?TeamSquad[]`](#teamsquad)
 - `getSidelined()`: [`?Sidelined[]`](#sidelined)
 - `getSidelinedHistory()`: [`?Sidelined[]`](#sidelined)
 - `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
 - `getSocials()`: [`?Social[]`](#social)
+
+### TeamSquad
+
+- `getId()`: `int`
+- `getTransferId()`: `?int`
+- `getPlayerId()`: `int`
+- `getTeamId()`: `int`
+- `getPosition()`: `int`
+- `getDetailedPositionId()`: `?int`
+- `getStartingAt()`: `?\DateTimeImmutable`
+- `getEndingAt()`: `?\DateTimeImmutable`
+- `isCaptain()`: `?bool`
+- `getJerseyNumber()`: `?int`
+- `getTeam()`: [`?Team`](#team)
+- `getPlayer()`: [`?Player`](#player)
+- `getPosition()`: [`?Type`](#type)
+- `getDetailedPosition()`: [`?Type`](#type)
+- `getTransfer()`: [`?Transfer`](#transfer)
 
 ### Transfer
 
