@@ -15,6 +15,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\SeasonEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StageEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\TeamSquadEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
 
 class SportMonksFootball
@@ -89,6 +90,11 @@ class SportMonksFootball
     public function teams(): TeamEndpoint
     {
         return new TeamEndpoint($this);
+    }
+
+    public function teamSquads(): TeamSquadEndpoint
+    {
+        return new TeamSquadEndpoint($this);
     }
 
     public function types(): TypeEndpoint

@@ -2,7 +2,7 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-class Squad
+class TeamSquad
 {
     private int $id;
 
@@ -12,7 +12,7 @@ class Squad
 
     private int $teamId;
 
-    private int $positionId;
+    private ?int $positionId;
 
     private ?int $detailedPositionId;
 
@@ -26,13 +26,21 @@ class Squad
 
     private ?Team $team;
 
+    private ?Player $player;
+
+    private ?Type $position;
+
+    private ?Type $detailedPosition;
+
+    private ?Transfer $transfer;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
         $this->transferId = $data['transfer_id'] ?? null;
         $this->playerId = $data['player_id'];
         $this->teamId = $data['team_id'];
-        $this->positionId = $data['position_id'];
+        $this->positionId = $data['position_id'] ?? null;
         $this->detailedPositionId = $data['detailed_position_id'] ?? null;
 
         // select
@@ -43,8 +51,10 @@ class Squad
 
         // include
         $this->team = isset($data['team']) ? new Team($data['team']) : null;
-
-        // TODO player, position, detailedPosition, transfer
+        $this->player = isset($data['player']) ? new Player($data['player']) : null;
+        $this->position = isset($data['position']) ? new Type($data['position']) : null;
+        $this->detailedPosition = isset($data['detailedposition']) ? new Type($data['detailedposition']) : null;
+        $this->transfer = isset($data['transfer']) ? new Transfer($data['transfer']) : null;
     }
 
     public function getId(): int
@@ -100,5 +110,25 @@ class Squad
     public function getTeam(): ?Team
     {
         return $this->team;
+    }
+
+    public function getPlayer(): ?Player
+    {
+        return $this->player;
+    }
+
+    public function getPosition(): ?Type
+    {
+        return $this->position;
+    }
+
+    public function getDetailedPosition(): ?Type
+    {
+        return $this->detailedPosition;
+    }
+
+    public function getTransfer(): ?Transfer
+    {
+        return $this->transfer;
     }
 }
