@@ -3,6 +3,7 @@
 namespace ProgrammatorDev\SportMonksFootball;
 
 use ProgrammatorDev\SportMonksFootball\Endpoint\CityEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\CoachEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
@@ -30,6 +31,11 @@ class SportMonksFootball
     public function cities(): CityEndpoint
     {
         return new CityEndpoint($this);
+    }
+
+    public function coaches(): CoachEndpoint
+    {
+        return new CoachEndpoint($this);
     }
 
     public function continents(): ContinentEndpoint

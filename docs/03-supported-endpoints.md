@@ -2,6 +2,7 @@
 
 - [Responses](#responses)
 - [Football Endpoints](#football-endpoints)
+  - [Coaches](#coaches)
   - [Leagues](#leagues)
   - [Players](#players)
   - [Rounds](#rounds)
@@ -50,6 +51,88 @@ All responses include the `getRateLimit()` method with the current quota usage.
 Check the [official documentation](https://docs.sportmonks.com/football/api/rate-limit) for more information.
 
 ## Football Endpoints
+
+### Coaches
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/coaches)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): CoachCollection
+```
+
+Get all coaches:
+
+```php
+$coaches = $sportMonksFootball->coaches()->getAll();
+
+foreach ($coaches->getData() as $coach) {
+    echo $coach->getDisplayName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): CoachItem
+```
+
+Get coach by id:
+
+```php
+$coach = $sportMonksFootball->coaches()->getById(1);
+echo $coach->getData()->getDisplayName();
+```
+
+#### `getAllByCountryId`
+
+```php
+getAllByCountryId(int $countryId, int $page = 1, int $perPage = 25, string $order = 'asc'): CoachCollection
+```
+
+Get all coaches by country id:
+
+```php
+$coaches = $sportMonksFootball->coaches()->getAllByCountryId(1);
+
+foreach ($coaches->getData() as $coach) {
+    echo $coach->getDisplayName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): CoachCollection
+```
+
+Get all coaches by search query:
+
+```php
+$coaches = $sportMonksFootball->coaches()->getAllBySearchQuery('amorim');
+
+foreach ($coaches->getData() as $coach) {
+    echo $coach->getDisplayName();
+}
+```
+
+#### `getAllLastUpdated`
+
+```php
+getAllLastUpdated(): CoachCollection
+```
+
+Get all coaches that received updates in the last couple of hours:
+
+```php
+$coaches = $sportMonksFootball->coaches()->getAllLastUpdated();
+
+foreach ($coaches->getData() as $coach) {
+    echo $coach->getDisplayName();
+}
+```
 
 ### Leagues
 

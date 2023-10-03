@@ -10,6 +10,9 @@ class MockResponse
     public const CITY_ITEM_DATA = '{"id":1,"country_id":107,"region_id":1,"name":"\'Afak","latitude":"24.84926","longitude":"46.84591"}';
     public const CITY_COLLECTION_DATA = '[{"id":1,"country_id":107,"region_id":1,"name":"\'Afak","latitude":"24.84926","longitude":"46.84591"},{"id":2,"country_id":802,"region_id":2,"name":"\'Afula \'Illit","latitude":"32.61197","longitude":"35.28753"}]';
 
+    public const COACH_ITEM_DATA = '{"id":50,"player_id":50,"sport_id":1,"country_id":462,"nationality_id":462,"city_id":null,"common_name":"S. Gerrard","firstname":"Steven","lastname":"Gerrard","name":"Steven Gerrard","display_name":"Steven Gerrard","image_path":"https:\/\/cdn.sportmonks.com\/images\/soccer\/players\/18\/50.png","height":183,"weight":83,"date_of_birth":"1980-05-30","gender":"male"}';
+    public const COACH_COLLECTION_DATA = '[{"id":50,"player_id":50,"sport_id":1,"country_id":462,"nationality_id":462,"city_id":null,"common_name":"S. Gerrard","firstname":"Steven","lastname":"Gerrard","name":"Steven Gerrard","display_name":"Steven Gerrard","image_path":"https:\/\/cdn.sportmonks.com\/images\/soccer\/players\/18\/50.png","height":183,"weight":83,"date_of_birth":"1980-05-30","gender":"male"},{"id":220,"player_id":220,"sport_id":1,"country_id":1161,"nationality_id":1161,"city_id":null,"common_name":"G. Murty","firstname":"Graeme","lastname":"Murty","name":"Graeme Murty","display_name":"Graeme Murty","image_path":"https:\/\/cdn.sportmonks.com\/images\/soccer\/placeholder.png","height":178,"weight":null,"date_of_birth":"1974-11-13","gender":"male"}]';
+
     public const CONTINENT_ITEM_DATA = '{"id":1,"name":"Europe","code":"EU"}';
     public const CONTINENT_COLLECTION_DATA = '[{"id":1,"name":"Europe","code":"EU"},{"id":2,"name":"Asia","code":"AS"}]';
 

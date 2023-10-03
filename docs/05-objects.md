@@ -9,6 +9,7 @@
   - [Subscription](#subscription)
 - [Football Entities](#football-entities)
   - [Aggregate](#aggregate)
+  - [Coach](#coach)
   - [Fixture](#fixture)
   - [Group](#group)
   - [League](#league)
@@ -96,6 +97,31 @@
 - `getLeague()`: [`?League`](#league)
 - `getSeason()`: [`?Season`](#season)
 - `getStage()`: [`?Stage`](#stage)
+
+### Coach
+
+- `getId()`: `int`
+- `getPlayerId()`: `int`
+- `getSportId()`: `int`
+- `getCountryId()`: `int`
+- `getNationalityId()`: `int`
+- `getCityId()`: `?int`
+- `getCommonName()`: `?string`
+- `getFirstName()`: `?string`
+- `getLastName()`: `?string`
+- `getName()`: `?string`
+- `getDisplayName()`: `?string`
+- `getImagePath()`: `?string`
+- `getHeight()`: `?int`
+- `getWeight()`: `?int`
+- `getDateOfBirth()`: `?\DateTimeImmutable`
+- `getGender()`: `?string`
+- `getSport()`: [`?Sport`](#sport)
+- `getCountry()`: [`?Country`](#country)
+- `getNationality()`: [`?Country`](#country)
+- `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
+- `getPlayer()`: [`?Player`](#player)
+- `getFixtures()`: [`?Fixture[]`](#fixture)
 
 ### Fixture
 
