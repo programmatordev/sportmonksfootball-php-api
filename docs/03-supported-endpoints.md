@@ -5,6 +5,7 @@
   - [Coaches](#coaches)
   - [Leagues](#leagues)
   - [Players](#players)
+  - [Referees](#referees)
   - [Rounds](#rounds)
   - [Schedules](#schedules)
   - [Seasons](#seasons)
@@ -343,6 +344,88 @@ $players = $sportMonksFootball->players()->getAllLastUpdated();
 
 foreach ($players->getData() as $player) {
     echo $player->getDisplayName();
+}
+```
+
+### Referees
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/referees)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeCollection
+```
+
+Get all referees:
+
+```php
+$referees = $sportMonksFootball->referees()->getAll();
+
+foreach ($referees->getData() as $referee) {
+    echo $referee->getDisplayName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): RefereeItem
+```
+
+Get referee by id:
+
+```php
+$referee = $sportMonksFootball->referees()->getById(1);
+echo $referee->getData()->getDisplayName();
+```
+
+#### `getAllByCountryId`
+
+```php
+getAllByCountryId(int $countryId, int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeCollection
+```
+
+Get all referees by country id:
+
+```php
+$referees = $sportMonksFootball->referees()->getAllByCountryId(1);
+
+foreach ($referees->getData() as $referee) {
+    echo $referee->getDisplayName();
+}
+```
+
+#### `getAllBySeasonId`
+
+```php
+getAllBySesonId(int $seasonId, int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeCollection
+```
+
+Get all referees by season id:
+
+```php
+$referees = $sportMonksFootball->referees()->getAllBySeasonId(1);
+
+foreach ($referees->getData() as $referee) {
+    echo $referee->getDisplayName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeCollection
+```
+
+Get all referees by search query:
+
+```php
+$referees = $sportMonksFootball->referees()->getAllBySearchQuery('name');
+
+foreach ($referees->getData() as $referee) {
+    echo $referee->getDisplayName();
 }
 ```
 

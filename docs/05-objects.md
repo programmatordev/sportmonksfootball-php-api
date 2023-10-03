@@ -17,6 +17,7 @@
   - [Metadata](#metadata)
   - [ParticipantTrophy](#participanttrophy)
   - [Player](#player)
+  - [Referee](#referee)
   - [Round](#round)
   - [Season](#season)
   - [Sidelined](#sidelined)
@@ -258,6 +259,27 @@
 - `getLineups()`: [`?Lineup[]`](#lineup)
 - `getLatestLineups()`: [`?Lineup[]`](#lineup)
 - `getMetadata()`: [`?Metadata[]`](#metadata)
+
+### Referee
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getCountryId()`: `?int`
+- `getCityId()`: `?int`
+- `getCommonName()`: `?string`
+- `getFirstName()`: `?string`
+- `getLastName()`: `?string`
+- `getName()`: `?string`
+- `getDisplayName()`: `?string`
+- `getImagePath()`: `?string`
+- `getHeight()`: `?int`
+- `getWeight()`: `?int`
+- `getDateOfBirth()`: `?\DateTimeImmutable`
+- `getGender()`: `?string`
+- `getSport()`: [`?Sport`](#sport)
+- `getCountry()`: [`?Country`](#country)
+- `getNationality()`: [`?Country`](#country)
+- `getCity()`: [`?City`](#city)
 
 ### Round
 

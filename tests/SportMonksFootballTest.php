@@ -10,6 +10,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\PlayerEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\RefereeEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RoundEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ScheduleEndpoint;
@@ -37,6 +38,7 @@ class SportMonksFootballTest extends AbstractTest
         yield 'countries' => [CountryEndpoint::class, 'countries'];
         yield 'filters' => [FilterEndpoint::class, 'filters'];
         yield 'players' => [PlayerEndpoint::class, 'players'];
+        yield 'referees' => [RefereeEndpoint::class, 'referees'];
         yield 'regions' => [RegionEndpoint::class, 'regions'];
         yield 'rounds' => [RoundEndpoint::class, 'rounds'];
         yield 'schedules' => [ScheduleEndpoint::class, 'schedules'];
