@@ -85,4 +85,114 @@ class Coach
 
         // TODO teams(?), statistics
     }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getPlayerId(): int
+    {
+        return $this->playerId;
+    }
+
+    public function getSportId(): int
+    {
+        return $this->sportId;
+    }
+
+    public function getCountryId(): int
+    {
+        return $this->countryId;
+    }
+
+    public function getNationalityId(): int
+    {
+        return $this->nationalityId;
+    }
+
+    public function getCityId(): ?int
+    {
+        return $this->cityId;
+    }
+
+    public function getCommonName(): ?string
+    {
+        return $this->commonName;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function getDisplayName(): ?string
+    {
+        return $this->displayName;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return $this->imagePath;
+    }
+
+    public function getHeight(): ?int
+    {
+        return $this->height;
+    }
+
+    public function getWeight(): ?int
+    {
+        return $this->weight;
+    }
+
+    public function getDateOfBirth(): ?\DateTimeImmutable
+    {
+        return $this->dateOfBirth;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function getSport(): ?Sport
+    {
+        return $this->sport;
+    }
+
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    public function getNationality(): ?Country
+    {
+        return $this->nationality;
+    }
+
+    public function getTrophies(): ?array
+    {
+        return $this->trophies;
+    }
+
+    public function getPlayer(): ?Player
+    {
+        return $this->player;
+    }
+
+    public function getFixtures(): ?array
+    {
+        return $this->fixtures;
+    }
 }
