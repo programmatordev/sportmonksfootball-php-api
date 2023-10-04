@@ -20,6 +20,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamSquadEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TransferEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\TvStationEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\VenueEndpoint;
 
@@ -50,6 +51,7 @@ class SportMonksFootballTest extends AbstractTest
         yield 'teams' => [TeamEndpoint::class, 'teams'];
         yield 'team squads' => [TeamSquadEndpoint::class, 'teamSquads'];
         yield 'transfers' => [TransferEndpoint::class, 'transfers'];
+        yield 'tv stations' => [TvStationEndpoint::class, 'tvStations'];
         yield 'types' => [TypeEndpoint::class, 'types'];
         yield 'venues' => [VenueEndpoint::class, 'venues'];
     }
