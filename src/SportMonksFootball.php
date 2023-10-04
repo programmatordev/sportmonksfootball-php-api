@@ -19,6 +19,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamSquadEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TransferEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\TvStationEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\VenueEndpoint;
 
@@ -114,6 +115,11 @@ class SportMonksFootball
     public function transfers(): TransferEndpoint
     {
         return new TransferEndpoint($this);
+    }
+
+    public function tvStations(): TvStationEndpoint
+    {
+        return new TvStationEndpoint($this);
     }
 
     public function types(): TypeEndpoint
