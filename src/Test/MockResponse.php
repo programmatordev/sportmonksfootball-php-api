@@ -53,6 +53,9 @@ class MockResponse
     public const TRANSFER_ITEM_DATA = '{"id":1,"sport_id":1,"player_id":35659846,"type_id":219,"from_team_id":148048,"to_team_id":3736,"position_id":25,"detailed_position_id":154,"date":"2021-12-27","career_ended":false,"completed":true,"amount":909000}';
     public const TRANSFER_COLLECTION_DATA = '[{"id":1,"sport_id":1,"player_id":35659846,"type_id":219,"from_team_id":148048,"to_team_id":3736,"position_id":25,"detailed_position_id":154,"date":"2021-12-27","career_ended":false,"completed":true,"amount":909000},{"id":2,"sport_id":1,"player_id":320984,"type_id":218,"from_team_id":904,"to_team_id":3901,"position_id":26,"detailed_position_id":153,"date":"2021-12-27","career_ended":false,"completed":true,"amount":null}]';
 
+    public const TV_STATION_ITEM_DATA = '{"id":33,"name":"Star+","url":"https:\/\/www.starplus.com\/","image_path":"https:\/\/cdn.sportmonks.com\/images\/core\/tvstations\/1\/33.png","type":"tv","related_id":null}';
+    public const TV_STATION_COLLECTION_DATA = '[{"id":33,"name":"Star+","url":"https:\/\/www.starplus.com\/","image_path":"https:\/\/cdn.sportmonks.com\/images\/core\/tvstations\/1\/33.png","type":"tv","related_id":null},{"id":34,"name":"Viaplay","url":"https:\/\/www.viaplay.com","image_path":"https:\/\/cdn.sportmonks.com\/images\/core\/tvstations\/2\/34.png","type":"tv","related_id":null}]';
+
     public const TYPE_ITEM_DATA = '{"id":1,"name":"1st Half","code":"1st-half","developer_name":"1ST_HALF","model_type":"period","stat_group":null}';
     public const TYPE_COLLECTION_DATA = '[{"id":1,"name":"1st Half","code":"1st-half","developer_name":"1ST_HALF","model_type":"period","stat_group":null},{"id":2,"name":"2nd Half","code":"2nd-half","developer_name":"2ND_HALF","model_type":"period","stat_group":null}]';
 

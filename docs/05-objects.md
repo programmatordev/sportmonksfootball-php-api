@@ -27,6 +27,7 @@
   - [Team](#team)
   - [TeamSquad](#teamsquad)
   - [Transfer](#transfer)
+  - [TvStation](#tvstation)
   - [Venue](#venue)
 - [Core Entities](#core-entities)
   - [City](#city)
@@ -445,6 +446,16 @@
 - `getToTeam()`: [`?Team`](#team)
 - `getPosition()`: [`?Type`](#type)
 - `getDetailedPosition()`: [`?Type`](#type)
+
+### TvStation
+
+- `getId()`: `int`
+- `getName()`: `?string`
+- `getUrl()`: `?string`
+- `getImagePath()`: `?string`
+- `getType()`: `?string`
+- `getRelatedId()`: `?int`
+- `getCountries()`: [`?Country[]`](#country)
 
 ### Venue
 

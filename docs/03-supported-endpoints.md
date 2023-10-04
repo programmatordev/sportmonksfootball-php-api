@@ -14,6 +14,7 @@
   - [Teams](#teams)
   - [Team Squads](#team-squads)
   - [Transfers](#transfers)
+  - [TV Stations](#tvstations)
   - [Venues](#venues)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
@@ -954,6 +955,56 @@ $transfers = $sportMonksFootball->transfers()->getAllByPlayerId(1);
 
 foreach ($transfers->getData() as $transfer) {
     echo $transfer->getPlayerId();
+}
+```
+
+### TV Stations
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/tv-stations)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): TvStationCollection
+```
+
+Get all tv stations:
+
+```php
+$tvStations = $sportMonksFootball->tvStations()->getAll();
+
+foreach ($tvStations->getData() as $tvStation) {
+    echo $tvStation->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): TvStationItem
+```
+
+Get tv station by id:
+
+```php
+$tvStations = $sportMonksFootball->tvStations()->getById(1);
+echo $tvStation->getData()->getName();
+```
+
+#### `getAllByFixtureId`
+
+```php
+getAllByFixtureId(int $fixtureId): TvStationCollection
+```
+
+Get all tv stations by fixture id:
+
+```php
+$tvStations = $sportMonksFootball->tvStations()->getAllByFixtureId(1);
+
+foreach ($tvStations->getData() as $tvStation) {
+    echo $tvStation->getName();
 }
 ```
 
