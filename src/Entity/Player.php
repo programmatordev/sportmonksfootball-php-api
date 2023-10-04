@@ -14,7 +14,7 @@ class Player
 
     private int $countryId;
 
-    private int $nationalityId;
+    private ?int $nationalityId;
 
     private ?int $cityId;
 
@@ -82,7 +82,7 @@ class Player
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
         $this->countryId = $data['country_id'];
-        $this->nationalityId = $data['nationality_id'];
+        $this->nationalityId = $data['nationality_id'] ?? null;
         $this->cityId = $data['city_id'] ?? null;
         $this->positionId = $data['position_id'] ?? null;
         $this->detailedPositionId = $data['detailed_position_id'] ?? null;
