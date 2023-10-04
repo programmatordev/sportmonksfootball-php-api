@@ -231,7 +231,7 @@
 - `getId()`: `int`
 - `getSportId()`: `int`
 - `getCountryId()`: `int`
-- `getNationalityId()`: `int`
+- `getNationalityId()`: `?int`
 - `getCityId()`: `?int`
 - `getPositionId()`: `?int`
 - `getDetailedPositionId()`: `?int`
