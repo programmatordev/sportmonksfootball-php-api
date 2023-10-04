@@ -20,6 +20,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamSquadEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TransferEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\VenueEndpoint;
 
 class SportMonksFootball
 {
@@ -118,5 +119,10 @@ class SportMonksFootball
     public function types(): TypeEndpoint
     {
         return new TypeEndpoint($this);
+    }
+
+    public function venues(): VenueEndpoint
+    {
+        return new VenueEndpoint($this);
     }
 }
