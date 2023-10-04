@@ -14,6 +14,7 @@
   - [Teams](#teams)
   - [Team Squads](#team-squads)
   - [Transfers](#transfers)
+  - [Venues](#venues)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
   - [Continents](#continents)
@@ -953,6 +954,72 @@ $transfers = $sportMonksFootball->transfers()->getAllByPlayerId(1);
 
 foreach ($transfers->getData() as $transfer) {
     echo $transfer->getPlayerId();
+}
+```
+
+### Venues
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/venues)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): VenueCollection
+```
+
+Get all venues:
+
+```php
+$venues = $sportMonksFootball->venues()->getAll();
+
+foreach ($venues->getData() as $venue) {
+    echo $venue->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): VenueItem
+```
+
+Get venue by id:
+
+```php
+$venue = $sportMonksFootball->venues()->getById(1);
+echo $venue->getData()->getName();
+```
+
+#### `getAllBySeasonId`
+
+```php
+getAllBySeasonId(int $seasonId): VenueCollection
+```
+
+Get all venues by season id:
+
+```php
+$venues = $sportMonksFootball->venues()->getAllBySeasonId(1);
+
+foreach ($venues->getData() as $venue) {
+    echo $venue->getName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): VenueCollection
+```
+
+Get all venues by search query:
+
+```php
+$venues = $sportMonksFootball->venues()->getAllBySearchQuery('alvalade');
+
+foreach ($venues->getData() as $venue) {
+    echo $venue->getName();
 }
 ```
 
