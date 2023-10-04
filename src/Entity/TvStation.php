@@ -20,9 +20,6 @@ class TvStation
 
     private ?int $relatedId;
 
-    /** @var ?Fixture[] */
-    private ?array $fixtures;
-
     /** @var ?Country[] */
     private ?array $countries;
 
@@ -38,8 +35,9 @@ class TvStation
         $this->relatedId = $data['related_id'] ?? null;
 
         // include
-        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
         $this->countries = isset($data['countries']) ? $this->createEntityCollection(Country::class, $data['countries']) : null;
+
+        // TODO fixtures(?)
     }
 
     public function getId(): int
@@ -70,11 +68,6 @@ class TvStation
     public function getRelatedId(): ?int
     {
         return $this->relatedId;
-    }
-
-    public function getFixtures(): ?array
-    {
-        return $this->fixtures;
     }
 
     public function getCountries(): ?array
