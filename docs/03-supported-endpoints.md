@@ -13,6 +13,7 @@
   - [States](#states)
   - [Teams](#teams)
   - [Team Squads](#team-squads)
+  - [Transfers](#transfers)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
   - [Continents](#continents)
@@ -854,6 +855,104 @@ $squad = $sportMonksFootball->teamSquads()->getAllBySeasonIdAndTeamId(1, 1);
 
 foreach ($squad->getData() as $player) {
     echo $player->getPlayerId();
+}
+```
+
+### Transfers
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/transfers)
+- Cache default max age: `1 hour`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
+```
+
+Get all transfers:
+
+```php
+$transfers = $sportMonksFootball->transfers()->getAll();
+
+foreach ($transfers->getData() as $transfer) {
+    echo $transfer->getPlayerId();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): TransferItem
+```
+
+Get transfer by id:
+
+```php
+$transfer = $sportMonksFootball->transfers()->getById(1);
+echo $transfer->getData()->getPlayerId();
+```
+
+#### `getAllLatest`
+
+```php
+getAllLatest(int $page = 1, int $perPage = 25, string $order = 'desc'): TransferCollection
+```
+
+Get the latest transfers:
+
+```php
+$transfers = $sportMonksFootball->transfers()->getAllLatest();
+
+foreach ($transfers->getData() as $transfer) {
+    echo $transfer->getPlayerId();
+}
+```
+
+#### `getAllBetweenDateRange`
+
+```php
+getAllBetweenDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate, int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
+```
+
+Get all transfers between a date range:
+
+```php
+$transfers = $sportMonksFootball->transfers()->getAllBetweenDateRange(new DateTime('-7 days'), new DateTime('today'));
+
+foreach ($transfers->getData() as $transfer) {
+    echo $transfer->getPlayerId();
+}
+```
+
+#### `getAllByTeamId`
+
+```php
+getAllByTeamId(int $teamId, int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
+```
+
+Get all transfers by team id:
+
+```php
+$transfers = $sportMonksFootball->transfers()->getAllByTeamId(1);
+
+foreach ($transfers->getData() as $transfer) {
+    echo $transfer->getPlayerId();
+}
+```
+
+#### `getAllByPlayerId`
+
+```php
+getAllByPlayerId(int $playerId, int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
+```
+
+Get all transfers by player id:
+
+```php
+$transfers = $sportMonksFootball->transfers()->getAllByPlayerId(1);
+
+foreach ($transfers->getData() as $transfer) {
+    echo $transfer->getPlayerId();
 }
 ```
 
