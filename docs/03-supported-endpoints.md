@@ -995,7 +995,7 @@ echo $tvStation->getData()->getName();
 #### `getAllByFixtureId`
 
 ```php
-getAllByFixtureId(int $fixtureId, int $page = 1, int $perPage = 25, string $order = 'asc'): TvStationCollection
+getAllByFixtureId(int $fixtureId): TvStationCollection
 ```
 
 Get all tv stations by fixture id:
