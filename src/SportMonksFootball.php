@@ -11,6 +11,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\LeagueEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\PlayerEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RefereeEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\RivalEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RoundEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ScheduleEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\SeasonEndpoint;
@@ -75,6 +76,11 @@ class SportMonksFootball
     public function regions(): RegionEndpoint
     {
         return new RegionEndpoint($this);
+    }
+
+    public function rivals(): RivalEndpoint
+    {
+        return new RivalEndpoint($this);
     }
 
     public function rounds(): RoundEndpoint
