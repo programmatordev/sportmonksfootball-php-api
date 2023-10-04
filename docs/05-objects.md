@@ -18,6 +18,7 @@
   - [ParticipantTrophy](#participanttrophy)
   - [Player](#player)
   - [Referee](#referee)
+  - [Rival](#rival)
   - [Round](#round)
   - [Season](#season)
   - [Sidelined](#sidelined)
@@ -281,6 +282,15 @@
 - `getCountry()`: [`?Country`](#country)
 - `getNationality()`: [`?Country`](#country)
 - `getCity()`: [`?City`](#city)
+
+### Rival
+
+- `getId()`: `int`
+- `getSportId()`: `int`
+- `getTeamId()`: `int`
+- `getRivalId()`: `int`
+- `getTeam()`: [`?Team`](#team)
+- `getRival()`: [`?Team`](#team)
 
 ### Round
 

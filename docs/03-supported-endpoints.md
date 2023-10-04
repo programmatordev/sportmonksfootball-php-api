@@ -6,6 +6,7 @@
   - [Leagues](#leagues)
   - [Players](#players)
   - [Referees](#referees)
+  - [Rivals](#rivals)
   - [Rounds](#rounds)
   - [Schedules](#schedules)
   - [Seasons](#seasons)
@@ -403,7 +404,7 @@ foreach ($referees->getData() as $referee) {
 #### `getAllBySeasonId`
 
 ```php
-getAllBySesonId(int $seasonId, int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeCollection
+getAllBySeasonId(int $seasonId, int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeCollection
 ```
 
 Get all referees by season id:
@@ -429,6 +430,43 @@ $referees = $sportMonksFootball->referees()->getAllBySearchQuery('name');
 
 foreach ($referees->getData() as $referee) {
     echo $referee->getDisplayName();
+}
+```
+
+### Rivals
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/rivals)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): RivalCollection
+```
+
+Get all rivals:
+
+```php
+$rivals = $sportMonksFootball->rivals()->getAll();
+
+foreach ($rivals->getData() as $rival) {
+    echo $rival->getRivalId();
+}
+```
+
+#### `getAllByTeamId`
+
+```php
+getAllByTeamId(int $teamId): RivalCollection
+```
+
+Get all rivals by team id:
+
+```php
+$rivals = $sportMonksFootball->rivals()->getAllByTeamId(1);
+
+foreach ($rivals->getData() as $rival) {
+    echo $rival->getRivalId();
 }
 ```
 
