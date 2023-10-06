@@ -9,6 +9,7 @@
   - [Subscription](#subscription)
 - [Football Entities](#football-entities)
   - [Aggregate](#aggregate)
+  - [Commentary](#commentary)
   - [Coach](#coach)
   - [Fixture](#fixture)
   - [Group](#group)
@@ -100,6 +101,20 @@
 - `getLeague()`: [`?League`](#league)
 - `getSeason()`: [`?Season`](#season)
 - `getStage()`: [`?Stage`](#stage)
+
+### Commentary
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getComment()`: `?string`
+- `getMinute()`: `?int`
+- `getExtraMinute()`: `?int`
+- `isGoal()`: `?bool`
+- `isImportant()`: `?bool`
+- `getOrder()`: `?int`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getPlayer()`: [`?Player`](#player)
+- `getRelatedPlayer()`: [`?Player`](#player)
 
 ### Coach
 

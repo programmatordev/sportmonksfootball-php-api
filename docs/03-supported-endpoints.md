@@ -3,6 +3,7 @@
 - [Responses](#responses)
 - [Football Endpoints](#football-endpoints)
   - [Coaches](#coaches)
+  - [Commentaries](#commentaries)
   - [Leagues](#leagues)
   - [Players](#players)
   - [Referees](#referees)
@@ -136,6 +137,43 @@ $coaches = $sportMonksFootball->coaches()->getAllLastUpdated();
 
 foreach ($coaches->getData() as $coach) {
     echo $coach->getDisplayName();
+}
+```
+
+### Commentaries
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/commentaries)
+- Cache default max age: `1 minute`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): CommentaryCollection
+```
+
+Get all commentaries:
+
+```php
+$commentaries = $sportMonksFootball->commentaries()->getAll();
+
+foreach ($commentaries->getData() as $commentary) {
+    echo $commentary->getComment();
+}
+```
+
+#### `getAllByFixtureId`
+
+```php
+getAllByFixtureId(int $fixtureId): CommentaryCollection
+```
+
+Get all commentaries by fixture id:
+
+```php
+$commentaries = $sportMonksFootball->commentaries()->getAllByFixtureId(1);
+
+foreach ($commentaries->getData() as $commentary) {
+    echo $commentary->getComment();
 }
 ```
 
