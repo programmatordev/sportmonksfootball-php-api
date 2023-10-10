@@ -4,6 +4,7 @@ namespace ProgrammatorDev\SportMonksFootball\Test;
 
 use PHPUnit\Framework\Attributes\DataProvider;
 use ProgrammatorDev\SportMonksFootball\Config;
+use ProgrammatorDev\SportMonksFootball\Endpoint\BookmakerEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CityEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CoachEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CommentaryEndpoint;
@@ -39,6 +40,7 @@ class SportMonksFootballTest extends AbstractTest
     public static function provideMethodsData(): \Generator
     {
         yield 'config' => [Config::class, 'config'];
+        yield 'bookmakers' => [BookmakerEndpoint::class, 'bookmakers'];
         yield 'cities' => [CityEndpoint::class, 'cities'];
         yield 'coaches' => [CoachEndpoint::class, 'coaches'];
         yield 'commentaries' => [CommentaryEndpoint::class, 'commentaries'];
