@@ -9,6 +9,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\LeagueEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\MarketEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\PlayerEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\PreMatchOddEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RefereeEndpoint;
@@ -68,6 +69,11 @@ class SportMonksFootball
     public function leagues(): LeagueEndpoint
     {
         return new LeagueEndpoint($this);
+    }
+
+    public function markets(): MarketEndpoint
+    {
+        return new MarketEndpoint($this);
     }
 
     public function players(): PlayerEndpoint

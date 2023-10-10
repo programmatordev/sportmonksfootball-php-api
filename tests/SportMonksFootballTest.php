@@ -10,6 +10,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\CommentaryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\MarketEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\PlayerEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\PreMatchOddEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RefereeEndpoint;
@@ -44,6 +45,7 @@ class SportMonksFootballTest extends AbstractTest
         yield 'continents' => [ContinentEndpoint::class, 'continents'];
         yield 'countries' => [CountryEndpoint::class, 'countries'];
         yield 'filters' => [FilterEndpoint::class, 'filters'];
+        yield 'markets' => [MarketEndpoint::class, 'markets'];
         yield 'players' => [PlayerEndpoint::class, 'players'];
         yield 'pre-match odds' => [PreMatchOddEndpoint::class, 'preMatchOdds'];
         yield 'referees' => [RefereeEndpoint::class, 'referees'];
