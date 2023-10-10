@@ -2,6 +2,7 @@
 
 namespace ProgrammatorDev\SportMonksFootball;
 
+use ProgrammatorDev\SportMonksFootball\Endpoint\BookmakerEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CityEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CoachEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CommentaryEndpoint;
@@ -34,6 +35,11 @@ class SportMonksFootball
     public function config(): Config
     {
         return $this->config;
+    }
+
+    public function bookmakers(): BookmakerEndpoint
+    {
+        return new BookmakerEndpoint($this);
     }
 
     public function cities(): CityEndpoint
