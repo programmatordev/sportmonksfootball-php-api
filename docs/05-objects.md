@@ -28,6 +28,7 @@
   - [State](#state)
   - [Team](#team)
   - [TeamSquad](#teamsquad)
+  - [Topscorer](#topscorer)
   - [Transfer](#transfer)
   - [TvStation](#tvstation)
   - [Venue](#venue)
@@ -453,6 +454,21 @@
 - `getPosition()`: [`?Type`](#type)
 - `getDetailedPosition()`: [`?Type`](#type)
 - `getTransfer()`: [`?Transfer`](#transfer)
+
+### Topscorer
+
+- `getId()`: `int`
+- `getSeasonId()`: `?int`
+- `getPlayerId()`: `int`
+- `getTypeId()`: `int`
+- `getParticipantId()`: `int`
+- `getPosition()`: `int`
+- `getTotal()`: `int`
+- `getSeason()`: [`?Season`](#season)
+- `getStage()`: [`?Stage`](#stage)
+- `getPlayer()`: [`?Player`](#player)
+- `getParticipant()`: [`?Team`](#team)
+- `getType()`: [`?Type`](#type)
 
 ### Transfer
 

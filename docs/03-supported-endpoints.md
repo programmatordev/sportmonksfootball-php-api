@@ -15,6 +15,7 @@
   - [States](#states)
   - [Teams](#teams)
   - [Team Squads](#team-squads)
+  - [Topscorers](#topscorers)
   - [Transfers](#transfers)
   - [TV Stations](#tvstations)
   - [Venues](#venues)
@@ -937,6 +938,43 @@ $squad = $sportMonksFootball->teamSquads()->getAllBySeasonIdAndTeamId(1, 1);
 
 foreach ($squad->getData() as $player) {
     echo $player->getPlayerId();
+}
+```
+
+### Topscorers
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/topscorers)
+- Cache default max age: `1 day`
+
+#### `getAllBySeasonId`
+
+```php
+getAllBySeasonId(int $seasonId, int $page = 1, int $perPage = 25, string $order = 'asc'): SeasonCollection
+```
+
+Get all topscorers by season id:
+
+```php
+$topscorers = $sportMonksFootball->topscorers()->getAllBySeasonId(1);
+
+foreach ($topscorers->getData() as $topscorer) {
+    echo $topscorer->getTotal();
+}
+```
+
+#### `getAllByStageId`
+
+```php
+getAllByStageId(int $stageId, int $page = 1, int $perPage = 25, string $order = 'asc'): SeasonCollection
+```
+
+Get all topscorers by stage id:
+
+```php
+$topscorers = $sportMonksFootball->topscorers()->getAllByStageId(1);
+
+foreach ($topscorers->getData() as $topscorer) {
+    echo $topscorer->getTotal();
 }
 ```
 
