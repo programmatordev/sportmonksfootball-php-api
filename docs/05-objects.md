@@ -31,6 +31,10 @@
   - [Transfer](#transfer)
   - [TvStation](#tvstation)
   - [Venue](#venue)
+- [Odds Entities](#odds-entities)
+  - [Bookmaker](#bookmaker)
+  - [Market](#market)
+  - [Odd](#odd)
 - [Core Entities](#core-entities)
   - [City](#city)
   - [Continent](#continent)
@@ -500,6 +504,50 @@
 - `getCountry()`: [`?Country`](#country)
 - `getCity()`: [`?City`](#city)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
+
+## Odds Entities
+
+### Bookmaker
+
+- `getId()`: `int`
+- `getLegacyId()`: `?int`
+- `getName()`: `?string`
+
+### Market
+
+- `getId()`: `int`
+- `getLegacyId()`: `?int`
+- `getName()`: `?string`
+- `getDeveloperName()`: `?string`
+- `hasWinningCalculations()`: `?bool`
+
+### Odd
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getMarketId()`: `int`
+- `getBookmakerId()`: `int`
+- `getLabel()`: `?string`
+- `getValue()`: `?string`
+- `getName()`: `?string`
+- `getOrder()`: `?int`
+- `getMarketDescription()`: `?string`
+- `getProbability()`: `?string`
+- `getDp3()`: `?string`
+- `getFractional()`: `?string`
+- `getAmerican()`: `?string`
+- `isWinning()`: `?bool`
+- `hasStopped()`: `?bool`
+- `getTotal()`: `?string`
+- `getHandicap()`: `?string`
+- `getParticipants()`: `?string`
+- `getCreatedAt()`: `?\DateTimeImmutable`
+- `getUpdatedAt()`: `?\DateTimeImmutable`
+- `getOriginalLabel()`: `?string`
+- `getLatestBookmakerUpdatedAt()`: `?\DateTimeImmutable`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getMarket()`: [`?Market`](#market)
+- `getBookmaker()`: [`?Bookmaker`](#bookmaker)
 
 ## Core Entities
 

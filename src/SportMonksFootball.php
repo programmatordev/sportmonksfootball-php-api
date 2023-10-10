@@ -10,6 +10,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\LeagueEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\PlayerEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\PreMatchOddEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RefereeEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\RivalEndpoint;
@@ -72,6 +73,11 @@ class SportMonksFootball
     public function players(): PlayerEndpoint
     {
         return new PlayerEndpoint($this);
+    }
+
+    public function preMatchOdds(): PreMatchOddEndpoint
+    {
+        return new PreMatchOddEndpoint($this);
     }
 
     public function referees(): RefereeEndpoint

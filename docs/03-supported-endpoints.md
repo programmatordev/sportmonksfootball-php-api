@@ -18,6 +18,8 @@
   - [Transfers](#transfers)
   - [TV Stations](#tvstations)
   - [Venues](#venues)
+- [Odds Endpoints](#odds-endpoints)
+  - [Pre-match Odds](#pre-match-odds)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
   - [Continents](#continents)
@@ -1147,6 +1149,93 @@ $venues = $sportMonksFootball->venues()->getAllBySearchQuery('alvalade');
 
 foreach ($venues->getData() as $venue) {
     echo $venue->getName();
+}
+```
+
+## Odds Endpoints
+
+### Pre-match Odds
+
+- [Official documentation](https://docs.sportmonks.com/football/v/odds-api/getting-started/endpoints/pre-match-odds)
+- Cache default max age: `1 hour`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): OddCollection
+```
+
+Get all pre-match odds:
+
+```php
+$odds = $sportMonksFootball->preMatchOdds()->getAll();
+
+foreach ($odds->getData() as $odd) {
+    echo $odd->getMarketDescription();
+}
+```
+
+#### `getAllByFixtureId`
+
+```php
+getAllByFixtureId(int $fixtureId): OddCollection
+```
+
+Get all pre-match odds by fixture id:
+
+```php
+$odds = $sportMonksFootball->preMatchOdds()->getAllByFixtureId(1);
+
+foreach ($odds->getData() as $odd) {
+    echo $odd->getMarketDescription();
+}
+```
+
+#### `getAllByFixtureIdAndBookmakerId`
+
+```php
+getAllByFixtureIdAndBookmakerId(int $fixtureId, int bookmakerId): OddCollection
+```
+
+Get all pre-match odds by fixture id and bookmaker id:
+
+```php
+$odds = $sportMonksFootball->preMatchOdds()->getAllByFixtureIdAndBookmakerId(1, 1);
+
+foreach ($odds->getData() as $odd) {
+    echo $odd->getMarketDescription();
+}
+```
+
+#### `getAllByFixtureIdAndMarketId`
+
+```php
+getAllByFixtureIdAndMarketId(int $fixtureId, int marketId): OddCollection
+```
+
+Get all pre-match odds by fixture id and market id:
+
+```php
+$odds = $sportMonksFootball->preMatchOdds()->getAllByFixtureIdAndMarketId(1, 1);
+
+foreach ($odds->getData() as $odd) {
+    echo $odd->getMarketDescription();
+}
+```
+
+#### `getAllLastUpdated`
+
+```php
+getAllLastUpdated(): OddCollection
+```
+
+Get all last updated pre-match odds:
+
+```php
+$odds = $sportMonksFootball->preMatchOdds()->getAllLastUpdated();
+
+foreach ($odds->getData() as $odd) {
+    echo $odd->getMarketDescription();
 }
 ```
 
