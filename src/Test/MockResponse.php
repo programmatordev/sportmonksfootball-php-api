@@ -7,6 +7,9 @@ class MockResponse
     public const ABSTRACT_ITEM_RESPONSE = '{"data":%data%,"subscription":[{"meta":[],"plans":[{"plan":"Football Free Plan","sport":"Football","category":"Standard"},{"plan":"Cricket Free Plan","sport":"Cricket","category":"Standard"}],"add_ons":[],"widgets":[]}],"rate_limit":{"resets_in_seconds":3600,"remaining":2999,"requested_entity":"Test"},"timezone":"UTC"}';
     public const ABSTRACT_COLLECTION_RESPONSE = '{"data":%data%,"pagination":{"count":7,"per_page":50,"current_page":1,"next_page":null,"has_more":false},"subscription":[{"meta":[],"plans":[{"plan":"Football Free Plan","sport":"Football","category":"Standard"},{"plan":"Cricket Free Plan","sport":"Cricket","category":"Standard"}],"add_ons":[],"widgets":[]}],"rate_limit":{"resets_in_seconds":3600,"remaining":2999,"requested_entity":"Test"},"timezone":"UTC"}';
 
+    public const BOOKMAKER_ITEM_DATA = '{"id":1,"legacy_id":1,"name":"10Bet"}';
+    public const BOOKMAKER_COLLECTION_DATA = '[{"id":1,"legacy_id":1,"name":"10Bet"},{"id":2,"legacy_id":2,"name":"bet365"}]';
+
     public const CITY_ITEM_DATA = '{"id":1,"country_id":107,"region_id":1,"name":"\'Afak","latitude":"24.84926","longitude":"46.84591"}';
     public const CITY_COLLECTION_DATA = '[{"id":1,"country_id":107,"region_id":1,"name":"\'Afak","latitude":"24.84926","longitude":"46.84591"},{"id":2,"country_id":802,"region_id":2,"name":"\'Afula \'Illit","latitude":"32.61197","longitude":"35.28753"}]';
 

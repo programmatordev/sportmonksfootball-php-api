@@ -19,6 +19,7 @@
   - [TV Stations](#tvstations)
   - [Venues](#venues)
 - [Odds Endpoints](#odds-endpoints)
+  - [Bookmakers](#bookmakers)
   - [Markets](#markets)
   - [Pre-match Odds](#pre-match-odds)
 - [Core Endpoints](#core-endpoints)
@@ -1154,6 +1155,72 @@ foreach ($venues->getData() as $venue) {
 ```
 
 ## Odds Endpoints
+
+### Bookmakers
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/bookmakers)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): BookmakerCollection
+```
+
+Get all bookmakers:
+
+```php
+$bookmakers = $sportMonksFootball->bookmakers()->getAll();
+
+foreach ($bookmakers->getData() as $bookmaker) {
+    echo $bookmaker->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): BookmakerItem
+```
+
+Get bookmaker by id:
+
+```php
+$bookmaker = $sportMonksFootball->bookmakers()->getById(1);
+echo $bookmaker->getData()->getName();
+```
+
+#### `getAllByFixtureId`
+
+```php
+getAllByFixtureId(int $fixtureId, int $page = 1, int $perPage = 25, string $order = 'asc'): BookmakerCollection
+```
+
+Get all bookmakers by fixture id:
+
+```php
+$bookmakers = $sportMonksFootball->bookmakers()->getAllByFixtureId(1);
+
+foreach ($bookmakers->getData() as $bookmaker) {
+    echo $bookmaker->getName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): BookmakerCollection
+```
+
+Get all bookmakers by search query:
+
+```php
+$bookmakers = $sportMonksFootball->bookmakers()->getAllBySearchQuery('bet');
+
+foreach ($bookmakers->getData() as $bookmaker) {
+    echo $bookmaker->getName();
+}
+```
 
 ### Markets
 
