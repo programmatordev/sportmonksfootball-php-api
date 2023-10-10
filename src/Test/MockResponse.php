@@ -62,6 +62,8 @@ class MockResponse
 
     public const TEAM_SQUAD_COLLECTION_DATA = '[{"id":741301,"transfer_id":233006,"player_id":8056287,"team_id":53,"position_id":25,"detailed_position_id":148,"start":"2023-07-26","end":"2028-05-31","captain":false,"jersey_number":17},{"id":762227,"transfer_id":234932,"player_id":3533334,"team_id":53,"position_id":25,"detailed_position_id":148,"start":"2023-08-16","end":"2028-05-31","captain":false,"jersey_number":4}]';
 
+    public const TOPSCORER_COLLECTION_DATA = '[{"id":1540882,"season_id":19735,"player_id":37305554,"type_id":83,"position":1,"total":3,"participant_id":246},{"id":1540879,"season_id":19735,"player_id":1494374,"type_id":83,"position":2,"total":3,"participant_id":314}]';
+
     public const TRANSFER_ITEM_DATA = '{"id":1,"sport_id":1,"player_id":35659846,"type_id":219,"from_team_id":148048,"to_team_id":3736,"position_id":25,"detailed_position_id":154,"date":"2021-12-27","career_ended":false,"completed":true,"amount":909000}';
     public const TRANSFER_COLLECTION_DATA = '[{"id":1,"sport_id":1,"player_id":35659846,"type_id":219,"from_team_id":148048,"to_team_id":3736,"position_id":25,"detailed_position_id":154,"date":"2021-12-27","career_ended":false,"completed":true,"amount":909000},{"id":2,"sport_id":1,"player_id":320984,"type_id":218,"from_team_id":904,"to_team_id":3901,"position_id":26,"detailed_position_id":153,"date":"2021-12-27","career_ended":false,"completed":true,"amount":null}]';
 
