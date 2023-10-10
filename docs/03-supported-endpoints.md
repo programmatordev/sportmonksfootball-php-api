@@ -19,6 +19,7 @@
   - [TV Stations](#tvstations)
   - [Venues](#venues)
 - [Odds Endpoints](#odds-endpoints)
+  - [Markets](#markets)
   - [Pre-match Odds](#pre-match-odds)
 - [Core Endpoints](#core-endpoints)
   - [Cities](#cities)
@@ -1154,9 +1155,59 @@ foreach ($venues->getData() as $venue) {
 
 ## Odds Endpoints
 
+### Markets
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/markets)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): MarketCollection
+```
+
+Get all markets:
+
+```php
+$markets = $sportMonksFootball->markets()->getAll();
+
+foreach ($markets->getData() as $market) {
+    echo $market->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): MarketItem
+```
+
+Get market by id:
+
+```php
+$market = $sportMonksFootball->markets()->getById(1);
+echo $market->getData()->getName();
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): MarketCollection
+```
+
+Get all markets by search query:
+
+```php
+$markets = $sportMonksFootball->markets()->getAllBySearchQuery('goal');
+
+foreach ($markets->getData() as $market) {
+    echo $market->getName();
+}
+```
+
 ### Pre-match Odds
 
-- [Official documentation](https://docs.sportmonks.com/football/v/odds-api/getting-started/endpoints/pre-match-odds)
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/pre-match-odds)
 - Cache default max age: `1 hour`
 
 #### `getAll`
