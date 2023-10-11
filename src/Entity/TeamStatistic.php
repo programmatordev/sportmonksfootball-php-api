@@ -10,10 +10,10 @@ class TeamStatistic extends ParticipantStatistic
 
     private int $teamId;
 
+    private ?bool $hasValues;
+
     /** @var TeamStatisticDetail[] */
     private array $details;
-
-    private ?bool $hasValues;
 
     private ?Team $team;
 

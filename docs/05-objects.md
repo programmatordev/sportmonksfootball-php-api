@@ -11,6 +11,8 @@
   - [Aggregate](#aggregate)
   - [Commentary](#commentary)
   - [Coach](#coach)
+  - [CoachStatistic](#coachstatistic)
+  - [CoachStatisticDetail](#coachstatisticdetail)
   - [Fixture](#fixture)
   - [Group](#group)
   - [League](#league)
@@ -18,7 +20,11 @@
   - [Metadata](#metadata)
   - [ParticipantTrophy](#participanttrophy)
   - [Player](#player)
+  - [PlayerStatistic](#playerstatistic)
+  - [PlayerStatisticDetail](#playerstatisticdetail)
   - [Referee](#referee)
+  - [RefereeStatistic](#refereestatistic)
+  - [RefereeStatisticDetail](#refereestatisticdetail)
   - [Rival](#rival)
   - [Round](#round)
   - [Season](#season)
@@ -26,7 +32,10 @@
   - [Social](#social)
   - [Stage](#stage)
   - [State](#state)
+  - [Statistic](#statistic)
   - [Team](#team)
+  - [TeamStatistic](#teamstatistic)
+  - [TeamStatisticDetail](#teamstatisticdetail)
   - [TeamSquad](#teamsquad)
   - [Topscorer](#topscorer)
   - [Transfer](#transfer)
@@ -145,6 +154,25 @@
 - `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
 - `getPlayer()`: [`?Player`](#player)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
+
+### CoachStatistic
+
+- `getId()`: `int`
+- `getSeasonId()`: `int`
+- `getCoachId()`: `int`
+- `getTeamId()`: `int`
+- `getDetails()`: [`CoachStatisticDetail[]`](#coachstatisticdetail)
+- `getSeason()`: [`?Season`](#season)
+- `getCoach()`: [`?Coach`](#coach)
+- `getTeam()`: [`?Team`](#team)
+
+### CoachStatisticDetail
+
+- `getId()`: `int`
+- `getCoachStatisticId()`: `int`
+- `getTypeId()`: `int`
+- `getValue()`: `array`
+- `getType()`: [`?Type`](#type)
 
 ### Fixture
 
@@ -282,6 +310,29 @@
 - `getLatestLineups()`: [`?Lineup[]`](#lineup)
 - `getMetadata()`: [`?Metadata[]`](#metadata)
 
+### PlayerStatistic
+
+- `getId()`: `int`
+- `getSeasonId()`: `int`
+- `getPlayerId()`: `int`
+- `getTeamId()`: `int`
+- `getPositionId()`: `?int`
+- `hasValues()`: `?bool`
+- `getJerseyNumber()`: `?int`
+- `getDetails()`: [`PlayerStatisticDetail[]`](#playerstatisticdetail)
+- `getSeason()`: [`?Season`](#season)
+- `getPlayer()`: [`?Player`](#player)
+- `getTeam()`: [`?Team`](#team)
+- `getPosition()`: [`?Type`](#type)
+
+### PlayerStatisticDetail
+
+- `getId()`: `int`
+- `getPlayerStatisticId()`: `int`
+- `getTypeId()`: `int`
+- `getValue()`: `array`
+- `getType()`: [`?Type`](#type)
+
 ### Referee
 
 - `getId()`: `int`
@@ -302,6 +353,23 @@
 - `getCountry()`: [`?Country`](#country)
 - `getNationality()`: [`?Country`](#country)
 - `getCity()`: [`?City`](#city)
+
+### RefereeStatistic
+
+- `getId()`: `int`
+- `getSeasonId()`: `int`
+- `getRefereeId()`: `int`
+- `getDetails()`: [`RefereeStatisticDetail[]`](#refereestatisticdetail)
+- `getSeason()`: [`?Season`](#season)
+- `getReferee()`: [`?Referee`](#referee)
+
+### RefereeStatisticDetail
+
+- `getId()`: `int`
+- `getRefereeStatisticId()`: `int`
+- `getTypeId()`: `int`
+- `getValue()`: `array`
+- `getType()`: [`?Type`](#type)
 
 ### Rival
 
@@ -409,6 +477,16 @@
 - `getShortName()`: `?string`
 - `getDeveloperName()`: `?string`
 
+### Statistic
+
+- `getId()`: `int`
+- `getModelId()`: `int`
+- `getTypeId()`: `int`
+- `getRelationId()`: `?int`
+- `getValue()`: `array`
+- `getType()`: [`?Type`](#type)
+- `getParticipant()`: [`Player`](#player)|[`Team`](#team)|`null`
+
 ### Team
 
 - `getId()`: `int`
@@ -436,6 +514,24 @@
 - `getSidelinedHistory()`: [`?Sidelined[]`](#sidelined)
 - `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
 - `getSocials()`: [`?Social[]`](#social)
+
+### TeamStatistic
+
+- `getId()`: `int`
+- `getSeasonId()`: `int`
+- `getTeamId()`: `int`
+- `hasValues()`: `?bool`
+- `getDetails()`: [`TeamStatisticDetail[]`](#teamstatisticdetail)
+- `getSeason()`: [`?Season`](#season)
+- `getTeam()`: [`?Team`](#team)
+
+### TeamStatisticDetail
+
+- `getId()`: `int`
+- `getTeamStatisticId()`: `int`
+- `getTypeId()`: `int`
+- `getValue()`: `array`
+- `getType()`: [`?Type`](#type)
 
 ### TeamSquad
 
