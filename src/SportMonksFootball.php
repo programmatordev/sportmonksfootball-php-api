@@ -21,6 +21,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\ScheduleEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\SeasonEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StageEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\StatisticEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamSquadEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TopscorerEndpoint;
@@ -131,6 +132,11 @@ class SportMonksFootball
     public function states(): StateEndpoint
     {
         return new StateEndpoint($this);
+    }
+
+    public function statistics(): StatisticEndpoint
+    {
+        return new StatisticEndpoint($this);
     }
 
     public function teams(): TeamEndpoint
