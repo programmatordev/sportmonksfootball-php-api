@@ -4,7 +4,7 @@ namespace ProgrammatorDev\SportMonksFootball\Entity;
 
 use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
 
-class RefereeStatistic extends Statistic
+class RefereeStatistic extends ParticipantStatistic
 {
     use CreateEntityCollectionTrait;
 

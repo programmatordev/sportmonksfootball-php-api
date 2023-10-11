@@ -11,6 +11,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\Util\ValidatorTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\CoachStatisticCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\PlayerStatisticCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\RefereeStatisticCollection;
+use ProgrammatorDev\SportMonksFootball\Entity\Response\StatisticCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\TeamStatisticCollection;
 use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 use ProgrammatorDev\SportMonksFootball\Pagination\Pagination;
@@ -140,5 +141,63 @@ class StatisticEndpoint extends AbstractEndpoint
         );
 
         return new RefereeStatisticCollection($response);
+    }
+
+    /**
+     * @throws Exception
+     * @throws ValidationException
+     * @throws ApiErrorException
+     */
+    public function getAllByStageId(
+        int $stageId,
+        int $page = 1,
+        int $perPage = Pagination::PER_PAGE,
+        string $order = Pagination::ORDER_ASC
+    ): StatisticCollection
+    {
+        $this->validatePagination($page, $perPage, $order);
+
+        $response = $this->sendRequest(
+            method: 'GET',
+            path: $this->formatPath('/v3/football/statistics/stages/{stageId}', [
+                'stageId' => $stageId
+            ]),
+            query: [
+                'page' => $page,
+                'per_page' => $perPage,
+                'order' => $order
+            ]
+        );
+
+        return new StatisticCollection($response);
+    }
+
+    /**
+     * @throws Exception
+     * @throws ValidationException
+     * @throws ApiErrorException
+     */
+    public function getAllByRoundId(
+        int $roundId,
+        int $page = 1,
+        int $perPage = Pagination::PER_PAGE,
+        string $order = Pagination::ORDER_ASC
+    ): StatisticCollection
+    {
+        $this->validatePagination($page, $perPage, $order);
+
+        $response = $this->sendRequest(
+            method: 'GET',
+            path: $this->formatPath('/v3/football/statistics/rounds/{roundId}', [
+                'roundId' => $roundId
+            ]),
+            query: [
+                'page' => $page,
+                'per_page' => $perPage,
+                'order' => $order
+            ]
+        );
+
+        return new StatisticCollection($response);
     }
 }
