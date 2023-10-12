@@ -22,6 +22,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\ScheduleEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\SeasonEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StageEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\StatisticEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamSquadEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TopscorerEndpoint;
@@ -59,6 +60,7 @@ class SportMonksFootballTest extends AbstractTest
         yield 'seasons' => [SeasonEndpoint::class, 'seasons'];
         yield 'stages' => [StageEndpoint::class, 'stages'];
         yield 'states' => [StateEndpoint::class, 'states'];
+        yield 'statistics' => [StatisticEndpoint::class, 'statistics'];
         yield 'teams' => [TeamEndpoint::class, 'teams'];
         yield 'team squads' => [TeamSquadEndpoint::class, 'teamSquads'];
         yield 'topscorers' => [TopscorerEndpoint::class, 'topscorers'];

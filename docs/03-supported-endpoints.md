@@ -13,6 +13,7 @@
   - [Seasons](#seasons)
   - [Stages](#stages)
   - [States](#states)
+  - [Statistics](#statistics)
   - [Teams](#teams)
   - [Team Squads](#team-squads)
   - [Topscorers](#topscorers)
@@ -820,6 +821,115 @@ Get state by id:
 ```php
 $state = $sportMonksFootball->states()->getById(1);
 echo $state->getData()->getName();
+```
+
+### Statistics
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/statistics)
+- Cache default max age: `1 day`
+
+#### `getAllByPlayerId`
+
+```php
+getAllByPlayerId(int $playerId, int $page = 1, int $perPage = 25, string $order = 'asc'): PlayerStatisticCollection
+```
+
+Get all statistics by player id per season:
+
+```php
+$statistics = $sportMonksFootball->statistics()->getAllByPlayerId(1);
+
+foreach ($statistics->getData() as $statistic) {
+    foreach ($statistic->getDetails() as $detail) {
+        print_r($detail->getValue());
+    }
+}
+```
+
+#### `getAllByTeamId`
+
+```php
+getAllByTeamId(int $teamId, int $page = 1, int $perPage = 25, string $order = 'asc'): TeamStatisticCollection
+```
+
+Get all statistics by team id per season:
+
+```php
+$statistics = $sportMonksFootball->statistics()->getAllByTeamId(1);
+
+foreach ($statistics->getData() as $statistic) {
+    foreach ($statistic->getDetails() as $detail) {
+        print_r($detail->getValue());
+    }
+}
+```
+
+#### `getAllByCoachId`
+
+```php
+getAllByCoachId(int $coachId, int $page = 1, int $perPage = 25, string $order = 'asc'): CoachStatisticCollection
+```
+
+Get all statistics by coach id per season:
+
+```php
+$statistics = $sportMonksFootball->statistics()->getAllByCoachId(1);
+
+foreach ($statistics->getData() as $statistic) {
+    foreach ($statistic->getDetails() as $detail) {
+        print_r($detail->getValue());
+    }
+}
+```
+
+#### `getAllByRefereeId`
+
+```php
+getAllByRefereeId(int $refereeId, int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeStatisticCollection
+```
+
+Get all statistics by referee id per season:
+
+```php
+$statistics = $sportMonksFootball->statistics()->getAllByRefereeId(1);
+
+foreach ($statistics->getData() as $statistic) {
+    foreach ($statistic->getDetails() as $detail) {
+        print_r($detail->getValue());
+    }
+}
+```
+
+#### `getAllByStageId`
+
+```php
+getAllByStageId(int $stageId, int $page = 1, int $perPage = 25, string $order = 'asc'): StatisticCollection
+```
+
+Get all statistics by stage id:
+
+```php
+$statistics = $sportMonksFootball->statistics()->getAllByStageId(1);
+
+foreach ($statistics->getData() as $statistic) {
+    print_r($statistic->getValue());
+}
+```
+
+#### `getAllByRoundId`
+
+```php
+getAllByRoundId(int $roundId, int $page = 1, int $perPage = 25, string $order = 'asc'): StatisticCollection
+```
+
+Get all statistics by round id:
+
+```php
+$statistics = $sportMonksFootball->statistics()->getAllByRoundId(1);
+
+foreach ($statistics->getData() as $statistic) {
+    print_r($statistic->getValue());
+}
 ```
 
 ### Teams
