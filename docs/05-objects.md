@@ -31,6 +31,11 @@
   - [Sidelined](#sidelined)
   - [Social](#social)
   - [Stage](#stage)
+  - [Standing](#standing)
+  - [StandingCorrection](#standingcorrection)
+  - [StandingDetail](#standingdetail)
+  - [StandingForm](#standingform)
+  - [StandingRule](#standingrule)
   - [State](#state)
   - [Statistic](#statistic)
   - [Team](#team)
@@ -468,6 +473,77 @@
 - `getGroups()`: [`?Group[]`](#group)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
 - `getAggregates()`: [`?Aggregate[]`](#aggregate)
+
+### Standing
+
+- `getId()`: `int`
+- `getParticipantId()`: `int`
+- `getSportId()`: `int`
+- `getLeagueId()`: `int`
+- `getSeasonId()`: `int`
+- `getStageId()`: `int`
+- `getGroupId()`: `?int`
+- `getRoundId()`: `?int`
+- `getStandingRuleId()`: `?int`
+- `getPosition()`: `?int`
+- `getResult()`: `?string`
+- `getPoints()`: `?int`
+- `getParticipant()`: [`?Team`](#team)
+- `getSeason()`: [`?Season`](#season)
+- `getLeague()`: [`?League`](#league)
+- `getStage()`: [`?Stage`](#stage)
+- `getGroup()`: [`?Group`](#group)
+- `getRound()`: [`?Round`](#round)
+- `getSport()`: [`?Sport`](#sport)
+- `getRule()`: [`?StandingRule`](#standingrule)
+- `getDetails()`: [`?StandingDetail[]`](#standingdetail)
+- `getForm()`: [`?StandingForm[]`](#standingform)
+
+### StandingCorrection
+
+- `getId()`: `int`
+- `getSeasonId()`: `int`
+- `getStageId()`: `int`
+- `getGroupId()`: `?int`
+- `getTypeId()`: `int`
+- `getParticipantId()`: `int`
+- `getParticipantType()`: `?string`
+- `getValue()`: `?int`
+- `getCalcType()`: `?string`
+- `isActive()`: `?bool`
+- `getParticipant()`: [`?Team`](#team)
+- `getSeason()`: [`?Season`](#season)
+- `getStage()`: [`?Stage`](#stage)
+- `getGroup()`: [`?Group`](#group)
+- `getType()`: [`?Type`](#type)
+
+### StandingDetail
+
+- `getId()`: `int`
+- `getTypeId()`: `int`
+- `getStandingId()`: `int`
+- `getStandingType()`: `string`
+- `getValue()`: `int`
+- `getType()`: [`?Type`](#type)
+
+### StandingForm
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getStandingId()`: `int`
+- `getStandingType()`: `string`
+- `getForm()`: `string`
+- `getOrder()`: `int`
+- `getFixture()`: [`?Fixture`](#fixture)
+
+### StandingRule
+
+- `getId()`: `int`
+- `getTypeId()`: `int`
+- `getModelId()`: `?int`
+- `getModelType()`: `?string`
+- `getPosition()`: `?int`
+- `getType()`: [`?Type`](#type)
 
 ### State
 

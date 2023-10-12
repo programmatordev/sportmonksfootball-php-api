@@ -12,6 +12,7 @@
   - [Schedules](#schedules)
   - [Seasons](#seasons)
   - [Stages](#stages)
+  - [Standings](#standings)
   - [States](#states)
   - [Statistics](#statistics)
   - [Teams](#teams)
@@ -786,6 +787,96 @@ $stages = $sportMonksFootball->stages()->getAllBySearchQuery('champions');
 
 foreach ($stages->getData() as $stage) {
     echo $stage->getName();
+}
+```
+
+### Standings
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/standings)
+- Cache default max age: `1 hour`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): StandingCollection
+```
+
+Get all standings:
+
+```php
+$standings = $sportMonksFootball->standings()->getAll();
+
+foreach ($standings->getData() as $standing) {
+    echo $standing->getPosition();
+    echo $standing->getPoints();
+}
+```
+
+#### `getAllBySeasonId`
+
+```php
+getAllBySeasonId(int $seasonId): StandingCollection
+```
+
+Get all standings by season id:
+
+```php
+$standings = $sportMonksFootball->standings()->getAllBySeasonId(1);
+
+foreach ($standings->getData() as $standing) {
+    echo $standing->getPosition();
+    echo $standing->getPoints();
+}
+```
+
+#### `getAllCorrectionsBySeasonId`
+
+```php
+getAllCorrectionsBySeasonId(int $seasonId): StandingCorrectionCollection
+```
+
+Get all standing corrections by season id:
+
+```php
+$standingCorrections = $sportMonksFootball->standings()->getAllCorrectionsBySeasonId(1);
+
+foreach ($standingCorrections->getData() as $standingCorrection) {
+    echo $standingCorrection->getValue();
+    echo $standingCorrection->getCalcType();
+}
+```
+
+#### `getAllByRoundId`
+
+```php
+getAllByRoundId(int $roundId): StandingCollection
+```
+
+Get all standings by round id:
+
+```php
+$standings = $sportMonksFootball->standings()->getAllByRoundId(1);
+
+foreach ($standings->getData() as $standing) {
+    echo $standing->getPosition();
+    echo $standing->getPoints();
+}
+```
+
+#### `getAllLiveByLeagueId`
+
+```php
+getAllLiveByLeagueId(int $leagueId): StandingCollection
+```
+
+Get all live standings by league id:
+
+```php
+$standings = $sportMonksFootball->standings()->getAllLiveByLeagueId(1);
+
+foreach ($standings->getData() as $standing) {
+    echo $standing->getPosition();
+    echo $standing->getPoints();
 }
 ```
 
