@@ -20,6 +20,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\RoundEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ScheduleEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\SeasonEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StageEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\StandingEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StatisticEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
@@ -127,6 +128,11 @@ class SportMonksFootball
     public function stages(): StageEndpoint
     {
         return new StageEndpoint($this);
+    }
+
+    public function standings(): StandingEndpoint
+    {
+        return new StandingEndpoint($this);
     }
 
     public function states(): StateEndpoint
