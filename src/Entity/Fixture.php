@@ -2,8 +2,12 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
+use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+
 class Fixture
 {
+    use CreateEntityCollectionTrait;
+
     private int $id;
 
     private int $sportId;
@@ -46,6 +50,53 @@ class Fixture
 
     private ?League $league;
 
+    private ?Round $round;
+
+    private ?Group $group;
+
+    private ?Aggregate $aggregate;
+
+    private ?Season $season;
+
+    private ?Venue $venue;
+
+    private ?State $state;
+
+    /** @var ?Lineup[] */
+    private ?array $lineups;
+
+    /** @var ?Commentary[] */
+    private ?array $comments;
+
+    /** @var ?Team[] */
+    private ?array $participants;
+
+    /** @var ?Odd[] */
+    private ?array $odds;
+
+    /** @var ?Metadata[] */
+    private ?array $metadata;
+
+    private ?WeatherReport $weatherReport;
+
+    /** @var ?Event[] */
+    private ?array $events;
+
+    /** @var ?Event[] */
+    private ?array $timeline;
+
+    /** @var ?FixtureStatistic[] */
+    private ?array $statistics;
+
+    /** @var ?Period[] */
+    private ?array $periods;
+
+    /** @var ?Formation[] */
+    private ?array $formations;
+
+    /** @var ?Score[] */
+    private ?array $scores;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -73,10 +124,26 @@ class Fixture
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
         $this->stage = isset($data['stage']) ? new Stage($data['stage']) : null;
         $this->league = isset($data['league']) ? new League($data['league']) : null;
+        $this->round = isset($data['round']) ? new Round($data['round']) : null;
+        $this->group = isset($data['group']) ? new Group($data['group']) : null;
+        $this->aggregate = isset($data['aggregate']) ? new Aggregate($data['aggregate']) : null;
+        $this->season = isset($data['season']) ? new Season($data['season']) : null;
+        $this->venue = isset($data['venue']) ? new Venue($data['venue']) : null;
+        $this->state = isset($data['state']) ? new State($data['state']) : null;
+        $this->lineups = isset($data['lineups']) ? $this->createEntityCollection(Lineup::class, $data['lineups']) : null;
+        $this->comments = isset($data['comments']) ? $this->createEntityCollection(Commentary::class, $data['comments']) : null;
+        $this->participants = isset($data['participants']) ? $this->createEntityCollection(Team::class, $data['participants']) : null;
+        $this->odds = isset($data['odds']) ? $this->createEntityCollection(Odd::class, $data['odds']) : null;
+        $this->metadata = isset($data['metadata']) ? $this->createEntityCollection(Metadata::class, $data['metadata']) : null;
+        $this->weatherReport = isset($data['weatherreport']) ? new WeatherReport($data['weatherreport']) : null;
+        $this->events = isset($data['events']) ? $this->createEntityCollection(Event::class, $data['events']) : null;
+        $this->timeline = isset($data['timeline']) ? $this->createEntityCollection(Event::class, $data['timeline']) : null;
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(FixtureStatistic::class, $data['statistics']) : null;
+        $this->periods = isset($data['periods']) ? $this->createEntityCollection(Period::class, $data['periods']) : null;
+        $this->formations = isset($data['formations']) ? $this->createEntityCollection(Formation::class, $data['formations']) : null;
+        $this->scores = isset($data['scores']) ? $this->createEntityCollection(Score::class, $data['scores']) : null;
 
-        // TODO round, group, aggregate, season, venue, state, weatherReport, lineups, events,
-        // timeline, comments, trends, statistics, periods, participants, odds, inplayOdds, portmatchNews, prematchNews,
-        // metadata, tvStations, predictions, referees, formations, ballCoordinated, sidelined,scores
+        // TODO trends, inplayOdds, prematchNews, tvStations (?), predictions, referees (?), ballCoordinates, sidelined (?)
     }
 
     public function getId(): int
@@ -182,5 +249,95 @@ class Fixture
     public function getLeague(): ?League
     {
         return $this->league;
+    }
+
+    public function getRound(): ?Round
+    {
+        return $this->round;
+    }
+
+    public function getGroup(): ?Group
+    {
+        return $this->group;
+    }
+
+    public function getAggregate(): ?Aggregate
+    {
+        return $this->aggregate;
+    }
+
+    public function getSeason(): ?Season
+    {
+        return $this->season;
+    }
+
+    public function getVenue(): ?Venue
+    {
+        return $this->venue;
+    }
+
+    public function getState(): ?State
+    {
+        return $this->state;
+    }
+
+    public function getLineups(): ?array
+    {
+        return $this->lineups;
+    }
+
+    public function getComments(): ?array
+    {
+        return $this->comments;
+    }
+
+    public function getParticipants(): ?array
+    {
+        return $this->participants;
+    }
+
+    public function getOdds(): ?array
+    {
+        return $this->odds;
+    }
+
+    public function getMetadata(): ?array
+    {
+        return $this->metadata;
+    }
+
+    public function getWeatherReport(): ?WeatherReport
+    {
+        return $this->weatherReport;
+    }
+
+    public function getEvents(): ?array
+    {
+        return $this->events;
+    }
+
+    public function getTimeline(): ?array
+    {
+        return $this->timeline;
+    }
+
+    public function getStatistics(): ?array
+    {
+        return $this->statistics;
+    }
+
+    public function getPeriods(): ?array
+    {
+        return $this->periods;
+    }
+
+    public function getFormations(): ?array
+    {
+        return $this->formations;
+    }
+
+    public function getScores(): ?array
+    {
+        return $this->scores;
     }
 }

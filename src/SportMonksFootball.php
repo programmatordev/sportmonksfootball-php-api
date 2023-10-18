@@ -9,6 +9,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\CommentaryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\FixtureEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\LeagueEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\MarketEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\PlayerEndpoint;
@@ -73,6 +74,11 @@ class SportMonksFootball
     public function filters(): FilterEndpoint
     {
         return new FilterEndpoint($this);
+    }
+
+    public function fixtures(): FixtureEndpoint
+    {
+        return new FixtureEndpoint($this);
     }
 
     public function leagues(): LeagueEndpoint
