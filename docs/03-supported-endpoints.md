@@ -4,6 +4,7 @@
 - [Football Endpoints](#football-endpoints)
   - [Coaches](#coaches)
   - [Commentaries](#commentaries)
+  - [Fixtures](#fixtures)
   - [Leagues](#leagues)
   - [Players](#players)
   - [Referees](#referees)
@@ -19,7 +20,7 @@
   - [Team Squads](#team-squads)
   - [Topscorers](#topscorers)
   - [Transfers](#transfers)
-  - [TV Stations](#tvstations)
+  - [TV Stations](#tv-stations)
   - [Venues](#venues)
 - [Odds Endpoints](#odds-endpoints)
   - [Bookmakers](#bookmakers)
@@ -51,7 +52,7 @@ while the [`<Entity>Collection`](05-objects.md#ltentitygtcollection) `getData()`
 
 For example, when requesting a continent by id, the response will be a `ContinentItem` object and the `getData()` method will return a [`Continent`](05-objects.md#continent) object.
 The same way that when requesting all continents, the response will be a `ContinentCollection` object and the `getData()` method will return an array of [`Continent`](05-objects.md#continent) objects.
-Check the [responses objects](05-objects.md#responses) for more information.
+Check the [responses objects](05-objects.md#response-entities) for more information.
 
 ### Pagination
 
@@ -181,6 +182,200 @@ $commentaries = $sportMonksFootball->commentaries()->getAllByFixtureId(1);
 
 foreach ($commentaries->getData() as $commentary) {
     echo $commentary->getComment();
+}
+```
+
+### Fixtures
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/fixtures)
+- Cache default max age: `1 hour`
+
+#### `getAll`
+
+```php
+getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+```
+
+Get all fixtures:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAll();
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getById`
+
+```php
+getById(int $id): FixtureItem
+```
+
+Get fixture by id:
+
+```php
+$fixture = $sportMonksFootball->fixtures()->getById(1);
+echo $fixture->getData()->getName();
+```
+
+#### `getAllByMultipleIds`
+
+```php
+getAllByMultipleIds(array $ids): FixtureCollection
+```
+
+Get all fixtures by multiple ids:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAllByMultipleIds([1, 2, 3]);
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllByDate`
+
+```php
+getAllByDate(\DateTimeInterface $date, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+```
+
+Get all fixtures by date:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAllByDate(new DateTime('today'));
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllByDateRange`
+
+```php
+getAllByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+```
+
+Get all fixtures by date range:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAllByDateRange(new DateTime('today'), new DateTime('+7 days'));
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllByTeamIdAndDateRange`
+
+```php
+getAllByTeamIdAndDateRange(int $teamId, \DateTimeInterface $startDate, \DateTimeInterface $endDate, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+```
+
+Get all fixtures by team id and date range:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAllByTeamIdAndDateRange(1, new DateTime('today'), new DateTime('+7 days'));
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllByHeadToHead`
+
+```php
+getAllByHeadToHead(int $teamIdOne, int $teamIdTwo): FixtureCollection
+```
+
+Get all fixtures between two teams:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAllByHeadToHead(1, 2);
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllBySearchQuery`
+
+```php
+getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+```
+
+Get all fixtures by search query:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAllBySearchQuery('sporting');
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllUpcomingByMarketId`
+
+```php
+getAllUpcomingByMarketId(int $marketId, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+```
+
+Get all upcoming fixtures by market id:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAllUpcomingByMarketId(1);
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllUpcomingByTvStationId`
+
+```php
+getAllUpcomingByTvStationId(int $tvStationId, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+```
+
+Get all upcoming fixtures by tv station id:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAllUpcomingByTvStationId(1);
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllPastByTvStationId`
+
+```php
+getAllPastByTvStationId(int $tvStationId, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+```
+
+Get all past fixtures by tv station id:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAllPastByTvStationId(1);
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllLastUpdated`
+
+```php
+getAllLastUpdated(): FixtureCollection
+```
+
+Get all last updated fixtures:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAllLastUpdated();
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
 }
 ```
 
@@ -1229,16 +1424,16 @@ foreach ($transfers->getData() as $transfer) {
 }
 ```
 
-#### `getAllBetweenDateRange`
+#### `getAllByDateRange`
 
 ```php
-getAllBetweenDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate, int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
+getAllByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate, int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
 ```
 
-Get all transfers between a date range:
+Get all transfers by date range:
 
 ```php
-$transfers = $sportMonksFootball->transfers()->getAllBetweenDateRange(new DateTime('-7 days'), new DateTime('today'));
+$transfers = $sportMonksFootball->transfers()->getAllByDateRange(new DateTime('-7 days'), new DateTime('today'));
 
 foreach ($transfers->getData() as $transfer) {
     echo $transfer->getPlayerId();

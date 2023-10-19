@@ -68,6 +68,8 @@ class Team
     /** @var ?Social[] */
     private ?array $socials;
 
+    private ?TeamMeta $meta;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -99,6 +101,7 @@ class Team
         $this->sidelinedHistory = isset($data['sidelinedhistory']) ? $this->createEntityCollection(Sidelined::class, $data['sidelinedhistory']) : null;
         $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies']) : null;
         $this->socials = isset($data['socials']) ? $this->createEntityCollection(Social::class, $data['socials']) : null;
+        $this->meta = isset($data['meta']) ? new TeamMeta($data['meta']) : null;
 
         // TODO coaches(?), statistics
     }
@@ -226,5 +229,10 @@ class Team
     public function getSocials(): ?array
     {
         return $this->socials;
+    }
+
+    public function getMeta(): ?TeamMeta
+    {
+        return $this->meta;
     }
 }

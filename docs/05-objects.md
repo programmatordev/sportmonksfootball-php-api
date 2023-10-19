@@ -13,12 +13,19 @@
   - [Coach](#coach)
   - [CoachStatistic](#coachstatistic)
   - [CoachStatisticDetail](#coachstatisticdetail)
+  - [Event](#event)
   - [Fixture](#fixture)
+  - [FixtureReferee](#fixturereferee)
+  - [FixtureSidelined](#fixturesidelined)
+  - [FixtureStatistic](#fixturestatistic)
+  - [FixtureTvStation](#fixturetvstation)
+  - [Formation](#formation)
   - [Group](#group)
   - [League](#league)
   - [Lineup](#lineup)
   - [Metadata](#metadata)
   - [ParticipantTrophy](#participanttrophy)
+  - [Period](#period)
   - [Player](#player)
   - [PlayerStatistic](#playerstatistic)
   - [PlayerStatisticDetail](#playerstatisticdetail)
@@ -28,6 +35,7 @@
   - [Rival](#rival)
   - [Round](#round)
   - [Season](#season)
+  - [Score](#score)
   - [Sidelined](#sidelined)
   - [Social](#social)
   - [Stage](#stage)
@@ -39,13 +47,17 @@
   - [State](#state)
   - [Statistic](#statistic)
   - [Team](#team)
+  - [TeamMeta](#teammeta)
   - [TeamStatistic](#teamstatistic)
   - [TeamStatisticDetail](#teamstatisticdetail)
   - [TeamSquad](#teamsquad)
+  - [Temperature](#temperature)
   - [Topscorer](#topscorer)
   - [Transfer](#transfer)
   - [TvStation](#tvstation)
   - [Venue](#venue)
+  - [WeatherReport](#weatherreport)
+  - [Wind](#wind)
 - [Odds Entities](#odds-entities)
   - [Bookmaker](#bookmaker)
   - [Market](#market)
@@ -179,6 +191,33 @@
 - `getValue()`: `array`
 - `getType()`: [`?Type`](#type)
 
+### Event
+
+- `getId()`: `int`
+- `getTypeId()`: `int`
+- `getSubTypeId()`: `?int`
+- `getPlayerId()`: `?int`
+- `getRelatedPlayerId()`: `?int`
+- `getPeriodId()`: `int`
+- `getParticipantId()`: `int`
+- `getCoachId()`: `?int`
+- `getSection()`: `?string`
+- `getPlayerName()`: `?string`
+- `getRelatedPlayerName()`: `?string`
+- `getResult()`: `?string`
+- `getInfo()`: `?string`
+- `getAdditionalInfo()`: `?string`
+- `getMinute()`: `?int`
+- `getExtraMinute()`: `?int`
+- `isInjured()`: `?bool`
+- `isOnBench()`: `?bool`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getType()`: [`?Type`](#type)
+- `getSubType()`: [`?Type`](#type)
+- `getPlayer()`: [`?Player`](#player)
+- `getRelatedPlayer()`: [`?Player`](#player)
+- `getParticipant()`: [`?Team`](#team)
+
 ### Fixture
 
 - `getId()`: `int`
@@ -202,6 +241,83 @@
 - `getSport()`: [`?Sport`](#sport)
 - `getStage()`: [`?Stage`](#stage)
 - `getLeague()`: [`?League`](#league)
+- `getRound()`: [`?Round`](#round)
+- `getGroup()`: [`?Group`](#group)
+- `getAggregate()`: [`?Aggregate`](#aggregate)
+- `getSeason()`: [`?Season`](#season)
+- `getVenue()`: [`?Venue`](#venue)
+- `getState()`: [`?State`](#state)
+- `getLineups()`: [`?Lineup[]`](#lineup)
+- `getComments()`: [`?Commentary[]`](#commentary)
+- `getParticipants()`: [`?Participant[]`](#team)
+- `getOdds()`: [`?Odd[]`](#odd)
+- `getMetadata()`: [`?Metadata[]`](#metadata)
+- `getWeatherReport()`: [`?WeatherReport`](#weatherreport)
+- `getEvents()`: [`?Event[]`](#event)
+- `getTimeline()`: [`?Event[]`](#event)
+- `getEvents()`: [`?Event[]`](#event)
+- `getStatistics()`: [`?FixtureStatistic[]`](#fixturestatistic)
+- `getPeriods()`: [`?Period[]`](#period)
+- `getFormations()`: [`?Formation[]`](#formation)
+- `getScores()`: [`?Score[]`](#score)
+- `getTvStations()`: [`?FixtureTvStation[]`](#fixturetvstation)
+- `getReferees()`: [`?FixtureReferee[]`](#fixturereferee)
+- `getSidelined()`: [`?FixtureSidelined[]`](#fixturesidelined)
+
+### FixtureReferee
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getRefereeId()`: `int`
+- `getTypeId()`: `int`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getReferee()`: [`?Referee`](#referee)
+- `getType()`: [`?Type`](#type)
+
+### FixtureSidelined
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getSidelinedId()`: `int`
+- `getParticipantId()`: `int`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getSidelined()`: [`?Sidelined`](#sidelined)
+- `getParticipant()`: [`?Team`](#team)
+
+### FixtureTvStation
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getTvStationId()`: `int`
+- `getCountryId()`: `int`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getTvStation()`: [`?TvStation`](#tvstation)
+- `getCountry()`: [`?Country`](#country)
+
+### FixtureStatistic
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getTypeId()`: `int`
+- `getFixtureStatisticsId()`: `?int`
+- `getParticipantId()`: `?int`
+- `getPeriodId()`: `?int`
+- `getData()`: `?array`
+- `getLocation()`: `?string`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getType()`: [`?Type`](#type)
+- `getPeriod()`: [`?Period`](#period)
+- `getParticipant()`: [`?Team`](#team)
+
+### Formation
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getParticipantId()`: `int`
+- `getFormation()`: `?string`
+- `getLocation()`: `?string`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getParticipant()`: [`?Team`](#team)
 
 ### Group
 
@@ -280,6 +396,27 @@
 - `getTeam()`: [`?Team`](#team)
 - `getLeague()`: [`?League`](#league)
 - `getSeason()`: [`?Season`](#season)
+
+### Period
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getTypeId()`: `int`
+- `getStartedAt()`: `?\DateTimeImmutable`
+- `getEndedAt()`: `?\DateTimeImmutable`
+- `getCountsFrom()`: `?int`
+- `isTicking()`: `?bool`
+- `getSortOrder()`: `?int`
+- `getDescription()`: `?string`
+- `getTimeAdded()`: `?int`
+- `getPeriodLength()`: `?int`
+- `getMinutes()`: `?int`
+- `getSeconds()`: `?int`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getType()`: [`?Type`](#type)
+- `getEvents()`: [`?Event[]`](#event)
+- `getTimeline()`: [`?Event[]`](#event)
+- `getStatistics()`: [`?FixtureStatistic[]`](#fixturestatistic)
 
 ### Player
 
@@ -403,6 +540,19 @@
 - `getSeason()`: [`?Season`](#season)
 - `getStage()`: [`?Stage`](#stage)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
+
+### Score
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getTypeId()`: `int`
+- `getParticipantId()`: `int`
+- `getGoals()`: `?int`
+- `getLocation()`: `?string`
+- `getDescription()`: `?string`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getParticipant()`: [`?Team`](#team)
+- `getType()`: [`?Type`](#type)
 
 ### Season
 
@@ -590,6 +740,13 @@
 - `getSidelinedHistory()`: [`?Sidelined[]`](#sidelined)
 - `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
 - `getSocials()`: [`?Social[]`](#social)
+- `getMeta()`: [`?TeamMeta`](#teammeta)
+
+### TeamMeta
+
+- `getLocation()`: `string`
+- `isWinner()`: `bool`
+- `getPosition()`: `int`
 
 ### TeamStatistic
 
@@ -626,6 +783,13 @@
 - `getPosition()`: [`?Type`](#type)
 - `getDetailedPosition()`: [`?Type`](#type)
 - `getTransfer()`: [`?Transfer`](#transfer)
+
+### Temperature
+
+- `getMorning()`: `float`
+- `getDay()`: `float`
+- `getEvening()`: `float`
+- `getNight()`: `float`
 
 ### Topscorer
 
@@ -692,6 +856,30 @@
 - `getCountry()`: [`?Country`](#country)
 - `getCity()`: [`?City`](#city)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
+
+### WeatherReport
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getVenueId()`: `int`
+- `getTemperature()`: [`?Temperature`](#temperature)
+- `getFeelsLike()`: [`?Temperature`](#temperature)
+- `getWind()`: [`?Wind`](#wind)
+- `getHumidity()`: `?string`
+- `getPressure()`: `?int`
+- `getClouds()`: `?string`
+- `getDescription()`: `?string`
+- `getIcon()`: `?string`
+- `getType()`: `?string`
+- `getMetric()`: `?string`
+- `isCurrent()`: `?bool`
+- `getVenue()`: [`?Venue`](#venue)
+- `getFixture()`: [`?Fixture[]`](#fixture)
+
+### Wind
+
+- `getSpeed()`: `float`
+- `getDirection()`: `int`
 
 ## Odds Entities
 

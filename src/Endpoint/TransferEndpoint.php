@@ -97,7 +97,7 @@ class TransferEndpoint extends AbstractEndpoint
      * @throws ValidationException
      * @throws ApiErrorException
      */
-    public function getAllBetweenDateRange(
+    public function getAllByDateRange(
         \DateTimeInterface $startDate,
         \DateTimeInterface $endDate,
         int $page = 1,
@@ -105,7 +105,7 @@ class TransferEndpoint extends AbstractEndpoint
         string $order = Pagination::ORDER_ASC
     ): TransferCollection
     {
-        $this->validateDateRange($startDate, $endDate);
+        $this->validateDateRange($startDate, $endDate, maxDays: 31);
         $this->validatePagination($page, $perPage, $order);
 
         $response = $this->sendRequest(
