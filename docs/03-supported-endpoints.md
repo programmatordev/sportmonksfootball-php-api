@@ -1424,16 +1424,16 @@ foreach ($transfers->getData() as $transfer) {
 }
 ```
 
-#### `getAllBetweenDateRange`
+#### `getAllByDateRange`
 
 ```php
-getAllBetweenDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate, int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
+getAllByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate, int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
 ```
 
-Get all transfers between a date range:
+Get all transfers by date range:
 
 ```php
-$transfers = $sportMonksFootball->transfers()->getAllBetweenDateRange(new DateTime('-7 days'), new DateTime('today'));
+$transfers = $sportMonksFootball->transfers()->getAllByDateRange(new DateTime('-7 days'), new DateTime('today'));
 
 foreach ($transfers->getData() as $transfer) {
     echo $transfer->getPlayerId();

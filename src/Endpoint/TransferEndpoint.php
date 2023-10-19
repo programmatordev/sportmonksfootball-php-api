@@ -97,7 +97,7 @@ class TransferEndpoint extends AbstractEndpoint
      * @throws ValidationException
      * @throws ApiErrorException
      */
-    public function getAllBetweenDateRange(
+    public function getAllByDateRange(
         \DateTimeInterface $startDate,
         \DateTimeInterface $endDate,
         int $page = 1,

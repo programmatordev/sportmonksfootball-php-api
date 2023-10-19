@@ -45,10 +45,10 @@ class TransferEndpointTest extends AbstractTest
             Transfer::class,
             'assertResponse'
         ];
-        yield 'get all between date range' => [
+        yield 'get all by date range' => [
             MockResponse::TRANSFER_COLLECTION_DATA,
             'transfers',
-            'getAllBetweenDateRange',
+            'getAllByDateRange',
             [new \DateTime('yesterday'), new \DateTime('today')],
             Transfer::class,
             'assertResponse'
@@ -75,14 +75,28 @@ class TransferEndpointTest extends AbstractTest
     {
         yield 'get all' => ['transfers', 'getAll', []];
         yield 'get all latest' => ['transfers', 'getAllLatest', []];
-        yield 'get all between date range' => ['transfers', 'getAllBetweenDateRange', [new \DateTime('yesterday'), new \DateTime('today')]];
+        yield 'get all by date range' => ['transfers', 'getAllByDateRange', [new \DateTime('yesterday'), new \DateTime('today')]];
         yield 'get all by team id' => ['transfers', 'getAllByTeamId', [1]];
         yield 'get all by player id' => ['transfers', 'getAllByPlayerId', [1]];
     }
 
     public static function provideEndpointInvalidDateRangeData(): \Generator
     {
-        yield 'get all between date range' => ['transfers', 'getAllBetweenDateRange'];
+        yield 'get all by date range, start date greater than end date' => [
+            'transfers',
+            'getAllByDateRange',
+            [new \DateTime('-5 days'), new \DateTime('-10 days')]
+        ];
+        yield 'get all by date range, end date greater than today date' => [
+            'transfers',
+            'getAllByDateRange',
+            [new \DateTime('yesterday'), new \DateTime('tomorrow')]
+        ];
+        yield 'get all by date range, date range greater than 31 days' => [
+            'transfers',
+            'getAllByDateRange',
+            [new \DateTime('-32 days'), new \DateTime('today')]
+        ];
     }
 
 
