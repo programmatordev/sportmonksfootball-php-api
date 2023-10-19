@@ -97,6 +97,15 @@ class Fixture
     /** @var ?Score[] */
     private ?array $scores;
 
+    /** @var ?FixtureTvStation[] */
+    private ?array $tvStations;
+
+    /** @var ?FixtureReferee[] */
+    private ?array $referees;
+
+    /** @var ?FixtureSidelined[] */
+    private ?array $sidelined;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -142,8 +151,11 @@ class Fixture
         $this->periods = isset($data['periods']) ? $this->createEntityCollection(Period::class, $data['periods']) : null;
         $this->formations = isset($data['formations']) ? $this->createEntityCollection(Formation::class, $data['formations']) : null;
         $this->scores = isset($data['scores']) ? $this->createEntityCollection(Score::class, $data['scores']) : null;
+        $this->tvStations = isset($data['tvstations']) ? $this->createEntityCollection(FixtureTvStation::class, $data['tvstations']) : null;
+        $this->referees = isset($data['referees']) ? $this->createEntityCollection(FixtureReferee::class, $data['referees']) : null;
+        $this->sidelined = isset($data['sidelined']) ? $this->createEntityCollection(FixtureSidelined::class, $data['sidelined']) : null;
 
-        // TODO trends, inplayOdds, prematchNews, tvStations (?), predictions, referees (?), ballCoordinates, sidelined (?)
+        // TODO trends, inplayOdds, prematchNews, predictions, ballCoordinates
     }
 
     public function getId(): int
@@ -339,5 +351,20 @@ class Fixture
     public function getScores(): ?array
     {
         return $this->scores;
+    }
+
+    public function getTvStations(): ?array
+    {
+        return $this->tvStations;
+    }
+
+    public function getReferees(): ?array
+    {
+        return $this->referees;
+    }
+
+    public function getSidelined(): ?array
+    {
+        return $this->sidelined;
     }
 }
