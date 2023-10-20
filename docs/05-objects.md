@@ -571,6 +571,7 @@
 - `getSeason()`: [`?Season`](#season)
 - `getStage()`: [`?Stage`](#stage)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
+- `getStatistics()`: [`?Statistic[]`](#statistic)
 
 ### Score
 

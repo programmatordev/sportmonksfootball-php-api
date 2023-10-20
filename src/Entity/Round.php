@@ -41,6 +41,9 @@ class Round
     /** @var ?Fixture[] */
     private ?array $fixtures;
 
+    /** @var ?Statistic[] */
+    private ?array $statistics;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -63,8 +66,7 @@ class Round
         $this->season = isset($data['season']) ? new Season($data['season']) : null;
         $this->stage = isset($data['stage']) ? new Stage($data['stage']) : null;
         $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
-
-        // TODO statistics
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(Statistic::class, $data['statistics']) : null;
     }
 
     public function getId(): int
@@ -145,5 +147,10 @@ class Round
     public function getFixtures(): ?array
     {
         return $this->fixtures;
+    }
+
+    public function getStatistics(): ?array
+    {
+        return $this->statistics;
     }
 }
