@@ -607,6 +607,8 @@
 - `getFixtures()`: [`?Fixture[]`](#fixture)
 - `getTeams()`: [`?Team[]`](#team)
 - `getGroups()`: [`?Group[]`](#group)
+- `getStatistics()`: [`?Statistic[]`](#statistic)
+- `getTopscorers()`: [`?Topscorer[]`](#topscorer)
 
 ### Sidelined
 
