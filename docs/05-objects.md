@@ -178,7 +178,7 @@
 - `getSeasonId()`: `int`
 - `getCoachId()`: `int`
 - `getTeamId()`: `int`
-- `getDetails()`: [`CoachStatisticDetail[]`](#coachstatisticdetail)
+- `getDetails()`: [`?CoachStatisticDetail[]`](#coachstatisticdetail)
 - `getSeason()`: [`?Season`](#season)
 - `getCoach()`: [`?Coach`](#coach)
 - `getTeam()`: [`?Team`](#team)
@@ -190,6 +190,20 @@
 - `getTypeId()`: `int`
 - `getValue()`: `array`
 - `getType()`: [`?Type`](#type)
+
+### CoachTeam
+
+- `getId()`: `int`
+- `getTeamId()`: `int`
+- `getCoachId()`: `int`
+- `getPositionId()`: `int`
+- `isActive()`: `?bool`
+- `getStartedAt()`: `?\DateTimeImmutable`
+- `getEndedAt()`: `?\DateTimeImmutable`
+- `isTemporary()`: `?bool`
+- `getTeam()`: [`?Team`](#team)
+- `getCoach()`: [`?Coach`](#coach)
+- `getPosition()`: [`?Type`](#type)
 
 ### Event
 

@@ -54,6 +54,12 @@ class Coach
     /** @var ?Fixture[] */
     private ?array $fixtures;
 
+    /** @var ?CoachTeam[] */
+    private ?array $teams;
+
+    /** @var ?CoachStatistic[] */
+    private ?array $statistics;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -82,8 +88,8 @@ class Coach
         $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies']) : null;
         $this->player = isset($data['player']) ? new Player($data['player']) : null;
         $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
-
-        // TODO teams(?), statistics
+        $this->teams = isset($data['teams']) ? $this->createEntityCollection(CoachTeam::class, $data['teams']) : null;
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(CoachStatistic::class, $data['statistics']) : null;
     }
 
     public function getId(): int
@@ -194,5 +200,15 @@ class Coach
     public function getFixtures(): ?array
     {
         return $this->fixtures;
+    }
+
+    public function getTeams(): ?array
+    {
+        return $this->teams;
+    }
+
+    public function getStatistics(): ?array
+    {
+        return $this->statistics;
     }
 }
