@@ -77,6 +77,9 @@ class Player
     /** @var ?Metadata[] */
     private ?array $metadata;
 
+    /** @var ?PlayerStatistic[] */
+    private ?array $statistics;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -114,8 +117,7 @@ class Player
         $this->lineups = isset($data['lineups']) ? $this->createEntityCollection(Lineup::class, $data['lineups']) : null;
         $this->latestLineups = isset($data['latest']) ? $this->createEntityCollection(Lineup::class, $data['latest']) : null;
         $this->metadata = isset($data['metadata']) ? $this->createEntityCollection(Metadata::class, $data['metadata']) : null;
-
-        // TODO statistics
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(PlayerStatistic::class, $data['statistics']) : null;
     }
 
     public function getId(): int
@@ -271,5 +273,10 @@ class Player
     public function getMetadata(): ?array
     {
         return $this->metadata;
+    }
+
+    public function getStatistics(): ?array
+    {
+        return $this->statistics;
     }
 }

@@ -12,8 +12,8 @@ class CoachStatistic extends ParticipantStatistic
 
     private int $teamId;
 
-    /** @var CoachStatisticDetail[] */
-    private array $details;
+    /** @var ?CoachStatisticDetail[] */
+    private ?array $details;
 
     private ?Coach $coach;
 
@@ -25,9 +25,9 @@ class CoachStatistic extends ParticipantStatistic
 
         $this->coachId = $data['coach_id'];
         $this->teamId = $data['team_id'];
-        $this->details = $this->createEntityCollection(CoachStatisticDetail::class, $data['details']);
 
         // include
+        $this->details = isset($data['details']) ? $this->createEntityCollection(CoachStatisticDetail::class, $data['details']) : null;
         $this->coach = isset($data['coach']) ? new Coach($data['coach']) : null;
         $this->team = isset($data['team']) ? new Team($data['team']) : null;
     }
@@ -42,7 +42,7 @@ class CoachStatistic extends ParticipantStatistic
         return $this->teamId;
     }
 
-    public function getDetails(): array
+    public function getDetails(): ?array
     {
         return $this->details;
     }

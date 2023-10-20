@@ -10,8 +10,8 @@ class RefereeStatistic extends ParticipantStatistic
 
     private int $refereeId;
 
-    /** @var RefereeStatisticDetail[] */
-    private array $details;
+    /** @var ?RefereeStatisticDetail[] */
+    private ?array $details;
 
     private ?Referee $referee;
 
@@ -20,9 +20,9 @@ class RefereeStatistic extends ParticipantStatistic
         parent::__construct($data);
 
         $this->refereeId = $data['referee_id'];
-        $this->details = $this->createEntityCollection(RefereeStatisticDetail::class, $data['details']);
 
         // include
+        $this->details = isset($data['details']) ? $this->createEntityCollection(RefereeStatisticDetail::class, $data['details']) : null;
         $this->referee = isset($data['referee']) ? new Referee($data['referee']) : null;
     }
 
@@ -31,7 +31,7 @@ class RefereeStatistic extends ParticipantStatistic
         return $this->refereeId;
     }
 
-    public function getDetails(): array
+    public function getDetails(): ?array
     {
         return $this->details;
     }

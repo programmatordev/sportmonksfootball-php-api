@@ -27,9 +27,12 @@ class Statistic
         $this->value = $data['value'];
 
         // include
-        $this->type = isset($data['type']) ? new Type($data['type']) : null;
+        // Season uses "statistic_type" instead of "type"
+        $this->type = (isset($data['type']) && \is_array($data['type'])) || isset($data['statistic_type'])
+            ? new Type($data['statistic_type'] ?? $data['type'])
+            : null;
+        // try to find if participant is Player or Team through value
         $this->participant = isset($data['participant'])
-            // try to find if participant is Player or Team through value
             ? (isset($this->value['player_id']) ? new Player($data['participant']) : new Team($data['participant']))
             : null;
     }

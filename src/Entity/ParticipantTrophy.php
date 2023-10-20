@@ -20,6 +20,8 @@ class ParticipantTrophy
 
     private ?Season $season;
 
+    private ?Trophy $trophy;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -32,8 +34,7 @@ class ParticipantTrophy
         $this->team = isset($data['team']) ? new Team($data['team']) : null;
         $this->league = isset($data['league']) ? new League($data['league']) : null;
         $this->season = isset($data['season']) ? new Season($data['season']) : null;
-
-        // TODO trophy
+        $this->trophy = isset($data['trophy']) ? new Trophy($data['trophy']) : null;
     }
 
     public function getId(): int
@@ -74,5 +75,10 @@ class ParticipantTrophy
     public function getSeason(): ?Season
     {
         return $this->season;
+    }
+
+    public function getTrophy(): ?Trophy
+    {
+        return $this->trophy;
     }
 }

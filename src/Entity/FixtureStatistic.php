@@ -10,7 +10,7 @@ class FixtureStatistic
 
     private int $typeId;
 
-    private ?int $fixtureStatisticsId;
+    private ?int $fixtureStatisticId;
 
     private ?int $participantId;
 
@@ -35,7 +35,7 @@ class FixtureStatistic
         $this->typeId = $data['type_id'];
 
         // select
-        $this->fixtureStatisticsId = $data['fixture_statistics_id'] ?? null;
+        $this->fixtureStatisticId = $data['fixture_statistics_id'] ?? null;
         $this->participantId = $data['participant_id'] ?? null;
         $this->periodId = $data['period_id'] ?? null;
         $this->data = $data['data'] ?? null;
@@ -63,9 +63,9 @@ class FixtureStatistic
         return $this->typeId;
     }
 
-    public function getFixtureStatisticsId(): ?int
+    public function getFixtureStatisticId(): ?int
     {
-        return $this->fixtureStatisticsId;
+        return $this->fixtureStatisticId;
     }
 
     public function getParticipantId(): ?int

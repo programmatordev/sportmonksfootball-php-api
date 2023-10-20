@@ -2,8 +2,12 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
+use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+
 class Lineup
 {
+    use CreateEntityCollectionTrait;
+
     private int $id;
 
     private int $fixtureId;
@@ -36,6 +40,9 @@ class Lineup
 
     private ?Type $detailedPosition;
 
+    /** @var ?LineupDetail[] */
+    private ?array $details;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -58,8 +65,7 @@ class Lineup
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
         $this->detailedPosition = isset($data['detailedposition']) ? new Type($data['detailedposition']) : null;
-
-        // TODO details
+        $this->details = isset($data['details']) ? $this->createEntityCollection(LineupDetail::class, $data['details']) : null;
     }
 
     public function getId(): int
@@ -140,5 +146,10 @@ class Lineup
     public function getDetailedPosition(): ?Type
     {
         return $this->detailedPosition;
+    }
+
+    public function getDetails(): ?array
+    {
+        return $this->details;
     }
 }

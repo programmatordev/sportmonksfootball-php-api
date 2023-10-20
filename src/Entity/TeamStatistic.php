@@ -12,8 +12,8 @@ class TeamStatistic extends ParticipantStatistic
 
     private ?bool $hasValues;
 
-    /** @var TeamStatisticDetail[] */
-    private array $details;
+    /** @var ?TeamStatisticDetail[] */
+    private ?array $details;
 
     private ?Team $team;
 
@@ -22,12 +22,12 @@ class TeamStatistic extends ParticipantStatistic
         parent::__construct($data);
 
         $this->teamId = $data['team_id'];
-        $this->details = $this->createEntityCollection(TeamStatisticDetail::class, $data['details']);
 
         // select
         $this->hasValues = $data['has_values'] ?? null;
 
         // include
+        $this->details = isset($data['details']) ? $this->createEntityCollection(TeamStatisticDetail::class, $data['details']) : null;
         $this->team = isset($data['team']) ? new Team($data['team']) : null;
     }
 
@@ -41,7 +41,7 @@ class TeamStatistic extends ParticipantStatistic
         return $this->hasValues;
     }
 
-    public function getDetails(): array
+    public function getDetails(): ?array
     {
         return $this->details;
     }

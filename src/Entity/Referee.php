@@ -2,8 +2,12 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
+use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+
 class Referee
 {
+    use CreateEntityCollectionTrait;
+
     private int $id;
 
     private int $sportId;
@@ -40,6 +44,9 @@ class Referee
 
     private ?City $city;
 
+    /** @var ?RefereeStatistic[] */
+    private ?array $statistics;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -64,8 +71,7 @@ class Referee
         $this->country = isset($data['country']) ? new Country($data['country']) : null;
         $this->nationality = isset($data['nationality']) ? new Country($data['nationality']) : null;
         $this->city = isset($data['city']) ? new City($data['city']) : null;
-
-        // TODO statistics
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(RefereeStatistic::class, $data['statistics']) : null;
     }
 
     public function getId(): int
@@ -156,5 +162,10 @@ class Referee
     public function getCity(): ?City
     {
         return $this->city;
+    }
+
+    public function getStatistics(): ?array
+    {
+        return $this->statistics;
     }
 }

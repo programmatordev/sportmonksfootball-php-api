@@ -171,6 +171,8 @@
 - `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
 - `getPlayer()`: [`?Player`](#player)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
+- `getTeams()`: [`?TeamCoach[]`](#teamcoach)
+- `getStatistics()`: [`?CoachStatistic[]`](#coachstatistic)
 
 ### CoachStatistic
 
@@ -178,7 +180,7 @@
 - `getSeasonId()`: `int`
 - `getCoachId()`: `int`
 - `getTeamId()`: `int`
-- `getDetails()`: [`CoachStatisticDetail[]`](#coachstatisticdetail)
+- `getDetails()`: [`?CoachStatisticDetail[]`](#coachstatisticdetail)
 - `getSeason()`: [`?Season`](#season)
 - `getCoach()`: [`?Coach`](#coach)
 - `getTeam()`: [`?Team`](#team)
@@ -217,6 +219,7 @@
 - `getPlayer()`: [`?Player`](#player)
 - `getRelatedPlayer()`: [`?Player`](#player)
 - `getParticipant()`: [`?Team`](#team)
+- `getPeriod()`: [`?Period`](#period)
 
 ### Fixture
 
@@ -376,6 +379,19 @@
 - `getType()`: [`?Type`](#type)
 - `getPosition()`: [`?Type`](#type)
 - `getDetailedPosition()`: [`?Type`](#type)
+- `getDetails()`: [`?LineupDetail[]`](#lineupdetail)
+
+### LineupDetail
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getPlayerId()`: `int`
+- `getTeamId()`: `int`
+- `getLineupId()`: `int`
+- `getTypeId()`: `int`
+- `getData()`: `array`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getType()`: [`?Type`](#type)
 
 ### Metadata
 
@@ -396,6 +412,7 @@
 - `getTeam()`: [`?Team`](#team)
 - `getLeague()`: [`?League`](#league)
 - `getSeason()`: [`?Season`](#season)
+- `getTrophy()`: [`?Trophy`](#trophy)
 
 ### Period
 
@@ -451,6 +468,7 @@
 - `getLineups()`: [`?Lineup[]`](#lineup)
 - `getLatestLineups()`: [`?Lineup[]`](#lineup)
 - `getMetadata()`: [`?Metadata[]`](#metadata)
+- `getStatistics()`: [`?PlayerStatistic[]`](#playerstatistic)
 
 ### PlayerStatistic
 
@@ -461,7 +479,7 @@
 - `getPositionId()`: `?int`
 - `hasValues()`: `?bool`
 - `getJerseyNumber()`: `?int`
-- `getDetails()`: [`PlayerStatisticDetail[]`](#playerstatisticdetail)
+- `getDetails()`: [`?PlayerStatisticDetail[]`](#playerstatisticdetail)
 - `getSeason()`: [`?Season`](#season)
 - `getPlayer()`: [`?Player`](#player)
 - `getTeam()`: [`?Team`](#team)
@@ -495,13 +513,14 @@
 - `getCountry()`: [`?Country`](#country)
 - `getNationality()`: [`?Country`](#country)
 - `getCity()`: [`?City`](#city)
+- `getStatistics()`: [`?RefereeStatistic[]`](#refereestatistic)
 
 ### RefereeStatistic
 
 - `getId()`: `int`
 - `getSeasonId()`: `int`
 - `getRefereeId()`: `int`
-- `getDetails()`: [`RefereeStatisticDetail[]`](#refereestatisticdetail)
+- `getDetails()`: [`?RefereeStatisticDetail[]`](#refereestatisticdetail)
 - `getSeason()`: [`?Season`](#season)
 - `getReferee()`: [`?Referee`](#referee)
 
@@ -540,6 +559,7 @@
 - `getSeason()`: [`?Season`](#season)
 - `getStage()`: [`?Stage`](#stage)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
+- `getStatistics()`: [`?Statistic[]`](#statistic)
 
 ### Score
 
@@ -575,6 +595,8 @@
 - `getFixtures()`: [`?Fixture[]`](#fixture)
 - `getTeams()`: [`?Team[]`](#team)
 - `getGroups()`: [`?Group[]`](#group)
+- `getStatistics()`: [`?Statistic[]`](#statistic)
+- `getTopscorers()`: [`?Topscorer[]`](#topscorer)
 
 ### Sidelined
 
@@ -591,6 +613,7 @@
 - `getTeam()`: [`?Team`](#team)
 - `getSeason()`: [`?Season`](#season)
 - `getType()`: [`?Type`](#type)
+- `getPlayer()`: [`?Player`](#player)
 
 ### Social
 
@@ -598,6 +621,14 @@
 - `getSocialId()`: `int`
 - `getSocialChannelId()`: `int`
 - `getValue()`: `string`
+- `getChannel()`: [`?SocialChannel`](#socialchannel)
+
+### SocialChannel
+
+- `getId()`: `int`
+- `getName()`: `?string`
+- `getBaseUrl()`: `?string`
+- `getHexColor()`: `?string`
 
 ### Stage
 
@@ -623,6 +654,8 @@
 - `getGroups()`: [`?Group[]`](#group)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
 - `getAggregates()`: [`?Aggregate[]`](#aggregate)
+- `getStatistics()`: [`?Statistic[]`](#statistic)
+- `getTopscorers()`: [`?Topscorer[]`](#topscorer)
 
 ### Standing
 
@@ -741,6 +774,22 @@
 - `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
 - `getSocials()`: [`?Social[]`](#social)
 - `getMeta()`: [`?TeamMeta`](#teammeta)
+- `getCoaches()`: [`?TeamCoach[]`](#teamcoach)
+- `getStatistics()`: [`?TeamStatistic[]`](#teamstatistic)
+
+### TeamCoach
+
+- `getId()`: `int`
+- `getTeamId()`: `int`
+- `getCoachId()`: `int`
+- `getPositionId()`: `int`
+- `isActive()`: `?bool`
+- `getStartedAt()`: `?\DateTimeImmutable`
+- `getEndedAt()`: `?\DateTimeImmutable`
+- `isTemporary()`: `?bool`
+- `getTeam()`: [`?Team`](#team)
+- `getCoach()`: [`?Coach`](#coach)
+- `getPosition()`: [`?Type`](#type)
 
 ### TeamMeta
 
@@ -754,7 +803,7 @@
 - `getSeasonId()`: `int`
 - `getTeamId()`: `int`
 - `hasValues()`: `?bool`
-- `getDetails()`: [`TeamStatisticDetail[]`](#teamstatisticdetail)
+- `getDetails()`: [`?TeamStatisticDetail[]`](#teamstatisticdetail)
 - `getSeason()`: [`?Season`](#season)
 - `getTeam()`: [`?Team`](#team)
 
@@ -828,6 +877,13 @@
 - `getPosition()`: [`?Type`](#type)
 - `getDetailedPosition()`: [`?Type`](#type)
 
+### Trophy
+
+- `getId()`: `int`
+- `getSportId()`: `?int`
+- `getPosition()`: `?int`
+- `getName()`: `?string`
+
 ### TvStation
 
 - `getId()`: `int`
@@ -837,6 +893,7 @@
 - `getType()`: `?string`
 - `getRelatedId()`: `?int`
 - `getCountries()`: [`?Country[]`](#country)
+- `getFixtures()`: [`?FixtureTvStation[]`](#fixturetvstation)
 
 ### Venue
 

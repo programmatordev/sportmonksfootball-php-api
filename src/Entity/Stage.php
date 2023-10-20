@@ -56,6 +56,12 @@ class Stage
     /** @var ?Aggregate[] */
     private ?array $aggregates;
 
+    /** @var ?Statistic[] */
+    private ?array $statistics;
+
+    /** @var ?Topscorer[] */
+    private ?array $topscorers;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -84,8 +90,8 @@ class Stage
         $this->groups = isset($data['groups']) ? $this->createEntityCollection(Group::class, $data['groups']) : null;
         $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
         $this->aggregates = isset($data['aggregates']) ? $this->createEntityCollection(Aggregate::class, $data['aggregates']) : null;
-
-        // TODO topscorers, statistics
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(Statistic::class, $data['statistics']) : null;
+        $this->topscorers = isset($data['topscorers']) ? $this->createEntityCollection(Topscorer::class, $data['topscorers']) : null;
     }
 
     public function getId(): int
@@ -196,5 +202,15 @@ class Stage
     public function getAggregates(): ?array
     {
         return $this->aggregates;
+    }
+
+    public function getStatistics(): ?array
+    {
+        return $this->statistics;
+    }
+
+    public function getTopscorers(): ?array
+    {
+        return $this->topscorers;
     }
 }
