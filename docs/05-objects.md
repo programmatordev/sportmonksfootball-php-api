@@ -171,6 +171,8 @@
 - `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
 - `getPlayer()`: [`?Player`](#player)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
+- `getTeams()`: [`?TeamCoach[]`](#teamcoach)
+- `getStatistics()`: [`?CoachStatistic[]`](#coachstatistic)
 
 ### CoachStatistic
 
@@ -190,20 +192,6 @@
 - `getTypeId()`: `int`
 - `getValue()`: `array`
 - `getType()`: [`?Type`](#type)
-
-### CoachTeam
-
-- `getId()`: `int`
-- `getTeamId()`: `int`
-- `getCoachId()`: `int`
-- `getPositionId()`: `int`
-- `isActive()`: `?bool`
-- `getStartedAt()`: `?\DateTimeImmutable`
-- `getEndedAt()`: `?\DateTimeImmutable`
-- `isTemporary()`: `?bool`
-- `getTeam()`: [`?Team`](#team)
-- `getCoach()`: [`?Coach`](#coach)
-- `getPosition()`: [`?Type`](#type)
 
 ### Event
 
@@ -786,6 +774,22 @@
 - `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
 - `getSocials()`: [`?Social[]`](#social)
 - `getMeta()`: [`?TeamMeta`](#teammeta)
+- `getCoaches()`: [`?TeamCoach[]`](#teamcoach)
+- `getStatistics()`: [`?TeamStatistic[]`](#teamstatistic)
+
+### TeamCoach
+
+- `getId()`: `int`
+- `getTeamId()`: `int`
+- `getCoachId()`: `int`
+- `getPositionId()`: `int`
+- `isActive()`: `?bool`
+- `getStartedAt()`: `?\DateTimeImmutable`
+- `getEndedAt()`: `?\DateTimeImmutable`
+- `isTemporary()`: `?bool`
+- `getTeam()`: [`?Team`](#team)
+- `getCoach()`: [`?Coach`](#coach)
+- `getPosition()`: [`?Type`](#type)
 
 ### TeamMeta
 
@@ -799,7 +803,7 @@
 - `getSeasonId()`: `int`
 - `getTeamId()`: `int`
 - `hasValues()`: `?bool`
-- `getDetails()`: [`TeamStatisticDetail[]`](#teamstatisticdetail)
+- `getDetails()`: [`?TeamStatisticDetail[]`](#teamstatisticdetail)
 - `getSeason()`: [`?Season`](#season)
 - `getTeam()`: [`?Team`](#team)
 

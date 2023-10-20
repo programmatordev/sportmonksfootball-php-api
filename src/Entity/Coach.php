@@ -54,7 +54,7 @@ class Coach
     /** @var ?Fixture[] */
     private ?array $fixtures;
 
-    /** @var ?CoachTeam[] */
+    /** @var ?TeamCoach[] */
     private ?array $teams;
 
     /** @var ?CoachStatistic[] */
@@ -88,7 +88,7 @@ class Coach
         $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies']) : null;
         $this->player = isset($data['player']) ? new Player($data['player']) : null;
         $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
-        $this->teams = isset($data['teams']) ? $this->createEntityCollection(CoachTeam::class, $data['teams']) : null;
+        $this->teams = isset($data['teams']) ? $this->createEntityCollection(TeamCoach::class, $data['teams']) : null;
         $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(CoachStatistic::class, $data['statistics']) : null;
     }
 

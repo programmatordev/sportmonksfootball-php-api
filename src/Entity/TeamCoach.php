@@ -2,7 +2,7 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-class CoachTeam
+class TeamCoach
 {
     private int $id;
 
@@ -45,5 +45,58 @@ class CoachTeam
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
     }
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
+    public function getTeamId(): int
+    {
+        return $this->teamId;
+    }
+
+    public function getCoachId(): int
+    {
+        return $this->coachId;
+    }
+
+    public function getPositionId(): int
+    {
+        return $this->positionId;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function getStartedAt(): ?\DateTimeImmutable
+    {
+        return $this->startedAt;
+    }
+
+    public function getEndedAt(): ?\DateTimeImmutable
+    {
+        return $this->endedAt;
+    }
+
+    public function isTemporary(): ?bool
+    {
+        return $this->isTemporary;
+    }
+
+    public function getTeam(): ?Team
+    {
+        return $this->team;
+    }
+
+    public function getCoach(): ?Coach
+    {
+        return $this->coach;
+    }
+
+    public function getPosition(): ?Type
+    {
+        return $this->position;
+    }
 }
