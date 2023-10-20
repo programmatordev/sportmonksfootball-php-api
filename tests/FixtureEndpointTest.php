@@ -152,7 +152,6 @@ class FixtureEndpointTest extends AbstractTest
         ];
     }
 
-
     private function assertResponse(Fixture $fixture): void
     {
         $this->assertSame(216268, $fixture->getId());
