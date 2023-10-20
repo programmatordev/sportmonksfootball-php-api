@@ -19,7 +19,7 @@ class PlayerStatistic extends ParticipantStatistic
     private ?int $jerseyNumber;
 
     /** @var PlayerStatisticDetail[] */
-    private array $details;
+    private ?array $details;
 
     private ?Player $player;
 
@@ -34,13 +34,13 @@ class PlayerStatistic extends ParticipantStatistic
         $this->playerId = $data['player_id'];
         $this->teamId = $data['team_id'];
         $this->positionId = $data['position_id'] ?? null;
-        $this->details = $this->createEntityCollection(PlayerStatisticDetail::class, $data['details']);
 
         // select
         $this->hasValues = $data['has_values'] ?? null;
         $this->jerseyNumber = $data['jersey_number'] ?? null;
 
         // include
+        $this->details = isset($data['details']) ? $this->createEntityCollection(PlayerStatisticDetail::class, $data['details']) : null;
         $this->player = isset($data['player']) ? new Player($data['player']) : null;
         $this->team = isset($data['team']) ? new Team($data['team']) : null;
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
@@ -71,7 +71,7 @@ class PlayerStatistic extends ParticipantStatistic
         return $this->jerseyNumber;
     }
 
-    public function getDetails(): array
+    public function getDetails(): ?array
     {
         return $this->details;
     }

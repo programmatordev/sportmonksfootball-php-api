@@ -480,6 +480,7 @@
 - `getLineups()`: [`?Lineup[]`](#lineup)
 - `getLatestLineups()`: [`?Lineup[]`](#lineup)
 - `getMetadata()`: [`?Metadata[]`](#metadata)
+- `getStatistics()`: [`?PlayerStatistic[]`](#playerstatistic)
 
 ### PlayerStatistic
 
@@ -490,7 +491,7 @@
 - `getPositionId()`: `?int`
 - `hasValues()`: `?bool`
 - `getJerseyNumber()`: `?int`
-- `getDetails()`: [`PlayerStatisticDetail[]`](#playerstatisticdetail)
+- `getDetails()`: [`?PlayerStatisticDetail[]`](#playerstatisticdetail)
 - `getSeason()`: [`?Season`](#season)
 - `getPlayer()`: [`?Player`](#player)
 - `getTeam()`: [`?Team`](#team)
