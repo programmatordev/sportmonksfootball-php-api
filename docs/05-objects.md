@@ -633,6 +633,14 @@
 - `getSocialId()`: `int`
 - `getSocialChannelId()`: `int`
 - `getValue()`: `string`
+- `getChannel()`: [`?SocialChannel`](#socialchannel)
+
+### SocialChannel
+
+- `getId()`: `int`
+- `getName()`: `?string`
+- `getBaseUrl()`: `?string`
+- `getHexColor()`: `?string`
 
 ### Stage
 

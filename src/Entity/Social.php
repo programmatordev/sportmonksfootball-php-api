@@ -12,6 +12,8 @@ class Social
 
     private string $value;
 
+    private ?SocialChannel $channel;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -19,7 +21,8 @@ class Social
         $this->socialChannelId = $data['social_channel_id'];
         $this->value = $data['value'];
 
-        // TODO channel
+        // include
+        $this->channel = isset($data['channel']) ? new SocialChannel($data['channel']) : null;
     }
 
     public function getId(): int
@@ -40,5 +43,10 @@ class Social
     public function getValue(): string
     {
         return $this->value;
+    }
+
+    public function getChannel(): ?SocialChannel
+    {
+        return $this->channel;
     }
 }
