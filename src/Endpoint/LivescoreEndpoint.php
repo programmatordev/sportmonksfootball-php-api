@@ -51,6 +51,9 @@ class LivescoreEndpoint extends AbstractEndpoint
      */
     public function getAllLastUpdated(): FixtureCollection
     {
+        // Force cache max age
+        $this->cacheTtl = 10;
+
         $response = $this->sendRequest(
             method: 'GET',
             path: '/v3/football/livescores/latest'

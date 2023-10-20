@@ -131,6 +131,9 @@ class PlayerEndpoint extends AbstractEndpoint
      */
     public function getAllLastUpdated(): PlayerCollection
     {
+        // Force cache max age
+        $this->cacheTtl = 3600; // 1 hour
+
         $response = $this->sendRequest(
             method: 'GET',
             path: '/v3/football/players/latest'

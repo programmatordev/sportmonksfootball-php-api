@@ -72,6 +72,9 @@ class LeagueEndpoint extends AbstractEndpoint
      */
     public function getAllLive(): LeagueCollection
     {
+        // Force cache max age
+        $this->cacheTtl = 60; // 1 minute
+
         $response = $this->sendRequest(
             method: 'GET',
             path: '/v3/football/leagues/live'

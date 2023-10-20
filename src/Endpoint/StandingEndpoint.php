@@ -104,6 +104,9 @@ class StandingEndpoint extends AbstractEndpoint
      */
     public function getAllLiveByLeagueId(int $leagueId): StandingCollection
     {
+        // Force cache max age
+        $this->cacheTtl = 60; // 1 minute
+
         $response = $this->sendRequest(
             method: 'GET',
             path: $this->formatPath('/v3/football/standings/live/leagues/{leagueId}', [

@@ -71,6 +71,7 @@ Check the [official documentation](https://docs.sportmonks.com/football/api/rate
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/coaches)
 - Cache default max age: `1 day`
+  - `getAllLastUpdated` cache max age: `1 hour`
 
 #### `getAll`
 
@@ -149,6 +150,9 @@ foreach ($coaches->getData() as $coach) {
 }
 ```
 
+> **Note**
+> Cache max age is forced to `1 hour` on this endpoint.
+
 ### Commentaries
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/commentaries)
@@ -190,6 +194,7 @@ foreach ($commentaries->getData() as $commentary) {
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/fixtures)
 - Cache default max age: `1 hour`
+  - `getAllLastUpdated` cache max age: `10 seconds`
 
 #### `getAll`
 
@@ -380,10 +385,14 @@ foreach ($fixtures->getData() as $fixture) {
 }
 ```
 
+> **Note**
+> Cache max age is forced to `10 seconds` on this endpoint.
+
 ### Leagues
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/leagues)
 - Cache default max age: `1 hour`
+  - `getAllLive` cache max age: `1 minute`
 
 #### `getAll`
 
@@ -429,6 +438,9 @@ foreach ($leagues->getData() as $league) {
     echo $league->getName();
 }
 ```
+
+> **Note**
+> Cache max age is forced to `1 minute` on this endpoint.
 
 #### `getAllByFixtureDate`
 
@@ -514,6 +526,7 @@ foreach ($leagues->getData() as $league) {
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/livescores)
 - Cache default max age: `1 minute`
+  - `getAllLastUpdated` cache max age: `10 seconds`
 
 #### `getAll`
 
@@ -563,10 +576,14 @@ foreach ($fixtures->getData() as $fixture) {
 }
 ```
 
+> **Note**
+> Cache max age is forced to `10 seconds` on this endpoint.
+
 ### Players
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/players)
 - Cache default max age: `1 day`
+  - `getAllLastUpdated` cache max age: `1 hour`
 
 #### `getAll`
 
@@ -644,6 +661,9 @@ foreach ($players->getData() as $player) {
     echo $player->getDisplayName();
 }
 ```
+
+> **Note**
+> Cache max age is forced to `1 hour` on this endpoint.
 
 ### Referees
 
@@ -1043,6 +1063,7 @@ foreach ($stages->getData() as $stage) {
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/standings)
 - Cache default max age: `1 hour`
+  - `getAllLiveByLeagueId` cache max age: `1 minute`
 
 #### `getAll`
 
@@ -1128,6 +1149,9 @@ foreach ($standings->getData() as $standing) {
     echo $standing->getPoints();
 }
 ```
+
+> **Note**
+> Cache max age is forced to `1 minute` on this endpoint.
 
 ### States
 
@@ -1764,6 +1788,7 @@ foreach ($markets->getData() as $market) {
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/pre-match-odds)
 - Cache default max age: `1 hour`
+  - `getAllLastUpdated` cache max age: `10 seconds`
 
 #### `getAll`
 
@@ -1844,6 +1869,9 @@ foreach ($odds->getData() as $odd) {
     echo $odd->getMarketDescription();
 }
 ```
+
+> **Note**
+> Cache max age is forced to `10 seconds` on this endpoint.
 
 ## Core Endpoints
 

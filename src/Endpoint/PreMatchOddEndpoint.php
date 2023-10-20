@@ -105,6 +105,9 @@ class PreMatchOddEndpoint extends AbstractEndpoint
      */
     public function getAllLastUpdated(): OddCollection
     {
+        // Force cache max age
+        $this->cacheTtl = 10;
+
         $response = $this->sendRequest(
             method: 'GET',
             path: '/v3/football/odds/pre-match/latest'
