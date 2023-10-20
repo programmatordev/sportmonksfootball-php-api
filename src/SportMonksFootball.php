@@ -11,6 +11,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\FixtureEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\LeagueEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\LivescoreEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\MarketEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\PlayerEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\PreMatchOddEndpoint;
@@ -84,6 +85,11 @@ class SportMonksFootball
     public function leagues(): LeagueEndpoint
     {
         return new LeagueEndpoint($this);
+    }
+
+    public function livescores(): LivescoreEndpoint
+    {
+        return new LivescoreEndpoint($this);
     }
 
     public function markets(): MarketEndpoint
