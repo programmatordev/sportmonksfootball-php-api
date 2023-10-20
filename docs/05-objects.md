@@ -893,6 +893,7 @@
 - `getType()`: `?string`
 - `getRelatedId()`: `?int`
 - `getCountries()`: [`?Country[]`](#country)
+- `getFixtures()`: [`?FixtureTvStation[]`](#fixturetvstation)
 
 ### Venue
 
