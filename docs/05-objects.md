@@ -525,13 +525,14 @@
 - `getCountry()`: [`?Country`](#country)
 - `getNationality()`: [`?Country`](#country)
 - `getCity()`: [`?City`](#city)
+- `getStatistics()`: [`?RefereeStatistic[]`](#refereestatistic)
 
 ### RefereeStatistic
 
 - `getId()`: `int`
 - `getSeasonId()`: `int`
 - `getRefereeId()`: `int`
-- `getDetails()`: [`RefereeStatisticDetail[]`](#refereestatisticdetail)
+- `getDetails()`: [`?RefereeStatisticDetail[]`](#refereestatisticdetail)
 - `getSeason()`: [`?Season`](#season)
 - `getReferee()`: [`?Referee`](#referee)
 

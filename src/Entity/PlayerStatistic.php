@@ -18,7 +18,7 @@ class PlayerStatistic extends ParticipantStatistic
 
     private ?int $jerseyNumber;
 
-    /** @var PlayerStatisticDetail[] */
+    /** @var ?PlayerStatisticDetail[] */
     private ?array $details;
 
     private ?Player $player;

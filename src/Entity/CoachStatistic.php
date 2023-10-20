@@ -12,7 +12,7 @@ class CoachStatistic extends ParticipantStatistic
 
     private int $teamId;
 
-    /** @var CoachStatisticDetail[] */
+    /** @var ?CoachStatisticDetail[] */
     private ?array $details;
 
     private ?Coach $coach;
