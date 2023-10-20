@@ -52,6 +52,8 @@ class Event
 
     private ?Team $participant;
 
+    private ?Period $period;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -82,8 +84,7 @@ class Event
         $this->player = isset($data['player']) ? new Player($data['player']) : null;
         $this->relatedPlayer = isset($data['relatedplayer']) ? new Player($data['relatedplayer']) : null;
         $this->participant = isset($data['participant']) ? new Team($data['participant']) : null;
-
-        // TODO period
+        $this->period = isset($data['period']) ? new Period($data['period']) : null;
     }
 
     public function getId(): int
@@ -204,5 +205,10 @@ class Event
     public function getParticipant(): ?Team
     {
         return $this->participant;
+    }
+
+    public function getPeriod(): ?Period
+    {
+        return $this->period;
     }
 }

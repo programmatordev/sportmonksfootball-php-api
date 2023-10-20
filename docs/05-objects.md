@@ -231,6 +231,7 @@
 - `getPlayer()`: [`?Player`](#player)
 - `getRelatedPlayer()`: [`?Player`](#player)
 - `getParticipant()`: [`?Team`](#team)
+- `getPeriod()`: [`?Period`](#period)
 
 ### Fixture
 
