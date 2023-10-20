@@ -6,6 +6,7 @@
   - [Commentaries](#commentaries)
   - [Fixtures](#fixtures)
   - [Leagues](#leagues)
+  - [Livescores](#livescores)
   - [Players](#players)
   - [Referees](#referees)
   - [Rivals](#rivals)
@@ -506,6 +507,59 @@ $leagues = $sportMonksFootball->leagues()->getAllCurrentByTeamId(1);
 
 foreach ($leagues->getData() as $league) {
     echo $league->getName();
+}
+```
+
+### Livescores
+
+- [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/livescores)
+- Cache default max age: `1 minute`
+
+#### `getAll`
+
+```php
+getAll(): FixtureCollection
+```
+
+Get all fixtures of the current day:
+
+```php
+$fixtures = $sportMonksFootball->livescores()->getAll();
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllInplay`
+
+```php
+getAllInplay(): FixtureCollection
+```
+
+Get all fixtures that are already live, that will start within 15 minutes or that have finished in the past 15 minutes:
+
+```php
+$fixtures = $sportMonksFootball->livescores()->getAllInplay();
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
+}
+```
+
+#### `getAllLastUpdated`
+
+```php
+getAllLastUpdated(): FixtureCollection
+```
+
+Get all fixtures that received updates in the last 10 seconds:
+
+```php
+$fixtures = $sportMonksFootball->livescores()->getAllLastUpdated();
+
+foreach ($fixtures->getData() as $fixture) {
+    echo $fixture->getName();
 }
 ```
 
