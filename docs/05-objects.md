@@ -625,6 +625,7 @@
 - `getTeam()`: [`?Team`](#team)
 - `getSeason()`: [`?Season`](#season)
 - `getType()`: [`?Type`](#type)
+- `getPlayer()`: [`?Player`](#player)
 
 ### Social
 

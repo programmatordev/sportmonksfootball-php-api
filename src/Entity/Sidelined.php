@@ -30,6 +30,8 @@ class Sidelined
 
     private ?Type $type;
 
+    private ?Player $player;
+
     public function __construct(array $data)
     {
         $this->id = $data['id'];
@@ -49,8 +51,7 @@ class Sidelined
         $this->team = isset($data['team']) ? new Team($data['team']) : null;
         $this->season = isset($data['season']) ? new Season($data['season']) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
-
-        // TODO player
+        $this->player = isset($data['player']) ? new Player($data['player']) : null;
     }
 
     public function getId(): int
@@ -116,5 +117,10 @@ class Sidelined
     public function getType(): ?Type
     {
         return $this->type;
+    }
+
+    public function getPlayer(): ?Player
+    {
+        return $this->player;
     }
 }
