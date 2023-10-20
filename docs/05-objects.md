@@ -424,6 +424,7 @@
 - `getTeam()`: [`?Team`](#team)
 - `getLeague()`: [`?League`](#league)
 - `getSeason()`: [`?Season`](#season)
+- `getTrophy()`: [`?Trophy`](#trophy)
 
 ### Period
 
@@ -855,6 +856,13 @@
 - `getToTeam()`: [`?Team`](#team)
 - `getPosition()`: [`?Type`](#type)
 - `getDetailedPosition()`: [`?Type`](#type)
+
+### Trophy
+
+- `getId()`: `int`
+- `getSportId()`: `?int`
+- `getPosition()`: `?int`
+- `getName()`: `?string`
 
 ### TvStation
 
