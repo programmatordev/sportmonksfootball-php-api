@@ -391,6 +391,19 @@
 - `getType()`: [`?Type`](#type)
 - `getPosition()`: [`?Type`](#type)
 - `getDetailedPosition()`: [`?Type`](#type)
+- `getDetails()`: [`?LineupDetail[]`](#lineupdetail)
+
+### LineupDetail
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getPlayerId()`: `int`
+- `getTeamId()`: `int`
+- `getLineupId()`: `int`
+- `getTypeId()`: `int`
+- `getData()`: `array`
+- `getFixture()`: [`?Fixture`](#fixture)
+- `getType()`: [`?Type`](#type)
 
 ### Metadata
 
