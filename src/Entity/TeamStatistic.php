@@ -41,7 +41,7 @@ class TeamStatistic extends ParticipantStatistic
         return $this->hasValues;
     }
 
-    public function getDetails(): array
+    public function getDetails(): ?array
     {
         return $this->details;
     }

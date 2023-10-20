@@ -42,7 +42,7 @@ class CoachStatistic extends ParticipantStatistic
         return $this->teamId;
     }
 
-    public function getDetails(): array
+    public function getDetails(): ?array
     {
         return $this->details;
     }
