@@ -666,6 +666,8 @@
 - `getGroups()`: [`?Group[]`](#group)
 - `getFixtures()`: [`?Fixture[]`](#fixture)
 - `getAggregates()`: [`?Aggregate[]`](#aggregate)
+- `getStatistics()`: [`?Statistic[]`](#statistic)
+- `getTopscorers()`: [`?Topscorer[]`](#topscorer)
 
 ### Standing
 
