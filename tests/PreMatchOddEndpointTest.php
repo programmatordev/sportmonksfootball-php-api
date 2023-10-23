@@ -69,7 +69,7 @@ class PreMatchOddEndpointTest extends AbstractTest
         $this->assertSame('Home', $odd->getLabel());
         $this->assertSame('1.48', $odd->getValue());
         $this->assertSame('Home', $odd->getName());
-        $this->assertSame(null, $odd->getOrder());
+        $this->assertSame(null, $odd->getSortOrder());
         $this->assertSame('Match Winner', $odd->getMarketDescription());
         $this->assertSame('67.57%', $odd->getProbability());
         $this->assertSame('1.480', $odd->getDp3());

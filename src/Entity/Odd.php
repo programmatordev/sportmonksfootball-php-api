@@ -18,7 +18,7 @@ class Odd
 
     private ?string $name;
 
-    private ?int $order;
+    private ?int $sortOrder;
 
     private ?string $marketDescription;
 
@@ -65,7 +65,7 @@ class Odd
         $this->label = $data['label'] ?? null;
         $this->value = $data['value'] ?? null;
         $this->name = $data['name'] ?? null;
-        $this->order = $data['sort_order'] ?? null;
+        $this->sortOrder = $data['sort_order'] ?? null;
         $this->marketDescription = $data['market_description'] ?? null;
         $this->probability = $data['probability'] ?? null;
         $this->dp3 = $data['dp3'] ?? null;
@@ -122,9 +122,9 @@ class Odd
         return $this->name;
     }
 
-    public function getOrder(): ?int
+    public function getSortOrder(): ?int
     {
-        return $this->order;
+        return $this->sortOrder;
     }
 
     public function getMarketDescription(): ?string
