@@ -1,8 +1,8 @@
 # Objects
 
 - [Response Entities](#response-entities)
-  - [&lt;Entity&gt;Item](#ltentitygtitem)
-  - [&lt;Entity&gt;Collection](#ltentitygtcollection)
+  - [&lt;Entity&gt;Item](#entityitem)
+  - [&lt;Entity&gt;Collection](#entitycollection)
   - [Pagination](#pagination)
   - [Plan](#plan)
   - [RateLimit](#ratelimit)

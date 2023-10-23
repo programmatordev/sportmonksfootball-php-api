@@ -45,19 +45,19 @@
 
 ## Responses
 
-All successful responses will return an [`<Entity>Item`](05-objects.md#ltentitygtitem) or an [`<Entity>Collection`](05-objects.md#ltentitygtcollection).
+All successful responses will return an [`<Entity>Item`](05-objects.md#entityitem) or an [`<Entity>Collection`](05-objects.md#entitycollection).
 
-One of the differences between an [`<Entity>Item`](05-objects.md#ltentitygtitem) and an [`<Entity>Collection`](05-objects.md#ltentitygtcollection)
-is that the [`<Entity>Item`](05-objects.md#ltentitygtitem) `getData()` method will return a single _Entity_ object,
-while the [`<Entity>Collection`](05-objects.md#ltentitygtcollection) `getData()` method will return an array of _Entity_ objects.
+One of the differences between an [`<Entity>Item`](05-objects.md#entityitem) and an [`<Entity>Collection`](05-objects.md#entitycollection)
+is that the [`<Entity>Item`](05-objects.md#entityitem) `getData()` method will return a single _Entity_ object,
+while the [`<Entity>Collection`](05-objects.md#entitycollection) `getData()` method will return an array of _Entity_ objects.
 
-For example, when requesting a continent by id, the response will be a `ContinentItem` object and the `getData()` method will return a [`Continent`](05-objects.md#continent) object.
-The same way that when requesting all continents, the response will be a `ContinentCollection` object and the `getData()` method will return an array of [`Continent`](05-objects.md#continent) objects.
+For example, when requesting a fixture by id, the response will be a `FixtureItem` object and the `getData()` method will return a [`Fixture`](05-objects.md#fixture) object.
+The same way that when requesting all fixtures, the response will be a `FixtureCollection` object and the `getData()` method will return an array of [`Fixture`](05-objects.md#fixture) objects.
 Check the [responses objects](05-objects.md#response-entities) for more information.
 
 ### Pagination
 
-All [`<Entity>Collection`](05-objects.md#ltentitygtcollection) responses have the `getPagination()` method
+All [`<Entity>Collection`](05-objects.md#entitycollection) responses have the `getPagination()` method
 that returns all the available pagination data.
 
 ### Rate Limit
