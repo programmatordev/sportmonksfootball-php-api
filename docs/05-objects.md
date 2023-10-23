@@ -129,9 +129,9 @@
 - `getResult()`: `?string`
 - `getDetail()`: `?string`
 - `getWinnerParticipantId()`: `?int`
-- `getLeague()`: [`?League`](#league)
-- `getSeason()`: [`?Season`](#season)
-- `getStage()`: [`?Stage`](#stage)
+- `getLeague()`: [`?League`](#league) (`league` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getStage()`: [`?Stage`](#stage) (`stage` include is required)
 
 ### Commentary
 
