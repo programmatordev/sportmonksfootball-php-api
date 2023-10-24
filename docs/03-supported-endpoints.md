@@ -2199,13 +2199,97 @@ foreach ($entities->getData() as $entity) {
 
 #### `withSelect`
 
+```php
+/** @param string[] $select **/
+withSelect(array $select): self
+```
+
+It is possible to request only specific fields on entities and on includes.
+The advantage of selecting specific fields is that it reduces the response speed in mainly large responses. 
+In addition to reducing response time, the response size is also reduced.
+
+For selecting fields on includes, check the [`withInclude`](#withinclude) section.
+
+```php
+// Get fixture with fields "name" and "starting_at" only
+$fixture = $sportMonksFootball->fixtures()
+    ->withSelect(['name', 'starting_at'])
+    ->getById(1);
+```
+
 #### `withInclude`
 
+```php
+/** @param string[] $include **/
+withInclude(array $include): self
+```
+
+Includes allow to enrich the response with relational data.
+This means that it is possible to request a fixture and have the venue data in the same response without any additional requests.
+To check what includes ara available per endpoint, check the [official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints).
+
+```php
+// Get fixture with "venue" and "participants" (teams) data
+$fixture = $sportMonksFootball->fixtures()
+    ->withInclude(['venue', 'participants'])
+    ->getById(1);
+
+// It is also possible to nest includes
+// This will return venue data and country data inside the venue
+$fixture = $sportMonksFootball->fixtures()
+    ->withInclude(['venue.country'])
+    ->getById(1);
+```
+
+To better understand how it works, check the [official documentation](https://docs.sportmonks.com/football/tutorials-and-guides/tutorials/enrich-your-response).
+
+To select fields in includes (similar to the [`withSelect`](#withselect)), you can do the following:
+
+```php
+// Get fixture with "venue" data with fields "name" and "city_name" only
+$fixture = $sportMonksFootball->fixtures()
+    ->withInclude(['venue:name,city_name'])
+    ->getById(1);
+```
+
 #### `withFilters`
+
+```php
+/** @param array<string, string|int> $filters **/
+withFilters(array $filters): self
+```
+
+Filters are useful to make conditional requests. For example, get fixture events that are only goals:
+
+```php
+// Get fixture with "events" that are only goals, own goals or penalties.
+$fixture = $sportMonksFootball->fixtures()
+    ->withInclude(['events'])
+    ->withFilters(['eventTypes' => '14,15,16'])
+    ->getById(1);
+```
+
+To better understand how it works, check the [official documentation](https://docs.sportmonks.com/football/api/request-options/filtering).
 
 ## Timezone, Language and Cache TTL
 
 #### `withTimezone`
+
+```php
+withTimezone(string $timezone): self
+```
+
+Makes a request with a different timezone from the one globally defined in the [configuration](02-configuration.md#timezone).
+
+Only available for endpoints that contain Fixtures or Livescores.
+Check the [official documentation](https://docs.sportmonks.com/football/tutorials-and-guides/tutorials/timezone-parameters-on-different-endpoints) for more information.
+
+```php
+// Get all fixtures in the Europe/Lisbon timezone
+$fixtures = $sportMonksFootball->fixtures()
+    ->withTimezone('Europe/Lisbon')
+    ->getAll();
+```
 
 #### `withLanguage`
 
@@ -2215,10 +2299,17 @@ withLanguage(string $language): self
 
 Makes a request with a different language from the one globally defined in the [configuration](02-configuration.md#language).
 
-// TODO write about where it is available
+Some endpoints may not support the `withLanguage` method.
+Check the [official documentation](https://docs.sportmonks.com/football/api/translations-beta) for more information.
+
+> **Note**
+> This is feature is still in beta and may change in the future.
 
 ```php
-// TODO
+// Get all fixtures in Japanese
+$fixtures = $sportMonksFootball->fixtures()
+    ->withLanguage(Language::JAPANESE)
+    ->getAll();
 ```
 
 #### `withCacheTtl`
@@ -2234,10 +2325,11 @@ If `0` seconds is provided, the request will not be cached.
 > **Note**
 > Setting cache to `0` seconds will **not** invalidate any existing cache.
 
-// TODO write about default values
-
 Available for all APIs if `cache` is enabled in the [configuration](02-configuration.md#cache).
 
 ```php
-// TODO
+// Get all fixtures and cache for 1 day
+$fixtures = $sportMonksFootball->fixtures()
+    ->withCacheTtl(3600 * 24)
+    ->getAll();
 ```
