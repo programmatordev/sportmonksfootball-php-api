@@ -14,9 +14,9 @@ You can see all available exceptions below:
 
 ```php
 try {
-    // TODO
+    $fixture = $sportMonksFootball->fixtures()->getById(1);
 }
-// When the query did not return any results (for example, the requested id does not exist)
+// When the query did not return any results (for example, the requested id does not exist or is empty)
 // or there is no access via the current subscription
 catch (NoResultsFoundException $exception) {
     echo $exception->getMessage();
@@ -51,7 +51,7 @@ To catch all API errors with a single exception, `ApiErrorException` is availabl
 use ProgrammatorDev\OpenWeatherMap\Exception\ApiErrorException;
 
 try {
-    // TODO
+    $fixture = $sportMonksFootball->fixtures()->getById(1);
 }
 // Catches all API response errors
 catch (ApiErrorException $exception) {
@@ -68,11 +68,10 @@ To catch invalid input data, the `ValidationException` is available:
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 
 try {
-    // TODO
+    $fixtures = $sportMonksFootball->fixtures()->getAllBySearchQuery('');
 }
 catch (ValidationException $exception) {
-    // Should print:
-    // TODO
+    // Should print: The "query" value should not be blank, "" given.
     echo $exception->getMessage();
 }
 ```
