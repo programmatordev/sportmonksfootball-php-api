@@ -1,44 +1,45 @@
 # Supported Endpoints
 
 - [Responses](#responses)
-- [Football Endpoints](#football-endpoints)
-  - [Coaches](#coaches)
-  - [Commentaries](#commentaries)
-  - [Fixtures](#fixtures)
-  - [Leagues](#leagues)
-  - [Livescores](#livescores)
-  - [Players](#players)
-  - [Referees](#referees)
-  - [Rivals](#rivals)
-  - [Rounds](#rounds)
-  - [Schedules](#schedules)
-  - [Seasons](#seasons)
-  - [Stages](#stages)
-  - [Standings](#standings)
-  - [States](#states)
-  - [Statistics](#statistics)
-  - [Teams](#teams)
-  - [Team Squads](#team-squads)
-  - [Topscorers](#topscorers)
-  - [Transfers](#transfers)
-  - [TV Stations](#tv-stations)
-  - [Venues](#venues)
-- [Odds Endpoints](#odds-endpoints)
-  - [Bookmakers](#bookmakers)
-  - [Markets](#markets)
-  - [Pre-match Odds](#pre-match-odds)
-- [Core Endpoints](#core-endpoints)
-  - [Cities](#cities)
-  - [Continents](#continents)
-  - [Countries](#countries)
-  - [Filters](#filters)
-  - [Regions](#regions)
-  - [Types](#types)
+- Endpoints
+  - [Football Endpoints](#football-endpoints)
+    - [Coaches](#coaches)
+    - [Commentaries](#commentaries)
+    - [Fixtures](#fixtures)
+    - [Leagues](#leagues)
+    - [Livescores](#livescores)
+    - [Players](#players)
+    - [Referees](#referees)
+    - [Rivals](#rivals)
+    - [Rounds](#rounds)
+    - [Schedules](#schedules)
+    - [Seasons](#seasons)
+    - [Stages](#stages)
+    - [Standings](#standings)
+    - [States](#states)
+    - [Statistics](#statistics)
+    - [Teams](#teams)
+    - [Team Squads](#team-squads)
+    - [Topscorers](#topscorers)
+    - [Transfers](#transfers)
+    - [TV Stations](#tv-stations)
+    - [Venues](#venues)
+  - [Odds Endpoints](#odds-endpoints)
+    - [Bookmakers](#bookmakers)
+    - [Markets](#markets)
+    - [Pre-match Odds](#pre-match-odds)
+  - [Core Endpoints](#core-endpoints)
+    - [Cities](#cities)
+    - [Continents](#continents)
+    - [Countries](#countries)
+    - [Filters](#filters)
+    - [Regions](#regions)
+    - [Types](#types)
 - [Select, Include and Filters](#select-include-and-filters)
   - [withSelect](#withselect)
   - [withInclude](#withinclude)
   - [withFilters](#withfilters)
-- [Common Methods](#common-methods)
+- [Timezone, Language and Cache TTL](#timezone-language-and-cache-ttl)
   - [withTimezone](#withtimezone)
   - [withLanguage](#withlanguage)
   - [withCacheTtl](#withcachettl)
@@ -55,15 +56,70 @@ For example, when requesting a fixture by id, the response will be a `FixtureIte
 The same way that when requesting all fixtures, the response will be a `FixtureCollection` object and the `getData()` method will return an array of [`Fixture`](05-objects.md#fixture) objects.
 Check the [responses objects](05-objects.md#response-entities) for more information.
 
+```php
+// Returns a FixtureItem object
+$fixtureItem = $sportMonksFootball->fixtures()->getById(1);
+// Returns a Fixture object
+$fixture = $fixtureItem->getData();
+echo $fixture->getName();
+
+// Returns a FixtureCollection object
+$fixtureCollection = $sportMonksFootball->fixtures()->getAll();
+// Returns an array of Fixture objects
+$fixtures = $fixtureCollection->getData();
+foreach ($fixtures as $fixture) {
+    echo $fixture->getName();
+}
+```
+
 ### Pagination
 
-All [`<Entity>Collection`](05-objects.md#entitycollection) responses have the `getPagination()` method
-that returns all the available pagination data.
+[`<Entity>Collection`](05-objects.md#entitycollection) responses that contain pagination data (not all of them have)
+will be accessible through the `getPagination()` method:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAll();
+
+echo $fixtures->getPagination()->getCount();
+echo $fixtures->getPagination()->getPerPage();
+echo $fixtures->getPagination()->getCurrentPage();
+echo $fixtures->getPagination()->getNextPage();
+echo $fixtures->getPagination()->hasMore();
+```
+
+Endpoints that support pagination, will always have a `page`, `perPage` and `order` parameters:
+
+```php
+// Returns page 10 with 50 fixtures per page in descending order
+$fixtures = $sportMonksFootball->fixtures()->getAll(page: 10, perPage: 50, order: 'desc')->getData();
+```
 
 ### Rate Limit
 
 All responses include the `getRateLimit()` method with the current quota usage.
 Check the [official documentation](https://docs.sportmonks.com/football/api/rate-limit) for more information.
+
+```php
+$fixture = $sportMonksFootball->fixtures()->getById(1);
+
+echo $fixture->getRateLimit()->getRemainingNumRequests();
+echo $fixture->getRateLimit()->getSecondsToReset();
+echo $fixture->getRateLimit()->getRequestedEntity();
+```
+
+### Timezone
+
+All responses include the `getTimezone()` method with the timezone of the given data.
+By default, all responses will be in the `UTC` timezone.
+
+To request data in a different timezone for all requests, check the [configuration section](02-configuration.md#timezone).
+For a single endpoint, check the [`withTimezone` section](#withtimezone).
+
+```php
+$fixture = $sportMonksFootball->fixtures()->getById(1);
+
+echo $fixture->getTimezone(); // UTC
+```
 
 ## Football Endpoints
 
@@ -2147,7 +2203,7 @@ foreach ($entities->getData() as $entity) {
 
 #### `withFilters`
 
-## Common Methods
+## Timezone, Language and Cache TTL
 
 #### `withTimezone`
 
