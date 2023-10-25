@@ -195,7 +195,10 @@ class AbstractEndpoint
     {
         // from: ['idAfter' => 100, 'regionCountries' => '200,300']
         // to: idAfter:100;regionCountries:200,300
-        return \str_replace('=', ':', \http_build_query(data: $filters, arg_separator: ';'));
+        return \implode(';', \array_map(function (string $filter, string|int $value) {
+                return \sprintf('%s:%s', $filter, $value);
+            }, \array_keys($filters), $filters)
+        );
     }
 
     private function buildUrl(string $path, array $query = []): string

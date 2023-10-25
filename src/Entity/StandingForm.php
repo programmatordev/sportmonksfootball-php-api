@@ -14,7 +14,7 @@ class StandingForm
 
     private string $form;
 
-    private int $order;
+    private int $sortOrder;
 
     private ?Fixture $fixture;
 
@@ -25,7 +25,7 @@ class StandingForm
         $this->standingId = $data['standing_id'];
         $this->standingType = $data['standing_type'];
         $this->form = $data['form'];
-        $this->order = $data['sort_order'];
+        $this->sortOrder = $data['sort_order'];
 
         // include
         $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
@@ -56,9 +56,9 @@ class StandingForm
         return $this->form;
     }
 
-    public function getOrder(): int
+    public function getSortOrder(): int
     {
-        return $this->order;
+        return $this->sortOrder;
     }
 
     public function getFixture(): ?Fixture

@@ -8,13 +8,13 @@ class TeamMeta
 
     private bool $isWinner;
 
-    private int $position;
+    private ?int $position;
 
     public function __construct(array $data)
     {
         $this->location = $data['location'];
         $this->isWinner = $data['winner'];
-        $this->position = $data['position'];
+        $this->position = $data['position'] ?? null;
     }
 
     public function getLocation(): string
@@ -27,7 +27,7 @@ class TeamMeta
         return $this->isWinner;
     }
 
-    public function getPosition(): int
+    public function getPosition(): ?int
     {
         return $this->position;
     }

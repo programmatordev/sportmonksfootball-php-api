@@ -42,12 +42,20 @@ $sportMonksFootball = new SportMonksFootball(
     ])
 );
 
-// TODO set final example when LivescoreEndpoint is created
-//$livescores = $sportMonksFootball->livescores()->getAll();
+// Get all livescores of the current day
+$livescores = $sportMonksFootball->livescores()->getAll();
 ```
 
 ## Documentation
 
+- [Usage](docs/01-usage.md)
+- [Configuration](docs/02-configuration.md)
+- [Supported Endpoints](docs/03-supported-endpoints.md)
+  - [Football Endpoints](docs/03-supported-endpoints.md#football-endpoints)
+  - [Odds Endpoints](docs/03-supported-endpoints.md#odds-endpoints)
+  - [Core Endpoints](docs/03-supported-endpoints.md#core-endpoints)
+- [Error Handling](docs/04-error-handling.md)
+- [Objects](docs/05-objects.md)
 
 ## Contributing
 

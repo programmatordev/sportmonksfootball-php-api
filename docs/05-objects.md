@@ -1,8 +1,8 @@
 # Objects
 
 - [Response Entities](#response-entities)
-  - [&lt;Entity&gt;Item](#ltentitygtitem)
-  - [&lt;Entity&gt;Collection](#ltentitygtcollection)
+  - [&lt;Entity&gt;Item](#entityitem)
+  - [&lt;Entity&gt;Collection](#entitycollection)
   - [Pagination](#pagination)
   - [Plan](#plan)
   - [RateLimit](#ratelimit)
@@ -129,9 +129,9 @@
 - `getResult()`: `?string`
 - `getDetail()`: `?string`
 - `getWinnerParticipantId()`: `?int`
-- `getLeague()`: [`?League`](#league)
-- `getSeason()`: [`?Season`](#season)
-- `getStage()`: [`?Stage`](#stage)
+- `getLeague()`: [`?League`](#league) (`league` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getStage()`: [`?Stage`](#stage) (`stage` include is required)
 
 ### Commentary
 
@@ -143,9 +143,9 @@
 - `isGoal()`: `?bool`
 - `isImportant()`: `?bool`
 - `getOrder()`: `?int`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getPlayer()`: [`?Player`](#player)
-- `getRelatedPlayer()`: [`?Player`](#player)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getPlayer()`: [`?Player`](#player) (`player` include is required)
+- `getRelatedPlayer()`: [`?Player`](#player) (`relatedPlayer` include is required)
 
 ### Coach
 
@@ -165,14 +165,14 @@
 - `getWeight()`: `?int`
 - `getDateOfBirth()`: `?\DateTimeImmutable`
 - `getGender()`: `?string`
-- `getSport()`: [`?Sport`](#sport)
-- `getCountry()`: [`?Country`](#country)
-- `getNationality()`: [`?Country`](#country)
-- `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
-- `getPlayer()`: [`?Player`](#player)
-- `getFixtures()`: [`?Fixture[]`](#fixture)
-- `getTeams()`: [`?TeamCoach[]`](#teamcoach)
-- `getStatistics()`: [`?CoachStatistic[]`](#coachstatistic)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getCountry()`: [`?Country`](#country) (`country` include is required)
+- `getNationality()`: [`?Country`](#country) (`nationality` include is required)
+- `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy) (`trophies` include is required)
+- `getPlayer()`: [`?Player`](#player) (`player` include is required)
+- `getFixtures()`: [`?Fixture[]`](#fixture) (`fixtures` include is required)
+- `getTeams()`: [`?TeamCoach[]`](#teamcoach) (`teams` include is required)
+- `getStatistics()`: [`?CoachStatistic[]`](#coachstatistic) (`statistics` include is required)
 
 ### CoachStatistic
 
@@ -180,10 +180,10 @@
 - `getSeasonId()`: `int`
 - `getCoachId()`: `int`
 - `getTeamId()`: `int`
-- `getDetails()`: [`?CoachStatisticDetail[]`](#coachstatisticdetail)
-- `getSeason()`: [`?Season`](#season)
-- `getCoach()`: [`?Coach`](#coach)
-- `getTeam()`: [`?Team`](#team)
+- `getDetails()`: [`?CoachStatisticDetail[]`](#coachstatisticdetail) (`details` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getCoach()`: [`?Coach`](#coach) (`coach` include is required)
+- `getTeam()`: [`?Team`](#team) (`team` include is required)
 
 ### CoachStatisticDetail
 
@@ -191,7 +191,7 @@
 - `getCoachStatisticId()`: `int`
 - `getTypeId()`: `int`
 - `getValue()`: `array`
-- `getType()`: [`?Type`](#type)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### Event
 
@@ -213,13 +213,13 @@
 - `getExtraMinute()`: `?int`
 - `isInjured()`: `?bool`
 - `isOnBench()`: `?bool`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getType()`: [`?Type`](#type)
-- `getSubType()`: [`?Type`](#type)
-- `getPlayer()`: [`?Player`](#player)
-- `getRelatedPlayer()`: [`?Player`](#player)
-- `getParticipant()`: [`?Team`](#team)
-- `getPeriod()`: [`?Period`](#period)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
+- `getSubType()`: [`?Type`](#type) (`subType` include is required)
+- `getPlayer()`: [`?Player`](#player) (`player` include is required)
+- `getRelatedPlayer()`: [`?Player`](#player) (`relatedPlayer` include is required)
+- `getParticipant()`: [`?Team`](#team) (`participant` include is required)
+- `getPeriod()`: [`?Period`](#period) (`period` include is required)
 
 ### Fixture
 
@@ -241,31 +241,30 @@
 - `getLength()`: `?int`
 - `isPlaceholder()`: `?bool`
 - `hasOdds()`: `?bool`
-- `getSport()`: [`?Sport`](#sport)
-- `getStage()`: [`?Stage`](#stage)
-- `getLeague()`: [`?League`](#league)
-- `getRound()`: [`?Round`](#round)
-- `getGroup()`: [`?Group`](#group)
-- `getAggregate()`: [`?Aggregate`](#aggregate)
-- `getSeason()`: [`?Season`](#season)
-- `getVenue()`: [`?Venue`](#venue)
-- `getState()`: [`?State`](#state)
-- `getLineups()`: [`?Lineup[]`](#lineup)
-- `getComments()`: [`?Commentary[]`](#commentary)
-- `getParticipants()`: [`?Participant[]`](#team)
-- `getOdds()`: [`?Odd[]`](#odd)
-- `getMetadata()`: [`?Metadata[]`](#metadata)
-- `getWeatherReport()`: [`?WeatherReport`](#weatherreport)
-- `getEvents()`: [`?Event[]`](#event)
-- `getTimeline()`: [`?Event[]`](#event)
-- `getEvents()`: [`?Event[]`](#event)
-- `getStatistics()`: [`?FixtureStatistic[]`](#fixturestatistic)
-- `getPeriods()`: [`?Period[]`](#period)
-- `getFormations()`: [`?Formation[]`](#formation)
-- `getScores()`: [`?Score[]`](#score)
-- `getTvStations()`: [`?FixtureTvStation[]`](#fixturetvstation)
-- `getReferees()`: [`?FixtureReferee[]`](#fixturereferee)
-- `getSidelined()`: [`?FixtureSidelined[]`](#fixturesidelined)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getStage()`: [`?Stage`](#stage) (`stage` include is required)
+- `getLeague()`: [`?League`](#league) (`league` include is required)
+- `getRound()`: [`?Round`](#round) (`round` include is required)
+- `getGroup()`: [`?Group`](#group) (`group` include is required)
+- `getAggregate()`: [`?Aggregate`](#aggregate) (`aggregate` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getVenue()`: [`?Venue`](#venue) (`venue` include is required)
+- `getState()`: [`?State`](#state) (`state` include is required)
+- `getLineups()`: [`?Lineup[]`](#lineup) (`lineups` include is required)
+- `getComments()`: [`?Commentary[]`](#commentary) (`comments` include is required)
+- `getParticipants()`: [`?Participant[]`](#team) (`participants` include is required)
+- `getOdds()`: [`?Odd[]`](#odd) (`odds` include is required)
+- `getMetadata()`: [`?Metadata[]`](#metadata) (`metadata` include is required)
+- `getWeatherReport()`: [`?WeatherReport`](#weatherreport) (`weatherReport` include is required)
+- `getEvents()`: [`?Event[]`](#event) (`events` include is required)
+- `getTimeline()`: [`?Event[]`](#event) (`timeline` include is required)
+- `getStatistics()`: [`?FixtureStatistic[]`](#fixturestatistic) (`statistics` include is required)
+- `getPeriods()`: [`?Period[]`](#period) (`periods` include is required)
+- `getFormations()`: [`?Formation[]`](#formation) (`formations` include is required)
+- `getScores()`: [`?Score[]`](#score) (`scores` include is required)
+- `getTvStations()`: [`?FixtureTvStation[]`](#fixturetvstation) (`tvStations` include is required)
+- `getReferees()`: [`?FixtureReferee[]`](#fixturereferee) (`referees` include is required)
+- `getSidelined()`: [`?FixtureSidelined[]`](#fixturesidelined) (`sidelined` include is required)
 
 ### FixtureReferee
 
@@ -273,9 +272,9 @@
 - `getFixtureId()`: `int`
 - `getRefereeId()`: `int`
 - `getTypeId()`: `int`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getReferee()`: [`?Referee`](#referee)
-- `getType()`: [`?Type`](#type)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getReferee()`: [`?Referee`](#referee) (`referee` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### FixtureSidelined
 
@@ -283,9 +282,9 @@
 - `getFixtureId()`: `int`
 - `getSidelinedId()`: `int`
 - `getParticipantId()`: `int`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getSidelined()`: [`?Sidelined`](#sidelined)
-- `getParticipant()`: [`?Team`](#team)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getSidelined()`: [`?Sidelined`](#sidelined) (`sidelined` include is required)
+- `getParticipant()`: [`?Team`](#team) (`participant` include is required)
 
 ### FixtureTvStation
 
@@ -293,9 +292,9 @@
 - `getFixtureId()`: `int`
 - `getTvStationId()`: `int`
 - `getCountryId()`: `int`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getTvStation()`: [`?TvStation`](#tvstation)
-- `getCountry()`: [`?Country`](#country)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getTvStation()`: [`?TvStation`](#tvstation) (`tvStation` include is required)
+- `getCountry()`: [`?Country`](#country) (`country` include is required)
 
 ### FixtureStatistic
 
@@ -307,10 +306,10 @@
 - `getPeriodId()`: `?int`
 - `getData()`: `?array`
 - `getLocation()`: `?string`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getType()`: [`?Type`](#type)
-- `getPeriod()`: [`?Period`](#period)
-- `getParticipant()`: [`?Team`](#team)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
+- `getPeriod()`: [`?Period`](#period) (`period` include is required)
+- `getParticipant()`: [`?Team`](#team) (`participant` include is required)
 
 ### Formation
 
@@ -319,8 +318,8 @@
 - `getParticipantId()`: `int`
 - `getFormation()`: `?string`
 - `getLocation()`: `?string`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getParticipant()`: [`?Team`](#team)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getParticipant()`: [`?Team`](#team) (`participant` include is required)
 
 ### Group
 
@@ -351,15 +350,15 @@
 - `getLastPlayedAt()`: `?\DateTimeImmutable`
 - `getCategory()`: `?int`
 - `hasJerseys()`: `?bool`
-- `getSport()`: [`?Sport`](#sport)
-- `getCountry()`: [`?Country`](#country)
-- `getStages()`: [`?Stage[]`](#stage)
-- `getLatestFixtures()`: [`?Fixture[]`](#fixture)
-- `getUpcomingFixtures()`: [`?Fixture[]`](#fixture)
-- `getInplayFixtures()`: [`?Fixture[]`](#fixture)
-- `getTodayFixtures()`: [`?Fixture[]`](#fixture)
-- `getCurrentSeason()`: [`?Season`](#season)
-- `getSeasons()`: [`?Season[]`](#season)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getCountry()`: [`?Country`](#country) (`country` include is required)
+- `getStages()`: [`?Stage[]`](#stage) (`stages` include is required)
+- `getLatestFixtures()`: [`?Fixture[]`](#fixture) (`latest` include is required)
+- `getUpcomingFixtures()`: [`?Fixture[]`](#fixture) (`upcoming` include is required)
+- `getInplayFixtures()`: [`?Fixture[]`](#fixture) (`inplay` include is required)
+- `getTodayFixtures()`: [`?Fixture[]`](#fixture) (`today` include is required)
+- `getCurrentSeason()`: [`?Season`](#season) (`currentSeason` include is required)
+- `getSeasons()`: [`?Season[]`](#season) (`seasons` include is required)
 
 ### Lineup
 
@@ -374,12 +373,12 @@
 - `getFormationPosition()`: `?int`
 - `getPlayerName()`: `?string`
 - `getJerseyNumber()`: `?int`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getPlayer()`: [`?Player`](#player)
-- `getType()`: [`?Type`](#type)
-- `getPosition()`: [`?Type`](#type)
-- `getDetailedPosition()`: [`?Type`](#type)
-- `getDetails()`: [`?LineupDetail[]`](#lineupdetail)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getPlayer()`: [`?Player`](#player) (`player` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
+- `getPosition()`: [`?Type`](#type) (`position` include is required)
+- `getDetailedPosition()`: [`?Type`](#type) (`detailedPosition` include is required)
+- `getDetails()`: [`?LineupDetail[]`](#lineupdetail) (`details` include is required)
 
 ### LineupDetail
 
@@ -390,8 +389,8 @@
 - `getLineupId()`: `int`
 - `getTypeId()`: `int`
 - `getData()`: `array`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getType()`: [`?Type`](#type)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### Metadata
 
@@ -400,7 +399,7 @@
 - `getTypeId()`: `int`
 - `getValueType()`: `string`
 - `getValues()`: `mixed`
-- `getType()`: [`?Type`](#type)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### ParticipantTrophy
 
@@ -409,10 +408,10 @@
 - `getLeagueId()`: `int`
 - `getSeasonId()`: `int`
 - `getTrophyId()`: `int`
-- `getTeam()`: [`?Team`](#team)
-- `getLeague()`: [`?League`](#league)
-- `getSeason()`: [`?Season`](#season)
-- `getTrophy()`: [`?Trophy`](#trophy)
+- `getTeam()`: [`?Team`](#team) (`team` include is required)
+- `getLeague()`: [`?League`](#league) (`league` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getTrophy()`: [`?Trophy`](#trophy) (`trophy` include is required)
 
 ### Period
 
@@ -429,11 +428,11 @@
 - `getPeriodLength()`: `?int`
 - `getMinutes()`: `?int`
 - `getSeconds()`: `?int`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getType()`: [`?Type`](#type)
-- `getEvents()`: [`?Event[]`](#event)
-- `getTimeline()`: [`?Event[]`](#event)
-- `getStatistics()`: [`?FixtureStatistic[]`](#fixturestatistic)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
+- `getEvents()`: [`?Event[]`](#event) (`events` include is required)
+- `getTimeline()`: [`?Event[]`](#event) (`timeline` include is required)
+- `getStatistics()`: [`?FixtureStatistic[]`](#fixturestatistic) (`statistics` include is required)
 
 ### Player
 
@@ -455,20 +454,20 @@
 - `getWeight()`: `?int`
 - `getDateOfBirth()`: `?\DateTimeImmutable`
 - `getGender()`: `?string`
-- `getSport()`: [`?Sport`](#sport)
-- `getCountry()`: [`?Country`](#country)
-- `getCity()`: [`?City`](#city)
-- `getNationality()`: [`?Country`](#country)
-- `getTeams()`: [`?TeamSquad[]`](#teamsquad)
-- `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
-- `getTransfers()`: [`?Transfer[]`](#transfer)
-- `getPendingTransfers()`: [`?Transfer[]`](#transfer)
-- `getPosition()`: [`?Type`](#type)
-- `getDetailedPosition()`: [`?Type`](#type)
-- `getLineups()`: [`?Lineup[]`](#lineup)
-- `getLatestLineups()`: [`?Lineup[]`](#lineup)
-- `getMetadata()`: [`?Metadata[]`](#metadata)
-- `getStatistics()`: [`?PlayerStatistic[]`](#playerstatistic)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getCountry()`: [`?Country`](#country) (`country` include is required)
+- `getCity()`: [`?City`](#city) (`city` include is required)
+- `getNationality()`: [`?Country`](#country) (`nationality` include is required)
+- `getTeams()`: [`?TeamSquad[]`](#teamsquad) (`teams` include is required)
+- `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy) (`trophies` include is required)
+- `getTransfers()`: [`?Transfer[]`](#transfer) (`transfers` include is required)
+- `getPendingTransfers()`: [`?Transfer[]`](#transfer) (`pendingTransfers` include is required)
+- `getPosition()`: [`?Type`](#type) (`position` include is required)
+- `getDetailedPosition()`: [`?Type`](#type) (`detailedPosition` include is required)
+- `getLineups()`: [`?Lineup[]`](#lineup) (`lineups` include is required)
+- `getLatestLineups()`: [`?Lineup[]`](#lineup) (`latest` include is required)
+- `getMetadata()`: [`?Metadata[]`](#metadata) (`metadata` include is required)
+- `getStatistics()`: [`?PlayerStatistic[]`](#playerstatistic) (`statistics` include is required)
 
 ### PlayerStatistic
 
@@ -479,11 +478,11 @@
 - `getPositionId()`: `?int`
 - `hasValues()`: `?bool`
 - `getJerseyNumber()`: `?int`
-- `getDetails()`: [`?PlayerStatisticDetail[]`](#playerstatisticdetail)
-- `getSeason()`: [`?Season`](#season)
-- `getPlayer()`: [`?Player`](#player)
-- `getTeam()`: [`?Team`](#team)
-- `getPosition()`: [`?Type`](#type)
+- `getDetails()`: [`?PlayerStatisticDetail[]`](#playerstatisticdetail) (`details` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getPlayer()`: [`?Player`](#player) (`player` include is required)
+- `getTeam()`: [`?Team`](#team) (`team` include is required)
+- `getPosition()`: [`?Type`](#type) (`position` include is required)
 
 ### PlayerStatisticDetail
 
@@ -491,7 +490,7 @@
 - `getPlayerStatisticId()`: `int`
 - `getTypeId()`: `int`
 - `getValue()`: `array`
-- `getType()`: [`?Type`](#type)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### Referee
 
@@ -509,20 +508,20 @@
 - `getWeight()`: `?int`
 - `getDateOfBirth()`: `?\DateTimeImmutable`
 - `getGender()`: `?string`
-- `getSport()`: [`?Sport`](#sport)
-- `getCountry()`: [`?Country`](#country)
-- `getNationality()`: [`?Country`](#country)
-- `getCity()`: [`?City`](#city)
-- `getStatistics()`: [`?RefereeStatistic[]`](#refereestatistic)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getCountry()`: [`?Country`](#country) (`country` include is required)
+- `getNationality()`: [`?Country`](#country) (`nationality` include is required)
+- `getCity()`: [`?City`](#city) (`city` include is required)
+- `getStatistics()`: [`?RefereeStatistic[]`](#refereestatistic) (`statistics` include is required)
 
 ### RefereeStatistic
 
 - `getId()`: `int`
 - `getSeasonId()`: `int`
 - `getRefereeId()`: `int`
-- `getDetails()`: [`?RefereeStatisticDetail[]`](#refereestatisticdetail)
-- `getSeason()`: [`?Season`](#season)
-- `getReferee()`: [`?Referee`](#referee)
+- `getDetails()`: [`?RefereeStatisticDetail[]`](#refereestatisticdetail) (`details` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getReferee()`: [`?Referee`](#referee) (`referee` include is required)
 
 ### RefereeStatisticDetail
 
@@ -530,7 +529,7 @@
 - `getRefereeStatisticId()`: `int`
 - `getTypeId()`: `int`
 - `getValue()`: `array`
-- `getType()`: [`?Type`](#type)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### Rival
 
@@ -538,8 +537,8 @@
 - `getSportId()`: `int`
 - `getTeamId()`: `int`
 - `getRivalId()`: `int`
-- `getTeam()`: [`?Team`](#team)
-- `getRival()`: [`?Team`](#team)
+- `getTeam()`: [`?Team`](#team) (`team` include is required)
+- `getRival()`: [`?Team`](#team) (`rival` include is required)
 
 ### Round
 
@@ -554,12 +553,12 @@
 - `getStartingAt()`: `?\DateTimeImmutable`
 - `getEndingAt()`: `?\DateTimeImmutable`
 - `hasGamesInCurrentWeek()`: `?bool`
-- `getSport()`: [`?Sport`](#sport)
-- `getLeague()`: [`?League`](#league)
-- `getSeason()`: [`?Season`](#season)
-- `getStage()`: [`?Stage`](#stage)
-- `getFixtures()`: [`?Fixture[]`](#fixture)
-- `getStatistics()`: [`?Statistic[]`](#statistic)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getLeague()`: [`?League`](#league) (`league` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getStage()`: [`?Stage`](#stage) (`stage` include is required)
+- `getFixtures()`: [`?Fixture[]`](#fixture) (`fixtures` include is required)
+- `getStatistics()`: [`?Statistic[]`](#statistic) (`statistics` include is required)
 
 ### Score
 
@@ -570,9 +569,9 @@
 - `getGoals()`: `?int`
 - `getLocation()`: `?string`
 - `getDescription()`: `?string`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getParticipant()`: [`?Team`](#team)
-- `getType()`: [`?Type`](#type)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getParticipant()`: [`?Team`](#team) (`participant` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### Season
 
@@ -588,15 +587,15 @@
 - `getEndingAt()`: `?\DateTimeImmutable`
 - `getStandingsRecalculatedAt()`: `?\DateTimeImmutable`
 - `hasGamesInCurrentWeek()`: `?bool`
-- `getSport()`: [`?Sport`](#sport)
-- `getLeague()`: [`?League`](#league)
-- `getStages()`: [`?Stage[]`](#stage)
-- `getCurrentStage()`: [`?Stage`](#stage)
-- `getFixtures()`: [`?Fixture[]`](#fixture)
-- `getTeams()`: [`?Team[]`](#team)
-- `getGroups()`: [`?Group[]`](#group)
-- `getStatistics()`: [`?Statistic[]`](#statistic)
-- `getTopscorers()`: [`?Topscorer[]`](#topscorer)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getLeague()`: [`?League`](#league) (`league` include is required)
+- `getStages()`: [`?Stage[]`](#stage) (`stages` include is required)
+- `getCurrentStage()`: [`?Stage`](#stage) (`currentStage` include is required)
+- `getFixtures()`: [`?Fixture[]`](#fixture) (`fixtures` include is required)
+- `getTeams()`: [`?Team[]`](#team) (`teams` include is required)
+- `getGroups()`: [`?Group[]`](#group) (`groups` include is required)
+- `getStatistics()`: [`?Statistic[]`](#statistic) (`statistics` include is required)
+- `getTopscorers()`: [`?Topscorer[]`](#topscorer) (`topscorers` include is required)
 
 ### Sidelined
 
@@ -610,10 +609,10 @@
 - `getEndingAt()`: `?\DateTimeImmutable`
 - `getGamesMissed()`: `?int`
 - `isCompleted()`: `?bool`
-- `getTeam()`: [`?Team`](#team)
-- `getSeason()`: [`?Season`](#season)
-- `getType()`: [`?Type`](#type)
-- `getPlayer()`: [`?Player`](#player)
+- `getTeam()`: [`?Team`](#team) (`team` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
+- `getPlayer()`: [`?Player`](#player) (`player` include is required)
 
 ### Social
 
@@ -621,7 +620,7 @@
 - `getSocialId()`: `int`
 - `getSocialChannelId()`: `int`
 - `getValue()`: `string`
-- `getChannel()`: [`?SocialChannel`](#socialchannel)
+- `getChannel()`: [`?SocialChannel`](#socialchannel) (`channel` include is required)
 
 ### SocialChannel
 
@@ -645,17 +644,17 @@
 - `getEndingAt()`: `?\DateTimeImmutable`
 - `hasGamesInCurrentWeek()`: `?bool`
 - `getTieBreakerRuleId()`: `?bool`
-- `getLeague()`: [`?League`](#league)
-- `getType()`: [`?Type`](#type)
-- `getSport()`: [`?Sport`](#sport)
-- `getSeason()`: [`?Season`](#season)
-- `getRounds()`: [`?Round[]`](#round)
-- `getCurrentRound()`: [`?Round`](#round)
-- `getGroups()`: [`?Group[]`](#group)
-- `getFixtures()`: [`?Fixture[]`](#fixture)
-- `getAggregates()`: [`?Aggregate[]`](#aggregate)
-- `getStatistics()`: [`?Statistic[]`](#statistic)
-- `getTopscorers()`: [`?Topscorer[]`](#topscorer)
+- `getLeague()`: [`?League`](#league) (`league` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getRounds()`: [`?Round[]`](#round) (`rounds` include is required)
+- `getCurrentRound()`: [`?Round`](#round) (`currentRound` include is required)
+- `getGroups()`: [`?Group[]`](#group) (`groups` include is required)
+- `getFixtures()`: [`?Fixture[]`](#fixture) (`fixtures` include is required)
+- `getAggregates()`: [`?Aggregate[]`](#aggregate) (`aggregates` include is required)
+- `getStatistics()`: [`?Statistic[]`](#statistic) (`statistics` include is required)
+- `getTopscorers()`: [`?Topscorer[]`](#topscorer) (`topscorers` include is required)
 
 ### Standing
 
@@ -671,16 +670,16 @@
 - `getPosition()`: `?int`
 - `getResult()`: `?string`
 - `getPoints()`: `?int`
-- `getParticipant()`: [`?Team`](#team)
-- `getSeason()`: [`?Season`](#season)
-- `getLeague()`: [`?League`](#league)
-- `getStage()`: [`?Stage`](#stage)
-- `getGroup()`: [`?Group`](#group)
-- `getRound()`: [`?Round`](#round)
-- `getSport()`: [`?Sport`](#sport)
-- `getRule()`: [`?StandingRule`](#standingrule)
-- `getDetails()`: [`?StandingDetail[]`](#standingdetail)
-- `getForm()`: [`?StandingForm[]`](#standingform)
+- `getParticipant()`: [`?Team`](#team) (`participant` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getLeague()`: [`?League`](#league) (`league` include is required)
+- `getStage()`: [`?Stage`](#stage) (`stage` include is required)
+- `getGroup()`: [`?Group`](#group) (`group` include is required)
+- `getRound()`: [`?Round`](#round) (`round` include is required)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getRule()`: [`?StandingRule`](#standingrule) (`rule` include is required)
+- `getDetails()`: [`?StandingDetail[]`](#standingdetail) (`details` include is required)
+- `getForm()`: [`?StandingForm[]`](#standingform) (`form` include is required)
 
 ### StandingCorrection
 
@@ -694,11 +693,11 @@
 - `getValue()`: `?int`
 - `getCalcType()`: `?string`
 - `isActive()`: `?bool`
-- `getParticipant()`: [`?Team`](#team)
-- `getSeason()`: [`?Season`](#season)
-- `getStage()`: [`?Stage`](#stage)
-- `getGroup()`: [`?Group`](#group)
-- `getType()`: [`?Type`](#type)
+- `getParticipant()`: [`?Team`](#team) (`participant` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getStage()`: [`?Stage`](#stage) (`stage` include is required)
+- `getGroup()`: [`?Group`](#group) (`group` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### StandingDetail
 
@@ -707,7 +706,7 @@
 - `getStandingId()`: `int`
 - `getStandingType()`: `string`
 - `getValue()`: `int`
-- `getType()`: [`?Type`](#type)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### StandingForm
 
@@ -717,7 +716,7 @@
 - `getStandingType()`: `string`
 - `getForm()`: `string`
 - `getOrder()`: `int`
-- `getFixture()`: [`?Fixture`](#fixture)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
 
 ### StandingRule
 
@@ -726,7 +725,7 @@
 - `getModelId()`: `?int`
 - `getModelType()`: `?string`
 - `getPosition()`: `?int`
-- `getType()`: [`?Type`](#type)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### State
 
@@ -743,8 +742,8 @@
 - `getTypeId()`: `int`
 - `getRelationId()`: `?int`
 - `getValue()`: `array`
-- `getType()`: [`?Type`](#type)
-- `getParticipant()`: [`Player`](#player)|[`Team`](#team)|`null`
+- `getType()`: [`?Type`](#type) (`type` include is required)
+- `getParticipant()`: [`Player`](#player)|[`Team`](#team)|`null` (`participant` include is required)
 
 ### Team
 
@@ -760,22 +759,22 @@
 - `getType()`: `?string`
 - `isPlaceholder()`: `?bool`
 - `getLastPlayedAt()`: `?\DateTimeImmutable`
-- `getSport()`: [`?Sport`](#sport)
-- `getCountry()`: [`?Country`](#country)
-- `getLatestFixtures()`: [`?Fixture[]`](#fixture)
-- `getUpcomingFixtures()`: [`?Fixture[]`](#fixture)
-- `getSeasons()`: [`?Season[]`](#season)
-- `getActiveSeasons()`: [`?Season[]`](#season)
-- `getVenue()`: [`?Venue`](#venue)
-- `getRivals()`: [`?Team[]`](#team)
-- `getPlayers()`: [`?TeamSquad[]`](#teamsquad)
-- `getSidelined()`: [`?Sidelined[]`](#sidelined)
-- `getSidelinedHistory()`: [`?Sidelined[]`](#sidelined)
-- `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy)
-- `getSocials()`: [`?Social[]`](#social)
 - `getMeta()`: [`?TeamMeta`](#teammeta)
-- `getCoaches()`: [`?TeamCoach[]`](#teamcoach)
-- `getStatistics()`: [`?TeamStatistic[]`](#teamstatistic)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getCountry()`: [`?Country`](#country) (`country` include is required)
+- `getLatestFixtures()`: [`?Fixture[]`](#fixture) (`latest` include is required)
+- `getUpcomingFixtures()`: [`?Fixture[]`](#fixture) (`upcoming` include is required)
+- `getSeasons()`: [`?Season[]`](#season) (`seasons` include is required)
+- `getActiveSeasons()`: [`?Season[]`](#season) (`activeSeasons` include is required)
+- `getVenue()`: [`?Venue`](#venue) (`venue` include is required)
+- `getRivals()`: [`?Team[]`](#team) (`rivals` include is required)
+- `getPlayers()`: [`?TeamSquad[]`](#teamsquad) (`players` include is required)
+- `getSidelined()`: [`?Sidelined[]`](#sidelined) (`sidelined` include is required)
+- `getSidelinedHistory()`: [`?Sidelined[]`](#sidelined) (`sidelinedHistory` include is required)
+- `getTrophies()`: [`?ParticipantTrophy[]`](#participanttrophy) (`trophies` include is required)
+- `getSocials()`: [`?Social[]`](#social) (`scoails` include is required)
+- `getCoaches()`: [`?TeamCoach[]`](#teamcoach) (`coaches` include is required)
+- `getStatistics()`: [`?TeamStatistic[]`](#teamstatistic) (`statistics` include is required)
 
 ### TeamCoach
 
@@ -787,9 +786,9 @@
 - `getStartedAt()`: `?\DateTimeImmutable`
 - `getEndedAt()`: `?\DateTimeImmutable`
 - `isTemporary()`: `?bool`
-- `getTeam()`: [`?Team`](#team)
-- `getCoach()`: [`?Coach`](#coach)
-- `getPosition()`: [`?Type`](#type)
+- `getTeam()`: [`?Team`](#team) (`team` include is required)
+- `getCoach()`: [`?Coach`](#coach) (`coach` include is required)
+- `getPosition()`: [`?Type`](#type) (`position` include is required)
 
 ### TeamMeta
 
@@ -803,9 +802,9 @@
 - `getSeasonId()`: `int`
 - `getTeamId()`: `int`
 - `hasValues()`: `?bool`
-- `getDetails()`: [`?TeamStatisticDetail[]`](#teamstatisticdetail)
-- `getSeason()`: [`?Season`](#season)
-- `getTeam()`: [`?Team`](#team)
+- `getDetails()`: [`?TeamStatisticDetail[]`](#teamstatisticdetail) (`details` include is required)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getTeam()`: [`?Team`](#team) (`team` include is required)
 
 ### TeamStatisticDetail
 
@@ -813,7 +812,7 @@
 - `getTeamStatisticId()`: `int`
 - `getTypeId()`: `int`
 - `getValue()`: `array`
-- `getType()`: [`?Type`](#type)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### TeamSquad
 
@@ -827,11 +826,11 @@
 - `getEndingAt()`: `?\DateTimeImmutable`
 - `isCaptain()`: `?bool`
 - `getJerseyNumber()`: `?int`
-- `getTeam()`: [`?Team`](#team)
-- `getPlayer()`: [`?Player`](#player)
-- `getPosition()`: [`?Type`](#type)
-- `getDetailedPosition()`: [`?Type`](#type)
-- `getTransfer()`: [`?Transfer`](#transfer)
+- `getTeam()`: [`?Team`](#team) (`team` include is required)
+- `getPlayer()`: [`?Player`](#player) (`player` include is required)
+- `getPosition()`: [`?Type`](#type) (`position` include is required)
+- `getDetailedPosition()`: [`?Type`](#type) (`detailedPosition` include is required)
+- `getTransfer()`: [`?Transfer`](#transfer) (`transfer` include is required)
 
 ### Temperature
 
@@ -849,11 +848,11 @@
 - `getParticipantId()`: `int`
 - `getPosition()`: `int`
 - `getTotal()`: `int`
-- `getSeason()`: [`?Season`](#season)
-- `getStage()`: [`?Stage`](#stage)
-- `getPlayer()`: [`?Player`](#player)
-- `getParticipant()`: [`?Team`](#team)
-- `getType()`: [`?Type`](#type)
+- `getSeason()`: [`?Season`](#season) (`season` include is required)
+- `getStage()`: [`?Stage`](#stage) (`stage` include is required)
+- `getPlayer()`: [`?Player`](#player) (`player` include is required)
+- `getParticipant()`: [`?Team`](#team) (`participant` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 
 ### Transfer
 
@@ -869,13 +868,13 @@
 - `hasCareerEnded()`: `?bool`
 - `isCompleted()`: `?bool`
 - `getAmount()`: `?int`
-- `getSport()`: [`?Sport`](#sport)
-- `getPlayer()`: [`?Player`](#player)
-- `getType()`: [`?Type`](#type)
-- `getFromTeam()`: [`?Team`](#team)
-- `getToTeam()`: [`?Team`](#team)
-- `getPosition()`: [`?Type`](#type)
-- `getDetailedPosition()`: [`?Type`](#type)
+- `getSport()`: [`?Sport`](#sport) (`sport` include is required)
+- `getPlayer()`: [`?Player`](#player) (`player` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
+- `getFromTeam()`: [`?Team`](#team) (`fromTeam` include is required)
+- `getToTeam()`: [`?Team`](#team) (`toTeam` include is required)
+- `getPosition()`: [`?Type`](#type) (`position` include is required)
+- `getDetailedPosition()`: [`?Type`](#type) (`detailedPosition` include is required)
 
 ### Trophy
 
@@ -892,8 +891,8 @@
 - `getImagePath()`: `?string`
 - `getType()`: `?string`
 - `getRelatedId()`: `?int`
-- `getCountries()`: [`?Country[]`](#country)
-- `getFixtures()`: [`?FixtureTvStation[]`](#fixturetvstation)
+- `getCountries()`: [`?Country[]`](#country) (`countries` include is required)
+- `getFixtures()`: [`?FixtureTvStation[]`](#fixturetvstation) (`fixtures` include is required)
 
 ### Venue
 
@@ -910,9 +909,9 @@
 - `getCityName()`: `?string`
 - `getSurface()`: `?string`
 - `isNationalTeam()`: `?bool`
-- `getCountry()`: [`?Country`](#country)
-- `getCity()`: [`?City`](#city)
-- `getFixtures()`: [`?Fixture[]`](#fixture)
+- `getCountry()`: [`?Country`](#country) (`country` include is required)
+- `getCity()`: [`?City`](#city) (`city` include is required)
+- `getFixtures()`: [`?Fixture[]`](#fixture) (`fixtures` include is required)
 
 ### WeatherReport
 
@@ -930,8 +929,8 @@
 - `getType()`: `?string`
 - `getMetric()`: `?string`
 - `isCurrent()`: `?bool`
-- `getVenue()`: [`?Venue`](#venue)
-- `getFixture()`: [`?Fixture[]`](#fixture)
+- `getVenue()`: [`?Venue`](#venue) (`venue` include is required)
+- `getFixture()`: [`?Fixture[]`](#fixture) (`fixture` include is required)
 
 ### Wind
 
@@ -978,9 +977,9 @@
 - `getUpdatedAt()`: `?\DateTimeImmutable`
 - `getOriginalLabel()`: `?string`
 - `getLatestBookmakerUpdatedAt()`: `?\DateTimeImmutable`
-- `getFixture()`: [`?Fixture`](#fixture)
-- `getMarket()`: [`?Market`](#market)
-- `getBookmaker()`: [`?Bookmaker`](#bookmaker)
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getMarket()`: [`?Market`](#market) (`market` include is required)
+- `getBookmaker()`: [`?Bookmaker`](#bookmaker) (`bookmaker` include is required)
 
 ## Core Entities
 
@@ -992,14 +991,14 @@
 - `getName()`: `?string`
 - `getLatitude()`: `?float`
 - `getLongitude()`: `?float`
-- `getRegion()`: [`?Region`](#region)
+- `getRegion()`: [`?Region`](#region) (`region` include is required)
 
 ### Continent
 
 - `getId()`: `int`
 - `getName()`: `?string`
 - `getCode()`: `?string`
-- `getCountries()`: [`?Country[]`](#country)
+- `getCountries()`: [`?Country[]`](#country) (`countries` include is required)
 
 ### Country
 
@@ -1014,8 +1013,8 @@
 - `getLongitude()`: `?float`
 - `getBorders()`: `?array`
 - `getImagePath()`: `?string`
-- `getContinent()`: [`?Continent`](#continent)
-- `getRegions()`: [`?Region[]`](#region)
+- `getContinent()`: [`?Continent`](#continent) (`continent` include is required)
+- `getRegions()`: [`?Region[]`](#region) (`regions` include is required)
 
 ### FilterEntity
 
@@ -1027,8 +1026,8 @@
 - `getId()`: `int`
 - `getCountryId()`: `int`
 - `getName()`: `?string`
-- `getCountry()`: [`?Country`](#country)
-- `getCities()`: [`?City[]`](#city)
+- `getCountry()`: [`?Country`](#country) (`country` include is required)
+- `getCities()`: [`?City[]`](#city) (`cities` include is required)
 
 ### Sport
 
@@ -1049,4 +1048,4 @@
 
 - `getName()`: `string`
 - `getUpdatedAt()`: `\DateTimeImmutable`
-- `getTypes()`: [`Type[]`](#type)
+- `getTypes()`: [`Type[]`](#type) (`types` include is required)

@@ -1,69 +1,125 @@
 # Supported Endpoints
 
 - [Responses](#responses)
-- [Football Endpoints](#football-endpoints)
-  - [Coaches](#coaches)
-  - [Commentaries](#commentaries)
-  - [Fixtures](#fixtures)
-  - [Leagues](#leagues)
-  - [Livescores](#livescores)
-  - [Players](#players)
-  - [Referees](#referees)
-  - [Rivals](#rivals)
-  - [Rounds](#rounds)
-  - [Schedules](#schedules)
-  - [Seasons](#seasons)
-  - [Stages](#stages)
-  - [Standings](#standings)
-  - [States](#states)
-  - [Statistics](#statistics)
-  - [Teams](#teams)
-  - [Team Squads](#team-squads)
-  - [Topscorers](#topscorers)
-  - [Transfers](#transfers)
-  - [TV Stations](#tv-stations)
-  - [Venues](#venues)
-- [Odds Endpoints](#odds-endpoints)
-  - [Bookmakers](#bookmakers)
-  - [Markets](#markets)
-  - [Pre-match Odds](#pre-match-odds)
-- [Core Endpoints](#core-endpoints)
-  - [Cities](#cities)
-  - [Continents](#continents)
-  - [Countries](#countries)
-  - [Filters](#filters)
-  - [Regions](#regions)
-  - [Types](#types)
+- Endpoints
+  - [Football Endpoints](#football-endpoints)
+    - [Coaches](#coaches)
+    - [Commentaries](#commentaries)
+    - [Fixtures](#fixtures)
+    - [Leagues](#leagues)
+    - [Livescores](#livescores)
+    - [Players](#players)
+    - [Referees](#referees)
+    - [Rivals](#rivals)
+    - [Rounds](#rounds)
+    - [Schedules](#schedules)
+    - [Seasons](#seasons)
+    - [Stages](#stages)
+    - [Standings](#standings)
+    - [States](#states)
+    - [Statistics](#statistics)
+    - [Teams](#teams)
+    - [Team Squads](#team-squads)
+    - [Topscorers](#topscorers)
+    - [Transfers](#transfers)
+    - [TV Stations](#tv-stations)
+    - [Venues](#venues)
+  - [Odds Endpoints](#odds-endpoints)
+    - [Bookmakers](#bookmakers)
+    - [Markets](#markets)
+    - [Pre-match Odds](#pre-match-odds)
+  - [Core Endpoints](#core-endpoints)
+    - [Cities](#cities)
+    - [Continents](#continents)
+    - [Countries](#countries)
+    - [Filters](#filters)
+    - [Regions](#regions)
+    - [Types](#types)
 - [Select, Include and Filters](#select-include-and-filters)
   - [withSelect](#withselect)
   - [withInclude](#withinclude)
   - [withFilters](#withfilters)
-- [Common Methods](#common-methods)
+- [Timezone, Language and Cache TTL](#timezone-language-and-cache-ttl)
   - [withTimezone](#withtimezone)
   - [withLanguage](#withlanguage)
   - [withCacheTtl](#withcachettl)
 
 ## Responses
 
-All successful responses will return an [`<Entity>Item`](05-objects.md#ltentitygtitem) or an [`<Entity>Collection`](05-objects.md#ltentitygtcollection).
+All successful responses will return an [`<Entity>Item`](05-objects.md#entityitem) or an [`<Entity>Collection`](05-objects.md#entitycollection).
 
-One of the differences between an [`<Entity>Item`](05-objects.md#ltentitygtitem) and an [`<Entity>Collection`](05-objects.md#ltentitygtcollection)
-is that the [`<Entity>Item`](05-objects.md#ltentitygtitem) `getData()` method will return a single _Entity_ object,
-while the [`<Entity>Collection`](05-objects.md#ltentitygtcollection) `getData()` method will return an array of _Entity_ objects.
+One of the differences between an [`<Entity>Item`](05-objects.md#entityitem) and an [`<Entity>Collection`](05-objects.md#entitycollection)
+is that the [`<Entity>Item`](05-objects.md#entityitem) `getData()` method will return a single _Entity_ object,
+while the [`<Entity>Collection`](05-objects.md#entitycollection) `getData()` method will return an array of _Entity_ objects.
 
-For example, when requesting a continent by id, the response will be a `ContinentItem` object and the `getData()` method will return a [`Continent`](05-objects.md#continent) object.
-The same way that when requesting all continents, the response will be a `ContinentCollection` object and the `getData()` method will return an array of [`Continent`](05-objects.md#continent) objects.
+For example, when requesting a fixture by id, the response will be a `FixtureItem` object and the `getData()` method will return a [`Fixture`](05-objects.md#fixture) object.
+The same way that when requesting all fixtures, the response will be a `FixtureCollection` object and the `getData()` method will return an array of [`Fixture`](05-objects.md#fixture) objects.
 Check the [responses objects](05-objects.md#response-entities) for more information.
+
+```php
+// Returns a FixtureItem object
+$fixtureItem = $sportMonksFootball->fixtures()->getById(1);
+// Returns a Fixture object
+$fixture = $fixtureItem->getData();
+echo $fixture->getName();
+
+// Returns a FixtureCollection object
+$fixtureCollection = $sportMonksFootball->fixtures()->getAll();
+// Returns an array of Fixture objects
+$fixtures = $fixtureCollection->getData();
+foreach ($fixtures as $fixture) {
+    echo $fixture->getName();
+}
+```
 
 ### Pagination
 
-All [`<Entity>Collection`](05-objects.md#ltentitygtcollection) responses have the `getPagination()` method
-that returns all the available pagination data.
+[`<Entity>Collection`](05-objects.md#entitycollection) responses that contain pagination data (not all of them have)
+will be accessible through the `getPagination()` method:
+
+```php
+$fixtures = $sportMonksFootball->fixtures()->getAll();
+
+echo $fixtures->getPagination()->getCount();
+echo $fixtures->getPagination()->getPerPage();
+echo $fixtures->getPagination()->getCurrentPage();
+echo $fixtures->getPagination()->getNextPage();
+echo $fixtures->getPagination()->hasMore();
+```
+
+Endpoints that support pagination, will always have a `page`, `perPage` and `order` parameters:
+
+```php
+// Returns page 10 with 50 fixtures per page in descending order
+$fixtures = $sportMonksFootball->fixtures()->getAll(page: 10, perPage: 50, order: 'desc')->getData();
+```
 
 ### Rate Limit
 
 All responses include the `getRateLimit()` method with the current quota usage.
 Check the [official documentation](https://docs.sportmonks.com/football/api/rate-limit) for more information.
+
+```php
+$fixture = $sportMonksFootball->fixtures()->getById(1);
+
+echo $fixture->getRateLimit()->getRemainingNumRequests();
+echo $fixture->getRateLimit()->getSecondsToReset();
+echo $fixture->getRateLimit()->getRequestedEntity();
+```
+
+### Timezone
+
+All responses include the `getTimezone()` method with the timezone of the given data.
+By default, all responses will be in the `UTC` timezone.
+
+To request data in a different timezone for all requests, check the [configuration section](02-configuration.md#timezone).
+For a single endpoint, check the [`withTimezone` section](#withtimezone).
+
+```php
+$fixture = $sportMonksFootball->fixtures()->getById(1);
+
+echo $fixture->getTimezone(); // UTC
+```
 
 ## Football Endpoints
 
@@ -2143,13 +2199,97 @@ foreach ($entities->getData() as $entity) {
 
 #### `withSelect`
 
+```php
+/** @param string[] $select **/
+withSelect(array $select): self
+```
+
+It is possible to request only specific fields on entities and on includes.
+The advantage of selecting specific fields is that it reduces the response speed in mainly large responses. 
+In addition to reducing response time, the response size is also reduced.
+
+For selecting fields on includes, check the [`withInclude`](#withinclude) section.
+
+```php
+// Get fixture with fields "name" and "starting_at" only
+$fixture = $sportMonksFootball->fixtures()
+    ->withSelect(['name', 'starting_at'])
+    ->getById(1);
+```
+
 #### `withInclude`
+
+```php
+/** @param string[] $include **/
+withInclude(array $include): self
+```
+
+Includes allow to enrich the response with relational data.
+This means that it is possible to request a fixture and have the venue data in the same response without any additional requests.
+To check what includes ara available per endpoint, check the [official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints).
+
+```php
+// Get fixture with "venue" and "participants" (teams) data
+$fixture = $sportMonksFootball->fixtures()
+    ->withInclude(['venue', 'participants'])
+    ->getById(1);
+
+// It is also possible to nest includes
+// This will return venue data and country data inside the venue
+$fixture = $sportMonksFootball->fixtures()
+    ->withInclude(['venue.country'])
+    ->getById(1);
+```
+
+To better understand how it works, check the [official documentation](https://docs.sportmonks.com/football/tutorials-and-guides/tutorials/enrich-your-response).
+
+To select fields in includes (similar to the [`withSelect`](#withselect)), you can do the following:
+
+```php
+// Get fixture with "venue" data with fields "name" and "city_name" only
+$fixture = $sportMonksFootball->fixtures()
+    ->withInclude(['venue:name,city_name'])
+    ->getById(1);
+```
 
 #### `withFilters`
 
-## Common Methods
+```php
+/** @param array<string, string|int> $filters **/
+withFilters(array $filters): self
+```
+
+Filters are useful to make conditional requests. For example, get fixture events that are only goals:
+
+```php
+// Get fixture with "events" that are only goals, own goals or penalties.
+$fixture = $sportMonksFootball->fixtures()
+    ->withInclude(['events'])
+    ->withFilters(['eventTypes' => '14,15,16'])
+    ->getById(1);
+```
+
+To better understand how it works, check the [official documentation](https://docs.sportmonks.com/football/api/request-options/filtering).
+
+## Timezone, Language and Cache TTL
 
 #### `withTimezone`
+
+```php
+withTimezone(string $timezone): self
+```
+
+Makes a request with a different timezone from the one globally defined in the [configuration](02-configuration.md#timezone).
+
+Only available for endpoints that contain Fixtures or Livescores.
+Check the [official documentation](https://docs.sportmonks.com/football/tutorials-and-guides/tutorials/timezone-parameters-on-different-endpoints) for more information.
+
+```php
+// Get all fixtures in the Europe/Lisbon timezone
+$fixtures = $sportMonksFootball->fixtures()
+    ->withTimezone('Europe/Lisbon')
+    ->getAll();
+```
 
 #### `withLanguage`
 
@@ -2159,10 +2299,17 @@ withLanguage(string $language): self
 
 Makes a request with a different language from the one globally defined in the [configuration](02-configuration.md#language).
 
-// TODO write about where it is available
+Some endpoints may not support the `withLanguage` method.
+Check the [official documentation](https://docs.sportmonks.com/football/api/translations-beta) for more information.
+
+> **Note**
+> This is feature is still in beta and may change in the future.
 
 ```php
-// TODO
+// Get all fixtures in Japanese
+$fixtures = $sportMonksFootball->fixtures()
+    ->withLanguage(Language::JAPANESE)
+    ->getAll();
 ```
 
 #### `withCacheTtl`
@@ -2178,10 +2325,11 @@ If `0` seconds is provided, the request will not be cached.
 > **Note**
 > Setting cache to `0` seconds will **not** invalidate any existing cache.
 
-// TODO write about default values
-
 Available for all APIs if `cache` is enabled in the [configuration](02-configuration.md#cache).
 
 ```php
-// TODO
+// Get all fixtures and cache for 1 day
+$fixtures = $sportMonksFootball->fixtures()
+    ->withCacheTtl(3600 * 24)
+    ->getAll();
 ```

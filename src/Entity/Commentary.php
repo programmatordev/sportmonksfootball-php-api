@@ -18,7 +18,7 @@ class Commentary
 
     private ?bool $isImportant;
 
-    private ?int $order;
+    private ?int $sortOrder;
 
     private ?Fixture $fixture;
 
@@ -37,7 +37,7 @@ class Commentary
         $this->extraMinute = $data['extra_minute'] ?? null;
         $this->isGoal = $data['is_goal'] ?? null;
         $this->isImportant = $data['is_important'] ?? null;
-        $this->order = $data['order'] ?? null;
+        $this->sortOrder = $data['order'] ?? null;
 
         // include
         $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
@@ -80,9 +80,9 @@ class Commentary
         return $this->isImportant;
     }
 
-    public function getOrder(): ?int
+    public function getSortOrder(): ?int
     {
-        return $this->order;
+        return $this->sortOrder;
     }
 
     public function getFixture(): ?Fixture

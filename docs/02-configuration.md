@@ -177,7 +177,16 @@ $sportMonksFootball = new SportMonksFootball(
 
 #### Cache TTL
 
-// TODO
+When `cache` enabled, all endpoints have a default cache max age that varies according to expected data update interval.
+For example, `countries` have a default max age of `1 day` (this is, data will be cached for 1 day, since it is not updated regularly),
+while `livescores` have a max age of `1 minute`.
+You can check de default cache max age for each endpoint on the [Supported Endpoints](03-supported-endpoints.md) page.
+
+A few endpoints currently have a forced cache max age.
+This is due to them retrieving live data or updates.
+This may change in the future.
+
+To change the default cache max age per endpoint, check the [`withCacheTll`](03-supported-endpoints.md#withcachettl) section.
 
 ### `logger`
 

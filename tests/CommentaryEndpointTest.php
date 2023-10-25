@@ -45,6 +45,6 @@ class CommentaryEndpointTest extends AbstractTest
         $this->assertSame(null, $commentary->getExtraMinute());
         $this->assertSame(false, $commentary->isGoal());
         $this->assertSame(false, $commentary->isImportant());
-        $this->assertSame(1, $commentary->getOrder());
+        $this->assertSame(1, $commentary->getSortOrder());
     }
 }
