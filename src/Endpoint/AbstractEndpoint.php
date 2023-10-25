@@ -7,6 +7,7 @@ use Http\Client\Common\Plugin\LoggerPlugin;
 use Http\Client\Exception;
 use ProgrammatorDev\SportMonksFootball\Config;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\CacheTtlTrait;
+use ProgrammatorDev\SportMonksFootball\Endpoint\Util\TimezoneTrait;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\Error;
 use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 use ProgrammatorDev\SportMonksFootball\Exception\BadRequestException;
@@ -38,6 +39,7 @@ use Psr\Log\LoggerInterface;
 
 class AbstractEndpoint
 {
+    use TimezoneTrait;
     use CacheTtlTrait;
 
     private Config $config;
