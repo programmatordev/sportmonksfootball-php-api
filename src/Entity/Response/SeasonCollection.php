@@ -16,7 +16,7 @@ class SeasonCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection(Season::class, $response['data']);
+        $this->data = $this->createEntityCollection(Season::class, $response['data'], $response['timezone']);
     }
 
     public function getData(): array

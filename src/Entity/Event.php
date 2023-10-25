@@ -54,7 +54,7 @@ class Event
 
     private ?Period $period;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->typeId = $data['type_id'];
@@ -78,13 +78,13 @@ class Event
         $this->coachId = $data['coach_id'] ?? null;
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
         $this->subType = isset($data['subtype']) ? new Type($data['subtype']) : null;
-        $this->player = isset($data['player']) ? new Player($data['player']) : null;
-        $this->relatedPlayer = isset($data['relatedplayer']) ? new Player($data['relatedplayer']) : null;
-        $this->participant = isset($data['participant']) ? new Team($data['participant']) : null;
-        $this->period = isset($data['period']) ? new Period($data['period']) : null;
+        $this->player = isset($data['player']) ? new Player($data['player'], $timezone) : null;
+        $this->relatedPlayer = isset($data['relatedplayer']) ? new Player($data['relatedplayer'], $timezone) : null;
+        $this->participant = isset($data['participant']) ? new Team($data['participant'], $timezone) : null;
+        $this->period = isset($data['period']) ? new Period($data['period'], $timezone) : null;
     }
 
     public function getId(): int

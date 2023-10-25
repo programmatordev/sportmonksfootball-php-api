@@ -16,7 +16,7 @@ class Rival
 
     private ?Team $rival;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
@@ -24,8 +24,8 @@ class Rival
         $this->rivalId = $data['rival_id'];
 
         // include
-        $this->team = isset($data['team']) ? new Team($data['team']) : null;
-        $this->rival = isset($data['rival']) ? new Team($data['rival']) : null;
+        $this->team = isset($data['team']) ? new Team($data['team'], $timezone) : null;
+        $this->rival = isset($data['rival']) ? new Team($data['rival'], $timezone) : null;
     }
 
     public function getId(): int

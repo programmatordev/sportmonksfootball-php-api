@@ -12,7 +12,7 @@ class TvStationItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new TvStation($response['data']);
+        $this->data = new TvStation($response['data'], $response['timezone']);
     }
 
     public function getData(): TvStation

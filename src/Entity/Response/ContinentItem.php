@@ -12,7 +12,7 @@ class ContinentItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Continent($response['data']);
+        $this->data = new Continent($response['data'], $response['timezone']);
     }
 
     public function getData(): Continent

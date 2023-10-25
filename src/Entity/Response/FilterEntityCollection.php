@@ -16,7 +16,7 @@ class FilterEntityCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection(FilterEntity::class, $response['data']);
+        $this->data = $this->createEntityCollection(FilterEntity::class, $response['data'], $response['timezone']);
     }
 
     public function getData(): array

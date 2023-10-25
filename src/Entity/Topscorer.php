@@ -28,7 +28,7 @@ class Topscorer
 
     private ?Type $type;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->seasonId = $data['season_id'] ?? null;
@@ -39,10 +39,10 @@ class Topscorer
         $this->total = $data['total'];
 
         // include
-        $this->season = isset($data['season']) ? new Season($data['season']) : null;
-        $this->stage = isset($data['stage']) ? new Stage($data['stage']) : null;
-        $this->player = isset($data['player']) ? new Player($data['player']) : null;
-        $this->participant = isset($data['participant']) ? new Team($data['participant']) : null;
+        $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
+        $this->stage = isset($data['stage']) ? new Stage($data['stage'], $timezone) : null;
+        $this->player = isset($data['player']) ? new Player($data['player'], $timezone) : null;
+        $this->participant = isset($data['participant']) ? new Team($data['participant'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
     }
 

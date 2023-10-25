@@ -18,7 +18,7 @@ class Statistic
 
     private Team|Player|null $participant;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->modelId = $data['model_id'];
@@ -33,7 +33,7 @@ class Statistic
             : null;
         // try to find if participant is Player or Team through value
         $this->participant = isset($data['participant'])
-            ? (isset($this->value['player_id']) ? new Player($data['participant']) : new Team($data['participant']))
+            ? (isset($this->value['player_id']) ? new Player($data['participant'], $timezone) : new Team($data['participant'], $timezone))
             : null;
     }
 

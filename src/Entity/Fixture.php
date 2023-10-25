@@ -106,7 +106,7 @@ class Fixture
     /** @var ?FixtureSidelined[] */
     private ?array $sidelined;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
@@ -121,7 +121,7 @@ class Fixture
 
         // select
         $this->name = $data['name'] ?? null;
-        $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
+        $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at'], new \DateTimeZone($timezone)) : null;
         $this->resultInfo = $data['result_info'] ?? null;
         $this->leg = $data['leg'] ?? null;
         $this->details = $data['details'] ?? null;
@@ -131,29 +131,29 @@ class Fixture
 
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
-        $this->stage = isset($data['stage']) ? new Stage($data['stage']) : null;
-        $this->league = isset($data['league']) ? new League($data['league']) : null;
-        $this->round = isset($data['round']) ? new Round($data['round']) : null;
+        $this->stage = isset($data['stage']) ? new Stage($data['stage'], $timezone) : null;
+        $this->league = isset($data['league']) ? new League($data['league'], $timezone) : null;
+        $this->round = isset($data['round']) ? new Round($data['round'], $timezone) : null;
         $this->group = isset($data['group']) ? new Group($data['group']) : null;
-        $this->aggregate = isset($data['aggregate']) ? new Aggregate($data['aggregate']) : null;
-        $this->season = isset($data['season']) ? new Season($data['season']) : null;
-        $this->venue = isset($data['venue']) ? new Venue($data['venue']) : null;
+        $this->aggregate = isset($data['aggregate']) ? new Aggregate($data['aggregate'], $timezone) : null;
+        $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
+        $this->venue = isset($data['venue']) ? new Venue($data['venue'], $timezone) : null;
         $this->state = isset($data['state']) ? new State($data['state']) : null;
-        $this->lineups = isset($data['lineups']) ? $this->createEntityCollection(Lineup::class, $data['lineups']) : null;
-        $this->comments = isset($data['comments']) ? $this->createEntityCollection(Commentary::class, $data['comments']) : null;
-        $this->participants = isset($data['participants']) ? $this->createEntityCollection(Team::class, $data['participants']) : null;
-        $this->odds = isset($data['odds']) ? $this->createEntityCollection(Odd::class, $data['odds']) : null;
+        $this->lineups = isset($data['lineups']) ? $this->createEntityCollection(Lineup::class, $data['lineups'], $timezone) : null;
+        $this->comments = isset($data['comments']) ? $this->createEntityCollection(Commentary::class, $data['comments'], $timezone) : null;
+        $this->participants = isset($data['participants']) ? $this->createEntityCollection(Team::class, $data['participants'], $timezone) : null;
+        $this->odds = isset($data['odds']) ? $this->createEntityCollection(Odd::class, $data['odds'], $timezone) : null;
         $this->metadata = isset($data['metadata']) ? $this->createEntityCollection(Metadata::class, $data['metadata']) : null;
-        $this->weatherReport = isset($data['weatherreport']) ? new WeatherReport($data['weatherreport']) : null;
-        $this->events = isset($data['events']) ? $this->createEntityCollection(Event::class, $data['events']) : null;
-        $this->timeline = isset($data['timeline']) ? $this->createEntityCollection(Event::class, $data['timeline']) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(FixtureStatistic::class, $data['statistics']) : null;
-        $this->periods = isset($data['periods']) ? $this->createEntityCollection(Period::class, $data['periods']) : null;
-        $this->formations = isset($data['formations']) ? $this->createEntityCollection(Formation::class, $data['formations']) : null;
-        $this->scores = isset($data['scores']) ? $this->createEntityCollection(Score::class, $data['scores']) : null;
-        $this->tvStations = isset($data['tvstations']) ? $this->createEntityCollection(FixtureTvStation::class, $data['tvstations']) : null;
-        $this->referees = isset($data['referees']) ? $this->createEntityCollection(FixtureReferee::class, $data['referees']) : null;
-        $this->sidelined = isset($data['sidelined']) ? $this->createEntityCollection(FixtureSidelined::class, $data['sidelined']) : null;
+        $this->weatherReport = isset($data['weatherreport']) ? new WeatherReport($data['weatherreport'], $timezone) : null;
+        $this->events = isset($data['events']) ? $this->createEntityCollection(Event::class, $data['events'], $timezone) : null;
+        $this->timeline = isset($data['timeline']) ? $this->createEntityCollection(Event::class, $data['timeline'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(FixtureStatistic::class, $data['statistics'], $timezone) : null;
+        $this->periods = isset($data['periods']) ? $this->createEntityCollection(Period::class, $data['periods'], $timezone) : null;
+        $this->formations = isset($data['formations']) ? $this->createEntityCollection(Formation::class, $data['formations'], $timezone) : null;
+        $this->scores = isset($data['scores']) ? $this->createEntityCollection(Score::class, $data['scores'], $timezone) : null;
+        $this->tvStations = isset($data['tvstations']) ? $this->createEntityCollection(FixtureTvStation::class, $data['tvstations'], $timezone) : null;
+        $this->referees = isset($data['referees']) ? $this->createEntityCollection(FixtureReferee::class, $data['referees'], $timezone) : null;
+        $this->sidelined = isset($data['sidelined']) ? $this->createEntityCollection(FixtureSidelined::class, $data['sidelined'], $timezone) : null;
 
         // TODO trends, inplayOdds, prematchNews, predictions, ballCoordinates
     }

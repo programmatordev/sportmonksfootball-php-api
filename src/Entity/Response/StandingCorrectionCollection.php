@@ -16,7 +16,7 @@ class StandingCorrectionCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection(StandingCorrection::class, $response['data']);
+        $this->data = $this->createEntityCollection(StandingCorrection::class, $response['data'], $response['timezone']);
     }
 
     public function getData(): array

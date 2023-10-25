@@ -32,7 +32,7 @@ class Sidelined
 
     private ?Player $player;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->playerId = $data['player_id'];
@@ -48,10 +48,10 @@ class Sidelined
         $this->isCompleted = $data['completed'];
 
         // include
-        $this->team = isset($data['team']) ? new Team($data['team']) : null;
-        $this->season = isset($data['season']) ? new Season($data['season']) : null;
+        $this->team = isset($data['team']) ? new Team($data['team'], $timezone) : null;
+        $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
-        $this->player = isset($data['player']) ? new Player($data['player']) : null;
+        $this->player = isset($data['player']) ? new Player($data['player'], $timezone) : null;
     }
 
     public function getId(): int

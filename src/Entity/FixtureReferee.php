@@ -18,7 +18,7 @@ class FixtureReferee
 
     private ?Type $type;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -26,8 +26,8 @@ class FixtureReferee
         $this->typeId = $data['type_id'];
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
-        $this->referee = isset($data['referee']) ? new Referee($data['referee']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
+        $this->referee = isset($data['referee']) ? new Referee($data['referee'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
     }
 

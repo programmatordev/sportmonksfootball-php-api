@@ -19,7 +19,7 @@ class Region
     /** @var ?City[] */
     private ?array $cities;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->countryId = $data['country_id'];
@@ -28,8 +28,8 @@ class Region
         $this->name = $data['name'] ?? null;
 
         // include
-        $this->country = isset($data['country']) ? new Country($data['country']) : null;
-        $this->cities = isset($data['cities']) ? $this->createEntityCollection(City::class, $data['cities']) : null;
+        $this->country = isset($data['country']) ? new Country($data['country'], $timezone) : null;
+        $this->cities = isset($data['cities']) ? $this->createEntityCollection(City::class, $data['cities'], $timezone) : null;
     }
 
     public function getId(): int

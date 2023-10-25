@@ -16,7 +16,7 @@ class CityCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection(City::class, $response['data']);
+        $this->data = $this->createEntityCollection(City::class, $response['data'], $response['timezone']);
     }
 
     public function getData(): array

@@ -12,7 +12,7 @@ class StageItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Stage($response['data']);
+        $this->data = new Stage($response['data'], $response['timezone']);
     }
 
     public function getData(): Stage

@@ -12,7 +12,7 @@ class PlayerItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Player($response['data']);
+        $this->data = new Player($response['data'], $response['timezone']);
     }
 
     public function getData(): Player

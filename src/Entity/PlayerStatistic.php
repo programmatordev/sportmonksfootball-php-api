@@ -27,9 +27,9 @@ class PlayerStatistic extends ParticipantStatistic
 
     private ?Type $position;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
-        parent::__construct($data);
+        parent::__construct($data, $timezone);
 
         $this->playerId = $data['player_id'];
         $this->teamId = $data['team_id'];
@@ -41,8 +41,8 @@ class PlayerStatistic extends ParticipantStatistic
 
         // include
         $this->details = isset($data['details']) ? $this->createEntityCollection(PlayerStatisticDetail::class, $data['details']) : null;
-        $this->player = isset($data['player']) ? new Player($data['player']) : null;
-        $this->team = isset($data['team']) ? new Team($data['team']) : null;
+        $this->player = isset($data['player']) ? new Player($data['player'], $timezone) : null;
+        $this->team = isset($data['team']) ? new Team($data['team'], $timezone) : null;
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
     }
 

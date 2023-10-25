@@ -24,7 +24,7 @@ class Score
 
     private ?Type $type;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -37,8 +37,8 @@ class Score
         $this->description = $data['description'] ?? null;
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
-        $this->participant = isset($data['participant']) ? new Team($data['participant']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
+        $this->participant = isset($data['participant']) ? new Team($data['participant'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
     }
 

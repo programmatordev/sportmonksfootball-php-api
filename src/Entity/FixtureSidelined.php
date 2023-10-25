@@ -18,7 +18,7 @@ class FixtureSidelined
 
     private ?Team $participant;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -26,9 +26,9 @@ class FixtureSidelined
         $this->participantId = $data['participant_id'];
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
-        $this->sidelined = isset($data['sideline']) ? new Sidelined($data['sideline']) : null;
-        $this->participant = isset($data['participant']) ? new Team($data['participant']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
+        $this->sidelined = isset($data['sideline']) ? new Sidelined($data['sideline'], $timezone) : null;
+        $this->participant = isset($data['participant']) ? new Team($data['participant'], $timezone) : null;
     }
 
     public function getId(): int

@@ -22,7 +22,7 @@ class LineupDetail
 
     private ?Type $type;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -33,7 +33,7 @@ class LineupDetail
         $this->data = $data['data'];
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
     }
 

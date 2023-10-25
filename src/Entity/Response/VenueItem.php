@@ -12,7 +12,7 @@ class VenueItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Venue($response['data']);
+        $this->data = new Venue($response['data'], $response['timezone']);
     }
 
     public function getData(): Venue

@@ -56,7 +56,7 @@ class League
     /** @var ?Season[] */
     private ?array $seasons;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
@@ -75,14 +75,14 @@ class League
 
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
-        $this->country = isset($data['country']) ? new Country($data['country']) : null;
-        $this->stages = isset($data['stages']) ? $this->createEntityCollection(Stage::class, $data['stages']) : null;
-        $this->latestFixtures = isset($data['latest']) ? $this->createEntityCollection(Fixture::class, $data['latest']) : null;
-        $this->upcomingFixtures = isset($data['upcoming']) ? $this->createEntityCollection(Fixture::class, $data['upcoming']) : null;
-        $this->inplayFixtures = isset($data['inplay']) ? $this->createEntityCollection(Fixture::class, $data['inplay']) : null;
-        $this->todayFixtures = isset($data['today']) ? $this->createEntityCollection(Fixture::class, $data['today']) : null;
-        $this->currentSeason = isset($data['currentseason']) ? new Season($data['currentseason']) : null;
-        $this->seasons = isset($data['seasons']) ? $this->createEntityCollection(Season::class, $data['seasons']) : null;
+        $this->country = isset($data['country']) ? new Country($data['country'], $timezone) : null;
+        $this->stages = isset($data['stages']) ? $this->createEntityCollection(Stage::class, $data['stages'], $timezone) : null;
+        $this->latestFixtures = isset($data['latest']) ? $this->createEntityCollection(Fixture::class, $data['latest'], $timezone) : null;
+        $this->upcomingFixtures = isset($data['upcoming']) ? $this->createEntityCollection(Fixture::class, $data['upcoming'], $timezone) : null;
+        $this->inplayFixtures = isset($data['inplay']) ? $this->createEntityCollection(Fixture::class, $data['inplay'], $timezone) : null;
+        $this->todayFixtures = isset($data['today']) ? $this->createEntityCollection(Fixture::class, $data['today'], $timezone) : null;
+        $this->currentSeason = isset($data['currentseason']) ? new Season($data['currentseason'], $timezone) : null;
+        $this->seasons = isset($data['seasons']) ? $this->createEntityCollection(Season::class, $data['seasons'], $timezone) : null;
     }
 
     public function getId(): int

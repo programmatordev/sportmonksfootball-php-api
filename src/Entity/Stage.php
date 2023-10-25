@@ -62,7 +62,7 @@ class Stage
     /** @var ?Topscorer[] */
     private ?array $topscorers;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
@@ -81,17 +81,17 @@ class Stage
         $this->tieBreakerRuleId = $data['tie_breaker_rule_id'] ?? null;
 
         // include
-        $this->league = isset($data['league']) ? new League($data['league']) : null;
+        $this->league = isset($data['league']) ? new League($data['league'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
-        $this->season = isset($data['season']) ? new Season($data['season']) : null;
-        $this->rounds = isset($data['rounds']) ? $this->createEntityCollection(Round::class, $data['rounds']) : null;
-        $this->currentRound = isset($data['currentround']) ? new Round($data['currentround']) : null;
+        $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
+        $this->rounds = isset($data['rounds']) ? $this->createEntityCollection(Round::class, $data['rounds'], $timezone) : null;
+        $this->currentRound = isset($data['currentround']) ? new Round($data['currentround'], $timezone) : null;
         $this->groups = isset($data['groups']) ? $this->createEntityCollection(Group::class, $data['groups']) : null;
-        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
-        $this->aggregates = isset($data['aggregates']) ? $this->createEntityCollection(Aggregate::class, $data['aggregates']) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(Statistic::class, $data['statistics']) : null;
-        $this->topscorers = isset($data['topscorers']) ? $this->createEntityCollection(Topscorer::class, $data['topscorers']) : null;
+        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures'], $timezone) : null;
+        $this->aggregates = isset($data['aggregates']) ? $this->createEntityCollection(Aggregate::class, $data['aggregates'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(Statistic::class, $data['statistics'], $timezone) : null;
+        $this->topscorers = isset($data['topscorers']) ? $this->createEntityCollection(Topscorer::class, $data['topscorers'], $timezone) : null;
     }
 
     public function getId(): int

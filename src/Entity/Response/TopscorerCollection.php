@@ -16,7 +16,7 @@ class TopscorerCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection(Topscorer::class, $response['data']);
+        $this->data = $this->createEntityCollection(Topscorer::class, $response['data'], $response['timezone']);
     }
 
     public function getData(): array

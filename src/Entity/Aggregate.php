@@ -29,7 +29,7 @@ class Aggregate
 
     private ?Stage $stage;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->leagueId = $data['league_id'];
@@ -43,9 +43,9 @@ class Aggregate
         $this->winnerParticipantId = $data['winner_participant_id'] ?? null;
 
         // include
-        $this->league = isset($data['league']) ? new League($data['league']) : null;
-        $this->season = isset($data['season']) ? new Season($data['season']) : null;
-        $this->stage = isset($data['stage']) ? new Stage($data['stage']) : null;
+        $this->league = isset($data['league']) ? new League($data['league'], $timezone) : null;
+        $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
+        $this->stage = isset($data['stage']) ? new Stage($data['stage'], $timezone) : null;
     }
 
     public function getId(): int

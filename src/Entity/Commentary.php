@@ -26,7 +26,7 @@ class Commentary
 
     private ?Player $relatedPlayer;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -40,9 +40,9 @@ class Commentary
         $this->sortOrder = $data['order'] ?? null;
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
-        $this->player = isset($data['player']) ? new Player($data['player']) : null;
-        $this->relatedPlayer = isset($data['relatedplayer']) ? new Player($data['relatedplayer']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
+        $this->player = isset($data['player']) ? new Player($data['player'], $timezone) : null;
+        $this->relatedPlayer = isset($data['relatedplayer']) ? new Player($data['relatedplayer'], $timezone) : null;
     }
 
     public function getId(): int

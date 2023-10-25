@@ -12,7 +12,7 @@ class RoundItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Round($response['data']);
+        $this->data = new Round($response['data'], $response['timezone']);
     }
 
     public function getData(): Round

@@ -12,7 +12,7 @@ class CountryItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Country($response['data']);
+        $this->data = new Country($response['data'], $response['timezone']);
     }
 
     public function getData(): Country

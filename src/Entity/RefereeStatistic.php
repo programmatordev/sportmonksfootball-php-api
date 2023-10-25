@@ -15,15 +15,15 @@ class RefereeStatistic extends ParticipantStatistic
 
     private ?Referee $referee;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
-        parent::__construct($data);
+        parent::__construct($data, $timezone);
 
         $this->refereeId = $data['referee_id'];
 
         // include
         $this->details = isset($data['details']) ? $this->createEntityCollection(RefereeStatisticDetail::class, $data['details']) : null;
-        $this->referee = isset($data['referee']) ? new Referee($data['referee']) : null;
+        $this->referee = isset($data['referee']) ? new Referee($data['referee'], $timezone) : null;
     }
 
     public function getRefereeId(): int

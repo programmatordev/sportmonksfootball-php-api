@@ -12,7 +12,7 @@ class TransferItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Transfer($response['data']);
+        $this->data = new Transfer($response['data'], $response['timezone']);
     }
 
     public function getData(): Transfer
