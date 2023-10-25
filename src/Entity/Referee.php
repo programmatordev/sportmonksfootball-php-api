@@ -47,7 +47,7 @@ class Referee
     /** @var ?RefereeStatistic[] */
     private ?array $statistics;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
@@ -68,10 +68,10 @@ class Referee
 
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
-        $this->country = isset($data['country']) ? new Country($data['country']) : null;
-        $this->nationality = isset($data['nationality']) ? new Country($data['nationality']) : null;
-        $this->city = isset($data['city']) ? new City($data['city']) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(RefereeStatistic::class, $data['statistics']) : null;
+        $this->country = isset($data['country']) ? new Country($data['country'], $timezone) : null;
+        $this->nationality = isset($data['nationality']) ? new Country($data['nationality'], $timezone) : null;
+        $this->city = isset($data['city']) ? new City($data['city'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(RefereeStatistic::class, $data['statistics'], $timezone) : null;
     }
 
     public function getId(): int

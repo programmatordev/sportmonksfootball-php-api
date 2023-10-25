@@ -47,7 +47,7 @@ class Period
     /** @var ?FixtureStatistic[] */
     private ?array $statistics;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -66,11 +66,11 @@ class Period
         $this->seconds = $data['seconds'] ?? null;
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
-        $this->events = isset($data['events']) ? $this->createEntityCollection(Event::class, $data['events']) : null;
-        $this->timeline = isset($data['timeline']) ? $this->createEntityCollection(Event::class, $data['timeline']) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(FixtureStatistic::class, $data['statistics']) : null;
+        $this->events = isset($data['events']) ? $this->createEntityCollection(Event::class, $data['events'], $timezone) : null;
+        $this->timeline = isset($data['timeline']) ? $this->createEntityCollection(Event::class, $data['timeline'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(FixtureStatistic::class, $data['statistics'], $timezone) : null;
     }
 
     public function getId(): int

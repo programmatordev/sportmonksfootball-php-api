@@ -12,7 +12,7 @@ class TeamItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Team($response['data']);
+        $this->data = new Team($response['data'], $response['timezone']);
     }
 
     public function getData(): Team

@@ -43,7 +43,7 @@ class Lineup
     /** @var ?LineupDetail[] */
     private ?array $details;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -60,12 +60,12 @@ class Lineup
         $this->jerseyNumber = $data['jersey_number'] ?? null;
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
-        $this->player = isset($data['player']) ? new Player($data['player']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
+        $this->player = isset($data['player']) ? new Player($data['player'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
         $this->detailedPosition = isset($data['detailedposition']) ? new Type($data['detailedposition']) : null;
-        $this->details = isset($data['details']) ? $this->createEntityCollection(LineupDetail::class, $data['details']) : null;
+        $this->details = isset($data['details']) ? $this->createEntityCollection(LineupDetail::class, $data['details'], $timezone) : null;
     }
 
     public function getId(): int

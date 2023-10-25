@@ -18,7 +18,7 @@ class FixtureTvStation
 
     private ?Country $country;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -26,9 +26,9 @@ class FixtureTvStation
         $this->countryId = $data['country_id'];
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
-        $this->tvStation = isset($data['tvstation']) ? new TvStation($data['tvstation']) : null;
-        $this->country = isset($data['country']) ? new Country($data['country']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
+        $this->tvStation = isset($data['tvstation']) ? new TvStation($data['tvstation'], $timezone) : null;
+        $this->country = isset($data['country']) ? new Country($data['country'], $timezone) : null;
     }
 
     public function getId(): int

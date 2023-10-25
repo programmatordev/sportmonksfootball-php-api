@@ -12,7 +12,7 @@ class FixtureItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Fixture($response['data']);
+        $this->data = new Fixture($response['data'], $response['timezone']);
     }
 
     public function getData(): Fixture

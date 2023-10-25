@@ -16,7 +16,7 @@ class TeamSquadCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection(TeamSquad::class, $response['data']);
+        $this->data = $this->createEntityCollection(TeamSquad::class, $response['data'], $response['timezone']);
     }
 
     public function getData(): array

@@ -18,7 +18,7 @@ class City
 
     private ?Region $region;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->regionId = $data['region_id'];
@@ -30,7 +30,7 @@ class City
         $this->longitude = $data['longitude'] ?? null;
 
         // include
-        $this->region = isset($data['region']) ? new Region($data['region']) : null;
+        $this->region = isset($data['region']) ? new Region($data['region'], $timezone) : null;
     }
 
     public function getId(): int

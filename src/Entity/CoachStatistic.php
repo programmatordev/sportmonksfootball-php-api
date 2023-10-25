@@ -19,17 +19,17 @@ class CoachStatistic extends ParticipantStatistic
 
     private ?Team $team;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
-        parent::__construct($data);
+        parent::__construct($data, $timezone);
 
         $this->coachId = $data['coach_id'];
         $this->teamId = $data['team_id'];
 
         // include
         $this->details = isset($data['details']) ? $this->createEntityCollection(CoachStatisticDetail::class, $data['details']) : null;
-        $this->coach = isset($data['coach']) ? new Coach($data['coach']) : null;
-        $this->team = isset($data['team']) ? new Team($data['team']) : null;
+        $this->coach = isset($data['coach']) ? new Coach($data['coach'], $timezone) : null;
+        $this->team = isset($data['team']) ? new Team($data['team'], $timezone) : null;
     }
 
     public function getCoachId(): int

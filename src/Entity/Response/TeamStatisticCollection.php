@@ -16,7 +16,7 @@ class TeamStatisticCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection(TeamStatistic::class, $response['data']);
+        $this->data = $this->createEntityCollection(TeamStatistic::class, $response['data'], $response['timezone']);
     }
 
     public function getData(): array

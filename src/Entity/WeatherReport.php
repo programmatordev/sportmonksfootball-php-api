@@ -36,7 +36,7 @@ class WeatherReport
 
     private ?Fixture $fixture;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -56,8 +56,8 @@ class WeatherReport
         $this->isCurrent = $data['current'] ?? null;
 
         // include
-        $this->venue = isset($data['venue']) ? new Venue($data['venue']) : null;
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
+        $this->venue = isset($data['venue']) ? new Venue($data['venue'], $timezone) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
     }
 
     public function getId(): int

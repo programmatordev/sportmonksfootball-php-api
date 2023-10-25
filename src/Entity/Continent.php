@@ -17,7 +17,7 @@ class Continent
     /** @var ?Country[] */
     private ?array $countries;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
 
@@ -26,7 +26,7 @@ class Continent
         $this->code = $data['code'] ?? null;
 
         // include
-        $this->countries = isset($data['countries']) ? $this->createEntityCollection(Country::class, $data['countries']) : null;
+        $this->countries = isset($data['countries']) ? $this->createEntityCollection(Country::class, $data['countries'], $timezone) : null;
     }
 
     public function getId(): int

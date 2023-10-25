@@ -10,13 +10,13 @@ class ParticipantStatistic
 
     private ?Season $season;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->seasonId = $data['season_id'];
 
         // include
-        $this->season = isset($data['season']) ? new Season($data['season']) : null;
+        $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
     }
 
     public function getId(): int

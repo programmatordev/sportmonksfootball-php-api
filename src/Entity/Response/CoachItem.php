@@ -12,7 +12,7 @@ class CoachItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Coach($response['data']);
+        $this->data = new Coach($response['data'], $response['timezone']);
     }
 
     public function getData(): Coach

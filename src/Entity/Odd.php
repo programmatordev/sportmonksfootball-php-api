@@ -54,7 +54,7 @@ class Odd
 
     private ?Bookmaker $bookmaker;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -82,7 +82,7 @@ class Odd
         $this->latestBookmakerUpdatedAt = isset($data['latest_bookmaker_update']) ? new \DateTimeImmutable($data['latest_bookmaker_update']) : null;
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
         $this->market = isset($data['market']) ? new Market($data['market']) : null;
         $this->bookmaker = isset($data['bookmaker']) ? new Bookmaker($data['bookmaker']) : null;
     }

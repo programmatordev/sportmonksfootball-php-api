@@ -38,7 +38,7 @@ class Country
     /** @var ?League[] */
     private ?array $leagues;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->continentId = $data['continent_id'];
@@ -55,9 +55,9 @@ class Country
         $this->imagePath = $data['image_path'] ?? null;
 
         // include
-        $this->continent = isset($data['continent']) ? new Continent($data['continent']) : null;
-        $this->regions = isset($data['regions']) ? $this->createEntityCollection(Region::class, $data['regions']) : null;
-        $this->leagues = isset($data['leagues']) ? $this->createEntityCollection(League::class, $data['leagues']) : null;
+        $this->continent = isset($data['continent']) ? new Continent($data['continent'], $timezone) : null;
+        $this->regions = isset($data['regions']) ? $this->createEntityCollection(Region::class, $data['regions'], $timezone) : null;
+        $this->leagues = isset($data['leagues']) ? $this->createEntityCollection(League::class, $data['leagues'], $timezone) : null;
     }
 
     public function getId(): int

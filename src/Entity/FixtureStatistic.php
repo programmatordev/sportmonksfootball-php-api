@@ -28,7 +28,7 @@ class FixtureStatistic
 
     private ?Team $participant;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -42,10 +42,10 @@ class FixtureStatistic
         $this->location = $data['location'] ?? null;
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
-        $this->period = isset($data['period']) ? new Period($data['period']) : null;
-        $this->participant = isset($data['participant']) ? new Team($data['participant']) : null;
+        $this->period = isset($data['period']) ? new Period($data['period'], $timezone) : null;
+        $this->participant = isset($data['participant']) ? new Team($data['participant'], $timezone) : null;
     }
 
     public function getId(): int

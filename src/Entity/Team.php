@@ -76,7 +76,7 @@ class Team
     /** @var ?TeamStatistic[] */
     private ?array $statistics;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
@@ -95,21 +95,21 @@ class Team
 
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
-        $this->country = isset($data['country']) ? new Country($data['country']) : null;
-        $this->latestFixtures = isset($data['latest']) ? $this->createEntityCollection(Fixture::class, $data['latest']) : null;
-        $this->upcomingFixtures = isset($data['upcoming']) ? $this->createEntityCollection(Fixture::class, $data['upcoming']) : null;
-        $this->seasons = isset($data['seasons']) ? $this->createEntityCollection(Season::class, $data['seasons']) : null;
-        $this->activeSeasons = isset($data['activeseasons']) ? $this->createEntityCollection(Season::class, $data['activeseasons']) : null;
-        $this->venue = isset($data['venue']) ? new Venue($data['venue']) : null;
-        $this->rivals = isset($data['rivals']) ? $this->createEntityCollection(Team::class, $data['rivals']) : null;
-        $this->players = isset($data['players']) ? $this->createEntityCollection(TeamSquad::class, $data['players']) : null;
-        $this->sidelined = isset($data['sidelined']) ? $this->createEntityCollection(Sidelined::class, $data['sidelined']) : null;
-        $this->sidelinedHistory = isset($data['sidelinedhistory']) ? $this->createEntityCollection(Sidelined::class, $data['sidelinedhistory']) : null;
-        $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies']) : null;
+        $this->country = isset($data['country']) ? new Country($data['country'], $timezone) : null;
+        $this->latestFixtures = isset($data['latest']) ? $this->createEntityCollection(Fixture::class, $data['latest'], $timezone) : null;
+        $this->upcomingFixtures = isset($data['upcoming']) ? $this->createEntityCollection(Fixture::class, $data['upcoming'], $timezone) : null;
+        $this->seasons = isset($data['seasons']) ? $this->createEntityCollection(Season::class, $data['seasons'], $timezone) : null;
+        $this->activeSeasons = isset($data['activeseasons']) ? $this->createEntityCollection(Season::class, $data['activeseasons'], $timezone) : null;
+        $this->venue = isset($data['venue']) ? new Venue($data['venue'], $timezone) : null;
+        $this->rivals = isset($data['rivals']) ? $this->createEntityCollection(Team::class, $data['rivals'], $timezone) : null;
+        $this->players = isset($data['players']) ? $this->createEntityCollection(TeamSquad::class, $data['players'], $timezone) : null;
+        $this->sidelined = isset($data['sidelined']) ? $this->createEntityCollection(Sidelined::class, $data['sidelined'], $timezone) : null;
+        $this->sidelinedHistory = isset($data['sidelinedhistory']) ? $this->createEntityCollection(Sidelined::class, $data['sidelinedhistory'], $timezone) : null;
+        $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies'], $timezone) : null;
         $this->socials = isset($data['socials']) ? $this->createEntityCollection(Social::class, $data['socials']) : null;
         $this->meta = isset($data['meta']) ? new TeamMeta($data['meta']) : null;
-        $this->coaches = isset($data['coaches']) ? $this->createEntityCollection(TeamCoach::class, $data['coaches']) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(TeamStatistic::class, $data['statistics']) : null;
+        $this->coaches = isset($data['coaches']) ? $this->createEntityCollection(TeamCoach::class, $data['coaches'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(TeamStatistic::class, $data['statistics'], $timezone) : null;
     }
 
     public function getId(): int

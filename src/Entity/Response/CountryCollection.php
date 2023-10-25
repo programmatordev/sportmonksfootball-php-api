@@ -16,7 +16,7 @@ class CountryCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection(Country::class, $response['data']);
+        $this->data = $this->createEntityCollection(Country::class, $response['data'], $response['timezone']);
     }
 
     public function getData(): array

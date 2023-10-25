@@ -12,7 +12,7 @@ class LeagueItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new League($response['data']);
+        $this->data = new League($response['data'], $response['timezone']);
     }
 
     public function getData(): League

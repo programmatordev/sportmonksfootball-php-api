@@ -26,7 +26,7 @@ class TeamCoach
 
     private ?Type $position;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->teamId = $data['team_id'];
@@ -40,8 +40,8 @@ class TeamCoach
         $this->isTemporary = $data['temporary'] ?? null;
 
         // include
-        $this->team = isset($data['team']) ? new Team($data['team']) : null;
-        $this->coach = isset($data['coach']) ? new Coach($data['coach']) : null;
+        $this->team = isset($data['team']) ? new Team($data['team'], $timezone) : null;
+        $this->coach = isset($data['coach']) ? new Coach($data['coach'], $timezone) : null;
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
     }
 

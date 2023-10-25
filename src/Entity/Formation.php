@@ -18,7 +18,7 @@ class Formation
 
     private ?Team $participant;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -29,8 +29,8 @@ class Formation
         $this->location = $data['location'] ?? null;
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
-        $this->participant = isset($data['participant']) ? new Team($data['participant']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
+        $this->participant = isset($data['participant']) ? new Team($data['participant'], $timezone) : null;
     }
 
     public function getId(): int

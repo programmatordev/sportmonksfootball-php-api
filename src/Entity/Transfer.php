@@ -42,7 +42,7 @@ class Transfer
 
     private ?Type $detailedPosition;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
@@ -61,10 +61,10 @@ class Transfer
 
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
-        $this->player = isset($data['player']) ? new Player($data['player']) : null;
+        $this->player = isset($data['player']) ? new Player($data['player'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
-        $this->fromTeam = isset($data['fromteam']) ? new Team($data['fromteam']) : null;
-        $this->toTeam = isset($data['toteam']) ? new Team($data['toteam']) : null;
+        $this->fromTeam = isset($data['fromteam']) ? new Team($data['fromteam'], $timezone) : null;
+        $this->toTeam = isset($data['toteam']) ? new Team($data['toteam'], $timezone) : null;
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
         $this->detailedPosition = isset($data['detailedposition']) ? new Type($data['detailedposition']) : null;
     }

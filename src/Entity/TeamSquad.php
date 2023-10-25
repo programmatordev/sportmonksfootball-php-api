@@ -34,7 +34,7 @@ class TeamSquad
 
     private ?Transfer $transfer;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->transferId = $data['transfer_id'] ?? null;
@@ -50,11 +50,11 @@ class TeamSquad
         $this->jerseyNumber = $data['jersey_number'] ?? null;
 
         // include
-        $this->team = isset($data['team']) ? new Team($data['team']) : null;
-        $this->player = isset($data['player']) ? new Player($data['player']) : null;
+        $this->team = isset($data['team']) ? new Team($data['team'], $timezone) : null;
+        $this->player = isset($data['player']) ? new Player($data['player'], $timezone) : null;
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
         $this->detailedPosition = isset($data['detailedposition']) ? new Type($data['detailedposition']) : null;
-        $this->transfer = isset($data['transfer']) ? new Transfer($data['transfer']) : null;
+        $this->transfer = isset($data['transfer']) ? new Transfer($data['transfer'], $timezone) : null;
     }
 
     public function getId(): int

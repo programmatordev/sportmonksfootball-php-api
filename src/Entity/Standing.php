@@ -54,7 +54,7 @@ class Standing
     /** @var ?StandingForm[] */
     private ?array $form;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->participantId = $data['participant_id'];
@@ -72,16 +72,16 @@ class Standing
         $this->points = $data['points'] ?? null;
 
         // include
-        $this->participant = isset($data['participant']) ? new Team($data['participant']) : null;
-        $this->season = isset($data['season']) ? new Season($data['season']) : null;
-        $this->league = isset($data['league']) ? new League($data['league']) : null;
-        $this->stage = isset($data['stage']) ? new Stage($data['stage']) : null;
+        $this->participant = isset($data['participant']) ? new Team($data['participant'], $timezone) : null;
+        $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
+        $this->league = isset($data['league']) ? new League($data['league'], $timezone) : null;
+        $this->stage = isset($data['stage']) ? new Stage($data['stage'], $timezone) : null;
         $this->group = isset($data['group']) ? new Group($data['group']) : null;
-        $this->round = isset($data['round']) ? new Round($data['round']) : null;
+        $this->round = isset($data['round']) ? new Round($data['round'], $timezone) : null;
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
-        $this->rule = isset($data['rule']) ? new StandingRule($data['rule']) : null;
+        $this->rule = isset($data['rule']) ? new StandingRule($data['rule'], $timezone) : null;
         $this->details = isset($data['details']) ? $this->createEntityCollection(StandingDetail::class, $data['details']) : null;
-        $this->form = isset($data['form']) ? $this->createEntityCollection(StandingForm::class, $data['form']) : null;
+        $this->form = isset($data['form']) ? $this->createEntityCollection(StandingForm::class, $data['form'], $timezone) : null;
     }
 
     public function getId(): int

@@ -8,9 +8,14 @@ class FilterEntity
 
     private array $filters;
 
-    public function __construct(array $data, string $name)
+    public function __construct(array $data)
     {
-        $this->name = $name;
+        // "_key" index is injected in data to get the key from an associative array response
+        // Check the CreateEntityCollectionTrait
+        $this->name = $data['_key'];
+
+        // Remove injected "_key" to not pollute filters data
+        unset($data['_key']);
         $this->filters = $data;
     }
 

@@ -44,7 +44,7 @@ class Round
     /** @var ?Statistic[] */
     private ?array $statistics;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
@@ -62,11 +62,11 @@ class Round
 
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
-        $this->league = isset($data['league']) ? new League($data['league']) : null;
-        $this->season = isset($data['season']) ? new Season($data['season']) : null;
-        $this->stage = isset($data['stage']) ? new Stage($data['stage']) : null;
-        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(Statistic::class, $data['statistics']) : null;
+        $this->league = isset($data['league']) ? new League($data['league'], $timezone) : null;
+        $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
+        $this->stage = isset($data['stage']) ? new Stage($data['stage'], $timezone) : null;
+        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(Statistic::class, $data['statistics'], $timezone) : null;
     }
 
     public function getId(): int

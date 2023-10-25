@@ -80,7 +80,7 @@ class Player
     /** @var ?PlayerStatistic[] */
     private ?array $statistics;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->sportId = $data['sport_id'];
@@ -105,19 +105,19 @@ class Player
 
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
-        $this->country = isset($data['country']) ? new Country($data['country']) : null;
-        $this->city = isset($data['city']) ? new City($data['city']) : null;
-        $this->nationality = isset($data['nationality']) ? new Country($data['nationality']) : null;
-        $this->teams = isset($data['teams']) ? $this->createEntityCollection(TeamSquad::class, $data['teams']) : null;
-        $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies']) : null;
-        $this->transfers = isset($data['transfers']) ? $this->createEntityCollection(Transfer::class, $data['transfers']) : null;
-        $this->pendingTransfers = isset($data['pendingtransfers']) ? $this->createEntityCollection(Transfer::class, $data['pendingtransfers']) : null;
+        $this->country = isset($data['country']) ? new Country($data['country'], $timezone) : null;
+        $this->city = isset($data['city']) ? new City($data['city'], $timezone) : null;
+        $this->nationality = isset($data['nationality']) ? new Country($data['nationality'], $timezone) : null;
+        $this->teams = isset($data['teams']) ? $this->createEntityCollection(TeamSquad::class, $data['teams'], $timezone) : null;
+        $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies'], $timezone) : null;
+        $this->transfers = isset($data['transfers']) ? $this->createEntityCollection(Transfer::class, $data['transfers'], $timezone) : null;
+        $this->pendingTransfers = isset($data['pendingtransfers']) ? $this->createEntityCollection(Transfer::class, $data['pendingtransfers'], $timezone) : null;
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
         $this->detailedPosition = isset($data['detailedposition']) ? new Type($data['detailedposition']) : null;
-        $this->lineups = isset($data['lineups']) ? $this->createEntityCollection(Lineup::class, $data['lineups']) : null;
-        $this->latestLineups = isset($data['latest']) ? $this->createEntityCollection(Lineup::class, $data['latest']) : null;
+        $this->lineups = isset($data['lineups']) ? $this->createEntityCollection(Lineup::class, $data['lineups'], $timezone) : null;
+        $this->latestLineups = isset($data['latest']) ? $this->createEntityCollection(Lineup::class, $data['latest'], $timezone) : null;
         $this->metadata = isset($data['metadata']) ? $this->createEntityCollection(Metadata::class, $data['metadata']) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(PlayerStatistic::class, $data['statistics']) : null;
+        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(PlayerStatistic::class, $data['statistics'], $timezone) : null;
     }
 
     public function getId(): int

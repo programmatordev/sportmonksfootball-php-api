@@ -12,7 +12,7 @@ class SeasonItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Season($response['data']);
+        $this->data = new Season($response['data'], $response['timezone']);
     }
 
     public function getData(): Season

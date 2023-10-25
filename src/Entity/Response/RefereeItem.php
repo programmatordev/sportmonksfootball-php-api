@@ -12,7 +12,7 @@ class RefereeItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Referee($response['data']);
+        $this->data = new Referee($response['data'], $response['timezone']);
     }
 
     public function getData(): Referee

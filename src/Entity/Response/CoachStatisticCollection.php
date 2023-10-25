@@ -16,7 +16,7 @@ class CoachStatisticCollection extends AbstractCollectionResponse
     {
         parent::__construct($response);
 
-        $this->data = $this->createEntityCollection(CoachStatistic::class, $response['data']);
+        $this->data = $this->createEntityCollection(CoachStatistic::class, $response['data'], $response['timezone']);
     }
 
     public function getData(): array

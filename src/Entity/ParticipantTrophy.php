@@ -22,7 +22,7 @@ class ParticipantTrophy
 
     private ?Trophy $trophy;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->participantId = $data['participant_id'];
@@ -31,9 +31,9 @@ class ParticipantTrophy
         $this->trophyId = $data['trophy_id'];
 
         // include
-        $this->team = isset($data['team']) ? new Team($data['team']) : null;
-        $this->league = isset($data['league']) ? new League($data['league']) : null;
-        $this->season = isset($data['season']) ? new Season($data['season']) : null;
+        $this->team = isset($data['team']) ? new Team($data['team'], $timezone) : null;
+        $this->league = isset($data['league']) ? new League($data['league'], $timezone) : null;
+        $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
         $this->trophy = isset($data['trophy']) ? new Trophy($data['trophy']) : null;
     }
 

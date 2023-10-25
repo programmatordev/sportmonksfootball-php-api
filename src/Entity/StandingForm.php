@@ -18,7 +18,7 @@ class StandingForm
 
     private ?Fixture $fixture;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
@@ -28,7 +28,7 @@ class StandingForm
         $this->sortOrder = $data['sort_order'];
 
         // include
-        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture']) : null;
+        $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
     }
 
     public function getId(): int

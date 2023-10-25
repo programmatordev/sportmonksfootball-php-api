@@ -41,7 +41,7 @@ class Venue
     /** @var ?Fixture[] */
     private ?array $fixtures;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
         $this->countryId = $data['country_id'] ?? null;
@@ -60,9 +60,9 @@ class Venue
         $this->isNationalTeam = $data['national_team'] ?? null;
 
         // include
-        $this->country = isset($data['country']) ? new Country($data['country']) : null;
-        $this->city = isset($data['city']) ? new City($data['city']) : null;
-        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures']) : null;
+        $this->country = isset($data['country']) ? new Country($data['country'], $timezone) : null;
+        $this->city = isset($data['city']) ? new City($data['city'], $timezone) : null;
+        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures'], $timezone) : null;
     }
 
     public function getId(): int

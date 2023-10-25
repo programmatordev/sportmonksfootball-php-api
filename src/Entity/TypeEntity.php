@@ -15,9 +15,11 @@ class TypeEntity
     /** @var Type[] */
     private array $types;
 
-    public function __construct(array $data, string $name)
+    public function __construct(array $data)
     {
-        $this->name = $name;
+        // "_key" index is injected in data to get the key from an associative array response
+        // Check the CreateEntityCollectionTrait
+        $this->name = $data['_key'];
         $this->updatedAt = new \DateTimeImmutable($data['updated_at']);
         $this->types = $this->createEntityCollection(Type::class, $data['types']);
     }

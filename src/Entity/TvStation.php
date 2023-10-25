@@ -26,7 +26,7 @@ class TvStation
     /** @var ?FixtureTvStation[] */
     private ?array $fixtures;
 
-    public function __construct(array $data)
+    public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
 
@@ -38,8 +38,8 @@ class TvStation
         $this->relatedId = $data['related_id'] ?? null;
 
         // include
-        $this->countries = isset($data['countries']) ? $this->createEntityCollection(Country::class, $data['countries']) : null;
-        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(FixtureTvStation::class, $data['fixtures']) : null;
+        $this->countries = isset($data['countries']) ? $this->createEntityCollection(Country::class, $data['countries'], $timezone) : null;
+        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(FixtureTvStation::class, $data['fixtures'], $timezone) : null;
     }
 
     public function getId(): int

@@ -12,7 +12,7 @@ class CityItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new City($response['data']);
+        $this->data = new City($response['data'], $response['timezone']);
     }
 
     public function getData(): City

@@ -12,7 +12,7 @@ class RegionItem extends AbstractResponse
     {
         parent::__construct($response);
 
-        $this->data = new Region($response['data']);
+        $this->data = new Region($response['data'], $response['timezone']);
     }
 
     public function getData(): Region
