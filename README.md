@@ -1,5 +1,9 @@
 # SportMonksFootball PHP API
 
+[![Latest Version](https://img.shields.io/github/release/programmatordev/sportmonksfootball-php-api.svg?style=flat-square)](https://github.com/programmatordev/sportmonksfootball-php-api/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+[![Tests](https://github.com/programmatordev/sportmonksfootball-php-api/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/programmatordev/sportmonksfootball-php-api/actions/workflows/ci.yml?query=branch%3Amain)
+
 SportMonksFootball PHP library that provides convenient access to the SportMonks Football API.
 
 Supports [PSR-18 HTTP clients](https://www.php-fig.org/psr/psr-18), [PSR-17 HTTP factories](https://www.php-fig.org/psr/psr-17), [PSR-6 caches](https://www.php-fig.org/psr/psr-6) and [PSR-3 logs](https://www.php-fig.org/psr/psr-3).
@@ -51,9 +55,9 @@ $livescores = $sportMonksFootball->livescores()->getAll();
 - [Usage](docs/01-usage.md)
 - [Configuration](docs/02-configuration.md)
 - [Supported Endpoints](docs/03-supported-endpoints.md)
-  - [Football Endpoints](docs/03-supported-endpoints.md#football-endpoints)
-  - [Odds Endpoints](docs/03-supported-endpoints.md#odds-endpoints)
-  - [Core Endpoints](docs/03-supported-endpoints.md#core-endpoints)
+  - [Football](docs/03-supported-endpoints.md#football-endpoints)
+  - [Odds](docs/03-supported-endpoints.md#odds-endpoints)
+  - [Core](docs/03-supported-endpoints.md#core-endpoints)
 - [Error Handling](docs/04-error-handling.md)
 - [Objects](docs/05-objects.md)
 
