@@ -240,5 +240,13 @@ $sportMonksFootball->config()->setApplicationKey('newappkey');
 Just take into account that any change will affect any subsequent request globally:
 
 ```php
-// TODO
+// Using default 'UTC' timezone
+$sportMonksFootball->livescores()->getAll(); 
+
+// Set new timezone
+$sportMonksFootball->config()->setTimezone('Europe/Lisbon');
+
+// Using 'Europe/Lisbon' timezone
+$sportMonksFootball->livescores()->getAll();
+$sportMonksFootball->fixtures()->getAllByDate(new DateTime('today'));
 ```
