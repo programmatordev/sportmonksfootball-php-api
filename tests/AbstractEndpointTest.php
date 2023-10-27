@@ -5,6 +5,7 @@ namespace ProgrammatorDev\SportMonksFootball\Test;
 use Nyholm\Psr7\Response;
 use ProgrammatorDev\SportMonksFootball\Endpoint\AbstractEndpoint;
 use ProgrammatorDev\SportMonksFootball\SportMonksFootball;
+use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Log\LoggerInterface;
 
@@ -17,6 +18,10 @@ class AbstractEndpointTest extends AbstractTest
         );
 
         $cache = $this->createMock(CacheItemPoolInterface::class);
+        $cache->method('getItem')->willReturn(
+            $this->createMock(CacheItemInterface::class)
+        );
+
         $cache->expects($this->once())->method('save');
 
         $api = $this->givenApi();
