@@ -71,7 +71,7 @@ try {
     $fixtures = $sportMonksFootball->fixtures()->getAllBySearchQuery('');
 }
 catch (ValidationException $exception) {
-    // Should print: The "query" value should not be blank, "" given.
+    // Should print: The query value should not be blank, "" given.
     echo $exception->getMessage();
 }
 ```
