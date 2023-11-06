@@ -42,19 +42,19 @@ trait ValidatorTrait
         // Start date must be less or equal to end date
         Validator::lessThanOrEqual(
             constraint: $endDate,
-            message: 'The "{{ name }}" value should be less than or equal to the "endDate"'
-        )->assert($startDate, 'startDate');
+            message: 'The startDate value should be less than or equal to the endDate.'
+        )->assert($startDate);
 
         if (!$allowFutureDates) {
             // End date must be less or equal to today date
             Validator::lessThanOrEqual(
                 constraint: $todayDate,
                 message: \sprintf(
-                    'The "{{ name }}" value should be less than or equal to "%s", "%s" given.',
+                    'The endDate value should be less than or equal to %s, %s given.',
                     $todayDate->format('Y-m-d'),
                     $endDate->format('Y-m-d')
                 )
-            )->assert($endDate, 'endDate');
+            )->assert($endDate);
         }
 
         if ($maxDays) {
@@ -63,8 +63,8 @@ trait ValidatorTrait
 
             Validator::lessThanOrEqual(
                 constraint: $maxDays,
-                message: 'The date range between startDate and endDate must be less than or equal to "{{ constraint }}" days, "{{ value }}" days given.'
-            )->assert($dateInterval->days, '');
+                message: 'The date range between startDate and endDate must be less than or equal to {{ constraint }} days, {{ value }} given.'
+            )->assert($dateInterval->days);
         }
 
     }
