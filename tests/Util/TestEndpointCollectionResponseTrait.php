@@ -14,7 +14,7 @@ trait TestEndpointCollectionResponseTrait
         string $endpointName,
         string $methodName,
         array $methodParams,
-        string $callback = 'assertResponse'
+        string $assertCallback = 'assertResponse'
     ): void
     {
         $this->mockHttpClient->addResponse(new Response(
@@ -22,7 +22,7 @@ trait TestEndpointCollectionResponseTrait
         ));
 
         $response = $this->givenApi()->$endpointName()->$methodName(...$methodParams);
-        $this->$callback($response->getData()[0]);
+        $this->$assertCallback($response->getData()[0]);
     }
 
     public abstract static function provideEndpointCollectionResponseData(): \Generator;
