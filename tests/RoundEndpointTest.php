@@ -21,9 +21,7 @@ class RoundEndpointTest extends AbstractTest
             MockResponse::ROUND_ITEM_DATA,
             'rounds',
             'getById',
-            [1],
-            Round::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,25 +31,19 @@ class RoundEndpointTest extends AbstractTest
             MockResponse::ROUND_COLLECTION_DATA,
             'rounds',
             'getAll',
-            [],
-            Round::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by season id' => [
             MockResponse::ROUND_COLLECTION_DATA,
             'rounds',
             'getAllBySeasonId',
-            [1],
-            Round::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by search query' => [
             MockResponse::ROUND_COLLECTION_DATA,
             'rounds',
             'getAllBySearchQuery',
-            ['test'],
-            Round::class,
-            'assertResponse'
+            ['test']
         ];
     }
 

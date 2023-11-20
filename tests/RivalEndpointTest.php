@@ -17,17 +17,13 @@ class RivalEndpointTest extends AbstractTest
             MockResponse::RIVAL_COLLECTION_DATA,
             'rivals',
             'getAll',
-            [],
-            Rival::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by team id' => [
             MockResponse::RIVAL_COLLECTION_DATA,
             'rivals',
             'getAllByTeamId',
-            [1],
-            Rival::class,
-            'assertResponse'
+            [1]
         ];
     }
 

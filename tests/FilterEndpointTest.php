@@ -15,9 +15,7 @@ class FilterEndpointTest extends AbstractTest
             MockResponse::FILTER_ENTITY_COLLECTION_DATA,
             'filters',
             'getAllByEntity',
-            [],
-            FilterEntity::class,
-            'assertResponse'
+            []
         ];
     }
 

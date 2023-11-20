@@ -21,9 +21,7 @@ class TransferEndpointTest extends AbstractTest
             MockResponse::TRANSFER_ITEM_DATA,
             'transfers',
             'getById',
-            [1],
-            Transfer::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,41 +31,31 @@ class TransferEndpointTest extends AbstractTest
             MockResponse::TRANSFER_COLLECTION_DATA,
             'transfers',
             'getAll',
-            [],
-            Transfer::class,
-            'assertResponse'
+            []
         ];
         yield 'get all latest' => [
             MockResponse::TRANSFER_COLLECTION_DATA,
             'transfers',
             'getAllLatest',
-            [],
-            Transfer::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by date range' => [
             MockResponse::TRANSFER_COLLECTION_DATA,
             'transfers',
             'getAllByDateRange',
-            [new \DateTime('yesterday'), new \DateTime('today')],
-            Transfer::class,
-            'assertResponse'
+            [new \DateTime('yesterday'), new \DateTime('today')]
         ];
         yield 'get all by team id' => [
             MockResponse::TRANSFER_COLLECTION_DATA,
             'transfers',
             'getAllByTeamId',
-            [1],
-            Transfer::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by player id' => [
             MockResponse::TRANSFER_COLLECTION_DATA,
             'transfers',
             'getAllByPlayerId',
-            [1],
-            Transfer::class,
-            'assertResponse'
+            [1]
         ];
     }
 

@@ -22,7 +22,6 @@ class TeamEndpointTest extends AbstractTest
             'teams',
             'getById',
             [1],
-            Team::class,
             'assertResponse'
         ];
     }
@@ -33,33 +32,25 @@ class TeamEndpointTest extends AbstractTest
             MockResponse::TEAM_COLLECTION_DATA,
             'teams',
             'getAll',
-            [],
-            Team::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by country id' => [
             MockResponse::TEAM_COLLECTION_DATA,
             'teams',
             'getAllByCountryId',
-            [1],
-            Team::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by season id' => [
             MockResponse::TEAM_COLLECTION_DATA,
             'teams',
             'getAllBySeasonId',
-            [1],
-            Team::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by search query' => [
             MockResponse::TEAM_COLLECTION_DATA,
             'teams',
             'getAllBySearchQuery',
-            ['test'],
-            Team::class,
-            'assertResponse'
+            ['test']
         ];
     }
 

@@ -15,25 +15,19 @@ class LivescoreEndpointTest extends AbstractTest
             MockResponse::FIXTURE_COLLECTION_DATA,
             'livescores',
             'getAll',
-            [],
-            Fixture::class,
-            'assertResponse'
+            []
         ];
         yield 'get all inplay' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'livescores',
             'getAllInplay',
-            [],
-            Fixture::class,
-            'assertResponse'
+            []
         ];
         yield 'get all last updated' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'livescores',
             'getAllLastUpdated',
-            [],
-            Fixture::class,
-            'assertResponse'
+            []
         ];
     }
 

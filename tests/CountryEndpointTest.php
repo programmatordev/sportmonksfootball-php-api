@@ -21,9 +21,7 @@ class CountryEndpointTest extends AbstractTest
             MockResponse::COUNTRY_ITEM_DATA,
             'countries',
             'getById',
-            [1],
-            Country::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,17 +31,13 @@ class CountryEndpointTest extends AbstractTest
             MockResponse::COUNTRY_COLLECTION_DATA,
             'countries',
             'getAll',
-            [],
-            Country::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by search query' => [
             MockResponse::COUNTRY_COLLECTION_DATA,
             'countries',
             'getAllBySearchQuery',
-            ['test'],
-            Country::class,
-            'assertResponse'
+            ['test']
         ];
     }
 

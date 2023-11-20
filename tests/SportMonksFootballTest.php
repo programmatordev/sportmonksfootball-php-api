@@ -29,6 +29,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\StatisticEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TeamSquadEndpoint;
+use ProgrammatorDev\SportMonksFootball\Endpoint\TimezoneEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TopscorerEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TransferEndpoint;
 use ProgrammatorDev\SportMonksFootball\Endpoint\TvStationEndpoint;
@@ -71,6 +72,7 @@ class SportMonksFootballTest extends AbstractTest
         yield 'statistics' => [StatisticEndpoint::class, 'statistics'];
         yield 'teams' => [TeamEndpoint::class, 'teams'];
         yield 'team squads' => [TeamSquadEndpoint::class, 'teamSquads'];
+        yield 'timezones' => [TimezoneEndpoint::class, 'timezones'];
         yield 'topscorers' => [TopscorerEndpoint::class, 'topscorers'];
         yield 'transfers' => [TransferEndpoint::class, 'transfers'];
         yield 'tv stations' => [TvStationEndpoint::class, 'tvStations'];

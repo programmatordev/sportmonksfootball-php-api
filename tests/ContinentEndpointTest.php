@@ -19,9 +19,7 @@ class ContinentEndpointTest extends AbstractTest
             MockResponse::CONTINENT_ITEM_DATA,
             'continents',
             'getById',
-            [1],
-            Continent::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -31,9 +29,7 @@ class ContinentEndpointTest extends AbstractTest
             MockResponse::CONTINENT_COLLECTION_DATA,
             'continents',
             'getAll',
-            [],
-            Continent::class,
-            'assertResponse'
+            []
         ];
     }
 

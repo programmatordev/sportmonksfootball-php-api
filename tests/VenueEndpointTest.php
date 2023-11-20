@@ -21,9 +21,7 @@ class VenueEndpointTest extends AbstractTest
             MockResponse::VENUE_ITEM_DATA,
             'venues',
             'getById',
-            [1],
-            Venue::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,25 +31,19 @@ class VenueEndpointTest extends AbstractTest
             MockResponse::VENUE_COLLECTION_DATA,
             'venues',
             'getAll',
-            [],
-            Venue::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by season id' => [
             MockResponse::VENUE_COLLECTION_DATA,
             'venues',
             'getAllBySeasonId',
-            [1],
-            Venue::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by search query' => [
             MockResponse::VENUE_COLLECTION_DATA,
             'venues',
             'getAllBySearchQuery',
-            ['test'],
-            Venue::class,
-            'assertResponse'
+            ['test']
         ];
     }
 

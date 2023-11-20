@@ -21,9 +21,7 @@ class StageEndpointTest extends AbstractTest
             MockResponse::STAGE_ITEM_DATA,
             'stages',
             'getById',
-            [1],
-            Stage::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,25 +31,19 @@ class StageEndpointTest extends AbstractTest
             MockResponse::STAGE_COLLECTION_DATA,
             'stages',
             'getAll',
-            [],
-            Stage::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by season id' => [
             MockResponse::STAGE_COLLECTION_DATA,
             'stages',
             'getAllBySeasonId',
-            [1],
-            Stage::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by search query' => [
             MockResponse::STAGE_COLLECTION_DATA,
             'stages',
             'getAllBySearchQuery',
-            ['test'],
-            Stage::class,
-            'assertResponse'
+            ['test']
         ];
     }
 
