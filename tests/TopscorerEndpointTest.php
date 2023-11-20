@@ -17,17 +17,13 @@ class TopscorerEndpointTest extends AbstractTest
             MockResponse::TOPSCORER_COLLECTION_DATA,
             'topscorers',
             'getAllBySeasonId',
-            [1],
-            Topscorer::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by stage id' => [
             MockResponse::TOPSCORER_COLLECTION_DATA,
             'topscorers',
             'getAllByStageId',
-            [1],
-            Topscorer::class,
-            'assertResponse'
+            [1]
         ];
     }
 

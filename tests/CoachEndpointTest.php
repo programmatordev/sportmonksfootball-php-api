@@ -21,9 +21,7 @@ class CoachEndpointTest extends AbstractTest
             MockResponse::COACH_ITEM_DATA,
             'coaches',
             'getById',
-            [1],
-            Coach::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,33 +31,25 @@ class CoachEndpointTest extends AbstractTest
             MockResponse::COACH_COLLECTION_DATA,
             'coaches',
             'getAll',
-            [],
-            Coach::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by country id' => [
             MockResponse::COACH_COLLECTION_DATA,
             'coaches',
             'getAllByCountryId',
-            [1],
-            Coach::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by search query' => [
             MockResponse::COACH_COLLECTION_DATA,
             'coaches',
             'getAllBySearchQuery',
-            ['test'],
-            Coach::class,
-            'assertResponse'
+            ['test']
         ];
         yield 'get all last updated' => [
             MockResponse::COACH_COLLECTION_DATA,
             'coaches',
             'getAllLastUpdated',
-            [],
-            Coach::class,
-            'assertResponse'
+            []
         ];
     }
 

@@ -2,7 +2,7 @@
     "name": "programmatordev/sportmonksfootball-php-api",
     "description": "SportMonksFootball PHP library that provides convenient access to the SportMonks Football API",
     "type": "library",
-    "keywords": ["SportMonksFootball", "SportMonks", "Football", "API", "PHP", "PHP8", "SDK", "PSR-18", "PSR-17", "PSR-6", "PSR-3"],
+    "keywords": ["sportmonks", "football", "api", "sportmonks-football-api", "football-api", "php", "php8", "psr-18", "psr-17", "psr-6", "psr-3"],
     "license": "MIT",
     "authors": [
         {

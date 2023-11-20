@@ -15,25 +15,19 @@ class ScheduleEndpointTest extends AbstractTest
             MockResponse::STAGE_COLLECTION_DATA,
             'schedules',
             'getAllBySeasonId',
-            [1],
-            Stage::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by team id' => [
             MockResponse::STAGE_COLLECTION_DATA,
             'schedules',
             'getAllByTeamId',
-            [1],
-            Stage::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by season id and team id' => [
             MockResponse::STAGE_COLLECTION_DATA,
             'schedules',
             'getAllBySeasonIdAndTeamId',
-            [1, 1],
-            Stage::class,
-            'assertResponse'
+            [1, 1]
         ];
     }
 

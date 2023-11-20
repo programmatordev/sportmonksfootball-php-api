@@ -17,41 +17,31 @@ class PreMatchOddEndpointTest extends AbstractTest
             MockResponse::ODD_COLLECTION_DATA,
             'preMatchOdds',
             'getAll',
-            [],
-            Odd::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by fixture id' => [
             MockResponse::ODD_COLLECTION_DATA,
             'preMatchOdds',
             'getAllByFixtureId',
-            [1],
-            Odd::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by fixture id and bookmaker id' => [
             MockResponse::ODD_COLLECTION_DATA,
             'preMatchOdds',
             'getAllByFixtureIdAndBookmakerId',
-            [1, 1],
-            Odd::class,
-            'assertResponse'
+            [1, 1]
         ];
         yield 'get all by fixture id and market id' => [
             MockResponse::ODD_COLLECTION_DATA,
             'preMatchOdds',
             'getAllByFixtureIdAndMarketId',
-            [1, 1],
-            Odd::class,
-            'assertResponse'
+            [1, 1]
         ];
         yield 'get all last updated' => [
             MockResponse::ODD_COLLECTION_DATA,
             'preMatchOdds',
             'getAllLastUpdated',
-            [],
-            Odd::class,
-            'assertResponse'
+            []
         ];
     }
 

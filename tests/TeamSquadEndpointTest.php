@@ -15,17 +15,13 @@ class TeamSquadEndpointTest extends AbstractTest
             MockResponse::TEAM_SQUAD_COLLECTION_DATA,
             'teamSquads',
             'getAllByTeamId',
-            [1],
-            TeamSquad::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by season id and team id' => [
             MockResponse::TEAM_SQUAD_COLLECTION_DATA,
             'teamSquads',
             'getAllBySeasonIdAndTeamId',
-            [1, 1],
-            TeamSquad::class,
-            'assertResponse'
+            [1, 1]
         ];
     }
 

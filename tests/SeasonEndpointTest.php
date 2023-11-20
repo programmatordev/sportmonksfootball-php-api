@@ -21,9 +21,7 @@ class SeasonEndpointTest extends AbstractTest
             MockResponse::SEASON_ITEM_DATA,
             'seasons',
             'getById',
-            [1],
-            Season::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,25 +31,19 @@ class SeasonEndpointTest extends AbstractTest
             MockResponse::SEASON_COLLECTION_DATA,
             'seasons',
             'getAll',
-            [],
-            Season::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by team id' => [
             MockResponse::SEASON_COLLECTION_DATA,
             'seasons',
             'getAllByTeamId',
-            [1],
-            Season::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by search query' => [
             MockResponse::SEASON_COLLECTION_DATA,
             'seasons',
             'getAllBySearchQuery',
-            ['test'],
-            Season::class,
-            'assertResponse'
+            ['test']
         ];
     }
 

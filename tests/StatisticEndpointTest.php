@@ -26,7 +26,6 @@ class StatisticEndpointTest extends AbstractTest
             'statistics',
             'getAllByPlayerId',
             [1],
-            PlayerStatistic::class,
             'assertPlayerStatisticResponse'
         ];
         yield 'get all by team id' => [
@@ -34,7 +33,6 @@ class StatisticEndpointTest extends AbstractTest
             'statistics',
             'getAllByTeamId',
             [1],
-            TeamStatistic::class,
             'assertTeamStatisticResponse'
         ];
         yield 'get all by coach id' => [
@@ -42,7 +40,6 @@ class StatisticEndpointTest extends AbstractTest
             'statistics',
             'getAllByCoachId',
             [1],
-            CoachStatistic::class,
             'assertCoachStatisticResponse'
         ];
         yield 'get all by referee id' => [
@@ -50,7 +47,6 @@ class StatisticEndpointTest extends AbstractTest
             'statistics',
             'getAllByRefereeId',
             [1],
-            RefereeStatistic::class,
             'assertRefereeStatisticResponse'
         ];
         yield 'get all by stage id' => [
@@ -58,7 +54,6 @@ class StatisticEndpointTest extends AbstractTest
             'statistics',
             'getAllByStageId',
             [1],
-            Statistic::class,
             'assertStatisticResponse'
         ];
         yield 'get all by round id' => [
@@ -66,7 +61,6 @@ class StatisticEndpointTest extends AbstractTest
             'statistics',
             'getAllByRoundId',
             [1],
-            Statistic::class,
             'assertStatisticResponse'
         ];
     }

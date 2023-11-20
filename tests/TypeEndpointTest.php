@@ -21,7 +21,6 @@ class TypeEndpointTest extends AbstractTest
             'types',
             'getById',
             [1],
-            Type::class,
             'assertTypeResponse'
         ];
     }
@@ -33,7 +32,6 @@ class TypeEndpointTest extends AbstractTest
             'types',
             'getAll',
             [],
-            Type::class,
             'assertTypeResponse'
         ];
         yield 'get all by entity' => [
@@ -41,7 +39,6 @@ class TypeEndpointTest extends AbstractTest
             'types',
             'getAllByEntity',
             [],
-            TypeEntity::class,
             'assertEntityResponse'
         ];
     }

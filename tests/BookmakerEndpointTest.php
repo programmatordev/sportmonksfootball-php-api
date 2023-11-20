@@ -21,9 +21,7 @@ class BookmakerEndpointTest extends AbstractTest
             MockResponse::BOOKMAKER_ITEM_DATA,
             'bookmakers',
             'getById',
-            [1],
-            Bookmaker::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,25 +31,19 @@ class BookmakerEndpointTest extends AbstractTest
             MockResponse::BOOKMAKER_COLLECTION_DATA,
             'bookmakers',
             'getAll',
-            [],
-            Bookmaker::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by fixture id' => [
             MockResponse::BOOKMAKER_COLLECTION_DATA,
             'bookmakers',
             'getAllByFixtureId',
-            [1],
-            Bookmaker::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by search query' => [
             MockResponse::BOOKMAKER_COLLECTION_DATA,
             'bookmakers',
             'getAllBySearchQuery',
-            ['test'],
-            Bookmaker::class,
-            'assertResponse'
+            ['test']
         ];
     }
 

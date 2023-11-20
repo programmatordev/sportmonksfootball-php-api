@@ -5,7 +5,6 @@ namespace ProgrammatorDev\SportMonksFootball\Endpoint\Util;
 use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
 use ProgrammatorDev\YetAnotherPhpValidator\Validator;
 
-// TODO create tests for trait upon implementation of an endpoint that makes use of it
 trait TimezoneTrait
 {
     /**

@@ -23,9 +23,7 @@ class FixtureEndpointTest extends AbstractTest
             MockResponse::FIXTURE_ITEM_DATA,
             'fixtures',
             'getById',
-            [1],
-            Fixture::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -35,89 +33,67 @@ class FixtureEndpointTest extends AbstractTest
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAll',
-            [],
-            Fixture::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by multiple ids' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllByMultipleIds',
-            [[1, 2]],
-            Fixture::class,
-            'assertResponse'
+            [[1, 2]]
         ];
         yield 'get all by date' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllByDate',
-            [new \DateTime('today')],
-            Fixture::class,
-            'assertResponse'
+            [new \DateTime('today')]
         ];
         yield 'get all by date range' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllByDateRange',
-            [new \DateTime('today'), new \DateTime('tomorrow')],
-            Fixture::class,
-            'assertResponse'
+            [new \DateTime('today'), new \DateTime('tomorrow')]
         ];
         yield 'get all by team id and date range' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllByTeamIdAndDateRange',
-            [1, new \DateTime('today'), new \DateTime('tomorrow')],
-            Fixture::class,
-            'assertResponse'
+            [1, new \DateTime('today'), new \DateTime('tomorrow')]
         ];
         yield 'get all by head to head' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllByHeadToHead',
-            [1, 2],
-            Fixture::class,
-            'assertResponse'
+            [1, 2]
         ];
         yield 'get all by search query' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllBySearchQuery',
-            ['test'],
-            Fixture::class,
-            'assertResponse'
+            ['test']
         ];
         yield 'get all upcoming by market id' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllUpcomingByMarketId',
-            [1],
-            Fixture::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all upcoming by tv station id' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllUpcomingByTvStationId',
-            [1],
-            Fixture::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all past by tv station id' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllPastByTvStationId',
-            [1],
-            Fixture::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all last updated' => [
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllLastUpdated',
-            [],
-            Fixture::class,
-            'assertResponse'
+            []
         ];
     }
 

@@ -19,9 +19,7 @@ class StateEndpointTest extends AbstractTest
             MockResponse::STATE_ITEM_DATA,
             'states',
             'getById',
-            [1],
-            State::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -31,9 +29,7 @@ class StateEndpointTest extends AbstractTest
             MockResponse::STATE_COLLECTION_DATA,
             'states',
             'getAll',
-            [],
-            State::class,
-            'assertResponse'
+            []
         ];
     }
 

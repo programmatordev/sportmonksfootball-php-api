@@ -21,9 +21,7 @@ class CityEndpointTest extends AbstractTest
             MockResponse::CITY_ITEM_DATA,
             'cities',
             'getById',
-            [1],
-            City::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,17 +31,13 @@ class CityEndpointTest extends AbstractTest
             MockResponse::CITY_COLLECTION_DATA,
             'cities',
             'getAll',
-            [],
-            City::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by search query' => [
             MockResponse::CITY_COLLECTION_DATA,
             'cities',
             'getAllBySearchQuery',
-            ['test'],
-            City::class,
-            'assertResponse'
+            ['test']
         ];
     }
 
