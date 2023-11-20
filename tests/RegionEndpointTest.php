@@ -21,9 +21,7 @@ class RegionEndpointTest extends AbstractTest
             MockResponse::REGION_ITEM_DATA,
             'regions',
             'getById',
-            [1],
-            Region::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,17 +31,13 @@ class RegionEndpointTest extends AbstractTest
             MockResponse::REGION_COLLECTION_DATA,
             'regions',
             'getAll',
-            [],
-            Region::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by search query' => [
             MockResponse::REGION_COLLECTION_DATA,
             'regions',
             'getAllBySearchQuery',
-            ['test'],
-            Region::class,
-            'assertResponse'
+            ['test']
         ];
     }
 

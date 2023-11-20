@@ -21,9 +21,7 @@ class MarketEndpointTest extends AbstractTest
             MockResponse::MARKET_ITEM_DATA,
             'markets',
             'getById',
-            [1],
-            Market::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,17 +31,13 @@ class MarketEndpointTest extends AbstractTest
             MockResponse::MARKET_COLLECTION_DATA,
             'markets',
             'getAll',
-            [],
-            Market::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by search query' => [
             MockResponse::MARKET_COLLECTION_DATA,
             'markets',
             'getAllBySearchQuery',
-            ['test'],
-            Market::class,
-            'assertResponse'
+            ['test']
         ];
     }
 

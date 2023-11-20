@@ -19,7 +19,6 @@ class StandingEndpointTest extends AbstractTest
             'standings',
             'getAll',
             [],
-            Standing::class,
             'assertStandingResponse'
         ];
         yield 'get all by season id' => [
@@ -27,7 +26,6 @@ class StandingEndpointTest extends AbstractTest
             'standings',
             'getAllBySeasonId',
             [1],
-            Standing::class,
             'assertStandingResponse'
         ];
         yield 'get all corrections by season id' => [
@@ -35,7 +33,6 @@ class StandingEndpointTest extends AbstractTest
             'standings',
             'getAllCorrectionsBySeasonId',
             [1],
-            StandingCorrection::class,
             'assertStandingCorrectionResponse'
         ];
         yield 'get all by round id' => [
@@ -43,7 +40,6 @@ class StandingEndpointTest extends AbstractTest
             'standings',
             'getAllByRoundId',
             [1],
-            Standing::class,
             'assertStandingResponse'
         ];
         yield 'get all live by league id' => [
@@ -51,7 +47,6 @@ class StandingEndpointTest extends AbstractTest
             'standings',
             'getAllLiveByLeagueId',
             [1],
-            Standing::class,
             'assertStandingResponse'
         ];
     }

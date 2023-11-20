@@ -21,9 +21,7 @@ class PlayerEndpointTest extends AbstractTest
             MockResponse::PLAYER_ITEM_DATA,
             'players',
             'getById',
-            [1],
-            Player::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,33 +31,25 @@ class PlayerEndpointTest extends AbstractTest
             MockResponse::PLAYER_COLLECTION_DATA,
             'players',
             'getAll',
-            [],
-            Player::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by country id' => [
             MockResponse::PLAYER_COLLECTION_DATA,
             'players',
             'getAllByCountryId',
-            [1],
-            Player::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by search query' => [
             MockResponse::PLAYER_COLLECTION_DATA,
             'players',
             'getAllBySearchQuery',
-            ['test'],
-            Player::class,
-            'assertResponse'
+            ['test']
         ];
         yield 'get all last updated' => [
             MockResponse::PLAYER_COLLECTION_DATA,
             'players',
             'getAllLastUpdated',
-            [],
-            Player::class,
-            'assertResponse'
+            []
         ];
     }
 

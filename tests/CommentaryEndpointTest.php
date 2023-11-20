@@ -17,17 +17,13 @@ class CommentaryEndpointTest extends AbstractTest
             MockResponse::COMMENTARY_COLLECTION_DATA,
             'commentaries',
             'getAll',
-            [],
-            Commentary::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by fixture id' => [
             MockResponse::COMMENTARY_COLLECTION_DATA,
             'commentaries',
             'getAllByFixtureId',
-            [1],
-            Commentary::class,
-            'assertResponse'
+            [1]
         ];
     }
 

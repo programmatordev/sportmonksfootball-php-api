@@ -19,9 +19,7 @@ class TvStationEndpointTest extends AbstractTest
             MockResponse::TV_STATION_ITEM_DATA,
             'tvStations',
             'getById',
-            [1],
-            TvStation::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -31,17 +29,13 @@ class TvStationEndpointTest extends AbstractTest
             MockResponse::TV_STATION_COLLECTION_DATA,
             'tvStations',
             'getAll',
-            [],
-            TvStation::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by fixture id' => [
             MockResponse::TV_STATION_COLLECTION_DATA,
             'tvStations',
             'getAllByFixtureId',
-            [1],
-            TvStation::class,
-            'assertResponse'
+            [1]
         ];
     }
 

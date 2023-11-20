@@ -21,9 +21,7 @@ class RefereeEndpointTest extends AbstractTest
             MockResponse::REFEREE_ITEM_DATA,
             'referees',
             'getById',
-            [1],
-            Referee::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,33 +31,25 @@ class RefereeEndpointTest extends AbstractTest
             MockResponse::REFEREE_COLLECTION_DATA,
             'referees',
             'getAll',
-            [],
-            Referee::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by country id' => [
             MockResponse::REFEREE_COLLECTION_DATA,
             'referees',
             'getAllByCountryId',
-            [1],
-            Referee::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by season id' => [
             MockResponse::REFEREE_COLLECTION_DATA,
             'referees',
             'getAllBySeasonId',
-            [1],
-            Referee::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by search query' => [
             MockResponse::REFEREE_COLLECTION_DATA,
             'referees',
             'getAllBySearchQuery',
-            ['test'],
-            Referee::class,
-            'assertResponse'
+            ['test']
         ];
     }
 

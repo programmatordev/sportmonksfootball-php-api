@@ -21,9 +21,7 @@ class LeagueEndpointTest extends AbstractTest
             MockResponse::LEAGUE_ITEM_DATA,
             'leagues',
             'getById',
-            [1],
-            League::class,
-            'assertResponse'
+            [1]
         ];
     }
 
@@ -33,57 +31,43 @@ class LeagueEndpointTest extends AbstractTest
             MockResponse::LEAGUE_COLLECTION_DATA,
             'leagues',
             'getAll',
-            [],
-            League::class,
-            'assertResponse'
+            []
         ];
         yield 'get all live' => [
             MockResponse::LEAGUE_COLLECTION_DATA,
             'leagues',
             'getAllLive',
-            [],
-            League::class,
-            'assertResponse'
+            []
         ];
         yield 'get all by fixture date' => [
             MockResponse::LEAGUE_COLLECTION_DATA,
             'leagues',
             'getAllByFixtureDate',
-            [new \DateTime('today')],
-            League::class,
-            'assertResponse'
+            [new \DateTime('today')]
         ];
         yield 'get all by country id' => [
             MockResponse::LEAGUE_COLLECTION_DATA,
             'leagues',
             'getAllByCountryId',
-            [1],
-            League::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all by search query' => [
             MockResponse::LEAGUE_COLLECTION_DATA,
             'leagues',
             'getAllBySearchQuery',
-            ['test'],
-            League::class,
-            'assertResponse'
+            ['test']
         ];
         yield 'get all by team id' => [
             MockResponse::LEAGUE_COLLECTION_DATA,
             'leagues',
             'getAllByTeamId',
-            [1],
-            League::class,
-            'assertResponse'
+            [1]
         ];
         yield 'get all current by team id' => [
             MockResponse::LEAGUE_COLLECTION_DATA,
             'leagues',
             'getAllCurrentByTeamId',
-            [1],
-            League::class,
-            'assertResponse'
+            [1]
         ];
     }
 

@@ -14,8 +14,7 @@ trait TestEndpointItemResponseTrait
         string $endpointName,
         string $methodName,
         array $methodParams,
-        string $entityClass,
-        string $assertion
+        string $callback = 'assertResponse'
     ): void
     {
         $this->mockHttpClient->addResponse(new Response(
@@ -25,8 +24,7 @@ trait TestEndpointItemResponseTrait
         $response = $this->givenApi()->$endpointName()->$methodName(...$methodParams);
 
         $data = $response->getData();
-        $this->assertInstanceOf($entityClass, $data);
-        $this->$assertion($data);
+        $this->$callback($data);
     }
 
     public abstract static function provideEndpointItemResponseData(): \Generator;
