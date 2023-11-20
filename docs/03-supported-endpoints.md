@@ -33,6 +33,7 @@
   - [Countries](#countries)
   - [Filters](#filters)
   - [Regions](#regions)
+  - [Timezones](#timezones)
   - [Types](#types)
 - [Select, Include and Filters](#select-include-and-filters)
   - [withSelect](#withselect)
@@ -2136,6 +2137,27 @@ $regions = $sportMonksFootball->regions()->getAllBySearchQuery('lisboa');
 
 foreach ($regions->getData() as $region) {
     echo $region->getName();
+}
+```
+
+### Timezones
+
+- [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/timezones)
+- Cache default max age: `1 day`
+
+#### `getAll`
+
+```php
+getAll(): TimezoneCollection
+```
+
+Get all timezones:
+
+```php
+$timezones = $sportMonksFootball->timezones()->getAll();
+
+foreach ($timezones->getData() as $timezone) {
+    echo $timezone;
 }
 ```
 
