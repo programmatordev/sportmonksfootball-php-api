@@ -428,6 +428,7 @@
 - `getPeriodLength()`: `?int`
 - `getMinutes()`: `?int`
 - `getSeconds()`: `?int`
+- `hasTimer()`: `bool`
 - `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
 - `getType()`: [`?Type`](#type) (`type` include is required)
 - `getEvents()`: [`?Event[]`](#event) (`events` include is required)
