@@ -34,6 +34,8 @@ class Period
 
     private ?int $seconds;
 
+    private bool $hasTimer;
+
     private ?Fixture $fixture;
 
     private ?Type $type;
@@ -52,6 +54,7 @@ class Period
         $this->id = $data['id'];
         $this->fixtureId = $data['fixture_id'];
         $this->typeId = $data['type_id'];
+        $this->hasTimer = $data['has_timer'];
 
         // select
         $this->startedAt = isset($data['started']) ? \DateTimeImmutable::createFromFormat('U', $data['started']) : null;
@@ -136,6 +139,11 @@ class Period
     public function getSeconds(): ?int
     {
         return $this->seconds;
+    }
+
+    public function hasTimer(): bool
+    {
+        return $this->hasTimer;
     }
 
     public function getFixture(): ?Fixture
