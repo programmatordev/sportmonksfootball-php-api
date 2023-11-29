@@ -455,6 +455,7 @@
 - `getWeight()`: `?int`
 - `getDateOfBirth()`: `?\DateTimeImmutable`
 - `getGender()`: `?string`
+- `inSquad()`: `?bool`
 - `getSport()`: [`?Sport`](#sport) (`sport` include is required)
 - `getCountry()`: [`?Country`](#country) (`country` include is required)
 - `getCity()`: [`?City`](#city) (`city` include is required)
