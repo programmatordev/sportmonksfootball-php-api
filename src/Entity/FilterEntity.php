@@ -11,7 +11,7 @@ class FilterEntity
     public function __construct(array $data)
     {
         // "_key" index is injected in data to get the key from an associative array response
-        // Check the CreateEntityCollectionTrait
+        // Check the EntityCollectionTrait
         $this->name = $data['_key'];
 
         // Remove injected "_key" to not pollute filters data

@@ -7,6 +7,7 @@ use ProgrammatorDev\SportMonksFootball\Endpoint\Util\FilterTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\IncludeTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\LanguageTrait;
 use ProgrammatorDev\SportMonksFootball\Endpoint\Util\SelectTrait;
+use ProgrammatorDev\SportMonksFootball\Entity\Response\PlayerCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\TeamSquadCollection;
 use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 
@@ -33,6 +34,22 @@ class TeamSquadEndpoint extends AbstractEndpoint
         );
 
         return new TeamSquadCollection($response);
+    }
+
+    /**
+     * @throws Exception
+     * @throws ApiErrorException
+     */
+    public function getAllExtendedByTeamId(int $teamId): PlayerCollection
+    {
+        $response = $this->sendRequest(
+            method: 'GET',
+            path: $this->formatPath('/v3/football/squads/teams/{teamId}/extended', [
+                'teamId' => $teamId
+            ])
+        );
+
+        return new PlayerCollection($response);
     }
 
     /**

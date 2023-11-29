@@ -2,7 +2,7 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Util;
 
-trait CreateEntityCollectionTrait
+trait EntityCollectionTrait
 {
     private function createEntityCollection(string $entityClass, array $data, ?string $timezone = null): array
     {

@@ -3,11 +3,11 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\TeamSquad;
-use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
 
 class TeamSquadCollection extends AbstractCollectionResponse
 {
-    use CreateEntityCollectionTrait;
+    use EntityCollectionTrait;
 
     /** @var TeamSquad[] */
     private array $data;

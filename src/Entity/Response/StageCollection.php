@@ -3,11 +3,11 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Stage;
-use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
 
 class StageCollection extends AbstractCollectionResponse
 {
-    use CreateEntityCollectionTrait;
+    use EntityCollectionTrait;
 
     /** @var Stage[] */
     private array $data;

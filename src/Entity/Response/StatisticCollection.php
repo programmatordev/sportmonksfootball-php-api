@@ -3,11 +3,11 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Statistic;
-use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
 
 class StatisticCollection extends AbstractCollectionResponse
 {
-    use CreateEntityCollectionTrait;
+    use EntityCollectionTrait;
 
     /** @var Statistic[] */
     private array $data;

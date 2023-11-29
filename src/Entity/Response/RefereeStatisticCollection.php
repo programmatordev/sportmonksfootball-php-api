@@ -3,11 +3,11 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\RefereeStatistic;
-use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
 
 class RefereeStatisticCollection extends AbstractCollectionResponse
 {
-    use CreateEntityCollectionTrait;
+    use EntityCollectionTrait;
 
     /** @var RefereeStatistic[] */
     private array $data;

@@ -3,11 +3,11 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Fixture;
-use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
 
 class FixtureCollection extends AbstractCollectionResponse
 {
-    use CreateEntityCollectionTrait;
+    use EntityCollectionTrait;
 
     /** @var Fixture[] */
     private array $data;

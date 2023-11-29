@@ -2,11 +2,11 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
 
 class TypeEntity
 {
-    use CreateEntityCollectionTrait;
+    use EntityCollectionTrait;
 
     private string $name;
 
@@ -18,7 +18,7 @@ class TypeEntity
     public function __construct(array $data)
     {
         // "_key" index is injected in data to get the key from an associative array response
-        // Check the CreateEntityCollectionTrait
+        // Check the EntityCollectionTrait
         $this->name = $data['_key'];
         $this->updatedAt = new \DateTimeImmutable($data['updated_at']);
         $this->types = $this->createEntityCollection(Type::class, $data['types']);
