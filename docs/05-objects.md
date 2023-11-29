@@ -428,6 +428,7 @@
 - `getPeriodLength()`: `?int`
 - `getMinutes()`: `?int`
 - `getSeconds()`: `?int`
+- `hasTimer()`: `bool`
 - `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
 - `getType()`: [`?Type`](#type) (`type` include is required)
 - `getEvents()`: [`?Event[]`](#event) (`events` include is required)
@@ -454,6 +455,7 @@
 - `getWeight()`: `?int`
 - `getDateOfBirth()`: `?\DateTimeImmutable`
 - `getGender()`: `?string`
+- `inSquad()`: `?bool`
 - `getSport()`: [`?Sport`](#sport) (`sport` include is required)
 - `getCountry()`: [`?Country`](#country) (`country` include is required)
 - `getCity()`: [`?City`](#city) (`city` include is required)

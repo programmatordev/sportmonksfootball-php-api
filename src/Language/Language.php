@@ -2,11 +2,11 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Language;
 
-use ProgrammatorDev\SportMonksFootball\Util\GetClassConstantsTrait;
+use ProgrammatorDev\SportMonksFootball\Util\ClassConstantsTrait;
 
 class Language
 {
-    use GetClassConstantsTrait;
+    use ClassConstantsTrait;
 
     public const ARABIC = 'ar';
     public const CHINESE = 'zh';

@@ -1454,6 +1454,21 @@ foreach ($squad->getData() as $player) {
     echo $player->getPlayerId();
 }
 ```
+#### `getAllExtendedByTeamId`
+
+```php
+getAllExtendedByTeamId(int $teamId): PlayerCollection
+```
+
+Get complete team squad entried based on the current season by team id:
+
+```php
+$squad = $sportMonksFootball->teamSquads()->getAllExtendedByTeamId(1);
+
+foreach ($squad->getData() as $player) {
+    echo $player->getName();
+}
+```
 
 #### `getAllBySeasonIdAndTeamId`
 

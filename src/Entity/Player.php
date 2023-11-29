@@ -2,11 +2,11 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\CreateEntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
 
 class Player
 {
-    use CreateEntityCollectionTrait;
+    use EntityCollectionTrait;
 
     private int $id;
 
@@ -43,6 +43,8 @@ class Player
     private ?\DateTimeImmutable $dateOfBirth;
 
     private ?string $gender;
+
+    private ?bool $inSquad;
 
     private ?Sport $sport;
 
@@ -102,6 +104,7 @@ class Player
         $this->weight = $data['weight'] ?? null;
         $this->dateOfBirth = isset($data['date_of_birth']) ? new \DateTimeImmutable($data['date_of_birth']) : null;
         $this->gender = $data['gender'] ?? null;
+        $this->inSquad = $data['in_squad'] ?? null;
 
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
@@ -208,6 +211,11 @@ class Player
     public function getGender(): ?string
     {
         return $this->gender;
+    }
+
+    public function inSquad(): ?bool
+    {
+        return $this->inSquad;
     }
 
     public function getSport(): ?Sport
