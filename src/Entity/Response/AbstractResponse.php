@@ -4,11 +4,11 @@ namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\RateLimit;
 use ProgrammatorDev\SportMonksFootball\Entity\Subscription;
-use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
 
 class AbstractResponse
 {
-    use EntityCollectionTrait;
+    use EntityTrait;
 
     private array $subscriptions;
 

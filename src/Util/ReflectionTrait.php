@@ -2,7 +2,7 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Util;
 
-trait ClassConstantsTrait
+trait ReflectionTrait
 {
     private function getClassConstants(string $className): array
     {

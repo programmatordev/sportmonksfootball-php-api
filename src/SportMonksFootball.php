@@ -2,199 +2,211 @@
 
 namespace ProgrammatorDev\SportMonksFootball;
 
-use ProgrammatorDev\SportMonksFootball\Endpoint\BookmakerEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\CityEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\CoachEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\CommentaryEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\FixtureEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\LeagueEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\LivescoreEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\MarketEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\PlayerEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\PreMatchOddEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\RefereeEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\RivalEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\RoundEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\ScheduleEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\SeasonEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\StageEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\StandingEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\StatisticEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TeamSquadEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TimezoneEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TopscorerEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TransferEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TvStationEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\VenueEndpoint;
+use Http\Message\Authentication\QueryParam;
+use ProgrammatorDev\Api\Api;
+use ProgrammatorDev\Api\Event\ResponseContentsEvent;
+use ProgrammatorDev\SportMonksFootball\Language\Language;
+use ProgrammatorDev\SportMonksFootball\Resource\BookmakerResource;
 
-class SportMonksFootball
+class SportMonksFootball extends Api
 {
-    public function __construct(private readonly Config $config) {}
+    private array $options;
 
-    public function config(): Config
+    public function __construct(
+        #[\SensitiveParameter] private string $apiKey,
+        array $options = []
+    )
     {
-        return $this->config;
+        parent::__construct();
+
+        $this->options = $this->configureOptions($options);
+        $this->configureApi();
     }
 
-    public function bookmakers(): BookmakerEndpoint
+    public function bookmakers(): BookmakerResource
     {
-        return new BookmakerEndpoint($this);
+        return new BookmakerResource($this);
     }
 
-    public function cities(): CityEndpoint
+//    public function cities(): CityEndpoint
+//    {
+//        return new CityEndpoint($this);
+//    }
+//
+//    public function coaches(): CoachEndpoint
+//    {
+//        return new CoachEndpoint($this);
+//    }
+//
+//    public function commentaries(): CommentaryEndpoint
+//    {
+//        return new CommentaryEndpoint($this);
+//    }
+//
+//    public function continents(): ContinentEndpoint
+//    {
+//        return new ContinentEndpoint($this);
+//    }
+//
+//    public function countries(): CountryEndpoint
+//    {
+//        return new CountryEndpoint($this);
+//    }
+//
+//    public function filters(): FilterEndpoint
+//    {
+//        return new FilterEndpoint($this);
+//    }
+//
+//    public function fixtures(): FixtureEndpoint
+//    {
+//        return new FixtureEndpoint($this);
+//    }
+//
+//    public function leagues(): LeagueEndpoint
+//    {
+//        return new LeagueEndpoint($this);
+//    }
+//
+//    public function livescores(): LivescoreEndpoint
+//    {
+//        return new LivescoreEndpoint($this);
+//    }
+//
+//    public function markets(): MarketEndpoint
+//    {
+//        return new MarketEndpoint($this);
+//    }
+//
+//    public function players(): PlayerEndpoint
+//    {
+//        return new PlayerEndpoint($this);
+//    }
+//
+//    public function preMatchOdds(): PreMatchOddEndpoint
+//    {
+//        return new PreMatchOddEndpoint($this);
+//    }
+//
+//    public function referees(): RefereeEndpoint
+//    {
+//        return new RefereeEndpoint($this);
+//    }
+//
+//    public function regions(): RegionEndpoint
+//    {
+//        return new RegionEndpoint($this);
+//    }
+//
+//    public function rivals(): RivalEndpoint
+//    {
+//        return new RivalEndpoint($this);
+//    }
+//
+//    public function rounds(): RoundEndpoint
+//    {
+//        return new RoundEndpoint($this);
+//    }
+//
+//    public function schedules(): ScheduleEndpoint
+//    {
+//        return new ScheduleEndpoint($this);
+//    }
+//
+//    public function seasons(): SeasonEndpoint
+//    {
+//        return new SeasonEndpoint($this);
+//    }
+//
+//    public function stages(): StageEndpoint
+//    {
+//        return new StageEndpoint($this);
+//    }
+//
+//    public function standings(): StandingEndpoint
+//    {
+//        return new StandingEndpoint($this);
+//    }
+//
+//    public function states(): StateEndpoint
+//    {
+//        return new StateEndpoint($this);
+//    }
+//
+//    public function statistics(): StatisticEndpoint
+//    {
+//        return new StatisticEndpoint($this);
+//    }
+//
+//    public function teams(): TeamEndpoint
+//    {
+//        return new TeamEndpoint($this);
+//    }
+//
+//    public function teamSquads(): TeamSquadEndpoint
+//    {
+//        return new TeamSquadEndpoint($this);
+//    }
+//
+//    public function timezones(): TimezoneEndpoint
+//    {
+//        return new TimezoneEndpoint($this);
+//    }
+//
+//    public function topscorers(): TopscorerEndpoint
+//    {
+//        return new TopscorerEndpoint($this);
+//    }
+//
+//    public function transfers(): TransferEndpoint
+//    {
+//        return new TransferEndpoint($this);
+//    }
+//
+//    public function tvStations(): TvStationEndpoint
+//    {
+//        return new TvStationEndpoint($this);
+//    }
+//
+//    public function types(): TypeEndpoint
+//    {
+//        return new TypeEndpoint($this);
+//    }
+//
+//    public function venues(): VenueEndpoint
+//    {
+//        return new VenueEndpoint($this);
+//    }
+
+    private function configureOptions(array $options): array
     {
-        return new CityEndpoint($this);
+        $this->optionsResolver->setDefault('timezone', 'UTC');
+        $this->optionsResolver->setDefault('language', Language::ENGLISH);
+
+        $this->optionsResolver->setAllowedTypes('timezone', 'string');
+        $this->optionsResolver->setAllowedTypes('language', 'string');
+
+        $this->optionsResolver->setAllowedValues('timezone', \DateTimeZone::listIdentifiers());
+        $this->optionsResolver->setAllowedValues('language', Language::getOptions());
+
+        return $this->optionsResolver->resolve($options);
     }
 
-    public function coaches(): CoachEndpoint
+    private function configureApi(): void
     {
-        return new CoachEndpoint($this);
-    }
+        $this->setBaseUrl('https://api.sportmonks.com');
 
-    public function commentaries(): CommentaryEndpoint
-    {
-        return new CommentaryEndpoint($this);
-    }
+        $this->setAuthentication(new QueryParam(['api_token' => $this->apiKey]));
 
-    public function continents(): ContinentEndpoint
-    {
-        return new ContinentEndpoint($this);
-    }
+        $this->addQueryDefault('timezone', $this->options['timezone']);
+        $this->addQueryDefault('locale', $this->options['language']);
 
-    public function countries(): CountryEndpoint
-    {
-        return new CountryEndpoint($this);
-    }
+        $this->addResponseContentsHandler(function(ResponseContentsEvent $event) {
+            // decode json string response into an array
+            $contents = $event->getContents();
+            $contents = \json_decode($contents, true);
 
-    public function filters(): FilterEndpoint
-    {
-        return new FilterEndpoint($this);
-    }
-
-    public function fixtures(): FixtureEndpoint
-    {
-        return new FixtureEndpoint($this);
-    }
-
-    public function leagues(): LeagueEndpoint
-    {
-        return new LeagueEndpoint($this);
-    }
-
-    public function livescores(): LivescoreEndpoint
-    {
-        return new LivescoreEndpoint($this);
-    }
-
-    public function markets(): MarketEndpoint
-    {
-        return new MarketEndpoint($this);
-    }
-
-    public function players(): PlayerEndpoint
-    {
-        return new PlayerEndpoint($this);
-    }
-
-    public function preMatchOdds(): PreMatchOddEndpoint
-    {
-        return new PreMatchOddEndpoint($this);
-    }
-
-    public function referees(): RefereeEndpoint
-    {
-        return new RefereeEndpoint($this);
-    }
-
-    public function regions(): RegionEndpoint
-    {
-        return new RegionEndpoint($this);
-    }
-
-    public function rivals(): RivalEndpoint
-    {
-        return new RivalEndpoint($this);
-    }
-
-    public function rounds(): RoundEndpoint
-    {
-        return new RoundEndpoint($this);
-    }
-
-    public function schedules(): ScheduleEndpoint
-    {
-        return new ScheduleEndpoint($this);
-    }
-
-    public function seasons(): SeasonEndpoint
-    {
-        return new SeasonEndpoint($this);
-    }
-
-    public function stages(): StageEndpoint
-    {
-        return new StageEndpoint($this);
-    }
-
-    public function standings(): StandingEndpoint
-    {
-        return new StandingEndpoint($this);
-    }
-
-    public function states(): StateEndpoint
-    {
-        return new StateEndpoint($this);
-    }
-
-    public function statistics(): StatisticEndpoint
-    {
-        return new StatisticEndpoint($this);
-    }
-
-    public function teams(): TeamEndpoint
-    {
-        return new TeamEndpoint($this);
-    }
-
-    public function teamSquads(): TeamSquadEndpoint
-    {
-        return new TeamSquadEndpoint($this);
-    }
-
-    public function timezones(): TimezoneEndpoint
-    {
-        return new TimezoneEndpoint($this);
-    }
-
-    public function topscorers(): TopscorerEndpoint
-    {
-        return new TopscorerEndpoint($this);
-    }
-
-    public function transfers(): TransferEndpoint
-    {
-        return new TransferEndpoint($this);
-    }
-
-    public function tvStations(): TvStationEndpoint
-    {
-        return new TvStationEndpoint($this);
-    }
-
-    public function types(): TypeEndpoint
-    {
-        return new TypeEndpoint($this);
-    }
-
-    public function venues(): VenueEndpoint
-    {
-        return new VenueEndpoint($this);
+            $event->setContents($contents);
+        });
     }
 }
