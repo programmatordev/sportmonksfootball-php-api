@@ -10,6 +10,7 @@ class AbstractResponse
 {
     use EntityTrait;
 
+    /** @var Subscription[] */
     private array $subscriptions;
 
     private RateLimit $rateLimit;
@@ -23,9 +24,6 @@ class AbstractResponse
         $this->timezone = $data['timezone'];
     }
 
-    /**
-     * @return Subscription[]
-     */
     public function getSubscriptions(): array
     {
         return $this->subscriptions;
