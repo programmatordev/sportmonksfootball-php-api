@@ -12,6 +12,7 @@ class Language
     public const CHINESE = 'zh';
     public const ENGLISH = 'en';
     public const GREEK = 'el';
+    public const ITALIAN = 'it';
     public const JAPANESE = 'ja';
     public const PERSIAN = 'fa';
     public const RUSSIAN = 'ru';
