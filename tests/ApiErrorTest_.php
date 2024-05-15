@@ -27,7 +27,7 @@ class ApiErrorTest extends AbstractTest
 {
     public function testApiErrorNoResults()
     {
-        $this->mockHttpClient->addResponse(
+        $this->mockClient->addResponse(
             new Response(
                 status: 200,
                 body: MockResponse::ERROR_NO_RESULTS
@@ -41,10 +41,10 @@ class ApiErrorTest extends AbstractTest
     #[DataProvider('provideApiErrorPropertyCodeData')]
     public function testApiErrorPropertyCode(int $code, string $expectedException)
     {
-        $this->mockHttpClient->addResponse(
+        $this->mockClient->addResponse(
             new Response(
                 status: 422,
-                body: MockResponse::formatResponse(MockResponse::ERROR_PROPERTY_CODE, [
+                body: MockResponse::buildResponse(MockResponse::ERROR_PROPERTY_CODE, [
                     'code' => $code
                 ])
             )
@@ -73,7 +73,7 @@ class ApiErrorTest extends AbstractTest
     #[DataProvider('provideApiErrorStatusCodeData')]
     public function testApiErrorStatusCode(int $statusCode, string $expectedException)
     {
-        $this->mockHttpClient->addResponse(
+        $this->mockClient->addResponse(
             new Response(
                 status: $statusCode,
                 body: MockResponse::ERROR_STATUS_CODE

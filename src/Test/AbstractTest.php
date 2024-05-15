@@ -4,30 +4,24 @@ namespace ProgrammatorDev\SportMonksFootball\Test;
 
 use Http\Mock\Client;
 use PHPUnit\Framework\TestCase;
-use ProgrammatorDev\SportMonksFootball\Config;
-use ProgrammatorDev\SportMonksFootball\HttpClient\HttpClientBuilder;
+use ProgrammatorDev\Api\Builder\ClientBuilder;
 use ProgrammatorDev\SportMonksFootball\SportMonksFootball;
 
 class AbstractTest extends TestCase
 {
-    protected const APPLICATION_KEY = 'testappkey';
+    protected const API_KEY = 'testapikey';
 
-    protected Client $mockHttpClient;
+    protected SportMonksFootball $api;
+
+    protected Client $mockClient;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->mockHttpClient = new Client();
-    }
+        $this->mockClient = new Client();
 
-    protected function givenApi(): SportMonksFootball
-    {
-        return new SportMonksFootball(
-            new Config([
-                'applicationKey' => self::APPLICATION_KEY,
-                'httpClientBuilder' => new HttpClientBuilder($this->mockHttpClient)
-            ])
-        );
+        $this->api = new SportMonksFootball(self::API_KEY);
+        $this->api->setClientBuilder(new ClientBuilder($this->mockClient));
     }
 }
