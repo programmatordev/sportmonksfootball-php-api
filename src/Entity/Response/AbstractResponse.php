@@ -16,11 +16,11 @@ class AbstractResponse
 
     private string $timezone;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        $this->subscriptions = $this->createEntityCollection(Subscription::class, $response['subscription']);
-        $this->rateLimit = new RateLimit($response['rate_limit']);
-        $this->timezone = $response['timezone'];
+        $this->subscriptions = $this->createEntityCollection(Subscription::class, $data['subscription']);
+        $this->rateLimit = new RateLimit($data['rate_limit']);
+        $this->timezone = $data['timezone'];
     }
 
     /**

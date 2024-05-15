@@ -8,11 +8,11 @@ class RegionItem extends AbstractResponse
 {
     private Region $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = new Region($response['data'], $response['timezone']);
+        $this->data = new Region($data['data'], $data['timezone']);
     }
 
     public function getData(): Region

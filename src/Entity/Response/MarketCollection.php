@@ -12,11 +12,11 @@ class MarketCollection extends AbstractCollectionResponse
     /** @var Market[] */
     private array $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Market::class, $response['data']);
+        $this->data = $this->createEntityCollection(Market::class, $data['data']);
     }
 
     public function getData(): array

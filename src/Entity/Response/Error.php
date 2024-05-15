@@ -6,11 +6,11 @@ class Error extends AbstractResponse
 {
     private string $message;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->message = $response['message'];
+        $this->message = $data['message'];
     }
 
     public function getMessage(): string

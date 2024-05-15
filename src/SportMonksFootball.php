@@ -4,7 +4,27 @@ namespace ProgrammatorDev\SportMonksFootball;
 
 use Http\Message\Authentication\QueryParam;
 use ProgrammatorDev\Api\Api;
+use ProgrammatorDev\Api\Event\PostRequestEvent;
 use ProgrammatorDev\Api\Event\ResponseContentsEvent;
+use ProgrammatorDev\SportMonksFootball\Entity\Response\Error;
+use ProgrammatorDev\SportMonksFootball\Exception\BadRequestException;
+use ProgrammatorDev\SportMonksFootball\Exception\FilterNotApplicableException;
+use ProgrammatorDev\SportMonksFootball\Exception\ForbiddenException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeDepthException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotAllowedException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotAvailableException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotFoundException;
+use ProgrammatorDev\SportMonksFootball\Exception\InsufficientIncludesException;
+use ProgrammatorDev\SportMonksFootball\Exception\InsufficientResourcesException;
+use ProgrammatorDev\SportMonksFootball\Exception\InvalidQueryParameterException;
+use ProgrammatorDev\SportMonksFootball\Exception\NoResultsFoundException;
+use ProgrammatorDev\SportMonksFootball\Exception\NotFoundException;
+use ProgrammatorDev\SportMonksFootball\Exception\PaginationLimitException;
+use ProgrammatorDev\SportMonksFootball\Exception\QueryComplexityException;
+use ProgrammatorDev\SportMonksFootball\Exception\RateLimitException;
+use ProgrammatorDev\SportMonksFootball\Exception\TooManyRequestsException;
+use ProgrammatorDev\SportMonksFootball\Exception\UnauthorizedException;
+use ProgrammatorDev\SportMonksFootball\Exception\UnexpectedErrorException;
 use ProgrammatorDev\SportMonksFootball\Language\Language;
 use ProgrammatorDev\SportMonksFootball\Resource\BookmakerResource;
 
@@ -199,6 +219,63 @@ class SportMonksFootball extends Api
 
         $this->addQueryDefault('timezone', $this->options['timezone']);
         $this->addQueryDefault('locale', $this->options['language']);
+
+        $this->addPostRequestHandler(function(PostRequestEvent $event) {
+            $response = $event->getResponse();
+            $statusCode = $response->getStatusCode();
+
+            $data = \json_decode($response->getBody()->getContents(), true);
+
+            // since body is a stream, it must be rewound for later calls (ResponseContentsEvent)
+            // otherwise contents would be empty
+            $response->getBody()->rewind();
+
+            // if response contains a message it is an error
+            $errorMessage = $data['message'] ?? null;
+
+            // an error may occur with a misleading 200 status code:
+            // if there is a "message" property on the response, it means it is returning an error
+            if ($statusCode >= 200 && $statusCode <= 299 && $errorMessage !== null) {
+                throw new NoResultsFoundException(new Error($data));
+            }
+
+            if ($statusCode >= 400) {
+                $errorCode = $data['code'] ?? null;
+                $errorLink = $data['link'] ?? null;
+
+                // filter error by the provided "code" property (ignores status codes as they may be misleading)
+                // https://docs.sportmonks.com/football/api/error-codes/include-exceptions
+                // https://docs.sportmonks.com/football/api/error-codes/filtering-and-complexity-exceptions
+                // https://docs.sportmonks.com/football/api/error-codes/other-exceptions
+                if ($errorCode !== null) {
+                    match ($errorCode) {
+                        5000 => throw new IncludeNotAllowedException($errorMessage, $errorCode, $errorLink),
+                        5001 => throw new IncludeNotFoundException($errorMessage, $errorCode, $errorLink),
+                        5002 => throw new InsufficientIncludesException($errorMessage, $errorCode, $errorLink),
+                        5003 => throw new PaginationLimitException($errorMessage, $errorCode, $errorLink),
+                        5004 => throw new QueryComplexityException($errorMessage, $errorCode, $errorLink),
+                        5005 => throw new RateLimitException($errorMessage, $errorCode, $errorLink),
+                        5006 => throw new InvalidQueryParameterException($errorMessage, $errorCode, $errorLink),
+                        5007 => throw new InsufficientResourcesException($errorMessage, $errorCode, $errorLink),
+                        5008 => throw new IncludeDepthException($errorMessage, $errorCode, $errorLink),
+                        5010 => throw new FilterNotApplicableException($errorMessage, $errorCode, $errorLink),
+                        5013 => throw new IncludeNotAvailableException($errorMessage, $errorCode, $errorLink),
+                        default => throw new UnexpectedErrorException($errorMessage, $errorCode, $errorLink)
+                    };
+                }
+
+                // filter error by status code
+                // https://docs.sportmonks.com/football/api/error-codes
+                match ($statusCode) {
+                    400 => throw new BadRequestException($errorMessage, $statusCode, $errorLink),
+                    401 => throw new UnauthorizedException($errorMessage, $statusCode, $errorLink),
+                    403 => throw new ForbiddenException($errorMessage, $statusCode, $errorLink),
+                    404 => throw new NotFoundException($errorMessage, $statusCode, $errorLink),
+                    429 => throw new TooManyRequestsException($errorMessage, $statusCode, $errorLink),
+                    default => throw new UnexpectedErrorException($errorMessage, $statusCode, $errorLink)
+                };
+            }
+        });
 
         $this->addResponseContentsHandler(function(ResponseContentsEvent $event) {
             // decode json string response into an array

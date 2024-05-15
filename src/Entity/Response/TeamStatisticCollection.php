@@ -12,11 +12,11 @@ class TeamStatisticCollection extends AbstractCollectionResponse
     /** @var TeamStatistic[] */
     private array $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(TeamStatistic::class, $response['data'], $response['timezone']);
+        $this->data = $this->createEntityCollection(TeamStatistic::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

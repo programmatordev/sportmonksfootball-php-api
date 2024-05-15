@@ -8,11 +8,11 @@ class VenueItem extends AbstractResponse
 {
     private Venue $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = new Venue($response['data'], $response['timezone']);
+        $this->data = new Venue($data['data'], $data['timezone']);
     }
 
     public function getData(): Venue

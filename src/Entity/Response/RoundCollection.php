@@ -12,11 +12,11 @@ class RoundCollection extends AbstractCollectionResponse
     /** @var Round[] */
     private array $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Round::class, $response['data'], $response['timezone']);
+        $this->data = $this->createEntityCollection(Round::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

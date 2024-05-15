@@ -8,11 +8,11 @@ class BookmakerItem extends AbstractResponse
 {
     private Bookmaker $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = new Bookmaker($response['data']);
+        $this->data = new Bookmaker($data['data']);
     }
 
     public function getData(): Bookmaker

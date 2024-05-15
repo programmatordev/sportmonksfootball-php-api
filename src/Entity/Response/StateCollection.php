@@ -12,11 +12,11 @@ class StateCollection extends AbstractCollectionResponse
     /** @var State[] */
     private array $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(State::class, $response['data']);
+        $this->data = $this->createEntityCollection(State::class, $data['data']);
     }
 
     public function getData(): array

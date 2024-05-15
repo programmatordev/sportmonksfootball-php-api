@@ -8,11 +8,11 @@ class CountryItem extends AbstractResponse
 {
     private Country $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = new Country($response['data'], $response['timezone']);
+        $this->data = new Country($data['data'], $data['timezone']);
     }
 
     public function getData(): Country

@@ -12,11 +12,11 @@ class TypeCollection extends AbstractCollectionResponse
     /** @var Type[] */
     private array $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Type::class, $response['data']);
+        $this->data = $this->createEntityCollection(Type::class, $data['data']);
     }
 
     public function getData(): array

@@ -12,11 +12,11 @@ class BookmakerCollection extends AbstractCollectionResponse
     /** @var Bookmaker[] */
     private array $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Bookmaker::class, $response['data']);
+        $this->data = $this->createEntityCollection(Bookmaker::class, $data['data']);
     }
 
     public function getData(): array
