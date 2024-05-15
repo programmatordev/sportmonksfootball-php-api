@@ -187,7 +187,6 @@ class SportMonksFootball extends Api
         $this->optionsResolver->setAllowedTypes('language', 'string');
 
         $this->optionsResolver->setAllowedValues('timezone', \DateTimeZone::listIdentifiers());
-        $this->optionsResolver->setAllowedValues('language', Language::getOptions());
 
         return $this->optionsResolver->resolve($options);
     }
