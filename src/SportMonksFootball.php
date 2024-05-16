@@ -27,6 +27,7 @@ use ProgrammatorDev\SportMonksFootball\Exception\UnauthorizedException;
 use ProgrammatorDev\SportMonksFootball\Exception\UnexpectedErrorException;
 use ProgrammatorDev\SportMonksFootball\Language\Language;
 use ProgrammatorDev\SportMonksFootball\Resource\BookmakerResource;
+use ProgrammatorDev\SportMonksFootball\Resource\CityResource;
 
 class SportMonksFootball extends Api
 {
@@ -48,10 +49,10 @@ class SportMonksFootball extends Api
         return new BookmakerResource($this);
     }
 
-//    public function cities(): CityEndpoint
-//    {
-//        return new CityEndpoint($this);
-//    }
+    public function cities(): CityResource
+    {
+        return new CityResource($this);
+    }
 //
 //    public function coaches(): CoachEndpoint
 //    {
