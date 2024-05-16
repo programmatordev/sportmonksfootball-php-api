@@ -14,9 +14,9 @@ You can see all available exceptions below:
 
 ```php
 try {
-    $fixture = $sportMonksFootball->fixtures()->getById(1);
+    $response = $api->fixtures()->getById(1);
 }
-// When the query did not return any results (for example, the requested id does not exist or is empty)
+// when the query did not return any results (for example, the requested id does not exist or is empty)
 // or there is no access via the current subscription
 catch (NoResultsFoundException $exception) {
     echo $exception->getMessage();
@@ -41,19 +41,19 @@ catch (PaginationLimitException $exception) {}
 catch (RateLimitException $exception) {}
 catch (InsufficientResourcesException $exception) {}
 catch (InsufficientIncludesException $exception) {}
-// Any other error
+// any other error
 catch (UnexpectedErrorException $exception) {}
 ```
 
 To catch all API errors with a single exception, `ApiErrorException` is available:
 
 ```php
-use ProgrammatorDev\OpenWeatherMap\Exception\ApiErrorException;
+use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 
 try {
-    $fixture = $sportMonksFootball->fixtures()->getById(1);
+    $response = $api->fixtures()->getById(1);
 }
-// Catches all API response errors
+// catches all API response errors
 catch (ApiErrorException $exception) {
     echo $exception->getCode();
     echo $exception->getMessage();
@@ -65,13 +65,13 @@ catch (ApiErrorException $exception) {
 To catch invalid input data, the `ValidationException` is available:
 
 ```php
-use ProgrammatorDev\YetAnotherPhpValidator\Exception\ValidationException;
+use ProgrammatorDev\Validator\Exception\ValidationException;
 
 try {
-    $fixtures = $sportMonksFootball->fixtures()->getAllBySearchQuery('');
+    $response = $api->fixtures()->getAllBySearchQuery('');
 }
 catch (ValidationException $exception) {
-    // Should print: The query value should not be blank, "" given.
+    // should print: The query value should not be blank, "" given.
     echo $exception->getMessage();
 }
 ```

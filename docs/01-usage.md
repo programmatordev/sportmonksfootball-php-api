@@ -16,16 +16,10 @@ You must sign up for a [SportMonks account](https://www.sportmonks.com/football-
 
 ## Installation
 
-You can install the library via [Composer](https://getcomposer.org/):
+Install the library via [Composer](https://getcomposer.org/):
 
 ```bash
 composer require programmatordev/sportmonksfootball-php-api
-```
-
-To use the library, use Composer's [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading):
-
-```php
-require_once 'vendor/autoload.php';
 ```
 
 ## Basic Usage
@@ -33,16 +27,11 @@ require_once 'vendor/autoload.php';
 Simple usage looks like:
 
 ```php
-use ProgrammatorDev\SportMonksFootball\Config;
 use ProgrammatorDev\SportMonksFootball\SportMonksFootball;
 
-// Initialize
-$sportMonksFootball = new SportMonksFootball(
-    new Config([
-        'applicationKey' => 'yourappkey'
-    ])
-);
+// initialize
+$api = new SportMonksFootball('yourapikey');
 
-// Get all livescores of the current day
-$livescores = $sportMonksFootball->livescores()->getAll();
+// get all livescores of the current day
+$livescores = $api->livescores()->getAll();
 ```

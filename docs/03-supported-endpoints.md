@@ -35,10 +35,16 @@
   - [Regions](#regions)
   - [Timezones](#timezones)
   - [Types](#types)
+- [Pagination](#pagination-1)
+  - [withPage](#withpage)
+  - [withPerPage](#withperpage)
+  - [withSortBy](#withsortby)
+  - [withOrder](#withorder)
+  - [withPagination](#withpagination)
 - [Select, Include and Filters](#select-include-and-filters)
   - [withSelect](#withselect)
   - [withInclude](#withinclude)
-  - [withFilters](#withfilters)
+  - [withFilter](#withfilter)
 - [Timezone, Language and Cache TTL](#timezone-language-and-cache-ttl)
   - [withTimezone](#withtimezone)
   - [withLanguage](#withlanguage)
@@ -46,27 +52,27 @@
 
 ## Responses
 
-All successful responses will return an [`<Entity>Item`](05-objects.md#entityitem) or an [`<Entity>Collection`](05-objects.md#entitycollection).
+All successful responses will return an [`<Entity>Item`](05-entities.md#entityitem) or an [`<Entity>Collection`](05-entities.md#entitycollection).
 
-One of the differences between an [`<Entity>Item`](05-objects.md#entityitem) and an [`<Entity>Collection`](05-objects.md#entitycollection)
-is that the [`<Entity>Item`](05-objects.md#entityitem) `getData()` method will return a single _Entity_ object,
-while the [`<Entity>Collection`](05-objects.md#entitycollection) `getData()` method will return an array of _Entity_ objects.
+One of the differences between an [`<Entity>Item`](05-entities.md#entityitem) and an [`<Entity>Collection`](05-entities.md#entitycollection)
+is that the [`<Entity>Item`](05-entities.md#entityitem) `getData()` method will return a single _Entity_ object,
+while the [`<Entity>Collection`](05-entities.md#entitycollection) `getData()` method will return an array of _Entity_ objects.
 
-For example, when requesting a fixture by id, the response will be a `FixtureItem` object and the `getData()` method will return a [`Fixture`](05-objects.md#fixture) object.
-The same way that when requesting all fixtures, the response will be a `FixtureCollection` object and the `getData()` method will return an array of [`Fixture`](05-objects.md#fixture) objects.
-Check the [responses objects](05-objects.md#response-objects) for more information.
+For example, when requesting a fixture by id, the response will be a `FixtureItem` object and the `getData()` method will return a [`Fixture`](05-entities.md#fixture) object.
+The same way that when requesting all fixtures, the response will be a `FixtureCollection` object and the `getData()` method will return an array of [`Fixture`](05-entities.md#fixture) objects.
+Check the [responses objects](05-entities.md#response-objects) for more information.
 
 ```php
-// Returns a FixtureItem object
-$fixtureItem = $sportMonksFootball->fixtures()->getById(1);
-// Returns a Fixture object
-$fixture = $fixtureItem->getData();
+// returns a FixtureItem object
+$response = $api->fixtures()->getById(1);
+// returns a Fixture object
+$fixture = $response->getData();
 echo $fixture->getName();
 
-// Returns a FixtureCollection object
-$fixtureCollection = $sportMonksFootball->fixtures()->getAll();
-// Returns an array of Fixture objects
-$fixtures = $fixtureCollection->getData();
+// returns a FixtureCollection object
+$response = $api->fixtures()->getAll();
+// returns an array of Fixture objects
+$fixtures = $response->getData();
 foreach ($fixtures as $fixture) {
     echo $fixture->getName();
 }
@@ -74,24 +80,17 @@ foreach ($fixtures as $fixture) {
 
 ### Pagination
 
-[`<Entity>Collection`](05-objects.md#entitycollection) responses that contain pagination data (not all of them have)
+[`<Entity>Collection`](05-entities.md#entitycollection) responses that contain pagination data (not all of them have)
 will be accessible through the `getPagination()` method:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAll();
+$response = $api->fixtures()->getAll();
 
-echo $fixtures->getPagination()->getCount();
-echo $fixtures->getPagination()->getPerPage();
-echo $fixtures->getPagination()->getCurrentPage();
-echo $fixtures->getPagination()->getNextPage();
-echo $fixtures->getPagination()->hasMore();
-```
-
-Endpoints that support pagination, will always have a `page`, `perPage` and `order` parameters:
-
-```php
-// Returns page 10 with 50 fixtures per page in descending order
-$fixtures = $sportMonksFootball->fixtures()->getAll(page: 10, perPage: 50, order: 'desc')->getData();
+echo $response->getPagination()->getCount();
+echo $response->getPagination()->getPerPage();
+echo $response->getPagination()->getCurrentPage();
+echo $response->getPagination()->getNextPage();
+echo $response->getPagination()->hasMore();
 ```
 
 ### Rate Limit
@@ -100,11 +99,11 @@ All responses include the `getRateLimit()` method with the current quota usage.
 Check the [official documentation](https://docs.sportmonks.com/football/api/rate-limit) for more information.
 
 ```php
-$fixture = $sportMonksFootball->fixtures()->getById(1);
+$response = $api->fixtures()->getById(1);
 
-echo $fixture->getRateLimit()->getRemainingNumRequests();
-echo $fixture->getRateLimit()->getSecondsToReset();
-echo $fixture->getRateLimit()->getRequestedEntity();
+echo $response->getRateLimit()->getRemainingNumRequests();
+echo $response->getRateLimit()->getSecondsToReset();
+echo $response->getRateLimit()->getRequestedEntity();
 ```
 
 ### Timezone
@@ -116,9 +115,9 @@ To request data in a different timezone for all requests, check the [configurati
 For a single endpoint, check the [`withTimezone` section](#withtimezone).
 
 ```php
-$fixture = $sportMonksFootball->fixtures()->getById(1);
+$response = $api->fixtures()->getById(1);
 
-echo $fixture->getTimezone(); // UTC
+echo $response->getTimezone(); // UTC
 ```
 
 ## Football Endpoints
@@ -1742,22 +1741,17 @@ foreach ($venues->getData() as $venue) {
 ### Bookmakers
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/bookmakers)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): BookmakerCollection
+getAll(): BookmakerCollection
 ```
 
 Get all bookmakers:
 
 ```php
-$bookmakers = $sportMonksFootball->bookmakers()->getAll();
-
-foreach ($bookmakers->getData() as $bookmaker) {
-    echo $bookmaker->getName();
-}
+$response = $api->bookmakers()->getAll();
 ```
 
 #### `getById`
@@ -1769,40 +1763,31 @@ getById(int $id): BookmakerItem
 Get bookmaker by id:
 
 ```php
-$bookmaker = $sportMonksFootball->bookmakers()->getById(1);
-echo $bookmaker->getData()->getName();
+$response = $api->bookmakers()->getById(1);
 ```
 
 #### `getAllByFixtureId`
 
 ```php
-getAllByFixtureId(int $fixtureId, int $page = 1, int $perPage = 25, string $order = 'asc'): BookmakerCollection
+getAllByFixtureId(int $fixtureId): BookmakerCollection
 ```
 
 Get all bookmakers by fixture id:
 
 ```php
-$bookmakers = $sportMonksFootball->bookmakers()->getAllByFixtureId(1);
-
-foreach ($bookmakers->getData() as $bookmaker) {
-    echo $bookmaker->getName();
-}
+$response = $api->bookmakers()->getAllByFixtureId(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): BookmakerCollection
+getAllBySearchQuery(string $query): BookmakerCollection
 ```
 
 Get all bookmakers by search query:
 
 ```php
-$bookmakers = $sportMonksFootball->bookmakers()->getAllBySearchQuery('bet');
-
-foreach ($bookmakers->getData() as $bookmaker) {
-    echo $bookmaker->getName();
-}
+$response = $api->bookmakers()->getAllBySearchQuery('bet');
 ```
 
 ### Markets
@@ -2231,13 +2216,99 @@ foreach ($entities->getData() as $entity) {
 }
 ```
 
+## Pagination
+
+### `withPage`
+
+```php
+withPage(int $page): self
+```
+
+Determine the results page number.
+
+```php
+$api->fixtures()
+    ->withPage(2)
+    ->getAll();
+```
+
+### `withPerPage`
+
+```php
+withPerPage(int $perPage): self
+```
+
+Determine the number of results per page. 
+Please note that it only affects the results of the base entity, so includes are not paginated.
+
+```php
+$api->fixtures()
+    ->withPerPage(50)
+    ->getAll();
+```
+
+### `withSortBy`
+
+```php
+withSortBy(string $sortBy): self
+```
+
+Specifies the field by which the data will be sorted. Currently supported fields include:
+- `starting_at`
+- `name`
+
+```php
+$api->fixtures()
+    ->withSortBy('starting_at')
+    ->getAll();
+```
+
+### `withOrder`
+
+```php
+withOrder(string $order): self
+```
+
+Determines the order in which the data will be sorted. Users can choose between ascending and descending:
+- `asc`
+- `desc`
+
+
+```php
+$api->fixtures()
+    ->withOrder('desc')
+    ->getAll();
+```
+
+### withPagination
+
+```php
+withPagination(int $page, int $perPage = 25, ?string $sortBy = null, string $order = 'asc'): self
+```
+
+Shorthand version of the combined `withPage`, `withPerPage`, `withSortBy` and `withOrder` methods.
+
+```php
+// returns page 5 with 50 fixtures per page sorted by "starting_at" in descending order
+$api->fixtures()
+    ->withPagination(5, 50, 'starting_at', 'desc')
+    ->getAll();
+
+// equivalent to
+$api->fixtures()
+    ->withPage(5)
+    ->withPerPage(50)
+    ->withSortBy('starting_at')
+    ->withOrder('desc')
+    ->getAll();
+```
+
 ## Select, Include and Filters
 
 #### `withSelect`
 
 ```php
-/** @param string[] $select **/
-withSelect(array $select): self
+withSelect(string $select): self
 ```
 
 It is possible to request only specific fields on entities and on includes.
@@ -2247,17 +2318,16 @@ In addition to reducing response time, the response size is also reduced.
 For selecting fields on includes, check the [`withInclude`](#withinclude) section.
 
 ```php
-// Get fixture with fields "name" and "starting_at" only
-$fixture = $sportMonksFootball->fixtures()
-    ->withSelect(['name', 'starting_at'])
+// get fixture with fields "name" and "starting_at" only
+$api->fixtures()
+    ->withSelect('name, starting_at')
     ->getById(1);
 ```
 
 #### `withInclude`
 
 ```php
-/** @param string[] $include **/
-withInclude(array $include): self
+withInclude(string $include): self
 ```
 
 Includes allow to enrich the response with relational data.
@@ -2265,15 +2335,15 @@ This means that it is possible to request a fixture and have the venue data in t
 To check what includes ara available per endpoint, check the [official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints).
 
 ```php
-// Get fixture with "venue" and "participants" (teams) data
-$fixture = $sportMonksFootball->fixtures()
-    ->withInclude(['venue', 'participants'])
+// get fixture with "venue" and "participants" (teams) data
+$api->fixtures()
+    ->withInclude('venue, participants')
     ->getById(1);
 
-// It is also possible to nest includes
-// This will return venue data and country data inside the venue
-$fixture = $sportMonksFootball->fixtures()
-    ->withInclude(['venue.country'])
+// it is also possible to get nested includes
+// this will return venue data and country data inside the venue
+$api->fixtures()
+    ->withInclude('venue.country')
     ->getById(1);
 ```
 
@@ -2282,26 +2352,25 @@ To better understand how it works, check the [official documentation](https://do
 To select fields in includes (similar to the [`withSelect`](#withselect)), you can do the following:
 
 ```php
-// Get fixture with "venue" data with fields "name" and "city_name" only
-$fixture = $sportMonksFootball->fixtures()
-    ->withInclude(['venue:name,city_name'])
+// get fixture with "venue" data with fields "name" and "city_name" only
+$api->fixtures()
+    ->withInclude('venue:name,city_name')
     ->getById(1);
 ```
 
-#### `withFilters`
+#### `withFilter`
 
 ```php
-/** @param array<string, string|int> $filters **/
-withFilters(array $filters): self
+withFilter(string $filter): self
 ```
 
 Filters are useful to make conditional requests. For example, get fixture events that are only goals:
 
 ```php
-// Get fixture with "events" that are only goals, own goals or penalties.
-$fixture = $sportMonksFootball->fixtures()
-    ->withInclude(['events'])
-    ->withFilters(['eventTypes' => '14,15,16'])
+// get fixture with "events" that are only goals, own goals or penalties.
+$api->fixtures()
+    ->withInclude('events')
+    ->withFilter('eventTypes:14,15,16'])
     ->getById(1);
 ```
 
@@ -2317,12 +2386,11 @@ withTimezone(string $timezone): self
 
 Makes a request with a different timezone from the one globally defined in the [configuration](02-configuration.md#timezone).
 
-Only available for endpoints that contain Fixtures or Livescores.
 Check the [official documentation](https://docs.sportmonks.com/football/tutorials-and-guides/tutorials/timezone-parameters-on-different-endpoints) for more information.
 
 ```php
-// Get all fixtures in the Europe/Lisbon timezone
-$fixtures = $sportMonksFootball->fixtures()
+// get all fixtures in the Europe/Lisbon timezone
+$api->fixtures()
     ->withTimezone('Europe/Lisbon')
     ->getAll();
 ```
@@ -2335,15 +2403,14 @@ withLanguage(string $language): self
 
 Makes a request with a different language from the one globally defined in the [configuration](02-configuration.md#language).
 
-Some endpoints may not support the `withLanguage` method.
 Check the [official documentation](https://docs.sportmonks.com/football/api/translations-beta) for more information.
 
-> **Note**
+> [!NOTE]
 > This is feature is still in beta and may change in the future.
 
 ```php
-// Get all fixtures in Japanese
-$fixtures = $sportMonksFootball->fixtures()
+// get all fixtures in Japanese
+$api->fixtures()
     ->withLanguage(Language::JAPANESE)
     ->getAll();
 ```
@@ -2351,21 +2418,24 @@ $fixtures = $sportMonksFootball->fixtures()
 #### `withCacheTtl`
 
 ```php
-withCacheTtl(int $seconds): self
+withCacheTtl(?int $ttl): self
 ```
 
-Makes a request and saves into cache for the provided duration in seconds. 
+Makes a request and saves into cache for the provided duration in seconds.
 
-If `0` seconds is provided, the request will not be cached.
+Semantics of values:
+- `0`, the response will not be cached (if the servers specifies no `max-age`).
+- `null`, the response will be cached for as long as it can (forever).
 
-> **Note**
-> Setting cache to `0` seconds will **not** invalidate any existing cache.
+> [!NOTE]
+> Setting cache to `null` or `0` seconds will **not** invalidate any existing cache.
 
-Available for all APIs if `cache` is enabled in the [configuration](02-configuration.md#cache).
+Available for all APIs if a cache adapter is set.
+Check the following [documentation](02-configuration.md#setcachebuilder) for more information.
 
 ```php
 // Get all fixtures and cache for 1 day
-$fixtures = $sportMonksFootball->fixtures()
+$api->fixtures()
     ->withCacheTtl(3600 * 24)
     ->getAll();
 ```
