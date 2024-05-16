@@ -1934,22 +1934,17 @@ foreach ($odds->getData() as $odd) {
 ### Cities
 
 - [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/cities)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): CityCollection
+getAll(): CityCollection
 ```
 
 Get all cities:
 
 ```php
-$cities = $sportMonksFootball->cities()->getAll();
-
-foreach ($cities->getData() as $city) {
-    echo $city->getName();
-}
+$response = $api->cities()->getAll();
 ```
 
 #### `getById`
@@ -1961,24 +1956,19 @@ getById(int $id): CityItem
 Get city by id:
 
 ```php
-$city = $sportMonksFootball->cities()->getById(1);
-echo $city->getData()->getName();
+$response = $api->cities()->getById(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): CityCollection
+getAllBySearchQuery(string $query): CityCollection
 ```
 
 Get all cities by search query:
 
 ```php
-$cities = $sportMonksFootball->cities()->getAllBySearchQuery('lisbon');
-
-foreach ($cities->getData() as $city) {
-    echo $city->getName();
-}
+$response = $api->cities()->getAllBySearchQuery('lisbon');
 ```
 
 ### Continents
