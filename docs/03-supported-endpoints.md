@@ -2218,7 +2218,7 @@ foreach ($entities->getData() as $entity) {
 
 ## Pagination
 
-### `withPage`
+#### `withPage`
 
 ```php
 withPage(int $page): self
@@ -2232,7 +2232,7 @@ $api->fixtures()
     ->getAll();
 ```
 
-### `withPerPage`
+#### `withPerPage`
 
 ```php
 withPerPage(int $perPage): self
@@ -2247,7 +2247,7 @@ $api->fixtures()
     ->getAll();
 ```
 
-### `withSortBy`
+#### `withSortBy`
 
 ```php
 withSortBy(string $sortBy): self
@@ -2263,13 +2263,13 @@ $api->fixtures()
     ->getAll();
 ```
 
-### `withOrder`
+#### `withOrder`
 
 ```php
 withOrder(string $order): self
 ```
 
-Determines the order in which the data will be sorted. Users can choose between ascending and descending:
+Determines the order in which the data will be sorted. Options are between ascending and descending:
 - `asc`
 - `desc`
 
@@ -2280,7 +2280,7 @@ $api->fixtures()
     ->getAll();
 ```
 
-### withPagination
+#### `withPagination`
 
 ```php
 withPagination(int $page, int $perPage = 25, ?string $sortBy = null, string $order = 'asc'): self
@@ -2320,7 +2320,7 @@ For selecting fields on includes, check the [`withInclude`](#withinclude) sectio
 ```php
 // get fixture with fields "name" and "starting_at" only
 $api->fixtures()
-    ->withSelect('name, starting_at')
+    ->withSelect('name,starting_at')
     ->getById(1);
 ```
 
@@ -2337,7 +2337,7 @@ To check what includes ara available per endpoint, check the [official documenta
 ```php
 // get fixture with "venue" and "participants" (teams) data
 $api->fixtures()
-    ->withInclude('venue, participants')
+    ->withInclude('venue,participants')
     ->getById(1);
 
 // it is also possible to get nested includes
