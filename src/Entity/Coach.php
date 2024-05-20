@@ -36,7 +36,7 @@ class Coach
 
     private ?int $weight;
 
-    private ?\DateTimeImmutable $dateOfBirth;
+    private ?\DateTimeImmutable $birthdate;
 
     private ?string $gender;
 
@@ -78,7 +78,7 @@ class Coach
         $this->imagePath = $data['image_path'] ?? null;
         $this->height = $data['height'] ?? null;
         $this->weight = $data['weight'] ?? null;
-        $this->dateOfBirth = isset($data['date_of_birth']) ? new \DateTimeImmutable($data['date_of_birth']) : null;
+        $this->birthdate = isset($data['date_of_birth']) ? new \DateTimeImmutable($data['date_of_birth']) : null;
         $this->gender = $data['gender'] ?? null;
 
         // include
@@ -162,9 +162,9 @@ class Coach
         return $this->weight;
     }
 
-    public function getDateOfBirth(): ?\DateTimeImmutable
+    public function getBirthdate(): ?\DateTimeImmutable
     {
-        return $this->dateOfBirth;
+        return $this->birthdate;
     }
 
     public function getGender(): ?string

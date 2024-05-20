@@ -28,6 +28,7 @@ use ProgrammatorDev\SportMonksFootball\Exception\UnexpectedErrorException;
 use ProgrammatorDev\SportMonksFootball\Language\Language;
 use ProgrammatorDev\SportMonksFootball\Resource\BookmakerResource;
 use ProgrammatorDev\SportMonksFootball\Resource\CityResource;
+use ProgrammatorDev\SportMonksFootball\Resource\CoachResource;
 
 class SportMonksFootball extends Api
 {
@@ -53,12 +54,12 @@ class SportMonksFootball extends Api
     {
         return new CityResource($this);
     }
-//
-//    public function coaches(): CoachEndpoint
-//    {
-//        return new CoachEndpoint($this);
-//    }
-//
+
+    public function coaches(): CoachResource
+    {
+        return new CoachResource($this);
+    }
+
 //    public function commentaries(): CommentaryEndpoint
 //    {
 //        return new CommentaryEndpoint($this);
