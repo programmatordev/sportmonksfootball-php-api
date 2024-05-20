@@ -9,6 +9,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\CommentaryResource;
 use ProgrammatorDev\SportMonksFootball\Resource\ContinentResource;
 use ProgrammatorDev\SportMonksFootball\Resource\CountryResource;
 use ProgrammatorDev\SportMonksFootball\Resource\FilterResource;
+use ProgrammatorDev\SportMonksFootball\Resource\FixtureResource;
 use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 
 class SportMonksFootballTest extends AbstractTest
@@ -22,5 +23,6 @@ class SportMonksFootballTest extends AbstractTest
         $this->assertInstanceOf(ContinentResource::class, $this->api->continents());
         $this->assertInstanceOf(CountryResource::class, $this->api->countries());
         $this->assertInstanceOf(FilterResource::class, $this->api->filters());
+        $this->assertInstanceOf(FixtureResource::class, $this->api->fixtures());
     }
 }

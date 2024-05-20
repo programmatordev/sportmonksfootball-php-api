@@ -241,6 +241,7 @@
 - `getLength()`: `?int`
 - `isPlaceholder()`: `?bool`
 - `hasOdds()`: `?bool`
+- `hasPremiumOdds()`: `?bool`
 - `getSport()`: [`?Sport`](#sport) (`sport` include is required)
 - `getStage()`: [`?Stage`](#stage) (`stage` include is required)
 - `getLeague()`: [`?League`](#league) (`league` include is required)

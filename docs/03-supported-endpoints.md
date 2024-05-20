@@ -217,23 +217,17 @@ $response = $api->commentaries()->getAllByFixtureId(1);
 ### Fixtures
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/fixtures)
-- Cache default max age: `1 hour`
-  - `getAllLastUpdated` cache max age: `10 seconds`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+getAll(): FixtureCollection
 ```
 
 Get all fixtures:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAll();
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAll();
 ```
 
 #### `getById`
@@ -245,8 +239,7 @@ getById(int $id): FixtureItem
 Get fixture by id:
 
 ```php
-$fixture = $sportMonksFootball->fixtures()->getById(1);
-echo $fixture->getData()->getName();
+$response = $api->fixtures()->getById(1);
 ```
 
 #### `getAllByMultipleIds`
@@ -258,139 +251,103 @@ getAllByMultipleIds(array $ids): FixtureCollection
 Get all fixtures by multiple ids:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAllByMultipleIds([1, 2, 3]);
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAllByMultipleIds([1, 2, 3]);
 ```
 
 #### `getAllByDate`
 
 ```php
-getAllByDate(\DateTimeInterface $date, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+getAllByDate(\DateTimeInterface $date): FixtureCollection
 ```
 
 Get all fixtures by date:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAllByDate(new DateTime('today'));
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAllByDate(new DateTime('today'));
 ```
 
 #### `getAllByDateRange`
 
 ```php
-getAllByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+getAllByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate): FixtureCollection
 ```
 
 Get all fixtures by date range:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAllByDateRange(new DateTime('today'), new DateTime('+7 days'));
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAllByDateRange(new DateTime('today'), new DateTime('+7 days'));
 ```
 
 #### `getAllByTeamIdAndDateRange`
 
 ```php
-getAllByTeamIdAndDateRange(int $teamId, \DateTimeInterface $startDate, \DateTimeInterface $endDate, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+getAllByTeamIdAndDateRange(int $teamId, \DateTimeInterface $startDate, \DateTimeInterface $endDate): FixtureCollection
 ```
 
 Get all fixtures by team id and date range:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAllByTeamIdAndDateRange(1, new DateTime('today'), new DateTime('+7 days'));
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAllByTeamIdAndDateRange(1, new DateTime('today'), new DateTime('+7 days'));
 ```
 
 #### `getAllByHeadToHead`
 
 ```php
-getAllByHeadToHead(int $teamIdOne, int $teamIdTwo): FixtureCollection
+getAllByHeadToHead(int $teamId1, int $teamId2): FixtureCollection
 ```
 
 Get all fixtures between two teams:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAllByHeadToHead(1, 2);
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAllByHeadToHead(1, 2);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+getAllBySearchQuery(string $query): FixtureCollection
 ```
 
 Get all fixtures by search query:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAllBySearchQuery('sporting');
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAllBySearchQuery('team');
 ```
 
 #### `getAllUpcomingByMarketId`
 
 ```php
-getAllUpcomingByMarketId(int $marketId, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+getAllUpcomingByMarketId(int $marketId): FixtureCollection
 ```
 
 Get all upcoming fixtures by market id:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAllUpcomingByMarketId(1);
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAllUpcomingByMarketId(1);
 ```
 
 #### `getAllUpcomingByTvStationId`
 
 ```php
-getAllUpcomingByTvStationId(int $tvStationId, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+getAllUpcomingByTvStationId(int $tvStationId): FixtureCollection
 ```
 
 Get all upcoming fixtures by tv station id:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAllUpcomingByTvStationId(1);
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAllUpcomingByTvStationId(1);
 ```
 
 #### `getAllPastByTvStationId`
 
 ```php
-getAllPastByTvStationId(int $tvStationId, int $page = 1, int $perPage = 25, string $order = 'asc'): FixtureCollection
+getAllPastByTvStationId(int $tvStationId): FixtureCollection
 ```
 
 Get all past fixtures by tv station id:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAllPastByTvStationId(1);
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAllPastByTvStationId(1);
 ```
 
 #### `getAllLastUpdated`
@@ -402,15 +359,8 @@ getAllLastUpdated(): FixtureCollection
 Get all last updated fixtures:
 
 ```php
-$fixtures = $sportMonksFootball->fixtures()->getAllLastUpdated();
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->fixtures()->getAllLastUpdated();
 ```
-
-> **Note**
-> Cache max age is forced to `10 seconds` on this endpoint.
 
 ### Leagues
 

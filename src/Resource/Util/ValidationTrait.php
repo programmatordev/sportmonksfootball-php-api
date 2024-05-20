@@ -22,4 +22,25 @@ trait ValidationTrait
     {
         Validator::timezone()->assert($timezone, 'timezone');
     }
+
+    /**
+     * @throws ValidationException
+     */
+    protected function validateDateOrder(\DateTimeInterface $startDate, \DateTimeInterface $endDate): void
+    {
+        Validator::greaterThan(
+            constraint: $startDate,
+            message: 'The endDate must be after the startDate.'
+        )->assert($endDate);
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    protected function validateMultipleIntegers(array $data, string $name): void
+    {
+        Validator::eachValue(
+            Validator::type('int')
+        )->assert($data, $name);
+    }
 }

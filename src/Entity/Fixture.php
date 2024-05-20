@@ -44,6 +44,8 @@ class Fixture
 
     private ?bool $hasOdds;
 
+    private ?bool $hasPremiumOdds;
+
     private ?Sport $sport;
 
     private ?Stage $stage;
@@ -128,6 +130,7 @@ class Fixture
         $this->length = $data['length'] ?? null;
         $this->isPlaceholder = $data['placeholder'] ?? null;
         $this->hasOdds = $data['has_odds'] ?? null;
+        $this->hasPremiumOdds = $data['has_premium_odds'] ?? null;
 
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
@@ -246,6 +249,11 @@ class Fixture
     public function hasOdds(): ?bool
     {
         return $this->hasOdds;
+    }
+
+    public function hasPremiumOdds(): ?bool
+    {
+        return $this->hasPremiumOdds;
     }
 
     public function getSport(): ?Sport
