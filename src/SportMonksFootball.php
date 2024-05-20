@@ -32,6 +32,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\CityResource;
 use ProgrammatorDev\SportMonksFootball\Resource\CoachResource;
 use ProgrammatorDev\SportMonksFootball\Resource\CommentaryResource;
 use ProgrammatorDev\SportMonksFootball\Resource\ContinentResource;
+use ProgrammatorDev\SportMonksFootball\Resource\CountryResource;
 
 class SportMonksFootball extends Api
 {
@@ -73,11 +74,11 @@ class SportMonksFootball extends Api
         return new ContinentResource($this);
     }
 
-//    public function countries(): CountryEndpoint
-//    {
-//        return new CountryEndpoint($this);
-//    }
-//
+    public function countries(): CountryResource
+    {
+        return new CountryResource($this);
+    }
+
 //    public function filters(): FilterEndpoint
 //    {
 //        return new FilterEndpoint($this);

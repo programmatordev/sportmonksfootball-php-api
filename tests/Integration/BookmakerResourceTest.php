@@ -53,6 +53,10 @@ class BookmakerResourceTest extends AbstractTest
 
     public static function provideValidationExceptionData(): \Generator
     {
-        yield 'get all by search query, blank query' => ['bookmakers', 'getAllBySearchQuery', ['']];
+        yield 'get all by search query, blank query' => [
+            'bookmakers',
+            'getAllBySearchQuery',
+            ['']
+        ];
     }
 }

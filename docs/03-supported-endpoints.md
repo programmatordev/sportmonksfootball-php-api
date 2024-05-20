@@ -1971,22 +1971,17 @@ $response = $api->continents()->getById(1);
 ### Countries
 
 - [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/countries)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): CountryCollection
+getAll(): CountryCollection
 ```
 
 Get all countries:
 
 ```php
-$countries = $sportMonksFootball->countries()->getAll();
-
-foreach ($countries->getData() as $country) {
-    echo $country->getName();
-}
+$response = $api->countries()->getAll();
 ```
 
 #### `getById`
@@ -1998,24 +1993,19 @@ getById(int $id): CountryItem
 Get country by id:
 
 ```php
-$country = $sportMonksFootball->countries()->getById(1);
-echo $country->getData()->getName();
+$response = $api->countries()->getById(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): CountryCollection
+getAllBySearchQuery(string $query): CountryCollection
 ```
 
 Get all countries by search query:
 
 ```php
-$countries = $sportMonksFootball->countries()->getAllBySearchQuery('portugal');
-
-foreach ($countries->getData() as $country) {
-    echo $country->getName();
-}
+$response = $api->countries()->getAllBySearchQuery('country');
 ```
 
 ### Filters

@@ -59,6 +59,10 @@ class CoachResourceTest extends AbstractTest
 
     public static function provideValidationExceptionData(): \Generator
     {
-        yield 'get all by search query, blank query' => ['coaches', 'getAllBySearchQuery', ['']];
+        yield 'get all by search query, blank query' => [
+            'coaches',
+            'getAllBySearchQuery',
+            ['']
+        ];
     }
 }
