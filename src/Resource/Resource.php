@@ -16,8 +16,8 @@ class Resource
     use SelectTrait;
     use IncludeTrait;
     use FilterTrait;
-    use LanguageTrait;
     use TimezoneTrait;
+    use LanguageTrait;
     use CacheTrait;
     use ValidationTrait;
 

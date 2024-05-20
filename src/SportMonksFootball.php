@@ -7,6 +7,7 @@ use ProgrammatorDev\Api\Api;
 use ProgrammatorDev\Api\Event\PostRequestEvent;
 use ProgrammatorDev\Api\Event\ResponseContentsEvent;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\Error;
+use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 use ProgrammatorDev\SportMonksFootball\Exception\BadRequestException;
 use ProgrammatorDev\SportMonksFootball\Exception\FilterNotApplicableException;
 use ProgrammatorDev\SportMonksFootball\Exception\ForbiddenException;
@@ -29,6 +30,7 @@ use ProgrammatorDev\SportMonksFootball\Language\Language;
 use ProgrammatorDev\SportMonksFootball\Resource\BookmakerResource;
 use ProgrammatorDev\SportMonksFootball\Resource\CityResource;
 use ProgrammatorDev\SportMonksFootball\Resource\CoachResource;
+use ProgrammatorDev\SportMonksFootball\Resource\CommentaryResource;
 
 class SportMonksFootball extends Api
 {
@@ -60,11 +62,11 @@ class SportMonksFootball extends Api
         return new CoachResource($this);
     }
 
-//    public function commentaries(): CommentaryEndpoint
-//    {
-//        return new CommentaryEndpoint($this);
-//    }
-//
+    public function commentaries(): CommentaryResource
+    {
+        return new CommentaryResource($this);
+    }
+
 //    public function continents(): ContinentEndpoint
 //    {
 //        return new ContinentEndpoint($this);
