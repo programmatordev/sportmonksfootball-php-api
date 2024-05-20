@@ -2011,7 +2011,6 @@ $response = $api->countries()->getAllBySearchQuery('country');
 ### Filters
 
 - [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/filters)
-- Cache default max age: `1 day`
 
 #### `getAllByEntity`
 
@@ -2022,15 +2021,7 @@ getAllByEntity(): FilterEntityCollection
 Get all filters grouped by entity:
 
 ```php
-$entities = $sportMonksFootball->filters()->getAllByEntity();
-
-foreach ($entities->getData() as $entity) {
-    echo $entity->getName();
-    
-    foreach ($entity->getFilters() as $filter) {
-        echo $filter
-    }
-}
+$response = $api->filters()->getAllByEntity();
 ```
 
 ### Regions
