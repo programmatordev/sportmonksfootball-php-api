@@ -125,23 +125,17 @@ echo $response->getTimezone(); // UTC
 ### Coaches
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/coaches)
-- Cache default max age: `1 day`
-  - `getAllLastUpdated` cache max age: `1 hour`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): CoachCollection
+getAll(): CoachCollection
 ```
 
 Get all coaches:
 
 ```php
-$coaches = $sportMonksFootball->coaches()->getAll();
-
-foreach ($coaches->getData() as $coach) {
-    echo $coach->getDisplayName();
-}
+$response = $api->coaches()->getAll();
 ```
 
 #### `getById`
@@ -153,40 +147,31 @@ getById(int $id): CoachItem
 Get coach by id:
 
 ```php
-$coach = $sportMonksFootball->coaches()->getById(1);
-echo $coach->getData()->getDisplayName();
+$response = $api->coaches()->getById(1);
 ```
 
 #### `getAllByCountryId`
 
 ```php
-getAllByCountryId(int $countryId, int $page = 1, int $perPage = 25, string $order = 'asc'): CoachCollection
+getAllByCountryId(int $countryId): CoachCollection
 ```
 
 Get all coaches by country id:
 
 ```php
-$coaches = $sportMonksFootball->coaches()->getAllByCountryId(1);
-
-foreach ($coaches->getData() as $coach) {
-    echo $coach->getDisplayName();
-}
+$response = $api->coaches()->getAllByCountryId(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): CoachCollection
+getAllBySearchQuery(string $query): CoachCollection
 ```
 
 Get all coaches by search query:
 
 ```php
-$coaches = $sportMonksFootball->coaches()->getAllBySearchQuery('amorim');
-
-foreach ($coaches->getData() as $coach) {
-    echo $coach->getDisplayName();
-}
+$response = $api->coaches()->getAllBySearchQuery('coach');
 ```
 
 #### `getAllLastUpdated`
@@ -198,15 +183,8 @@ getAllLastUpdated(): CoachCollection
 Get all coaches that received updates in the last couple of hours:
 
 ```php
-$coaches = $sportMonksFootball->coaches()->getAllLastUpdated();
-
-foreach ($coaches->getData() as $coach) {
-    echo $coach->getDisplayName();
-}
+$response = $api->coaches()->getAllLastUpdated();
 ```
-
-> **Note**
-> Cache max age is forced to `1 hour` on this endpoint.
 
 ### Commentaries
 
