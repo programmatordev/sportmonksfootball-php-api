@@ -31,6 +31,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\BookmakerResource;
 use ProgrammatorDev\SportMonksFootball\Resource\CityResource;
 use ProgrammatorDev\SportMonksFootball\Resource\CoachResource;
 use ProgrammatorDev\SportMonksFootball\Resource\CommentaryResource;
+use ProgrammatorDev\SportMonksFootball\Resource\ContinentResource;
 
 class SportMonksFootball extends Api
 {
@@ -67,11 +68,11 @@ class SportMonksFootball extends Api
         return new CommentaryResource($this);
     }
 
-//    public function continents(): ContinentEndpoint
-//    {
-//        return new ContinentEndpoint($this);
-//    }
-//
+    public function continents(): ContinentResource
+    {
+        return new ContinentResource($this);
+    }
+
 //    public function countries(): CountryEndpoint
 //    {
 //        return new CountryEndpoint($this);

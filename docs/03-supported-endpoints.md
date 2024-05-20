@@ -1943,22 +1943,17 @@ $response = $api->cities()->getAllBySearchQuery('lisbon');
 ### Continents
 
 - [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/continents)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): ContinentCollection
+getAll(): ContinentCollection
 ```
 
 Get all continents:
 
 ```php
-$continents = $sportMonksFootball->continents()->getAll();
-
-foreach ($continents->getData() as $continent) {
-    echo $continent->getName();
-}
+$response = $api->continents()->getAll();
 ```
 
 #### `getById`
@@ -1970,8 +1965,7 @@ getById(int $id): ContinentItem
 Get continent by id:
 
 ```php
-$continent = $sportMonksFootball->continents()->getById(1);
-echo $continent->getData()->getName();
+$response = $api->continents()->getById(1);
 ```
 
 ### Countries
