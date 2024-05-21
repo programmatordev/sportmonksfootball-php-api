@@ -14,6 +14,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\LeagueResource;
 use ProgrammatorDev\SportMonksFootball\Resource\LivescoreResource;
 use ProgrammatorDev\SportMonksFootball\Resource\MarketResource;
 use ProgrammatorDev\SportMonksFootball\Resource\PlayerResource;
+use ProgrammatorDev\SportMonksFootball\Resource\PreMatchOddResource;
 use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 
 class SportMonksFootballTest extends AbstractTest
@@ -32,5 +33,6 @@ class SportMonksFootballTest extends AbstractTest
         $this->assertInstanceOf(LivescoreResource::class, $this->api->livescores());
         $this->assertInstanceOf(MarketResource::class, $this->api->markets());
         $this->assertInstanceOf(PlayerResource::class, $this->api->players());
+        $this->assertInstanceOf(PreMatchOddResource::class, $this->api->preMatchOdds());
     }
 }

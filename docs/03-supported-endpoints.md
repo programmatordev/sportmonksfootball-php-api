@@ -1679,23 +1679,17 @@ $response = $api->markets()->getAllBySearchQuery('goal');
 ### Pre-match Odds
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/pre-match-odds)
-- Cache default max age: `1 hour`
-  - `getAllLastUpdated` cache max age: `10 seconds`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): OddCollection
+getAll(): OddCollection
 ```
 
 Get all pre-match odds:
 
 ```php
-$odds = $sportMonksFootball->preMatchOdds()->getAll();
-
-foreach ($odds->getData() as $odd) {
-    echo $odd->getMarketDescription();
-}
+$response = $api->preMatchOdds()->getAll();
 ```
 
 #### `getAllByFixtureId`
@@ -1707,11 +1701,7 @@ getAllByFixtureId(int $fixtureId): OddCollection
 Get all pre-match odds by fixture id:
 
 ```php
-$odds = $sportMonksFootball->preMatchOdds()->getAllByFixtureId(1);
-
-foreach ($odds->getData() as $odd) {
-    echo $odd->getMarketDescription();
-}
+$response = $api->preMatchOdds()->getAllByFixtureId(1);
 ```
 
 #### `getAllByFixtureIdAndBookmakerId`
@@ -1723,11 +1713,7 @@ getAllByFixtureIdAndBookmakerId(int $fixtureId, int bookmakerId): OddCollection
 Get all pre-match odds by fixture id and bookmaker id:
 
 ```php
-$odds = $sportMonksFootball->preMatchOdds()->getAllByFixtureIdAndBookmakerId(1, 1);
-
-foreach ($odds->getData() as $odd) {
-    echo $odd->getMarketDescription();
-}
+$response = $api->preMatchOdds()->getAllByFixtureIdAndBookmakerId(1, 1);
 ```
 
 #### `getAllByFixtureIdAndMarketId`
@@ -1739,11 +1725,7 @@ getAllByFixtureIdAndMarketId(int $fixtureId, int marketId): OddCollection
 Get all pre-match odds by fixture id and market id:
 
 ```php
-$odds = $sportMonksFootball->preMatchOdds()->getAllByFixtureIdAndMarketId(1, 1);
-
-foreach ($odds->getData() as $odd) {
-    echo $odd->getMarketDescription();
-}
+$response = $api->preMatchOdds()->getAllByFixtureIdAndMarketId(1, 1);
 ```
 
 #### `getAllLastUpdated`
@@ -1755,15 +1737,8 @@ getAllLastUpdated(): OddCollection
 Get all last updated pre-match odds:
 
 ```php
-$odds = $sportMonksFootball->preMatchOdds()->getAllLastUpdated();
-
-foreach ($odds->getData() as $odd) {
-    echo $odd->getMarketDescription();
-}
+$response = $api->preMatchOdds()->getAllLastUpdated();
 ```
-
-> **Note**
-> Cache max age is forced to `10 seconds` on this endpoint.
 
 ## Core Endpoints
 
