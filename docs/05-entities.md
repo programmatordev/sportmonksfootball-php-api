@@ -1,13 +1,13 @@
-# Objects
+# Entities
 
-- [Response Objects](#response-objects)
+- [Response Entities](#response-entities)
   - [&lt;Entity&gt;Item](#entityitem)
   - [&lt;Entity&gt;Collection](#entitycollection)
   - [Pagination](#pagination)
   - [Plan](#plan)
   - [RateLimit](#ratelimit)
   - [Subscription](#subscription)
-- [Football Objects](#football-objects)
+- [Football Entities](#football-entities)
   - [Aggregate](#aggregate)
   - [Commentary](#commentary)
   - [Coach](#coach)
@@ -58,11 +58,11 @@
   - [Venue](#venue)
   - [WeatherReport](#weatherreport)
   - [Wind](#wind)
-- [Odds Objects](#odds-objects)
+- [Odds Entities](#odds-entities)
   - [Bookmaker](#bookmaker)
   - [Market](#market)
   - [Odd](#odd)
-- [Core Objects](#core-objects)
+- [Core Entities](#core-entities)
   - [City](#city)
   - [Continent](#continent)
   - [Country](#country)
@@ -72,7 +72,7 @@
   - [Type](#type)
   - [TypeEntity](#typeentity)
 
-## Response Objects
+## Response Entities
 
 ### &lt;Entity&gt;Item
 
@@ -116,7 +116,7 @@
 - `getAddOns()`: `array`
 - `getWidgets()`: `array`
 
-## Football Objects
+## Football Entities
 
 ### Aggregate
 
@@ -940,7 +940,7 @@
 - `getSpeed()`: `float`
 - `getDirection()`: `int`
 
-## Odds Objects
+## Odds Entities
 
 ### Bookmaker
 
@@ -984,7 +984,7 @@
 - `getMarket()`: [`?Market`](#market) (`market` include is required)
 - `getBookmaker()`: [`?Bookmaker`](#bookmaker) (`bookmaker` include is required)
 
-## Core Objects
+## Core Entities
 
 ### City
 

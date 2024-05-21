@@ -36,6 +36,7 @@ class Aggregate
         $this->seasonId = $data['season_id'];
         $this->stageId = $data['stage_id'];
 
+        // select
         $this->name = $data['name'] ?? null;
         $this->fixtureIds = $data['fixture_ids'] ?? null;
         $this->result = $data['result'] ?? null;
