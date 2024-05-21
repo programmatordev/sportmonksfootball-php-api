@@ -505,23 +505,17 @@ $response = $api->livescores()->getAllLastUpdated();
 ### Players
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/players)
-- Cache default max age: `1 day`
-  - `getAllLastUpdated` cache max age: `1 hour`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): PlayerCollection
+getAll(): PlayerCollection
 ```
 
 Get all players:
 
 ```php
-$players = $sportMonksFootball->players()->getAll();
-
-foreach ($players->getData() as $player) {
-    echo $player->getDisplayName();
-}
+$response = $api->players()->getAll();
 ```
 
 #### `getById`
@@ -533,40 +527,31 @@ getById(int $id): PlayerItem
 Get player by id:
 
 ```php
-$player = $sportMonksFootball->players()->getById(1);
-echo $player->getData()->getDisplayName();
+$response = $api->players()->getById(1);
 ```
 
 #### `getAllByCountryId`
 
 ```php
-getAllByCountryId(int $countryId, int $page = 1, int $perPage = 25, string $order = 'asc'): PlayerCollection
+getAllByCountryId(int $countryId): PlayerCollection
 ```
 
 Get all players by country id:
 
 ```php
-$players = $sportMonksFootball->players()->getAllByCountryId(1);
-
-foreach ($players->getData() as $player) {
-    echo $player->getDisplayName();
-}
+$response = $api->players()->getAllByCountryId(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): PlayerCollection
+getAllBySearchQuery(string $query): PlayerCollection
 ```
 
 Get all players by search query:
 
 ```php
-$players = $sportMonksFootball->players()->getAllBySearchQuery('esgaio');
-
-foreach ($players->getData() as $player) {
-    echo $player->getDisplayName();
-}
+$response = $api->players()->getAllBySearchQuery('esgaio');
 ```
 
 #### `getAllLastUpdated`
@@ -578,15 +563,8 @@ getAllLastUpdated(): PlayerCollection
 Get all players that received updates in the last couple of hours:
 
 ```php
-$players = $sportMonksFootball->players()->getAllLastUpdated();
-
-foreach ($players->getData() as $player) {
-    echo $player->getDisplayName();
-}
+$response = $api->players()->getAllLastUpdated();
 ```
-
-> **Note**
-> Cache max age is forced to `1 hour` on this endpoint.
 
 ### Referees
 

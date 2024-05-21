@@ -38,6 +38,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\FixtureResource;
 use ProgrammatorDev\SportMonksFootball\Resource\LeagueResource;
 use ProgrammatorDev\SportMonksFootball\Resource\LivescoreResource;
 use ProgrammatorDev\SportMonksFootball\Resource\MarketResource;
+use ProgrammatorDev\SportMonksFootball\Resource\PlayerResource;
 
 class SportMonksFootball extends Api
 {
@@ -109,11 +110,11 @@ class SportMonksFootball extends Api
         return new MarketResource($this);
     }
 
-//    public function players(): PlayerEndpoint
-//    {
-//        return new PlayerEndpoint($this);
-//    }
-//
+    public function players(): PlayerResource
+    {
+        return new PlayerResource($this);
+    }
+
 //    public function preMatchOdds(): PreMatchOddEndpoint
 //    {
 //        return new PreMatchOddEndpoint($this);

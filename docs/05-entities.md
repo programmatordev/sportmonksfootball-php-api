@@ -454,7 +454,7 @@
 - `getImagePath()`: `?string`
 - `getHeight()`: `?int`
 - `getWeight()`: `?int`
-- `getDateOfBirth()`: `?\DateTimeImmutable`
+- `getBirthdate()`: `?\DateTimeImmutable`
 - `getGender()`: `?string`
 - `inSquad()`: `?bool`
 - `getSport()`: [`?Sport`](#sport) (`sport` include is required)
