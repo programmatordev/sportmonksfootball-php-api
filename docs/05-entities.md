@@ -509,7 +509,7 @@
 - `getImagePath()`: `?string`
 - `getHeight()`: `?int`
 - `getWeight()`: `?int`
-- `getDateOfBirth()`: `?\DateTimeImmutable`
+- `getBirthdate()`: `?\DateTimeImmutable`
 - `getGender()`: `?string`
 - `getSport()`: [`?Sport`](#sport) (`sport` include is required)
 - `getCountry()`: [`?Country`](#country) (`country` include is required)

@@ -569,22 +569,17 @@ $response = $api->players()->getAllLastUpdated();
 ### Referees
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/referees)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeCollection
+getAll(): RefereeCollection
 ```
 
 Get all referees:
 
 ```php
-$referees = $sportMonksFootball->referees()->getAll();
-
-foreach ($referees->getData() as $referee) {
-    echo $referee->getDisplayName();
-}
+$response = $api->referees()->getAll();
 ```
 
 #### `getById`
@@ -596,56 +591,43 @@ getById(int $id): RefereeItem
 Get referee by id:
 
 ```php
-$referee = $sportMonksFootball->referees()->getById(1);
-echo $referee->getData()->getDisplayName();
+$response = $api->referees()->getById(1);
 ```
 
 #### `getAllByCountryId`
 
 ```php
-getAllByCountryId(int $countryId, int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeCollection
+getAllByCountryId(int $countryId): RefereeCollection
 ```
 
 Get all referees by country id:
 
 ```php
-$referees = $sportMonksFootball->referees()->getAllByCountryId(1);
-
-foreach ($referees->getData() as $referee) {
-    echo $referee->getDisplayName();
-}
+$response = $api->referees()->getAllByCountryId(1);
 ```
 
 #### `getAllBySeasonId`
 
 ```php
-getAllBySeasonId(int $seasonId, int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeCollection
+getAllBySeasonId(int $seasonId): RefereeCollection
 ```
 
 Get all referees by season id:
 
 ```php
-$referees = $sportMonksFootball->referees()->getAllBySeasonId(1);
-
-foreach ($referees->getData() as $referee) {
-    echo $referee->getDisplayName();
-}
+$response = $api->referees()->getAllBySeasonId(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeCollection
+getAllBySearchQuery(string $query): RefereeCollection
 ```
 
 Get all referees by search query:
 
 ```php
-$referees = $sportMonksFootball->referees()->getAllBySearchQuery('name');
-
-foreach ($referees->getData() as $referee) {
-    echo $referee->getDisplayName();
-}
+$response = $api->referees()->getAllBySearchQuery('name');
 ```
 
 ### Rivals
