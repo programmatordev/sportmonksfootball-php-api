@@ -1661,22 +1661,17 @@ $response = $api->bookmakers()->getAllBySearchQuery('bet');
 ### Markets
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/markets)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): MarketCollection
+getAll(): MarketCollection
 ```
 
 Get all markets:
 
 ```php
-$markets = $sportMonksFootball->markets()->getAll();
-
-foreach ($markets->getData() as $market) {
-    echo $market->getName();
-}
+$response = $api->markets()->getAll();
 ```
 
 #### `getById`
@@ -1688,24 +1683,19 @@ getById(int $id): MarketItem
 Get market by id:
 
 ```php
-$market = $sportMonksFootball->markets()->getById(1);
-echo $market->getData()->getName();
+$response = $api->markets()->getById(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): MarketCollection
+getAllBySearchQuery(string $query): MarketCollection
 ```
 
 Get all markets by search query:
 
 ```php
-$markets = $sportMonksFootball->markets()->getAllBySearchQuery('goal');
-
-foreach ($markets->getData() as $market) {
-    echo $market->getName();
-}
+$response = $api->markets()->getAllBySearchQuery('goal');
 ```
 
 ### Pre-match Odds
