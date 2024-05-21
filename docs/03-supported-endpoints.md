@@ -465,8 +465,6 @@ $response = $api->leagues()->getAllCurrentByTeamId(1);
 ### Livescores
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/livescores)
-- Cache default max age: `1 minute`
-  - `getAllLastUpdated` cache max age: `10 seconds`
 
 #### `getAll`
 
@@ -477,11 +475,7 @@ getAll(): FixtureCollection
 Get all fixtures of the current day:
 
 ```php
-$fixtures = $sportMonksFootball->livescores()->getAll();
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->livescores()->getAll();
 ```
 
 #### `getAllInplay`
@@ -493,11 +487,7 @@ getAllInplay(): FixtureCollection
 Get all fixtures that are already live, that will start within 15 minutes or that have finished in the past 15 minutes:
 
 ```php
-$fixtures = $sportMonksFootball->livescores()->getAllInplay();
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->livescores()->getAllInplay();
 ```
 
 #### `getAllLastUpdated`
@@ -509,15 +499,8 @@ getAllLastUpdated(): FixtureCollection
 Get all fixtures that received updates in the last 10 seconds:
 
 ```php
-$fixtures = $sportMonksFootball->livescores()->getAllLastUpdated();
-
-foreach ($fixtures->getData() as $fixture) {
-    echo $fixture->getName();
-}
+$response = $api->livescores()->getAllLastUpdated();
 ```
-
-> **Note**
-> Cache max age is forced to `10 seconds` on this endpoint.
 
 ### Players
 
