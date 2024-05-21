@@ -35,6 +35,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\ContinentResource;
 use ProgrammatorDev\SportMonksFootball\Resource\CountryResource;
 use ProgrammatorDev\SportMonksFootball\Resource\FilterResource;
 use ProgrammatorDev\SportMonksFootball\Resource\FixtureResource;
+use ProgrammatorDev\SportMonksFootball\Resource\LeagueResource;
 
 class SportMonksFootball extends Api
 {
@@ -91,11 +92,11 @@ class SportMonksFootball extends Api
         return new FixtureResource($this);
     }
 
-//    public function leagues(): LeagueEndpoint
-//    {
-//        return new LeagueEndpoint($this);
-//    }
-//
+    public function leagues(): LeagueResource
+    {
+        return new LeagueResource($this);
+    }
+
 //    public function livescores(): LivescoreEndpoint
 //    {
 //        return new LivescoreEndpoint($this);

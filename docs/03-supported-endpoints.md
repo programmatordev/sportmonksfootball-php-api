@@ -365,23 +365,17 @@ $response = $api->fixtures()->getAllLastUpdated();
 ### Leagues
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/leagues)
-- Cache default max age: `1 hour`
-  - `getAllLive` cache max age: `1 minute`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+getAll(): LeagueCollection
 ```
 
 Get all leagues:
 
 ```php
-$leagues = $sportMonksFootball->leagues()->getAll();
-
-foreach ($leagues->getData() as $league) {
-    echo $league->getName();
-}
+$response = $api->leagues()->getAll();
 ```
 
 #### `getById`
@@ -393,8 +387,7 @@ getById(int $id): LeagueItem
 Get league by id:
 
 ```php
-$league = $sportMonksFootball->leagues()->getById(1);
-echo $league->getData()->getName();
+$response = $api->leagues()->getById(1);
 ```
 
 #### `getAllLive`
@@ -406,94 +399,67 @@ getAllLive(): LeagueCollection
 Get all leagues currently live:
 
 ```php
-$leagues = $sportMonksFootball->leagues()->getAllLive();
-
-foreach ($leagues->getData() as $league) {
-    echo $league->getName();
-}
+$response = $api->leagues()->getAllLive();
 ```
-
-> **Note**
-> Cache max age is forced to `1 minute` on this endpoint.
 
 #### `getAllByFixtureDate`
 
 ```php
-getAllByFixtureDate(\DateTimeInterface $date, int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+getAllByFixtureDate(\DateTimeInterface $date): LeagueCollection
 ```
 
 Get all leagues with fixtures by date:
 
 ```php
-$leagues = $sportMonksFootball->leagues()->getAllByFixtureDate(new DateTime('today'));
-
-foreach ($leagues->getData() as $league) {
-    echo $league->getName();
-}
+$response = $api->leagues()->getAllByFixtureDate(new DateTime('today'));
 ```
 
 #### `getAllByCountryId`
 
 ```php
-getAllByCountryId(int $countryId, int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+getAllByCountryId(int $countryId): LeagueCollection
 ```
 
 Get all leagues by country id:
 
 ```php
-$leagues = $sportMonksFootball->leagues()->getAllByCountryId(1);
-
-foreach ($leagues->getData() as $league) {
-    echo $league->getName();
-}
+$response = $api->leagues()->getAllByCountryId(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+getAllBySearchQuery(string $query): LeagueCollection
 ```
 
 Get all leagues by search query:
 
 ```php
-$leagues = $sportMonksFootball->leagues()->getAllBySearchQuery('premiership');
-
-foreach ($leagues->getData() as $league) {
-    echo $league->getName();
-}
+$response = $api->leagues()->getAllBySearchQuery('premiership');
 ```
 
 #### `getAllByTeamId`
 
 ```php
-getAllByTeamId(int $teamId, int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+getAllByTeamId(int $teamId): LeagueCollection
 ```
 
 Get all current and historical leagues by team id:
 
 ```php
-$leagues = $sportMonksFootball->leagues()->getAllByTeamId(1);
-
-foreach ($leagues->getData() as $league) {
-    echo $league->getName();
-}
+$response = $api->leagues()->getAllByTeamId(1);
 ```
 
 #### `getAllCurrentByTeamId`
 
 ```php
-getAllCurrentByTeamId(int $teamId, int $page = 1, int $perPage = 25, string $order = 'asc'): LeagueCollection
+getAllCurrentByTeamId(int $teamId): LeagueCollection
 ```
 
 Get all current leagues by team id:
 
 ```php
-$leagues = $sportMonksFootball->leagues()->getAllCurrentByTeamId(1);
-
-foreach ($leagues->getData() as $league) {
-    echo $league->getName();
-}
+$response = $api->leagues()->getAllCurrentByTeamId(1);
 ```
 
 ### Livescores
