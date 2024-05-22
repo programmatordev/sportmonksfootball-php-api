@@ -753,22 +753,17 @@ $response = $api->schedules()->getAllBySeasonIdAndTeamId(1, 1);
 ### Seasons
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/seasons)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): SeasonCollection
+getAll(): SeasonCollection
 ```
 
 Get all seasons:
 
 ```php
-$seasons = $sportMonksFootball->seasons()->getAll();
-
-foreach ($seasons->getData() as $season) {
-    echo $season->getName();
-}
+$response = $api->seasons()->getAll();
 ```
 
 #### `getById`
@@ -780,8 +775,7 @@ getById(int $id): SeasonItem
 Get season by id:
 
 ```php
-$seasons = $sportMonksFootball->seasons()->getById(1);
-echo $season->getData()->getName();
+$response = $api->seasons()->getById(1);
 ```
 
 #### `getAllByTeamId`
@@ -793,27 +787,19 @@ getAllByTeamId(int $teamId): SeasonCollection
 Get all seasons by team id:
 
 ```php
-$seasons = $sportMonksFootball->seasons()->getAllByTeamId(1);
-
-foreach ($seasons->getData() as $season) {
-    echo $season->getName();
-}
+$response = $api->seasons()->getAllByTeamId(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): SeasonCollection
+getAllBySearchQuery(string $query): SeasonCollection
 ```
 
 Get all seasons by search query:
 
 ```php
-$seasons = $sportMonksFootball->seasons()->getAllBySearchQuery('2023/2024');
-
-foreach ($seasons->getData() as $season) {
-    echo $season->getName();
-}
+$response = $api->seasons()->getAllBySearchQuery('2024');
 ```
 
 ### Stages

@@ -44,6 +44,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\RegionResource;
 use ProgrammatorDev\SportMonksFootball\Resource\RivalResource;
 use ProgrammatorDev\SportMonksFootball\Resource\RoundResource;
 use ProgrammatorDev\SportMonksFootball\Resource\ScheduleResource;
+use ProgrammatorDev\SportMonksFootball\Resource\SeasonResource;
 
 class SportMonksFootball extends Api
 {
@@ -150,11 +151,11 @@ class SportMonksFootball extends Api
         return new ScheduleResource($this);
     }
 
-//    public function seasons(): SeasonEndpoint
-//    {
-//        return new SeasonEndpoint($this);
-//    }
-//
+    public function seasons(): SeasonResource
+    {
+        return new SeasonResource($this);
+    }
+
 //    public function stages(): StageEndpoint
 //    {
 //        return new StageEndpoint($this);

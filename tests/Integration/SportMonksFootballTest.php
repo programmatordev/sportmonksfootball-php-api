@@ -20,6 +20,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\RegionResource;
 use ProgrammatorDev\SportMonksFootball\Resource\RivalResource;
 use ProgrammatorDev\SportMonksFootball\Resource\RoundResource;
 use ProgrammatorDev\SportMonksFootball\Resource\ScheduleResource;
+use ProgrammatorDev\SportMonksFootball\Resource\SeasonResource;
 use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 
 class SportMonksFootballTest extends AbstractTest
@@ -44,5 +45,6 @@ class SportMonksFootballTest extends AbstractTest
         $this->assertInstanceOf(RivalResource::class, $this->api->rivals());
         $this->assertInstanceOf(RoundResource::class, $this->api->rounds());
         $this->assertInstanceOf(ScheduleResource::class, $this->api->schedules());
+        $this->assertInstanceOf(SeasonResource::class, $this->api->seasons());
     }
 }
