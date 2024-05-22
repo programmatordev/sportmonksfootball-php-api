@@ -1232,22 +1232,17 @@ $response = $api->transfers()->getAllByPlayerId(1);
 ### TV Stations
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/tv-stations)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): TvStationCollection
+getAll(): TvStationCollection
 ```
 
 Get all tv stations:
 
 ```php
-$tvStations = $sportMonksFootball->tvStations()->getAll();
-
-foreach ($tvStations->getData() as $tvStation) {
-    echo $tvStation->getName();
-}
+$response = $api->tvStations()->getAll();
 ```
 
 #### `getById`
@@ -1259,8 +1254,7 @@ getById(int $id): TvStationItem
 Get tv station by id:
 
 ```php
-$tvStations = $sportMonksFootball->tvStations()->getById(1);
-echo $tvStation->getData()->getName();
+$response = $api->tvStations()->getById(1);
 ```
 
 #### `getAllByFixtureId`
@@ -1272,11 +1266,7 @@ getAllByFixtureId(int $fixtureId): TvStationCollection
 Get all tv stations by fixture id:
 
 ```php
-$tvStations = $sportMonksFootball->tvStations()->getAllByFixtureId(1);
-
-foreach ($tvStations->getData() as $tvStation) {
-    echo $tvStation->getName();
-}
+$response = $api->tvStations()->getAllByFixtureId(1);
 ```
 
 ### Venues
