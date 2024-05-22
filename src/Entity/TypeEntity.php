@@ -18,7 +18,7 @@ class TypeEntity
     public function __construct(array $data)
     {
         // "_key" index is injected in data to get the key from an associative array response
-        // Check the EntityTrait
+        // check the EntityTrait
         $this->name = $data['_key'];
         $this->updatedAt = new \DateTimeImmutable($data['updated_at']);
         $this->types = $this->createEntityCollection(Type::class, $data['types']);

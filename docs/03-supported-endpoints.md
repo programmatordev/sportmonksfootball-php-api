@@ -1678,22 +1678,17 @@ $response = $api->timezones()->getAll();
 ### Types
 
 - [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/types)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): TypeCollection
+getAll(): TypeCollection
 ```
 
 Get all types:
 
 ```php
-$types = $sportMonksFootball->types()->getAll();
-
-foreach ($types->getData() as $type) {
-    echo $type->getName();
-}
+$response = $api->types()->getAll();
 ```
 
 #### `getById`
@@ -1705,9 +1700,7 @@ getById(int $id): TypeItem
 Get type by id:
 
 ```php
-$type = $sportMonksFootball->types()->getById(1);
-
-echo $type->getData()->getName();
+$response = $api->types()->getById(1);
 ```
 
 #### `getAllByEntity`
@@ -1719,15 +1712,7 @@ getAllByEntity(): TypeEntityCollection
 Get all types grouped by entity:
 
 ```php
-$entities = $sportMonksFootball->types()->getAllByEntity();
-
-foreach ($entities->getData() as $entity) {
-    echo $entity->getName();
-    
-    foreach ($entity->getTypes() as $type) {
-        echo $type->getName()
-    }
-}
+$response = $api->types()->getAllByEntity();
 ```
 
 ## Pagination
