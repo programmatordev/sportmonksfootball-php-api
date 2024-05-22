@@ -32,6 +32,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\TopscorerResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TransferResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TvStationResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TypeResource;
+use ProgrammatorDev\SportMonksFootball\Resource\VenueResource;
 use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 
 class SportMonksFootballTest extends AbstractTest
@@ -68,5 +69,6 @@ class SportMonksFootballTest extends AbstractTest
         $this->assertInstanceOf(TransferResource::class, $this->api->transfers());
         $this->assertInstanceOf(TvStationResource::class, $this->api->tvStations());
         $this->assertInstanceOf(TypeResource::class, $this->api->types());
+        $this->assertInstanceOf(VenueResource::class, $this->api->venues());
     }
 }

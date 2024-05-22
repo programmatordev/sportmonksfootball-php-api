@@ -56,6 +56,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\TopscorerResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TransferResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TvStationResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TypeResource;
+use ProgrammatorDev\SportMonksFootball\Resource\VenueResource;
 
 class SportMonksFootball extends Api
 {
@@ -222,10 +223,10 @@ class SportMonksFootball extends Api
         return new TypeResource($this);
     }
 
-//    public function venues(): VenueEndpoint
-//    {
-//        return new VenueEndpoint($this);
-//    }
+    public function venues(): VenueResource
+    {
+        return new VenueResource($this);
+    }
 
     private function configureOptions(array $options): array
     {

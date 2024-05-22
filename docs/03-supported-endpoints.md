@@ -60,7 +60,7 @@ while the [`<Entity>Collection`](05-entities.md#entitycollection) `getData()` me
 
 For example, when requesting a fixture by id, the response will be a `FixtureItem` object and the `getData()` method will return a [`Fixture`](05-entities.md#fixture) object.
 The same way that when requesting all fixtures, the response will be a `FixtureCollection` object and the `getData()` method will return an array of [`Fixture`](05-entities.md#fixture) objects.
-Check the [responses objects](05-entities.md#response-objects) for more information.
+Check the [responses entities](05-entities.md#response-entities) for more information.
 
 ```php
 // returns a FixtureItem object
@@ -1272,22 +1272,17 @@ $response = $api->tvStations()->getAllByFixtureId(1);
 ### Venues
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/venues)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): VenueCollection
+getAll(): VenueCollection
 ```
 
 Get all venues:
 
 ```php
-$venues = $sportMonksFootball->venues()->getAll();
-
-foreach ($venues->getData() as $venue) {
-    echo $venue->getName();
-}
+$response = $api->venues()->getAll();
 ```
 
 #### `getById`
@@ -1299,8 +1294,7 @@ getById(int $id): VenueItem
 Get venue by id:
 
 ```php
-$venue = $sportMonksFootball->venues()->getById(1);
-echo $venue->getData()->getName();
+$response = $api->venues()->getById(1);
 ```
 
 #### `getAllBySeasonId`
@@ -1312,27 +1306,19 @@ getAllBySeasonId(int $seasonId): VenueCollection
 Get all venues by season id:
 
 ```php
-$venues = $sportMonksFootball->venues()->getAllBySeasonId(1);
-
-foreach ($venues->getData() as $venue) {
-    echo $venue->getName();
-}
+$response = $api->venues()->getAllBySeasonId(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): VenueCollection
+getAllBySearchQuery(string $query): VenueCollection
 ```
 
 Get all venues by search query:
 
 ```php
-$venues = $sportMonksFootball->venues()->getAllBySearchQuery('alvalade');
-
-foreach ($venues->getData() as $venue) {
-    echo $venue->getName();
-}
+$response = $api->venues()->getAllBySearchQuery('alvalade');
 ```
 
 ## Odds Endpoints
