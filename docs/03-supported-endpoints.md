@@ -661,22 +661,17 @@ $response = $api->rivals()->getAllByTeamId(1);
 ### Rounds
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/rounds)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): RoundCollection
+getAll(): RoundCollection
 ```
 
 Get all rounds:
 
 ```php
-$rounds = $sportMonksFootball->rounds()->getAll();
-
-foreach ($rounds->getData() as $round) {
-    echo $round->getName();
-}
+$response = $api->rounds()->getAll();
 ```
 
 #### `getById`
@@ -688,8 +683,7 @@ getById(int $id): RoundItem
 Get round by id:
 
 ```php
-$round = $sportMonksFootball->rounds()->getById(1);
-echo $round->getData()->getName();
+$response = $api->rounds()->getById(1);
 ```
 
 #### `getAllBySeasonId`
@@ -701,27 +695,19 @@ getAllBySeasonId(int $seasonId): RoundCollection
 Get all rounds by season id:
 
 ```php
-$rounds = $sportMonksFootball->rounds()->getAllBySeasonId(1);
-
-foreach ($rounds->getData() as $round) {
-    echo $round->getName();
-}
+$response = $api->rounds()->getAllBySeasonId(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): RoundCollection
+getAllBySearchQuery(string $query): RoundCollection
 ```
 
 Get all rounds by search query:
 
 ```php
-$rounds = $sportMonksFootball->rounds()->getAllBySearchQuery('30');
-
-foreach ($rounds->getData() as $round) {
-    echo $round->getName();
-}
+$response = $api->rounds()->getAllBySearchQuery('30');
 ```
 
 ### Schedules

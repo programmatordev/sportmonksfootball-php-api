@@ -42,6 +42,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\PreMatchOddResource;
 use ProgrammatorDev\SportMonksFootball\Resource\RefereeResource;
 use ProgrammatorDev\SportMonksFootball\Resource\RegionResource;
 use ProgrammatorDev\SportMonksFootball\Resource\RivalResource;
+use ProgrammatorDev\SportMonksFootball\Resource\RoundResource;
 
 class SportMonksFootball extends Api
 {
@@ -138,11 +139,11 @@ class SportMonksFootball extends Api
         return new RivalResource($this);
     }
 
-//    public function rounds(): RoundEndpoint
-//    {
-//        return new RoundEndpoint($this);
-//    }
-//
+    public function rounds(): RoundResource
+    {
+        return new RoundResource($this);
+    }
+
 //    public function schedules(): ScheduleEndpoint
 //    {
 //        return new ScheduleEndpoint($this);
