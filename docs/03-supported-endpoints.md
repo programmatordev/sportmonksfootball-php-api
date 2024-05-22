@@ -713,7 +713,6 @@ $response = $api->rounds()->getAllBySearchQuery('30');
 ### Schedules
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/schedules)
-- Cache default max age: `1 hour`
 
 #### `getAllBySeasonId`
 
@@ -724,19 +723,7 @@ getAllBySeasonId(int $seasonId): StageCollection
 Get complete season schedule by season id:
 
 ```php
-$schedule = $sportMonksFootball->schedules()->getAllBySeasonId(1);
-
-foreach ($schedule->getData() as $stage) {
-    echo $stage->getName();
-    
-    foreach ($stage->getRounds() as $round) {
-        echo $round->getName();
-        
-        foreach ($round->getFixtures() as $fixture) {
-            echo $fixture->getName();
-        }
-    }
-}
+$response = $api->schedules()->getAllBySeasonId(1);
 ```
 
 #### `getAllByTeamId`
@@ -748,19 +735,7 @@ getAllByTeamId(int $teamId): StageCollection
 Get complete schedule for all active seasons by team id:
 
 ```php
-$schedule = $sportMonksFootball->schedules()->getAllByTeamId(1);
-
-foreach ($schedule->getData() as $stage) {
-    echo $stage->getName();
-    
-    foreach ($stage->getRounds() as $round) {
-        echo $round->getName();
-        
-        foreach ($round->getFixtures() as $fixture) {
-            echo $fixture->getName();
-        }
-    }
-}
+$response = $api->schedules()->getAllByTeamId(1);
 ```
 
 #### `getAllBySeasonIdAndTeamId`
@@ -772,19 +747,7 @@ getAllBySeasonIdAndTeamId(int $seasonId, int $teamId): StageCollection
 Get complete season schedule for one team by season id and team id:
 
 ```php
-$schedule = $sportMonksFootball->schedules()->getAllBySeasonIdAndTeamId(1, 1);
-
-foreach ($schedule->getData() as $stage) {
-    echo $stage->getName();
-    
-    foreach ($stage->getRounds() as $round) {
-        echo $round->getName();
-        
-        foreach ($round->getFixtures() as $fixture) {
-            echo $fixture->getName();
-        }
-    }
-}
+$response = $api->schedules()->getAllBySeasonIdAndTeamId(1, 1);
 ```
 
 ### Seasons
