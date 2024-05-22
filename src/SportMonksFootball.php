@@ -51,6 +51,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\StateResource;
 use ProgrammatorDev\SportMonksFootball\Resource\StatisticResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TeamResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TeamSquadResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TimezoneResource;
 
 class SportMonksFootball extends Api
 {
@@ -192,11 +193,11 @@ class SportMonksFootball extends Api
         return new TeamSquadResource($this);
     }
 
-//    public function timezones(): TimezoneEndpoint
-//    {
-//        return new TimezoneEndpoint($this);
-//    }
-//
+    public function timezones(): TimezoneResource
+    {
+        return new TimezoneResource($this);
+    }
+
 //    public function topscorers(): TopscorerEndpoint
 //    {
 //        return new TopscorerEndpoint($this);

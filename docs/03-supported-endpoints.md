@@ -1703,7 +1703,6 @@ $response = $api->regions()->getAllBySearchQuery('lisboa');
 ### Timezones
 
 - [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/timezones)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
@@ -1714,11 +1713,7 @@ getAll(): TimezoneCollection
 Get all timezones:
 
 ```php
-$timezones = $sportMonksFootball->timezones()->getAll();
-
-foreach ($timezones->getData() as $timezone) {
-    echo $timezone;
-}
+$response = $api->timezones()->getAll();
 ```
 
 ### Types

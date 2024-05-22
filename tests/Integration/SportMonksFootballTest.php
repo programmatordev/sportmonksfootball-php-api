@@ -27,6 +27,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\StateResource;
 use ProgrammatorDev\SportMonksFootball\Resource\StatisticResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TeamResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TeamSquadResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TimezoneResource;
 use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 
 class SportMonksFootballTest extends AbstractTest
@@ -58,5 +59,6 @@ class SportMonksFootballTest extends AbstractTest
         $this->assertInstanceOf(StatisticResource::class, $this->api->statistics());
         $this->assertInstanceOf(TeamResource::class, $this->api->teams());
         $this->assertInstanceOf(TeamSquadResource::class, $this->api->teamSquads());
+        $this->assertInstanceOf(TimezoneResource::class, $this->api->timezones());
     }
 }
