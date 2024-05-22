@@ -921,22 +921,17 @@ $response = $api->standings()->getAllLiveByLeagueId(1);
 ### States
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/states)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): StateCollection
+getAll(): StateCollection
 ```
 
 Get all states:
 
 ```php
-$states = $sportMonksFootball->states()->getAll();
-
-foreach ($states->getData() as $state) {
-    echo $state->getName();
-}
+$response = $api->states()->getAll();
 ```
 
 #### `getById`
@@ -948,8 +943,7 @@ getById(int $id): StateItem
 Get state by id:
 
 ```php
-$state = $sportMonksFootball->states()->getById(1);
-echo $state->getData()->getName();
+$response = $api->states()->getById(1);
 ```
 
 ### Statistics
