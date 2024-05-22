@@ -49,6 +49,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\StageResource;
 use ProgrammatorDev\SportMonksFootball\Resource\StandingResource;
 use ProgrammatorDev\SportMonksFootball\Resource\StateResource;
 use ProgrammatorDev\SportMonksFootball\Resource\StatisticResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TeamResource;
 
 class SportMonksFootball extends Api
 {
@@ -180,11 +181,11 @@ class SportMonksFootball extends Api
         return new StatisticResource($this);
     }
 
-//    public function teams(): TeamEndpoint
-//    {
-//        return new TeamEndpoint($this);
-//    }
-//
+    public function teams(): TeamResource
+    {
+        return new TeamResource($this);
+    }
+
 //    public function teamSquads(): TeamSquadEndpoint
 //    {
 //        return new TeamSquadEndpoint($this);

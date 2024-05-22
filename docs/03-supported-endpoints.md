@@ -1025,22 +1025,17 @@ $response = $api->statistics()->getAllByRoundId(1);
 ### Teams
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/teams)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): TeamCollection
+getAll(): TeamCollection
 ```
 
 Get all teams:
 
 ```php
-$teams = $sportMonksFootball->teams()->getAll();
-
-foreach ($teams->getData() as $team) {
-    echo $team->getName();
-}
+$response = $api->teams()->getAll();
 ```
 
 #### `getById`
@@ -1052,24 +1047,19 @@ getById(int $id): TeamItem
 Get team by id:
 
 ```php
-$team = $sportMonksFootball->teams()->getById(1);
-echo $team->getData()->getName();
+$response = $api->teams()->getById(1);
 ```
 
 #### `getAllByCountryId`
 
 ```php
-getAllByCountryId(int $countryId, int $page = 1, int $perPage = 25, string $order = 'asc'): TeamCollection
+getAllByCountryId(int $countryId): TeamCollection
 ```
 
 Get all teams by country id:
 
 ```php
-$teams = $sportMonksFootball->teams()->getAllByCountryId(1);
-
-foreach ($teams->getData() as $team) {
-    echo $team->getName();
-}
+$response = $api->teams()->getAllByCountryId(1);
 ```
 
 #### `getAllBySeasonId`
@@ -1081,27 +1071,19 @@ getAllBySeasonId(int $seasonId): TeamCollection
 Get all teams by season id:
 
 ```php
-$teams = $sportMonksFootball->teams()->getAllBySeasonId(1);
-
-foreach ($teams->getData() as $team) {
-    echo $team->getName();
-}
+$response = $api->teams()->getAllBySeasonId(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): TeamCollection
+getAllBySearchQuery(string $query): TeamCollection
 ```
 
 Get all teams by search query:
 
 ```php
-$teams = $sportMonksFootball->teams()->getAllBySearchQuery('sporting');
-
-foreach ($teams->getData() as $team) {
-    echo $team->getName();
-}
+$response = $api->teams()->getAllBySearchQuery('sporting');
 ```
 
 ### Team Squads

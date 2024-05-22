@@ -24,7 +24,7 @@ class Team
 
     private ?string $imagePath;
 
-    private ?int $foundedAt;
+    private ?int $foundedIn;
 
     private ?string $type;
 
@@ -68,8 +68,6 @@ class Team
     /** @var ?Social[] */
     private ?array $socials;
 
-    private ?TeamMeta $meta;
-
     /** @var ?TeamCoach[] */
     private ?array $coaches;
 
@@ -88,7 +86,7 @@ class Team
         $this->name = $data['name'] ?? null;
         $this->shortCode = $data['short_code'] ?? null;
         $this->imagePath = $data['image_path'] ?? null;
-        $this->foundedAt = $data['founded'] ?? null;
+        $this->foundedIn = $data['founded'] ?? null;
         $this->type = $data['type'] ?? null;
         $this->isPlaceholder = $data['placeholder'] ?? null;
         $this->lastPlayedAt = isset($data['last_played_at']) ? new \DateTimeImmutable($data['last_played_at']) : null;
@@ -107,7 +105,6 @@ class Team
         $this->sidelinedHistory = isset($data['sidelinedhistory']) ? $this->createEntityCollection(Sidelined::class, $data['sidelinedhistory'], $timezone) : null;
         $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies'], $timezone) : null;
         $this->socials = isset($data['socials']) ? $this->createEntityCollection(Social::class, $data['socials']) : null;
-        $this->meta = isset($data['meta']) ? new TeamMeta($data['meta']) : null;
         $this->coaches = isset($data['coaches']) ? $this->createEntityCollection(TeamCoach::class, $data['coaches'], $timezone) : null;
         $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(TeamStatistic::class, $data['statistics'], $timezone) : null;
     }
@@ -152,9 +149,9 @@ class Team
         return $this->imagePath;
     }
 
-    public function getFoundedAt(): ?int
+    public function getFoundedIn(): ?int
     {
-        return $this->foundedAt;
+        return $this->foundedIn;
     }
 
     public function getType(): ?string
@@ -235,11 +232,6 @@ class Team
     public function getSocials(): ?array
     {
         return $this->socials;
-    }
-
-    public function getMeta(): ?TeamMeta
-    {
-        return $this->meta;
     }
 
     public function getCoaches(): ?array
