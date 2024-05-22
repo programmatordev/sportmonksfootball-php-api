@@ -633,22 +633,17 @@ $response = $api->referees()->getAllBySearchQuery('name');
 ### Rivals
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/rivals)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): RivalCollection
+getAll(): RivalCollection
 ```
 
 Get all rivals:
 
 ```php
-$rivals = $sportMonksFootball->rivals()->getAll();
-
-foreach ($rivals->getData() as $rival) {
-    echo $rival->getRivalId();
-}
+$response = $api->rivals()->getAll();
 ```
 
 #### `getAllByTeamId`
@@ -660,11 +655,7 @@ getAllByTeamId(int $teamId): RivalCollection
 Get all rivals by team id:
 
 ```php
-$rivals = $sportMonksFootball->rivals()->getAllByTeamId(1);
-
-foreach ($rivals->getData() as $rival) {
-    echo $rival->getRivalId();
-}
+$response = $api->rivals()->getAllByTeamId(1);
 ```
 
 ### Rounds

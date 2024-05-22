@@ -7,7 +7,6 @@ use ProgrammatorDev\Api\Api;
 use ProgrammatorDev\Api\Event\PostRequestEvent;
 use ProgrammatorDev\Api\Event\ResponseContentsEvent;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\Error;
-use ProgrammatorDev\SportMonksFootball\Exception\ApiErrorException;
 use ProgrammatorDev\SportMonksFootball\Exception\BadRequestException;
 use ProgrammatorDev\SportMonksFootball\Exception\FilterNotApplicableException;
 use ProgrammatorDev\SportMonksFootball\Exception\ForbiddenException;
@@ -42,6 +41,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\PlayerResource;
 use ProgrammatorDev\SportMonksFootball\Resource\PreMatchOddResource;
 use ProgrammatorDev\SportMonksFootball\Resource\RefereeResource;
 use ProgrammatorDev\SportMonksFootball\Resource\RegionResource;
+use ProgrammatorDev\SportMonksFootball\Resource\RivalResource;
 
 class SportMonksFootball extends Api
 {
@@ -133,11 +133,11 @@ class SportMonksFootball extends Api
         return new RegionResource($this);
     }
 
-//    public function rivals(): RivalEndpoint
-//    {
-//        return new RivalEndpoint($this);
-//    }
-//
+    public function rivals(): RivalResource
+    {
+        return new RivalResource($this);
+    }
+
 //    public function rounds(): RoundEndpoint
 //    {
 //        return new RoundEndpoint($this);
