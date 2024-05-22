@@ -1128,38 +1128,29 @@ $response = $api->teamSquads()->getAllBySeasonIdAndTeamId(1, 1);
 ### Topscorers
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/topscorers)
-- Cache default max age: `1 day`
 
 #### `getAllBySeasonId`
 
 ```php
-getAllBySeasonId(int $seasonId, int $page = 1, int $perPage = 25, string $order = 'asc'): SeasonCollection
+getAllBySeasonId(int $seasonId): SeasonCollection
 ```
 
 Get all topscorers by season id:
 
 ```php
-$topscorers = $sportMonksFootball->topscorers()->getAllBySeasonId(1);
-
-foreach ($topscorers->getData() as $topscorer) {
-    echo $topscorer->getTotal();
-}
+$response = $api->topscorers()->getAllBySeasonId(1);
 ```
 
 #### `getAllByStageId`
 
 ```php
-getAllByStageId(int $stageId, int $page = 1, int $perPage = 25, string $order = 'asc'): SeasonCollection
+getAllByStageId(int $stageId): SeasonCollection
 ```
 
 Get all topscorers by stage id:
 
 ```php
-$topscorers = $sportMonksFootball->topscorers()->getAllByStageId(1);
-
-foreach ($topscorers->getData() as $topscorer) {
-    echo $topscorer->getTotal();
-}
+$response = $api->topscorers()->getAllByStageId(1);
 ```
 
 ### Transfers

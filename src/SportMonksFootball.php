@@ -52,6 +52,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\StatisticResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TeamResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TeamSquadResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TimezoneResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TopscorerResource;
 
 class SportMonksFootball extends Api
 {
@@ -198,11 +199,11 @@ class SportMonksFootball extends Api
         return new TimezoneResource($this);
     }
 
-//    public function topscorers(): TopscorerEndpoint
-//    {
-//        return new TopscorerEndpoint($this);
-//    }
-//
+    public function topscorers(): TopscorerResource
+    {
+        return new TopscorerResource($this);
+    }
+
 //    public function transfers(): TransferEndpoint
 //    {
 //        return new TransferEndpoint($this);
