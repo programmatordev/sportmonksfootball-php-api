@@ -29,6 +29,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\TeamResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TeamSquadResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TimezoneResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TopscorerResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TransferResource;
 use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 
 class SportMonksFootballTest extends AbstractTest
@@ -62,5 +63,6 @@ class SportMonksFootballTest extends AbstractTest
         $this->assertInstanceOf(TeamSquadResource::class, $this->api->teamSquads());
         $this->assertInstanceOf(TimezoneResource::class, $this->api->timezones());
         $this->assertInstanceOf(TopscorerResource::class, $this->api->topscorers());
+        $this->assertInstanceOf(TransferResource::class, $this->api->transfers());
     }
 }

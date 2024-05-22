@@ -1156,22 +1156,17 @@ $response = $api->topscorers()->getAllByStageId(1);
 ### Transfers
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/transfers)
-- Cache default max age: `1 hour`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
+getAll(): TransferCollection
 ```
 
 Get all transfers:
 
 ```php
-$transfers = $sportMonksFootball->transfers()->getAll();
-
-foreach ($transfers->getData() as $transfer) {
-    echo $transfer->getPlayerId();
-}
+$response = $api->transfers()->getAll();
 ```
 
 #### `getById`
@@ -1183,72 +1178,55 @@ getById(int $id): TransferItem
 Get transfer by id:
 
 ```php
-$transfer = $sportMonksFootball->transfers()->getById(1);
-echo $transfer->getData()->getPlayerId();
+$response = $api->transfers()->getById(1);
 ```
 
 #### `getAllLatest`
 
 ```php
-getAllLatest(int $page = 1, int $perPage = 25, string $order = 'desc'): TransferCollection
+getAllLatest(): TransferCollection
 ```
 
 Get the latest transfers:
 
 ```php
-$transfers = $sportMonksFootball->transfers()->getAllLatest();
-
-foreach ($transfers->getData() as $transfer) {
-    echo $transfer->getPlayerId();
-}
+$response = $api->transfers()->getAllLatest();
 ```
 
 #### `getAllByDateRange`
 
 ```php
-getAllByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate, int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
+getAllByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate): TransferCollection
 ```
 
 Get all transfers by date range:
 
 ```php
-$transfers = $sportMonksFootball->transfers()->getAllByDateRange(new DateTime('-7 days'), new DateTime('today'));
-
-foreach ($transfers->getData() as $transfer) {
-    echo $transfer->getPlayerId();
-}
+$response = $api->transfers()->getAllByDateRange(new DateTime('-7 days'), new DateTime('today'));
 ```
 
 #### `getAllByTeamId`
 
 ```php
-getAllByTeamId(int $teamId, int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
+getAllByTeamId(int $teamId): TransferCollection
 ```
 
 Get all transfers by team id:
 
 ```php
-$transfers = $sportMonksFootball->transfers()->getAllByTeamId(1);
-
-foreach ($transfers->getData() as $transfer) {
-    echo $transfer->getPlayerId();
-}
+$response = $api->transfers()->getAllByTeamId(1);
 ```
 
 #### `getAllByPlayerId`
 
 ```php
-getAllByPlayerId(int $playerId, int $page = 1, int $perPage = 25, string $order = 'asc'): TransferCollection
+getAllByPlayerId(int $playerId): TransferCollection
 ```
 
 Get all transfers by player id:
 
 ```php
-$transfers = $sportMonksFootball->transfers()->getAllByPlayerId(1);
-
-foreach ($transfers->getData() as $transfer) {
-    echo $transfer->getPlayerId();
-}
+$response = $api->transfers()->getAllByPlayerId(1);
 ```
 
 ### TV Stations
