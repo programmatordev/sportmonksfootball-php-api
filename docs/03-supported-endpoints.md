@@ -1851,22 +1851,17 @@ $response = $api->filters()->getAllByEntity();
 ### Regions
 
 - [Official documentation](https://docs.sportmonks.com/football/v/core-api/endpoints/regions)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): RegionCollection
+getAll(): RegionCollection
 ```
 
 Get all regions:
 
 ```php
-$regions = $sportMonksFootball->regions()->getAll();
-
-foreach ($regions->getData() as $region) {
-    echo $region->getName();
-}
+$response = $api->regions()->getAll();
 ```
 
 #### `getById`
@@ -1878,24 +1873,19 @@ getById(int $id): RegionItem
 Get region by id:
 
 ```php
-$region = $sportMonksFootball->regions()->getById(1);
-echo $region->getData()->getName();
+$response = $api->regions()->getById(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): RegionCollection
+getAllBySearchQuery(string $query): RegionCollection
 ```
 
 Get all regions by search query:
 
 ```php
-$regions = $sportMonksFootball->regions()->getAllBySearchQuery('lisboa');
-
-foreach ($regions->getData() as $region) {
-    echo $region->getName();
-}
+$response = $api->regions()->getAllBySearchQuery('lisboa');
 ```
 
 ### Timezones

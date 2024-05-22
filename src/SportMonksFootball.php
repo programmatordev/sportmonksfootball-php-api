@@ -41,6 +41,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\MarketResource;
 use ProgrammatorDev\SportMonksFootball\Resource\PlayerResource;
 use ProgrammatorDev\SportMonksFootball\Resource\PreMatchOddResource;
 use ProgrammatorDev\SportMonksFootball\Resource\RefereeResource;
+use ProgrammatorDev\SportMonksFootball\Resource\RegionResource;
 
 class SportMonksFootball extends Api
 {
@@ -127,11 +128,11 @@ class SportMonksFootball extends Api
         return new RefereeResource($this);
     }
 
-//    public function regions(): RegionEndpoint
-//    {
-//        return new RegionEndpoint($this);
-//    }
-//
+    public function regions(): RegionResource
+    {
+        return new RegionResource($this);
+    }
+
 //    public function rivals(): RivalEndpoint
 //    {
 //        return new RivalEndpoint($this);
