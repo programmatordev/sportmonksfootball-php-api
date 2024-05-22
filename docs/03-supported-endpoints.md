@@ -949,110 +949,77 @@ $response = $api->states()->getById(1);
 ### Statistics
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/statistics)
-- Cache default max age: `1 day`
 
 #### `getAllByPlayerId`
 
 ```php
-getAllByPlayerId(int $playerId, int $page = 1, int $perPage = 25, string $order = 'asc'): PlayerStatisticCollection
+getAllByPlayerId(int $playerId): PlayerStatisticCollection
 ```
 
 Get all statistics by player id per season:
 
 ```php
-$statistics = $sportMonksFootball->statistics()->getAllByPlayerId(1);
-
-foreach ($statistics->getData() as $statistic) {
-    foreach ($statistic->getDetails() as $detail) {
-        print_r($detail->getValue());
-    }
-}
+$response = $api->statistics()->getAllByPlayerId(1);
 ```
 
 #### `getAllByTeamId`
 
 ```php
-getAllByTeamId(int $teamId, int $page = 1, int $perPage = 25, string $order = 'asc'): TeamStatisticCollection
+getAllByTeamId(int $teamId): TeamStatisticCollection
 ```
 
 Get all statistics by team id per season:
 
 ```php
-$statistics = $sportMonksFootball->statistics()->getAllByTeamId(1);
-
-foreach ($statistics->getData() as $statistic) {
-    foreach ($statistic->getDetails() as $detail) {
-        print_r($detail->getValue());
-    }
-}
+$response = $api->statistics()->getAllByTeamId(1);
 ```
 
 #### `getAllByCoachId`
 
 ```php
-getAllByCoachId(int $coachId, int $page = 1, int $perPage = 25, string $order = 'asc'): CoachStatisticCollection
+getAllByCoachId(int $coachId): CoachStatisticCollection
 ```
 
 Get all statistics by coach id per season:
 
 ```php
-$statistics = $sportMonksFootball->statistics()->getAllByCoachId(1);
-
-foreach ($statistics->getData() as $statistic) {
-    foreach ($statistic->getDetails() as $detail) {
-        print_r($detail->getValue());
-    }
-}
+$response = $api->statistics()->getAllByCoachId(1);
 ```
 
 #### `getAllByRefereeId`
 
 ```php
-getAllByRefereeId(int $refereeId, int $page = 1, int $perPage = 25, string $order = 'asc'): RefereeStatisticCollection
+getAllByRefereeId(int $refereeId): RefereeStatisticCollection
 ```
 
 Get all statistics by referee id per season:
 
 ```php
-$statistics = $sportMonksFootball->statistics()->getAllByRefereeId(1);
-
-foreach ($statistics->getData() as $statistic) {
-    foreach ($statistic->getDetails() as $detail) {
-        print_r($detail->getValue());
-    }
-}
+$response = $api->statistics()->getAllByRefereeId(1);
 ```
 
 #### `getAllByStageId`
 
 ```php
-getAllByStageId(int $stageId, int $page = 1, int $perPage = 25, string $order = 'asc'): StatisticCollection
+getAllByStageId(int $stageId): StatisticCollection
 ```
 
 Get all statistics by stage id:
 
 ```php
-$statistics = $sportMonksFootball->statistics()->getAllByStageId(1);
-
-foreach ($statistics->getData() as $statistic) {
-    print_r($statistic->getValue());
-}
+$response = $api->statistics()->getAllByStageId(1);
 ```
 
 #### `getAllByRoundId`
 
 ```php
-getAllByRoundId(int $roundId, int $page = 1, int $perPage = 25, string $order = 'asc'): StatisticCollection
+getAllByRoundId(int $roundId): StatisticCollection
 ```
 
 Get all statistics by round id:
 
 ```php
-$statistics = $sportMonksFootball->statistics()->getAllByRoundId(1);
-
-foreach ($statistics->getData() as $statistic) {
-    print_r($statistic->getValue());
-}
+$response = $api->statistics()->getAllByRoundId(1);
 ```
 
 ### Teams

@@ -27,7 +27,7 @@ class Statistic
         $this->value = $data['value'];
 
         // include
-        // Season uses "statistic_type" instead of "type"
+        // season uses "statistic_type" instead of "type"
         $this->type = (isset($data['type']) && \is_array($data['type'])) || isset($data['statistic_type'])
             ? new Type($data['statistic_type'] ?? $data['type'])
             : null;

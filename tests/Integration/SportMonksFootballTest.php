@@ -24,6 +24,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\SeasonResource;
 use ProgrammatorDev\SportMonksFootball\Resource\StageResource;
 use ProgrammatorDev\SportMonksFootball\Resource\StandingResource;
 use ProgrammatorDev\SportMonksFootball\Resource\StateResource;
+use ProgrammatorDev\SportMonksFootball\Resource\StatisticResource;
 use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 
 class SportMonksFootballTest extends AbstractTest
@@ -52,5 +53,6 @@ class SportMonksFootballTest extends AbstractTest
         $this->assertInstanceOf(StageResource::class, $this->api->stages());
         $this->assertInstanceOf(StandingResource::class, $this->api->standings());
         $this->assertInstanceOf(StateResource::class, $this->api->states());
+        $this->assertInstanceOf(StatisticResource::class, $this->api->statistics());
     }
 }
