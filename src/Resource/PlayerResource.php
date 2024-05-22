@@ -61,7 +61,7 @@ class PlayerResource extends Resource
      */
     public function getAllBySearchQuery(string $query): PlayerCollection
     {
-        $this->validateQuery($query, 'query');
+        $this->validateQuery($query);
 
         $data = $this->api->request(
             method: 'GET',

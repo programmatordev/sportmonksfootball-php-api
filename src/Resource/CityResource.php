@@ -46,7 +46,7 @@ class CityResource extends Resource
      */
     public function getAllBySearchQuery(string $query): CityCollection
     {
-        $this->validateQuery($query, 'query');
+        $this->validateQuery($query);
 
         $data = $this->api->request(
             method: 'GET',

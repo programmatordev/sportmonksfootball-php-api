@@ -89,7 +89,7 @@ class LeagueResource extends Resource
      */
     public function getAllBySearchQuery(string $query): LeagueCollection
     {
-        $this->validateQuery($query, 'query');
+        $this->validateQuery($query);
 
         $data = $this->api->request(
             method: 'GET',

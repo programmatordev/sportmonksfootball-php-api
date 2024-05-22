@@ -139,7 +139,7 @@ class FixtureResource extends Resource
      */
     public function getAllBySearchQuery(string $query): FixtureCollection
     {
-        $this->validateQuery($query, 'query');
+        $this->validateQuery($query);
 
         $data = $this->api->request(
             method: 'GET',

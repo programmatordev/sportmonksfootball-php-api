@@ -46,7 +46,7 @@ class MarketResource extends Resource
      */
     public function getAllBySearchQuery(string $query): MarketCollection
     {
-        $this->validateQuery($query, 'query');
+        $this->validateQuery($query);
 
         $data = $this->api->request(
             method: 'GET',

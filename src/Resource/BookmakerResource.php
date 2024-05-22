@@ -60,7 +60,7 @@ class BookmakerResource extends Resource
      */
     public function getAllBySearchQuery(string $query): BookmakerCollection
     {
-        $this->validateQuery($query, 'query');
+        $this->validateQuery($query);
 
         $data = $this->api->request(
             method: 'GET',

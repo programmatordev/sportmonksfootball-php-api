@@ -76,7 +76,7 @@ class RefereeResource extends Resource
      */
     public function getAllBySearchQuery(string $query): RefereeCollection
     {
-        $this->validateQuery($query, 'query');
+        $this->validateQuery($query);
 
         $data = $this->api->request(
             method: 'GET',

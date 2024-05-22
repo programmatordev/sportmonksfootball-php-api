@@ -2,74 +2,74 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Resource;
 
-use ProgrammatorDev\SportMonksFootball\Entity\Response\RoundCollection;
-use ProgrammatorDev\SportMonksFootball\Entity\Response\RoundItem;
+use ProgrammatorDev\SportMonksFootball\Entity\Response\StageCollection;
+use ProgrammatorDev\SportMonksFootball\Entity\Response\StageItem;
 use ProgrammatorDev\SportMonksFootball\Resource\Util\PaginationTrait;
 use ProgrammatorDev\Validator\Exception\ValidationException;
 use Psr\Http\Client\ClientExceptionInterface;
 
-class RoundResource extends Resource
+class StageResource extends Resource
 {
     use PaginationTrait;
 
     /**
      * @throws ClientExceptionInterface
      */
-    public function getAll(): RoundCollection
+    public function getAll(): StageCollection
     {
         $data = $this->api->request(
             method: 'GET',
-            path: '/v3/football/rounds'
+            path: '/v3/football/stages'
         );
 
-        return new RoundCollection($data);
+        return new StageCollection($data);
     }
 
     /**
      * @throws ClientExceptionInterface
      */
-    public function getById(int $id): RoundItem
+    public function getById(int $id): StageItem
     {
         $data = $this->api->request(
             method: 'GET',
-            path: $this->api->buildPath('/v3/football/rounds/{id}', [
+            path: $this->api->buildPath('/v3/football/stages/{id}', [
                 'id' => $id
             ])
         );
 
-        return new RoundItem($data);
+        return new StageItem($data);
     }
 
     /**
      * @throws ClientExceptionInterface
      */
-    public function getAllBySeasonId(int $seasonId): RoundCollection
+    public function getAllBySeasonId(int $seasonId): StageCollection
     {
         $data = $this->api->request(
             method: 'GET',
-            path: $this->api->buildPath('/v3/football/rounds/seasons/{seasonId}', [
+            path: $this->api->buildPath('/v3/football/stages/seasons/{seasonId}', [
                 'seasonId' => $seasonId
             ])
         );
 
-        return new RoundCollection($data);
+        return new StageCollection($data);
     }
 
     /**
      * @throws ValidationException
      * @throws ClientExceptionInterface
      */
-    public function getAllBySearchQuery(string $query): RoundCollection
+    public function getAllBySearchQuery(string $query): StageCollection
     {
         $this->validateQuery($query);
 
         $data = $this->api->request(
             method: 'GET',
-            path: $this->api->buildPath('/v3/football/rounds/search/{query}', [
+            path: $this->api->buildPath('/v3/football/stages/search/{query}', [
                 'query' => $query
             ])
         );
 
-        return new RoundCollection($data);
+        return new StageCollection($data);
     }
 }

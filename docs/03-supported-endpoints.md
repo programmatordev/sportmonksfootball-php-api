@@ -805,22 +805,17 @@ $response = $api->seasons()->getAllBySearchQuery('2024');
 ### Stages
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/stages)
-- Cache default max age: `1 day`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): StageCollection
+getAll(): StageCollection
 ```
 
 Get all stages:
 
 ```php
-$stages = $sportMonksFootball->stages()->getAll();
-
-foreach ($stages->getData() as $stage) {
-    echo $stage->getName();
-}
+$response = $api->stages()->getAll();
 ```
 
 #### `getById`
@@ -832,8 +827,7 @@ getById(int $id): StageItem
 Get stage by id:
 
 ```php
-$stage = $sportMonksFootball->stages()->getById(1);
-echo $stage->getData()->getName();
+$response = $api->stages()->getById(1);
 ```
 
 #### `getAllBySeasonId`
@@ -845,27 +839,19 @@ getAllBySeasonId(int $seasonId): StageCollection
 Get all stages by season id:
 
 ```php
-$stages = $sportMonksFootball->stages()->getAllBySeasonId(1);
-
-foreach ($stages->getData() as $stage) {
-    echo $stage->getName();
-}
+$response = $api->stages()->getAllBySeasonId(1);
 ```
 
 #### `getAllBySearchQuery`
 
 ```php
-getAllBySearchQuery(string $query, int $page = 1, int $perPage = 25, string $order = 'asc'): StageCollection
+getAllBySearchQuery(string $query): StageCollection
 ```
 
 Get all stages by search query:
 
 ```php
-$stages = $sportMonksFootball->stages()->getAllBySearchQuery('champions');
-
-foreach ($stages->getData() as $stage) {
-    echo $stage->getName();
-}
+$response = $api->stages()->getAllBySearchQuery('champions');
 ```
 
 ### Standings

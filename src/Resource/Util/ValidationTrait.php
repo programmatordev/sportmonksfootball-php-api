@@ -10,7 +10,7 @@ trait ValidationTrait
     /**
      * @throws ValidationException
      */
-    protected function validateQuery(string $query, string $name): void
+    protected function validateQuery(string $query, string $name = 'query'): void
     {
         Validator::notBlank()->assert($query, $name);
     }

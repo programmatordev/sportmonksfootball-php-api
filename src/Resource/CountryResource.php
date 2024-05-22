@@ -46,7 +46,7 @@ class CountryResource extends Resource
      */
     public function getAllBySearchQuery(string $query): CountryCollection
     {
-        $this->validateQuery($query, 'query');
+        $this->validateQuery($query);
 
         $data = $this->api->request(
             method: 'GET',
