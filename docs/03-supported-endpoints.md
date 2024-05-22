@@ -857,24 +857,17 @@ $response = $api->stages()->getAllBySearchQuery('champions');
 ### Standings
 
 - [Official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints/standings)
-- Cache default max age: `1 hour`
-  - `getAllLiveByLeagueId` cache max age: `1 minute`
 
 #### `getAll`
 
 ```php
-getAll(int $page = 1, int $perPage = 25, string $order = 'asc'): StandingCollection
+getAll(): StandingCollection
 ```
 
 Get all standings:
 
 ```php
-$standings = $sportMonksFootball->standings()->getAll();
-
-foreach ($standings->getData() as $standing) {
-    echo $standing->getPosition();
-    echo $standing->getPoints();
-}
+$response = $api->standings()->getAll();
 ```
 
 #### `getAllBySeasonId`
@@ -886,12 +879,7 @@ getAllBySeasonId(int $seasonId): StandingCollection
 Get all standings by season id:
 
 ```php
-$standings = $sportMonksFootball->standings()->getAllBySeasonId(1);
-
-foreach ($standings->getData() as $standing) {
-    echo $standing->getPosition();
-    echo $standing->getPoints();
-}
+$response = $api->standings()->getAllBySeasonId(1);
 ```
 
 #### `getAllCorrectionsBySeasonId`
@@ -903,12 +891,7 @@ getAllCorrectionsBySeasonId(int $seasonId): StandingCorrectionCollection
 Get all standing corrections by season id:
 
 ```php
-$standingCorrections = $sportMonksFootball->standings()->getAllCorrectionsBySeasonId(1);
-
-foreach ($standingCorrections->getData() as $standingCorrection) {
-    echo $standingCorrection->getValue();
-    echo $standingCorrection->getCalcType();
-}
+$response = $api->standings()->getAllCorrectionsBySeasonId(1);
 ```
 
 #### `getAllByRoundId`
@@ -920,12 +903,7 @@ getAllByRoundId(int $roundId): StandingCollection
 Get all standings by round id:
 
 ```php
-$standings = $sportMonksFootball->standings()->getAllByRoundId(1);
-
-foreach ($standings->getData() as $standing) {
-    echo $standing->getPosition();
-    echo $standing->getPoints();
-}
+$response = $api->standings()->getAllByRoundId(1);
 ```
 
 #### `getAllLiveByLeagueId`
@@ -937,16 +915,8 @@ getAllLiveByLeagueId(int $leagueId): StandingCollection
 Get all live standings by league id:
 
 ```php
-$standings = $sportMonksFootball->standings()->getAllLiveByLeagueId(1);
-
-foreach ($standings->getData() as $standing) {
-    echo $standing->getPosition();
-    echo $standing->getPoints();
-}
+$response = $api->standings()->getAllLiveByLeagueId(1);
 ```
-
-> **Note**
-> Cache max age is forced to `1 minute` on this endpoint.
 
 ### States
 
