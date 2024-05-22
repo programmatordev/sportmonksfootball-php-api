@@ -25,8 +25,8 @@ class TeamCoachTest extends AbstractTest
         $this->assertSame(1, $entity->getCoachId());
         $this->assertSame(1, $entity->getPositionId());
         $this->assertSame(false, $entity->isActive());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartedAt());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndedAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndAt());
         $this->assertSame(false, $entity->isTemporary());
     }
 }

@@ -42,7 +42,7 @@ class FixtureTest extends AbstractTest
         $this->assertSame(1, $entity->getStateId());
         $this->assertSame(1, $entity->getVenueId());
         $this->assertSame('name', $entity->getName());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartingAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartAt());
         $this->assertSame('result info', $entity->getResultInfo());
         $this->assertSame('leg', $entity->getLeg());
         $this->assertSame('details', $entity->getDetails());

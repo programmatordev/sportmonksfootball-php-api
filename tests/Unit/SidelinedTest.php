@@ -28,8 +28,8 @@ class SidelinedTest extends AbstractTest
         $this->assertSame(1, $entity->getTeamId());
         $this->assertSame(1, $entity->getSeasonId());
         $this->assertSame('injury', $entity->getCategory());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartingAt());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndingAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndAt());
         $this->assertSame(2, $entity->getGamesMissed());
         $this->assertSame(true, $entity->isCompleted());
     }

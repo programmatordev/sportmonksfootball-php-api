@@ -50,6 +50,7 @@ use ProgrammatorDev\SportMonksFootball\Resource\StandingResource;
 use ProgrammatorDev\SportMonksFootball\Resource\StateResource;
 use ProgrammatorDev\SportMonksFootball\Resource\StatisticResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TeamResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TeamSquadResource;
 
 class SportMonksFootball extends Api
 {
@@ -186,11 +187,11 @@ class SportMonksFootball extends Api
         return new TeamResource($this);
     }
 
-//    public function teamSquads(): TeamSquadEndpoint
-//    {
-//        return new TeamSquadEndpoint($this);
-//    }
-//
+    public function teamSquads(): TeamSquadResource
+    {
+        return new TeamSquadResource($this);
+    }
+
 //    public function timezones(): TimezoneEndpoint
 //    {
 //        return new TimezoneEndpoint($this);

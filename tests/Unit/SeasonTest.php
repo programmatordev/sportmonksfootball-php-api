@@ -32,8 +32,8 @@ class SeasonTest extends AbstractTest
         $this->assertSame(true, $entity->hasFinished());
         $this->assertSame(false, $entity->isPending());
         $this->assertSame(false, $entity->isCurrent());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartingAt());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndingAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndAt());
         $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStandingsRecalculatedAt());
         $this->assertSame(false, $entity->hasGamesInCurrentWeek());
     }

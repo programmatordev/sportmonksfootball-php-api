@@ -30,8 +30,8 @@ class GroupTest extends AbstractTest
         $this->assertSame(1, $entity->getSeasonId());
         $this->assertSame(1, $entity->getStageId());
         $this->assertSame('name', $entity->getName());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartingAt());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndingAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndAt());
         $this->assertSame(false, $entity->hasGamesInCurrentWeek());
         $this->assertSame(false, $entity->isCurrent());
         $this->assertSame(false, $entity->hasFinished());

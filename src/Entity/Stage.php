@@ -26,9 +26,9 @@ class Stage
 
     private ?bool $isCurrent;
 
-    private ?\DateTimeImmutable $startingAt;
+    private ?\DateTimeImmutable $startAt;
 
-    private ?\DateTimeImmutable $endingAt;
+    private ?\DateTimeImmutable $endAt;
 
     private ?bool $hasGamesInCurrentWeek;
 
@@ -75,8 +75,8 @@ class Stage
         $this->sortOrder = $data['sort_order'] ?? null;
         $this->hasFinished = $data['finished'] ?? null;
         $this->isCurrent = $data['is_current'] ?? null;
-        $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
-        $this->endingAt = isset($data['ending_at']) ? new \DateTimeImmutable($data['ending_at']) : null;
+        $this->startAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
+        $this->endAt = isset($data['ending_at']) ? new \DateTimeImmutable($data['ending_at']) : null;
         $this->hasGamesInCurrentWeek = $data['games_in_current_week'] ?? null;
         $this->tieBreakerRuleId = $data['tie_breaker_rule_id'] ?? null;
 
@@ -139,14 +139,14 @@ class Stage
         return $this->isCurrent;
     }
 
-    public function getStartingAt(): ?\DateTimeImmutable
+    public function getStartAt(): ?\DateTimeImmutable
     {
-        return $this->startingAt;
+        return $this->startAt;
     }
 
-    public function getEndingAt(): ?\DateTimeImmutable
+    public function getEndAt(): ?\DateTimeImmutable
     {
-        return $this->endingAt;
+        return $this->endAt;
     }
 
     public function hasGamesInCurrentWeek(): ?bool

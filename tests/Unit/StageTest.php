@@ -34,8 +34,8 @@ class StageTest extends AbstractTest
         $this->assertSame(1, $entity->getSortOrder());
         $this->assertSame(true, $entity->hasFinished());
         $this->assertSame(false, $entity->isCurrent());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartingAt());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndingAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndAt());
         $this->assertSame(false, $entity->hasGamesInCurrentWeek());
         $this->assertSame(1, $entity->getTieBreakerRuleId());
     }

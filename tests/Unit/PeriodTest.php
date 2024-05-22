@@ -30,8 +30,8 @@ class PeriodTest extends AbstractTest
         $this->assertSame(1, $entity->getFixtureId());
         $this->assertSame(1, $entity->getTypeId());
         $this->assertSame(false, $entity->hasTimer());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartedAt());
-        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndedAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getStartAt());
+        $this->assertInstanceOf(\DateTimeImmutable::class, $entity->getEndAt());
         $this->assertSame(0, $entity->getCountsFrom());
         $this->assertSame(false, $entity->isTicking());
         $this->assertSame(1, $entity->getSortOrder());

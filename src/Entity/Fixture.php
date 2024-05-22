@@ -30,7 +30,7 @@ class Fixture
 
     private ?string $name;
 
-    private ?\DateTimeImmutable $startingAt;
+    private ?\DateTimeImmutable $startAt;
 
     private ?string $resultInfo;
 
@@ -123,7 +123,7 @@ class Fixture
 
         // select
         $this->name = $data['name'] ?? null;
-        $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at'], new \DateTimeZone($timezone)) : null;
+        $this->startAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at'], new \DateTimeZone($timezone)) : null;
         $this->resultInfo = $data['result_info'] ?? null;
         $this->leg = $data['leg'] ?? null;
         $this->details = $data['details'] ?? null;
@@ -216,9 +216,9 @@ class Fixture
         return $this->name;
     }
 
-    public function getStartingAt(): ?\DateTimeImmutable
+    public function getStartAt(): ?\DateTimeImmutable
     {
-        return $this->startingAt;
+        return $this->startAt;
     }
 
     public function getResultInfo(): ?string

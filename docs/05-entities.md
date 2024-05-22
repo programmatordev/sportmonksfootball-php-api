@@ -234,7 +234,7 @@
 - `getStateId()`: `int`
 - `getVenueId()`: `?int`
 - `getName()`: `?string`
-- `getStartingAt()`: `?\DateTimeImmutable`
+- `getStartAt()`: `?\DateTimeImmutable`
 - `getResultInfo()`: `?string`
 - `getLeg()`: `?string`
 - `getDetails()`: `?string`
@@ -330,8 +330,8 @@
 - `getSeasonId()`: `int`
 - `getStageId()`: `int`
 - `getName()`: `?string`
-- `getStartingAt()`: `?\DateTimeImmutable`
-- `getEndingAt()`: `?\DateTimeImmutable`
+- `getStartAt()`: `?\DateTimeImmutable`
+- `getEndAt()`: `?\DateTimeImmutable`
 - `hasGamesInCurrentWeek()`: `?bool`
 - `isCurrent()`: `?bool`
 - `hasFinished()`: `?bool`
@@ -419,8 +419,8 @@
 - `getId()`: `int`
 - `getFixtureId()`: `int`
 - `getTypeId()`: `int`
-- `getStartedAt()`: `?\DateTimeImmutable`
-- `getEndedAt()`: `?\DateTimeImmutable`
+- `getStartAt()`: `?\DateTimeImmutable`
+- `getEndAt()`: `?\DateTimeImmutable`
 - `getCountsFrom()`: `?int`
 - `isTicking()`: `?bool`
 - `getSortOrder()`: `?int`
@@ -553,8 +553,8 @@
 - `getName()`: `?string`
 - `hasFinished()`: `?bool`
 - `isCurrent()`: `?bool`
-- `getStartingAt()`: `?\DateTimeImmutable`
-- `getEndingAt()`: `?\DateTimeImmutable`
+- `getStartAt()`: `?\DateTimeImmutable`
+- `getEndAt()`: `?\DateTimeImmutable`
 - `hasGamesInCurrentWeek()`: `?bool`
 - `getSport()`: [`?Sport`](#sport) (`sport` include is required)
 - `getLeague()`: [`?League`](#league) (`league` include is required)
@@ -586,8 +586,8 @@
 - `hasFinished()`: `?bool`
 - `isPending()`: `?bool`
 - `isCurrent()`: `?bool`
-- `getStartingAt()`: `?\DateTimeImmutable`
-- `getEndingAt()`: `?\DateTimeImmutable`
+- `getStartAt()`: `?\DateTimeImmutable`
+- `getEndAt()`: `?\DateTimeImmutable`
 - `getStandingsRecalculatedAt()`: `?\DateTimeImmutable`
 - `hasGamesInCurrentWeek()`: `?bool`
 - `getSport()`: [`?Sport`](#sport) (`sport` include is required)
@@ -608,8 +608,8 @@
 - `getTeamId()`: `int`
 - `getSeasonId()`: `?int`
 - `getCategory()`: `?string`
-- `getStartingAt()`: `?\DateTimeImmutable`
-- `getEndingAt()`: `?\DateTimeImmutable`
+- `getStartAt()`: `?\DateTimeImmutable`
+- `getEndAt()`: `?\DateTimeImmutable`
 - `getGamesMissed()`: `?int`
 - `isCompleted()`: `?bool`
 - `getTeam()`: [`?Team`](#team) (`team` include is required)
@@ -643,8 +643,8 @@
 - `getSortOrder()`: `?int`
 - `hasFinished()`: `?bool`
 - `isCurrent()`: `?bool`
-- `getStartingAt()`: `?\DateTimeImmutable`
-- `getEndingAt()`: `?\DateTimeImmutable`
+- `getStartAt()`: `?\DateTimeImmutable`
+- `getEndAt()`: `?\DateTimeImmutable`
 - `hasGamesInCurrentWeek()`: `?bool`
 - `getTieBreakerRuleId()`: `?bool`
 - `getLeague()`: [`?League`](#league) (`league` include is required)
@@ -786,8 +786,8 @@
 - `getCoachId()`: `int`
 - `getPositionId()`: `int`
 - `isActive()`: `?bool`
-- `getStartedAt()`: `?\DateTimeImmutable`
-- `getEndedAt()`: `?\DateTimeImmutable`
+- `getStartAt()`: `?\DateTimeImmutable`
+- `getEndAt()`: `?\DateTimeImmutable`
 - `isTemporary()`: `?bool`
 - `getTeam()`: [`?Team`](#team) (`team` include is required)
 - `getCoach()`: [`?Coach`](#coach) (`coach` include is required)
@@ -825,8 +825,8 @@
 - `getTeamId()`: `int`
 - `getPosition()`: `int`
 - `getDetailedPositionId()`: `?int`
-- `getStartingAt()`: `?\DateTimeImmutable`
-- `getEndingAt()`: `?\DateTimeImmutable`
+- `getStartAt()`: `?\DateTimeImmutable`
+- `getEndAt()`: `?\DateTimeImmutable`
 - `isCaptain()`: `?bool`
 - `getJerseyNumber()`: `?int`
 - `getTeam()`: [`?Team`](#team) (`team` include is required)
