@@ -5,6 +5,7 @@ namespace ProgrammatorDev\SportMonksFootball;
 use Http\Message\Authentication\QueryParam;
 use ProgrammatorDev\Api\Api;
 use ProgrammatorDev\Api\Event\PostRequestEvent;
+use ProgrammatorDev\Api\Event\PreRequestEvent;
 use ProgrammatorDev\Api\Event\ResponseContentsEvent;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\Error;
 use ProgrammatorDev\SportMonksFootball\Exception\BadRequestException;
@@ -250,7 +251,27 @@ class SportMonksFootball extends Api
         $this->addQueryDefault('timezone', $this->options['timezone']);
         $this->addQueryDefault('locale', $this->options['language']);
 
-        $this->addPostRequestHandler(function(PostRequestEvent $event) {
+        $this->addPreRequestListener(function (PreRequestEvent $event) {
+            $request = $event->getRequest();
+            $uri = $request->getUri();
+
+            \parse_str($uri->getQuery(), $query);
+
+            // removes "per_page" query parameter if "populate" filter exists,
+            // otherwise it would be ignored
+            if (!empty($query['filters']) && $query['filters'] === 'populate') {
+                if (!empty($query['per_page'])) {
+                    unset($query['per_page']);
+
+                    $uri = $uri->withQuery(\http_build_query($query));
+                    $request = $request->withUri($uri);
+
+                    $event->setRequest($request);
+                }
+            }
+        });
+
+        $this->addPostRequestListener(function(PostRequestEvent $event) {
             $response = $event->getResponse();
             $statusCode = $response->getStatusCode();
 
@@ -307,7 +328,7 @@ class SportMonksFootball extends Api
             }
         });
 
-        $this->addResponseContentsHandler(function(ResponseContentsEvent $event) {
+        $this->addResponseContentsListener(function(ResponseContentsEvent $event) {
             // decode json string response into an array
             $contents = $event->getContents();
             $contents = \json_decode($contents, true);

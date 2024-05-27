@@ -14,7 +14,7 @@
     "require": {
         "php": ">=8.1",
         "myclabs/deep-copy": "^1.11",
-        "programmatordev/php-api-sdk": "^0.2.0",
+        "programmatordev/php-api-sdk": "^0.3.0",
         "programmatordev/yet-another-php-validator": "^1.1"
     },
     "require-dev": {
