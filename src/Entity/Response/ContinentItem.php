@@ -8,11 +8,11 @@ class ContinentItem extends AbstractResponse
 {
     private Continent $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = new Continent($response['data'], $response['timezone']);
+        $this->data = new Continent($data['data'], $data['timezone']);
     }
 
     public function getData(): Continent

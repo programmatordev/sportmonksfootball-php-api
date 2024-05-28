@@ -15,8 +15,8 @@ class Bookmaker
         $this->id = $data['id'];
 
         // select
-        $this->legacyId = $data['legacy_id'];
-        $this->name = $data['name'];
+        $this->legacyId = $data['legacy_id'] ?? null;
+        $this->name = $data['name'] ?? null;
     }
 
     public function getId(): int

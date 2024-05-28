@@ -7,11 +7,11 @@ class TimezoneCollection extends AbstractCollectionResponse
     /** @var string[] */
     private array $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = $response['data'];
+        $this->data = $data['data'];
     }
 
     public function getData(): array

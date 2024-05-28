@@ -8,11 +8,11 @@ class TypeItem extends AbstractResponse
 {
     private Type $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = new Type($response['data']);
+        $this->data = new Type($data['data']);
     }
 
     public function getData(): Type

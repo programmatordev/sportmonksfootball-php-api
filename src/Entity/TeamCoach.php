@@ -14,9 +14,9 @@ class TeamCoach
 
     private ?bool $isActive;
 
-    private ?\DateTimeImmutable $startedAt;
+    private ?\DateTimeImmutable $startAt;
 
-    private ?\DateTimeImmutable $endedAt;
+    private ?\DateTimeImmutable $endAt;
 
     private ?bool $isTemporary;
 
@@ -35,8 +35,8 @@ class TeamCoach
 
         // select
         $this->isActive = $data['active'] ?? null;
-        $this->startedAt = isset($data['start']) ? new \DateTimeImmutable($data['start']) : null;
-        $this->endedAt = isset($data['end']) ? new \DateTimeImmutable($data['end']) : null;
+        $this->startAt = isset($data['start']) ? new \DateTimeImmutable($data['start']) : null;
+        $this->endAt = isset($data['end']) ? new \DateTimeImmutable($data['end']) : null;
         $this->isTemporary = $data['temporary'] ?? null;
 
         // include
@@ -70,14 +70,14 @@ class TeamCoach
         return $this->isActive;
     }
 
-    public function getStartedAt(): ?\DateTimeImmutable
+    public function getStartAt(): ?\DateTimeImmutable
     {
-        return $this->startedAt;
+        return $this->startAt;
     }
 
-    public function getEndedAt(): ?\DateTimeImmutable
+    public function getEndAt(): ?\DateTimeImmutable
     {
-        return $this->endedAt;
+        return $this->endAt;
     }
 
     public function isTemporary(): ?bool

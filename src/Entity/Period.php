@@ -2,11 +2,11 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
 
 class Period
 {
-    use EntityCollectionTrait;
+    use EntityTrait;
 
     private int $id;
 
@@ -14,9 +14,9 @@ class Period
 
     private int $typeId;
 
-    private ?\DateTimeImmutable $startedAt;
+    private ?\DateTimeImmutable $startAt;
 
-    private ?\DateTimeImmutable $endedAt;
+    private ?\DateTimeImmutable $endAt;
 
     private ?int $countsFrom;
 
@@ -57,8 +57,8 @@ class Period
         $this->hasTimer = $data['has_timer'];
 
         // select
-        $this->startedAt = isset($data['started']) ? \DateTimeImmutable::createFromFormat('U', $data['started']) : null;
-        $this->endedAt = isset($data['ended']) ? \DateTimeImmutable::createFromFormat('U', $data['ended']) : null;
+        $this->startAt = isset($data['started']) ? \DateTimeImmutable::createFromFormat('U', $data['started']) : null;
+        $this->endAt = isset($data['ended']) ? \DateTimeImmutable::createFromFormat('U', $data['ended']) : null;
         $this->countsFrom = $data['counts_from'] ?? null;
         $this->isTicking = $data['ticking'] ?? null;
         $this->sortOrder = $data['sort_order'] ?? null;
@@ -91,14 +91,14 @@ class Period
         return $this->typeId;
     }
 
-    public function getStartedAt(): ?\DateTimeImmutable
+    public function getStartAt(): ?\DateTimeImmutable
     {
-        return $this->startedAt;
+        return $this->startAt;
     }
 
-    public function getEndedAt(): ?\DateTimeImmutable
+    public function getEndAt(): ?\DateTimeImmutable
     {
-        return $this->endedAt;
+        return $this->endAt;
     }
 
     public function getCountsFrom(): ?int

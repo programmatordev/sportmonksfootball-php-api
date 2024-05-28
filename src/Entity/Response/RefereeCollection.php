@@ -3,20 +3,20 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Referee;
-use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
 
 class RefereeCollection extends AbstractCollectionResponse
 {
-    use EntityCollectionTrait;
+    use EntityTrait;
 
     /** @var Referee[] */
     private array $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Referee::class, $response['data'], $response['timezone']);
+        $this->data = $this->createEntityCollection(Referee::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

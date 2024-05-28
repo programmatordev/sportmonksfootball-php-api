@@ -2,11 +2,11 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
 
 class Fixture
 {
-    use EntityCollectionTrait;
+    use EntityTrait;
 
     private int $id;
 
@@ -30,7 +30,7 @@ class Fixture
 
     private ?string $name;
 
-    private ?\DateTimeImmutable $startingAt;
+    private ?\DateTimeImmutable $startAt;
 
     private ?string $resultInfo;
 
@@ -43,6 +43,8 @@ class Fixture
     private ?bool $isPlaceholder;
 
     private ?bool $hasOdds;
+
+    private ?bool $hasPremiumOdds;
 
     private ?Sport $sport;
 
@@ -121,13 +123,14 @@ class Fixture
 
         // select
         $this->name = $data['name'] ?? null;
-        $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at'], new \DateTimeZone($timezone)) : null;
+        $this->startAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at'], new \DateTimeZone($timezone)) : null;
         $this->resultInfo = $data['result_info'] ?? null;
         $this->leg = $data['leg'] ?? null;
         $this->details = $data['details'] ?? null;
         $this->length = $data['length'] ?? null;
         $this->isPlaceholder = $data['placeholder'] ?? null;
         $this->hasOdds = $data['has_odds'] ?? null;
+        $this->hasPremiumOdds = $data['has_premium_odds'] ?? null;
 
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
@@ -213,9 +216,9 @@ class Fixture
         return $this->name;
     }
 
-    public function getStartingAt(): ?\DateTimeImmutable
+    public function getStartAt(): ?\DateTimeImmutable
     {
-        return $this->startingAt;
+        return $this->startAt;
     }
 
     public function getResultInfo(): ?string
@@ -246,6 +249,11 @@ class Fixture
     public function hasOdds(): ?bool
     {
         return $this->hasOdds;
+    }
+
+    public function hasPremiumOdds(): ?bool
+    {
+        return $this->hasPremiumOdds;
     }
 
     public function getSport(): ?Sport

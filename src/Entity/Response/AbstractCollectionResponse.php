@@ -8,12 +8,12 @@ class AbstractCollectionResponse extends AbstractResponse
 {
     private ?Pagination $pagination;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->pagination = isset($response['pagination'])
-            ? new Pagination($response['pagination'])
+        $this->pagination = isset($data['pagination'])
+            ? new Pagination($data['pagination'])
             : null;
     }
 

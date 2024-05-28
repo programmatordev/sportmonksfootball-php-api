@@ -8,11 +8,11 @@ class TransferItem extends AbstractResponse
 {
     private Transfer $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = new Transfer($response['data'], $response['timezone']);
+        $this->data = new Transfer($data['data'], $data['timezone']);
     }
 
     public function getData(): Transfer

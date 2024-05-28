@@ -8,11 +8,11 @@ class StageItem extends AbstractResponse
 {
     private Stage $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = new Stage($response['data'], $response['timezone']);
+        $this->data = new Stage($data['data'], $data['timezone']);
     }
 
     public function getData(): Stage

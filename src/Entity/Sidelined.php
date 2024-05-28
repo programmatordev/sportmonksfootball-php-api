@@ -16,9 +16,9 @@ class Sidelined
 
     private ?string $category;
 
-    private ?\DateTimeImmutable $startingAt;
+    private ?\DateTimeImmutable $startAt;
 
-    private ?\DateTimeImmutable $endingAt;
+    private ?\DateTimeImmutable $endAt;
 
     private ?int $gamesMissed;
 
@@ -42,8 +42,8 @@ class Sidelined
 
         // select
         $this->category = $data['category'] ?? null;
-        $this->startingAt = isset($data['start_date']) ? new \DateTimeImmutable($data['start_date']) : null;
-        $this->endingAt = isset($data['end_date']) ? new \DateTimeImmutable($data['end_date']) : null;
+        $this->startAt = isset($data['start_date']) ? new \DateTimeImmutable($data['start_date']) : null;
+        $this->endAt = isset($data['end_date']) ? new \DateTimeImmutable($data['end_date']) : null;
         $this->gamesMissed = $data['games_missed'] ?? null;
         $this->isCompleted = $data['completed'];
 
@@ -84,14 +84,14 @@ class Sidelined
         return $this->category;
     }
 
-    public function getStartingAt(): ?\DateTimeImmutable
+    public function getStartAt(): ?\DateTimeImmutable
     {
-        return $this->startingAt;
+        return $this->startAt;
     }
 
-    public function getEndingAt(): ?\DateTimeImmutable
+    public function getEndAt(): ?\DateTimeImmutable
     {
-        return $this->endingAt;
+        return $this->endAt;
     }
 
     public function getGamesMissed(): ?int

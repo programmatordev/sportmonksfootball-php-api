@@ -3,20 +3,20 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Odd;
-use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
 
 class OddCollection extends AbstractCollectionResponse
 {
-    use EntityCollectionTrait;
+    use EntityTrait;
 
     /** @var Odd[] */
     private array $data;
 
-    public function __construct(array $response)
+    public function __construct(array $data)
     {
-        parent::__construct($response);
+        parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Odd::class, $response['data'], $response['timezone']);
+        $this->data = $this->createEntityCollection(Odd::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

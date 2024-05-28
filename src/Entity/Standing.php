@@ -2,11 +2,11 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
 
 class Standing
 {
-    use EntityCollectionTrait;
+    use EntityTrait;
 
     private int $id;
 
@@ -79,7 +79,7 @@ class Standing
         $this->group = isset($data['group']) ? new Group($data['group']) : null;
         $this->round = isset($data['round']) ? new Round($data['round'], $timezone) : null;
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
-        $this->rule = isset($data['rule']) ? new StandingRule($data['rule'], $timezone) : null;
+        $this->rule = isset($data['rule']) ? new StandingRule($data['rule']) : null;
         $this->details = isset($data['details']) ? $this->createEntityCollection(StandingDetail::class, $data['details']) : null;
         $this->form = isset($data['form']) ? $this->createEntityCollection(StandingForm::class, $data['form'], $timezone) : null;
     }

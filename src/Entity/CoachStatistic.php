@@ -2,11 +2,11 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
 
 class CoachStatistic extends ParticipantStatistic
 {
-    use EntityCollectionTrait;
+    use EntityTrait;
 
     private int $coachId;
 

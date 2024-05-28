@@ -98,14 +98,14 @@ class MockResponse
 
     public static function buildItemResponse(string $data): string
     {
-        return self::formatResponse(self::ABSTRACT_ITEM_RESPONSE, [
+        return self::buildResponse(self::ABSTRACT_ITEM_RESPONSE, [
             'data' => $data
         ]);
     }
 
     public static function buildCollectionResponse(string $data): string
     {
-        return self::formatResponse(self::ABSTRACT_COLLECTION_RESPONSE, [
+        return self::buildResponse(self::ABSTRACT_COLLECTION_RESPONSE, [
             'data' => $data
         ]);
     }
@@ -113,7 +113,7 @@ class MockResponse
     /**
      * Helper to replace dynamic content in responses for testing
      */
-    public static function formatResponse(string $response, array $parameters): string
+    public static function buildResponse(string $response, array $parameters): string
     {
         foreach ($parameters as $parameter => $value) {
             $response = \str_replace(\sprintf("%%%s%%", $parameter), $value, $response);

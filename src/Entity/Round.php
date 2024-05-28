@@ -2,11 +2,11 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityCollectionTrait;
+use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
 
 class Round
 {
-    use EntityCollectionTrait;
+    use EntityTrait;
 
     private int $id;
 
@@ -24,9 +24,9 @@ class Round
 
     private ?bool $isCurrent;
 
-    private ?\DateTimeImmutable $startingAt;
+    private ?\DateTimeImmutable $startAt;
 
-    private ?\DateTimeImmutable $endingAt;
+    private ?\DateTimeImmutable $endAt;
 
     private ?bool $hasGamesInCurrentWeek;
 
@@ -56,8 +56,8 @@ class Round
         $this->name = $data['name'] ?? null;
         $this->hasFinished = $data['finished'] ?? null;
         $this->isCurrent = $data['is_current'] ?? null;
-        $this->startingAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
-        $this->endingAt = isset($data['ending_at']) ? new \DateTimeImmutable($data['ending_at']) : null;
+        $this->startAt = isset($data['starting_at']) ? new \DateTimeImmutable($data['starting_at']) : null;
+        $this->endAt = isset($data['ending_at']) ? new \DateTimeImmutable($data['ending_at']) : null;
         $this->hasGamesInCurrentWeek = $data['games_in_current_week'] ?? null;
 
         // include
@@ -109,14 +109,14 @@ class Round
         return $this->isCurrent;
     }
 
-    public function getStartingAt(): ?\DateTimeImmutable
+    public function getStartAt(): ?\DateTimeImmutable
     {
-        return $this->startingAt;
+        return $this->startAt;
     }
 
-    public function getEndingAt(): ?\DateTimeImmutable
+    public function getEndAt(): ?\DateTimeImmutable
     {
-        return $this->endingAt;
+        return $this->endAt;
     }
 
     public function hasGamesInCurrentWeek(): ?bool

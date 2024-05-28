@@ -16,9 +16,9 @@ class TeamSquad
 
     private ?int $detailedPositionId;
 
-    private ?\DateTimeImmutable $startingAt;
+    private ?\DateTimeImmutable $startAt;
 
-    private ?\DateTimeImmutable $endingAt;
+    private ?\DateTimeImmutable $endAt;
 
     private ?bool $isCaptain;
 
@@ -44,8 +44,8 @@ class TeamSquad
         $this->detailedPositionId = $data['detailed_position_id'] ?? null;
 
         // select
-        $this->startingAt = isset($data['start']) ? new \DateTimeImmutable($data['start']) : null;
-        $this->endingAt = isset($data['end']) ? new \DateTimeImmutable($data['end']) : null;
+        $this->startAt = isset($data['start']) ? new \DateTimeImmutable($data['start']) : null;
+        $this->endAt = isset($data['end']) ? new \DateTimeImmutable($data['end']) : null;
         $this->isCaptain = $data['captain'] ?? null;
         $this->jerseyNumber = $data['jersey_number'] ?? null;
 
@@ -87,14 +87,14 @@ class TeamSquad
         return $this->detailedPositionId;
     }
 
-    public function getStartingAt(): ?\DateTimeImmutable
+    public function getStartAt(): ?\DateTimeImmutable
     {
-        return $this->startingAt;
+        return $this->startAt;
     }
 
-    public function getEndingAt(): ?\DateTimeImmutable
+    public function getEndAt(): ?\DateTimeImmutable
     {
-        return $this->endingAt;
+        return $this->endAt;
     }
 
     public function isCaptain(): ?bool

@@ -2,199 +2,334 @@
 
 namespace ProgrammatorDev\SportMonksFootball;
 
-use ProgrammatorDev\SportMonksFootball\Endpoint\BookmakerEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\CityEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\CoachEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\CommentaryEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\ContinentEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\CountryEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\FilterEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\FixtureEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\LeagueEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\LivescoreEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\MarketEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\PlayerEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\PreMatchOddEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\RefereeEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\RegionEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\RivalEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\RoundEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\ScheduleEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\SeasonEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\StageEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\StandingEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\StateEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\StatisticEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TeamEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TeamSquadEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TimezoneEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TopscorerEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TransferEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TvStationEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\TypeEndpoint;
-use ProgrammatorDev\SportMonksFootball\Endpoint\VenueEndpoint;
+use Http\Message\Authentication\QueryParam;
+use ProgrammatorDev\Api\Api;
+use ProgrammatorDev\Api\Event\PostRequestEvent;
+use ProgrammatorDev\Api\Event\PreRequestEvent;
+use ProgrammatorDev\Api\Event\ResponseContentsEvent;
+use ProgrammatorDev\SportMonksFootball\Entity\Response\Error;
+use ProgrammatorDev\SportMonksFootball\Exception\BadRequestException;
+use ProgrammatorDev\SportMonksFootball\Exception\FilterNotApplicableException;
+use ProgrammatorDev\SportMonksFootball\Exception\ForbiddenException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeDepthException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotAllowedException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotAvailableException;
+use ProgrammatorDev\SportMonksFootball\Exception\IncludeNotFoundException;
+use ProgrammatorDev\SportMonksFootball\Exception\InsufficientIncludesException;
+use ProgrammatorDev\SportMonksFootball\Exception\InsufficientResourcesException;
+use ProgrammatorDev\SportMonksFootball\Exception\InvalidQueryParameterException;
+use ProgrammatorDev\SportMonksFootball\Exception\NoResultsFoundException;
+use ProgrammatorDev\SportMonksFootball\Exception\NotFoundException;
+use ProgrammatorDev\SportMonksFootball\Exception\PaginationLimitException;
+use ProgrammatorDev\SportMonksFootball\Exception\QueryComplexityException;
+use ProgrammatorDev\SportMonksFootball\Exception\RateLimitException;
+use ProgrammatorDev\SportMonksFootball\Exception\TooManyRequestsException;
+use ProgrammatorDev\SportMonksFootball\Exception\UnauthorizedException;
+use ProgrammatorDev\SportMonksFootball\Exception\UnexpectedErrorException;
+use ProgrammatorDev\SportMonksFootball\Language\Language;
+use ProgrammatorDev\SportMonksFootball\Resource\BookmakerResource;
+use ProgrammatorDev\SportMonksFootball\Resource\CityResource;
+use ProgrammatorDev\SportMonksFootball\Resource\CoachResource;
+use ProgrammatorDev\SportMonksFootball\Resource\CommentaryResource;
+use ProgrammatorDev\SportMonksFootball\Resource\ContinentResource;
+use ProgrammatorDev\SportMonksFootball\Resource\CountryResource;
+use ProgrammatorDev\SportMonksFootball\Resource\FilterResource;
+use ProgrammatorDev\SportMonksFootball\Resource\FixtureResource;
+use ProgrammatorDev\SportMonksFootball\Resource\LeagueResource;
+use ProgrammatorDev\SportMonksFootball\Resource\LivescoreResource;
+use ProgrammatorDev\SportMonksFootball\Resource\MarketResource;
+use ProgrammatorDev\SportMonksFootball\Resource\PlayerResource;
+use ProgrammatorDev\SportMonksFootball\Resource\PreMatchOddResource;
+use ProgrammatorDev\SportMonksFootball\Resource\RefereeResource;
+use ProgrammatorDev\SportMonksFootball\Resource\RegionResource;
+use ProgrammatorDev\SportMonksFootball\Resource\RivalResource;
+use ProgrammatorDev\SportMonksFootball\Resource\RoundResource;
+use ProgrammatorDev\SportMonksFootball\Resource\ScheduleResource;
+use ProgrammatorDev\SportMonksFootball\Resource\SeasonResource;
+use ProgrammatorDev\SportMonksFootball\Resource\StageResource;
+use ProgrammatorDev\SportMonksFootball\Resource\StandingResource;
+use ProgrammatorDev\SportMonksFootball\Resource\StateResource;
+use ProgrammatorDev\SportMonksFootball\Resource\StatisticResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TeamResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TeamSquadResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TimezoneResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TopscorerResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TransferResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TvStationResource;
+use ProgrammatorDev\SportMonksFootball\Resource\TypeResource;
+use ProgrammatorDev\SportMonksFootball\Resource\VenueResource;
 
-class SportMonksFootball
+class SportMonksFootball extends Api
 {
-    public function __construct(private readonly Config $config) {}
+    private array $options;
 
-    public function config(): Config
+    public function __construct(
+        #[\SensitiveParameter] private string $apiKey,
+        array $options = []
+    )
     {
-        return $this->config;
+        parent::__construct();
+
+        $this->options = $this->configureOptions($options);
+        $this->configureApi();
     }
 
-    public function bookmakers(): BookmakerEndpoint
+    public function bookmakers(): BookmakerResource
     {
-        return new BookmakerEndpoint($this);
+        return new BookmakerResource($this);
     }
 
-    public function cities(): CityEndpoint
+    public function cities(): CityResource
     {
-        return new CityEndpoint($this);
+        return new CityResource($this);
     }
 
-    public function coaches(): CoachEndpoint
+    public function coaches(): CoachResource
     {
-        return new CoachEndpoint($this);
+        return new CoachResource($this);
     }
 
-    public function commentaries(): CommentaryEndpoint
+    public function commentaries(): CommentaryResource
     {
-        return new CommentaryEndpoint($this);
+        return new CommentaryResource($this);
     }
 
-    public function continents(): ContinentEndpoint
+    public function continents(): ContinentResource
     {
-        return new ContinentEndpoint($this);
+        return new ContinentResource($this);
     }
 
-    public function countries(): CountryEndpoint
+    public function countries(): CountryResource
     {
-        return new CountryEndpoint($this);
+        return new CountryResource($this);
     }
 
-    public function filters(): FilterEndpoint
+    public function filters(): FilterResource
     {
-        return new FilterEndpoint($this);
+        return new FilterResource($this);
     }
 
-    public function fixtures(): FixtureEndpoint
+    public function fixtures(): FixtureResource
     {
-        return new FixtureEndpoint($this);
+        return new FixtureResource($this);
     }
 
-    public function leagues(): LeagueEndpoint
+    public function leagues(): LeagueResource
     {
-        return new LeagueEndpoint($this);
+        return new LeagueResource($this);
     }
 
-    public function livescores(): LivescoreEndpoint
+    public function livescores(): LivescoreResource
     {
-        return new LivescoreEndpoint($this);
+        return new LivescoreResource($this);
     }
 
-    public function markets(): MarketEndpoint
+    public function markets(): MarketResource
     {
-        return new MarketEndpoint($this);
+        return new MarketResource($this);
     }
 
-    public function players(): PlayerEndpoint
+    public function players(): PlayerResource
     {
-        return new PlayerEndpoint($this);
+        return new PlayerResource($this);
     }
 
-    public function preMatchOdds(): PreMatchOddEndpoint
+    public function preMatchOdds(): PreMatchOddResource
     {
-        return new PreMatchOddEndpoint($this);
+        return new PreMatchOddResource($this);
     }
 
-    public function referees(): RefereeEndpoint
+    public function referees(): RefereeResource
     {
-        return new RefereeEndpoint($this);
+        return new RefereeResource($this);
     }
 
-    public function regions(): RegionEndpoint
+    public function regions(): RegionResource
     {
-        return new RegionEndpoint($this);
+        return new RegionResource($this);
     }
 
-    public function rivals(): RivalEndpoint
+    public function rivals(): RivalResource
     {
-        return new RivalEndpoint($this);
+        return new RivalResource($this);
     }
 
-    public function rounds(): RoundEndpoint
+    public function rounds(): RoundResource
     {
-        return new RoundEndpoint($this);
+        return new RoundResource($this);
     }
 
-    public function schedules(): ScheduleEndpoint
+    public function schedules(): ScheduleResource
     {
-        return new ScheduleEndpoint($this);
+        return new ScheduleResource($this);
     }
 
-    public function seasons(): SeasonEndpoint
+    public function seasons(): SeasonResource
     {
-        return new SeasonEndpoint($this);
+        return new SeasonResource($this);
     }
 
-    public function stages(): StageEndpoint
+    public function stages(): StageResource
     {
-        return new StageEndpoint($this);
+        return new StageResource($this);
     }
 
-    public function standings(): StandingEndpoint
+    public function standings(): StandingResource
     {
-        return new StandingEndpoint($this);
+        return new StandingResource($this);
     }
 
-    public function states(): StateEndpoint
+    public function states(): StateResource
     {
-        return new StateEndpoint($this);
+        return new StateResource($this);
     }
 
-    public function statistics(): StatisticEndpoint
+    public function statistics(): StatisticResource
     {
-        return new StatisticEndpoint($this);
+        return new StatisticResource($this);
     }
 
-    public function teams(): TeamEndpoint
+    public function teams(): TeamResource
     {
-        return new TeamEndpoint($this);
+        return new TeamResource($this);
     }
 
-    public function teamSquads(): TeamSquadEndpoint
+    public function teamSquads(): TeamSquadResource
     {
-        return new TeamSquadEndpoint($this);
+        return new TeamSquadResource($this);
     }
 
-    public function timezones(): TimezoneEndpoint
+    public function timezones(): TimezoneResource
     {
-        return new TimezoneEndpoint($this);
+        return new TimezoneResource($this);
     }
 
-    public function topscorers(): TopscorerEndpoint
+    public function topscorers(): TopscorerResource
     {
-        return new TopscorerEndpoint($this);
+        return new TopscorerResource($this);
     }
 
-    public function transfers(): TransferEndpoint
+    public function transfers(): TransferResource
     {
-        return new TransferEndpoint($this);
+        return new TransferResource($this);
     }
 
-    public function tvStations(): TvStationEndpoint
+    public function tvStations(): TvStationResource
     {
-        return new TvStationEndpoint($this);
+        return new TvStationResource($this);
     }
 
-    public function types(): TypeEndpoint
+    public function types(): TypeResource
     {
-        return new TypeEndpoint($this);
+        return new TypeResource($this);
     }
 
-    public function venues(): VenueEndpoint
+    public function venues(): VenueResource
     {
-        return new VenueEndpoint($this);
+        return new VenueResource($this);
+    }
+
+    private function configureOptions(array $options): array
+    {
+        $this->optionsResolver->setDefault('timezone', 'UTC');
+        $this->optionsResolver->setDefault('language', Language::ENGLISH);
+
+        $this->optionsResolver->setAllowedTypes('timezone', 'string');
+        $this->optionsResolver->setAllowedTypes('language', 'string');
+
+        $this->optionsResolver->setAllowedValues('timezone', \DateTimeZone::listIdentifiers());
+
+        return $this->optionsResolver->resolve($options);
+    }
+
+    private function configureApi(): void
+    {
+        $this->setBaseUrl('https://api.sportmonks.com');
+
+        $this->setAuthentication(new QueryParam(['api_token' => $this->apiKey]));
+
+        $this->addQueryDefault('timezone', $this->options['timezone']);
+        $this->addQueryDefault('locale', $this->options['language']);
+
+        $this->addPreRequestListener(function (PreRequestEvent $event) {
+            $request = $event->getRequest();
+            $uri = $request->getUri();
+
+            \parse_str($uri->getQuery(), $query);
+
+            // removes "per_page" query parameter if "populate" filter exists,
+            // otherwise it would be ignored
+            if (!empty($query['filters']) && $query['filters'] === 'populate') {
+                if (!empty($query['per_page'])) {
+                    unset($query['per_page']);
+
+                    $uri = $uri->withQuery(\http_build_query($query));
+                    $request = $request->withUri($uri);
+
+                    $event->setRequest($request);
+                }
+            }
+        });
+
+        $this->addPostRequestListener(function(PostRequestEvent $event) {
+            $response = $event->getResponse();
+            $statusCode = $response->getStatusCode();
+
+            $data = \json_decode($response->getBody()->getContents(), true);
+
+            // if response contains a message it is an error
+            $errorMessage = $data['message'] ?? null;
+
+            // an error may occur with a misleading 200 status code:
+            // if there is a "message" property on the response, it means it is returning an error
+            if ($statusCode >= 200 && $statusCode <= 299 && $errorMessage !== null) {
+                throw new NoResultsFoundException(new Error($data));
+            }
+
+            if ($statusCode >= 400) {
+                $errorCode = $data['code'] ?? null;
+                $errorLink = $data['link'] ?? null;
+
+                // filter error by the provided "code" property (ignores status codes as they may be misleading)
+                // https://docs.sportmonks.com/football/api/error-codes/include-exceptions
+                // https://docs.sportmonks.com/football/api/error-codes/filtering-and-complexity-exceptions
+                // https://docs.sportmonks.com/football/api/error-codes/other-exceptions
+                if ($errorCode !== null) {
+                    match ($errorCode) {
+                        5000 => throw new IncludeNotAllowedException($errorMessage, $errorCode, $errorLink),
+                        5001 => throw new IncludeNotFoundException($errorMessage, $errorCode, $errorLink),
+                        5002 => throw new InsufficientIncludesException($errorMessage, $errorCode, $errorLink),
+                        5003 => throw new PaginationLimitException($errorMessage, $errorCode, $errorLink),
+                        5004 => throw new QueryComplexityException($errorMessage, $errorCode, $errorLink),
+                        5005 => throw new RateLimitException($errorMessage, $errorCode, $errorLink),
+                        5006 => throw new InvalidQueryParameterException($errorMessage, $errorCode, $errorLink),
+                        5007 => throw new InsufficientResourcesException($errorMessage, $errorCode, $errorLink),
+                        5008 => throw new IncludeDepthException($errorMessage, $errorCode, $errorLink),
+                        5010 => throw new FilterNotApplicableException($errorMessage, $errorCode, $errorLink),
+                        5013 => throw new IncludeNotAvailableException($errorMessage, $errorCode, $errorLink),
+                        default => throw new UnexpectedErrorException($errorMessage, $errorCode, $errorLink)
+                    };
+                }
+
+                // filter error by status code
+                // https://docs.sportmonks.com/football/api/error-codes
+                match ($statusCode) {
+                    400 => throw new BadRequestException($errorMessage, $statusCode, $errorLink),
+                    401 => throw new UnauthorizedException($errorMessage, $statusCode, $errorLink),
+                    403 => throw new ForbiddenException($errorMessage, $statusCode, $errorLink),
+                    404 => throw new NotFoundException($errorMessage, $statusCode, $errorLink),
+                    429 => throw new TooManyRequestsException($errorMessage, $statusCode, $errorLink),
+                    default => throw new UnexpectedErrorException($errorMessage, $statusCode, $errorLink)
+                };
+            }
+        });
+
+        $this->addResponseContentsListener(function(ResponseContentsEvent $event) {
+            // decode json string response into an array
+            $contents = $event->getContents();
+            $contents = \json_decode($contents, true);
+
+            $event->setContents($contents);
+        });
     }
 }
