@@ -1712,6 +1712,7 @@ withPage(int $page): self
 Determine the results page number.
 
 ```php
+// show page 2 of the results
 $api->fixtures()
     ->withPage(2)
     ->getAll();
@@ -1727,6 +1728,7 @@ Determine the number of results per page.
 Please note that it only affects the results of the base entity, so includes are not paginated.
 
 ```php
+// show 50 entries per page
 $api->fixtures()
     ->withPerPage(50)
     ->getAll();
@@ -1738,15 +1740,16 @@ $api->fixtures()
 withSortBy(string $sortBy): self
 ```
 
-Specifies the field by which the data will be sorted. Currently supported fields include:
-- `starting_at`
-- `name`
+Specifies the field by which the data will be sorted.
 
 ```php
+// results sorted by the "starting_at" field
 $api->fixtures()
     ->withSortBy('starting_at')
     ->getAll();
 ```
+
+For all available sorting options, check the [official documentation](https://docs.sportmonks.com/football/api/request-options/ordering-and-sorting).
 
 #### `withOrder`
 
@@ -1754,16 +1757,16 @@ $api->fixtures()
 withOrder(string $order): self
 ```
 
-Determines the order in which the data will be sorted. Options are between ascending and descending:
-- `asc`
-- `desc`
-
+Determines the order in which the data will be sorted.
 
 ```php
+// results in descending order
 $api->fixtures()
     ->withOrder('desc')
     ->getAll();
 ```
+
+For all available order options, check the [official documentation](https://docs.sportmonks.com/football/api/request-options/ordering-and-sorting).
 
 #### `withPagination`
 
@@ -1809,6 +1812,8 @@ $api->fixtures()
     ->getById(1);
 ```
 
+To better understand how it works, check the [official documentation](https://docs.sportmonks.com/football/api/request-options/selecting-fields).
+
 #### `withInclude`
 
 ```php
@@ -1817,7 +1822,7 @@ withInclude(string $include): self
 
 Includes allow to enrich the response with relational data.
 This means that it is possible to request a fixture and have the venue data in the same response without any additional requests.
-To check what includes ara available per endpoint, check the [official documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints).
+To check what includes ara available per endpoint, check the following [documentation](https://docs.sportmonks.com/football/endpoints-and-entities/endpoints).
 
 ```php
 // get fixture with "venue" and "participants" (teams) data
