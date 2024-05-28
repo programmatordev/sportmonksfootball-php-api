@@ -277,10 +277,6 @@ class SportMonksFootball extends Api
 
             $data = \json_decode($response->getBody()->getContents(), true);
 
-            // since body is a stream, it must be rewound for later calls (ResponseContentsEvent)
-            // otherwise contents would be empty
-            $response->getBody()->rewind();
-
             // if response contains a message it is an error
             $errorMessage = $data['message'] ?? null;
 
