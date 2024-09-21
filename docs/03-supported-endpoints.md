@@ -62,17 +62,25 @@ For example, when requesting a fixture by id, the response will be a `FixtureIte
 The same way that when requesting all fixtures, the response will be a `FixtureCollection` object and the `getData()` method will return an array of [`Fixture`](05-entities.md#fixture) objects.
 Check the [responses entities](05-entities.md#response-entities) for more information.
 
+[`<Entity>Item`](05-entities.md#entityitem) response example:
+
 ```php
 // returns a FixtureItem object
 $response = $api->fixtures()->getById(1);
 // returns a Fixture object
 $fixture = $response->getData();
-echo $fixture->getName();
 
+echo $fixture->getName();
+```
+
+[`<Entity>Collection`](05-entities.md#entitycollection) response example:
+
+```php
 // returns a FixtureCollection object
 $response = $api->fixtures()->getAll();
 // returns an array of Fixture objects
 $fixtures = $response->getData();
+
 foreach ($fixtures as $fixture) {
     echo $fixture->getName();
 }
