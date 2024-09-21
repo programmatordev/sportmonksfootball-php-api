@@ -202,6 +202,7 @@
 - `getRelatedPlayerId()`: `?int`
 - `getPeriodId()`: `int`
 - `getParticipantId()`: `int`
+- `getSortOrder()`: `?int`
 - `getCoachId()`: `?int`
 - `getSection()`: `?string`
 - `getPlayerName()`: `?string`
