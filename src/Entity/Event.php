@@ -18,6 +18,8 @@ class Event
 
     private int $participantId;
 
+    private ?int $sortOrder;
+
     private ?string $section;
 
     private ?string $playerName;
@@ -63,6 +65,7 @@ class Event
         $this->relatedPlayerId = $data['related_player_id'] ?? null;
         $this->periodId = $data['period_id'];
         $this->participantId = $data['participant_id'];
+        $this->sortOrder = $data['sort_order'] ?? null;
 
         // select
         $this->section = $data['section'] ?? null;
@@ -120,6 +123,11 @@ class Event
     public function getParticipantId(): int
     {
         return $this->participantId;
+    }
+
+    public function getSortOrder(): ?int
+    {
+        return $this->sortOrder;
     }
 
     public function getSection(): ?string
