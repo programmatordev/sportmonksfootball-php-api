@@ -29,6 +29,7 @@
   - [Player](#player)
   - [PlayerStatistic](#playerstatistic)
   - [PlayerStatisticDetail](#playerstatisticdetail)
+  - [Ranking](#ranking)
   - [Referee](#referee)
   - [RefereeStatistic](#refereestatistic)
   - [RefereeStatisticDetail](#refereestatisticdetail)
@@ -496,6 +497,15 @@
 - `getValue()`: `array`
 - `getType()`: [`?Type`](#type) (`type` include is required)
 
+### Ranking
+
+- `getId()`: `?int`
+- `getParticipantId()`: `?int`
+- `getSportId()`: `?int`
+- `getPosition()`: `?int`
+- `getPoints()`: `?int`
+- `getType()`: `?string`
+
 ### Referee
 
 - `getId()`: `int`
@@ -779,6 +789,7 @@
 - `getSocials()`: [`?Social[]`](#social) (`scoails` include is required)
 - `getCoaches()`: [`?TeamCoach[]`](#teamcoach) (`coaches` include is required)
 - `getStatistics()`: [`?TeamStatistic[]`](#teamstatistic) (`statistics` include is required)
+- `getRankings()`: [`?Ranking[]`](#ranking) (`rankings` include is required)
 
 ### TeamCoach
 

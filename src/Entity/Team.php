@@ -74,6 +74,9 @@ class Team
     /** @var ?TeamStatistic[] */
     private ?array $statistics;
 
+    /** @var ?Ranking[] */
+    private ?array $rankings;
+
     public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
@@ -107,6 +110,7 @@ class Team
         $this->socials = isset($data['socials']) ? $this->createEntityCollection(Social::class, $data['socials']) : null;
         $this->coaches = isset($data['coaches']) ? $this->createEntityCollection(TeamCoach::class, $data['coaches'], $timezone) : null;
         $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(TeamStatistic::class, $data['statistics'], $timezone) : null;
+        $this->rankings = isset($data['rankings']) ? $this->createEntityCollection(Ranking::class, $data['rankings']) : null;
     }
 
     public function getId(): int
@@ -242,5 +246,10 @@ class Team
     public function getStatistics(): ?array
     {
         return $this->statistics;
+    }
+
+    public function getRankings(): ?array
+    {
+        return $this->rankings;
     }
 }
