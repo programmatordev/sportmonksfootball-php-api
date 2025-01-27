@@ -13,6 +13,7 @@
   - [Coach](#coach)
   - [CoachStatistic](#coachstatistic)
   - [CoachStatisticDetail](#coachstatisticdetail)
+  - [DetailedPeriod](#detailedperiod)
   - [Event](#event)
   - [Fixture](#fixture)
   - [FixtureReferee](#fixturereferee)
@@ -194,6 +195,28 @@
 - `getValue()`: `array`
 - `getType()`: [`?Type`](#type) (`type` include is required)
 
+### DetailedPeriod
+
+- `getId()`: `int`
+- `getFixtureId()`: `int`
+- `getTypeId()`: `int`
+- `getStartAt()`: `?\DateTimeImmutable`
+- `getEndAt()`: `?\DateTimeImmutable`
+- `getCountsFrom()`: `?int`
+- `isTicking()`: `?bool`
+- `getSortOrder()`: `?int`
+- `getDescription()`: `?string`
+- `getTimeAdded()`: `?int`
+- `getPeriodLength()`: `?int`
+- `getMinutes()`: `?int`
+- `getSeconds()`: `?int`
+- `hasTimer()`: `bool`
+- `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
+- `getEvents()`: [`?Event[]`](#event) (`events` include is required)
+- `getTimeline()`: [`?Event[]`](#event) (`timeline` include is required)
+- `getStatistics()`: [`?FixtureStatistic[]`](#fixturestatistic) (`statistics` include is required)
+
 ### Event
 
 - `getId()`: `int`
@@ -202,6 +225,7 @@
 - `getPlayerId()`: `?int`
 - `getRelatedPlayerId()`: `?int`
 - `getPeriodId()`: `int`
+- `getDetailedPeriodId()`: `?int`
 - `getParticipantId()`: `int`
 - `getSortOrder()`: `?int`
 - `getCoachId()`: `?int`
@@ -222,6 +246,7 @@
 - `getRelatedPlayer()`: [`?Player`](#player) (`relatedPlayer` include is required)
 - `getParticipant()`: [`?Team`](#team) (`participant` include is required)
 - `getPeriod()`: [`?Period`](#period) (`period` include is required)
+- `getDetailedPeriod()`: [`?DetailedPeriod`](#detailedperiod) (`detailedPeriod` include is required)
 
 ### Fixture
 
@@ -263,6 +288,7 @@
 - `getTimeline()`: [`?Event[]`](#event) (`timeline` include is required)
 - `getStatistics()`: [`?FixtureStatistic[]`](#fixturestatistic) (`statistics` include is required)
 - `getPeriods()`: [`?Period[]`](#period) (`periods` include is required)
+- `getDetailedPeriods`: [`?DetailedPeriod[]`](#detailedperiod) (`detailedPeriods` include is required)
 - `getFormations()`: [`?Formation[]`](#formation) (`formations` include is required)
 - `getScores()`: [`?Score[]`](#score) (`scores` include is required)
 - `getTvStations()`: [`?FixtureTvStation[]`](#fixturetvstation) (`tvStations` include is required)
