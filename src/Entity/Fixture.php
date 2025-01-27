@@ -93,6 +93,9 @@ class Fixture
     /** @var ?Period[] */
     private ?array $periods;
 
+    /** @var ?DetailedPeriod[] */
+    private ?array $detailedPeriods;
+
     /** @var ?Formation[] */
     private ?array $formations;
 
@@ -152,6 +155,7 @@ class Fixture
         $this->timeline = isset($data['timeline']) ? $this->createEntityCollection(Event::class, $data['timeline'], $timezone) : null;
         $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(FixtureStatistic::class, $data['statistics'], $timezone) : null;
         $this->periods = isset($data['periods']) ? $this->createEntityCollection(Period::class, $data['periods'], $timezone) : null;
+        $this->detailedPeriods = isset($data['detailedperiods']) ? $this->createEntityCollection(DetailedPeriod::class, $data['detailedperiods'], $timezone) : null;
         $this->formations = isset($data['formations']) ? $this->createEntityCollection(Formation::class, $data['formations'], $timezone) : null;
         $this->scores = isset($data['scores']) ? $this->createEntityCollection(Score::class, $data['scores'], $timezone) : null;
         $this->tvStations = isset($data['tvstations']) ? $this->createEntityCollection(FixtureTvStation::class, $data['tvstations'], $timezone) : null;
@@ -349,6 +353,11 @@ class Fixture
     public function getPeriods(): ?array
     {
         return $this->periods;
+    }
+
+    public function getDetailedPeriods(): ?array
+    {
+        return $this->detailedPeriods;
     }
 
     public function getFormations(): ?array

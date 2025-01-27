@@ -16,6 +16,8 @@ class Event
 
     private int $periodId;
 
+    private ?int $detailedPeriodId;
+
     private int $participantId;
 
     private ?int $sortOrder;
@@ -56,6 +58,8 @@ class Event
 
     private ?Period $period;
 
+    private ?DetailedPeriod $detailedPeriod;
+
     public function __construct(array $data, string $timezone)
     {
         $this->id = $data['id'];
@@ -64,6 +68,7 @@ class Event
         $this->playerId = $data['player_id'] ?? null;
         $this->relatedPlayerId = $data['related_player_id'] ?? null;
         $this->periodId = $data['period_id'];
+        $this->detailedPeriodId = $data['detailed_period_id'] ?? null;
         $this->participantId = $data['participant_id'];
         $this->sortOrder = $data['sort_order'] ?? null;
 
@@ -88,6 +93,7 @@ class Event
         $this->relatedPlayer = isset($data['relatedplayer']) ? new Player($data['relatedplayer'], $timezone) : null;
         $this->participant = isset($data['participant']) ? new Team($data['participant'], $timezone) : null;
         $this->period = isset($data['period']) ? new Period($data['period'], $timezone) : null;
+        $this->detailedPeriod = isset($data['detailedperiod']) ? new DetailedPeriod($data['detailedperiod'], $timezone) : null;
     }
 
     public function getId(): int
@@ -118,6 +124,11 @@ class Event
     public function getPeriodId(): int
     {
         return $this->periodId;
+    }
+
+    public function getDetailedPeriodId(): ?int
+    {
+        return $this->detailedPeriodId;
     }
 
     public function getParticipantId(): int
@@ -219,4 +230,10 @@ class Event
     {
         return $this->period;
     }
+
+    public function getDetailedPeriod(): ?DetailedPeriod
+    {
+        return $this->detailedPeriod;
+    }
+
 }

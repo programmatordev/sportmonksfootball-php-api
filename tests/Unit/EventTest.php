@@ -16,6 +16,7 @@ class EventTest extends AbstractTest
             'player_id' => 1,
             'related_player_id' => 1,
             'period_id' => 1,
+            'detailed_period_id' => 1,
             'participant_id' => 1,
             'sort_order' => 1,
             'section' => 'section',
@@ -37,6 +38,7 @@ class EventTest extends AbstractTest
         $this->assertSame(1, $entity->getPlayerId());
         $this->assertSame(1, $entity->getRelatedPlayerId());
         $this->assertSame(1, $entity->getPeriodId());
+        $this->assertSame(1, $entity->getDetailedPeriodId());
         $this->assertSame(1, $entity->getParticipantId());
         $this->assertSame(1, $entity->getSortOrder());
         $this->assertSame('section', $entity->getSection());
