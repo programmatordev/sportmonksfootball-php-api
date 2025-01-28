@@ -58,7 +58,7 @@ class Event
 
     private ?Period $period;
 
-    private ?DetailedPeriod $detailedPeriod;
+    private ?Period $detailedPeriod;
 
     public function __construct(array $data, string $timezone)
     {
@@ -93,7 +93,7 @@ class Event
         $this->relatedPlayer = isset($data['relatedplayer']) ? new Player($data['relatedplayer'], $timezone) : null;
         $this->participant = isset($data['participant']) ? new Team($data['participant'], $timezone) : null;
         $this->period = isset($data['period']) ? new Period($data['period'], $timezone) : null;
-        $this->detailedPeriod = isset($data['detailedperiod']) ? new DetailedPeriod($data['detailedperiod'], $timezone) : null;
+        $this->detailedPeriod = isset($data['detailedperiod']) ? new Period($data['detailedperiod'], $timezone) : null;
     }
 
     public function getId(): int
@@ -231,9 +231,8 @@ class Event
         return $this->period;
     }
 
-    public function getDetailedPeriod(): ?DetailedPeriod
+    public function getDetailedPeriod(): ?Period
     {
         return $this->detailedPeriod;
     }
-
 }
