@@ -42,6 +42,8 @@ class Event
 
     private ?bool $isOnBench;
 
+    private ?bool $isRescinded;
+
     private ?int $coachId;
 
     private ?Fixture $fixture;
@@ -83,6 +85,7 @@ class Event
         $this->extraMinute = $data['extra_minute'] ?? null;
         $this->isInjured = $data['injured'] ?? null;
         $this->isOnBench = $data['on_bench'] ?? null;
+        $this->isRescinded = $data['rescinded'] ?? null;
         $this->coachId = $data['coach_id'] ?? null;
 
         // include
@@ -189,6 +192,11 @@ class Event
     public function isOnBench(): ?bool
     {
         return $this->isOnBench;
+    }
+
+    public function isRescinded(): ?bool
+    {
+        return $this->isRescinded;
     }
 
     public function getCoachId(): ?int

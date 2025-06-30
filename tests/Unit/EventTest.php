@@ -29,6 +29,7 @@ class EventTest extends AbstractTest
             'extra_minute' => 2,
             'injured' => false,
             'on_bench' => false,
+            'rescinded' => false,
             'coach_id' => 1
         ], 'UTC');
 
@@ -51,6 +52,7 @@ class EventTest extends AbstractTest
         $this->assertSame(2, $entity->getExtraMinute());
         $this->assertSame(false, $entity->isInjured());
         $this->assertSame(false, $entity->isOnBench());
+        $this->assertSame(false, $entity->isRescinded());
         $this->assertSame(1, $entity->getCoachId());
     }
 }
