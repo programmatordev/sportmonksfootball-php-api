@@ -216,6 +216,7 @@
 - `getExtraMinute()`: `?int`
 - `isInjured()`: `?bool`
 - `isOnBench()`: `?bool`
+- `isRescinded()`: `?bool`
 - `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
 - `getType()`: [`?Type`](#type) (`type` include is required)
 - `getSubType()`: [`?Type`](#type) (`subType` include is required)
