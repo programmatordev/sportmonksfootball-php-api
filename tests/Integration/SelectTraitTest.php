@@ -25,6 +25,7 @@ class SelectTraitTest extends AbstractTest
 
     public function testMethods(): void
     {
+        $this->assertSame(null, $this->resource->getSelect());
         $this->assertSame('id,name', $this->resource->withSelect('id,name')->getSelect());
         $this->assertSame(null, $this->resource->getSelect()); // back to default value
     }

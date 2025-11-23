@@ -5,7 +5,6 @@ namespace ProgrammatorDev\SportMonksFootball\Resource;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\FixtureCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\FixtureItem;
 use ProgrammatorDev\SportMonksFootball\Resource\Util\PaginationTrait;
-use ProgrammatorDev\Validator\Exception\ValidationException;
 use Psr\Http\Client\ClientExceptionInterface;
 
 class FixtureResource extends Resource
@@ -43,12 +42,9 @@ class FixtureResource extends Resource
     /**
      * @param int[] $ids
      * @throws ClientExceptionInterface
-     * @throws ValidationException
      */
     public function getAllByMultipleIds(array $ids): FixtureCollection
     {
-        $this->validateMultipleIntegers($ids, 'ids');
-
         $data = $this->api->request(
             method: 'GET',
             path: $this->api->buildPath('/v3/football/fixtures/multi/{ids}', [
@@ -76,12 +72,9 @@ class FixtureResource extends Resource
 
     /**
      * @throws ClientExceptionInterface
-     * @throws ValidationException
      */
     public function getAllByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate): FixtureCollection
     {
-        $this->validateDateOrder($startDate, $endDate);
-
         $data = $this->api->request(
             method: 'GET',
             path: $this->api->buildPath('/v3/football/fixtures/between/{startDate}/{endDate}', [
@@ -95,7 +88,6 @@ class FixtureResource extends Resource
 
     /**
      * @throws ClientExceptionInterface
-     * @throws ValidationException
      */
     public function getAllByTeamIdAndDateRange(
         int $teamId,
@@ -103,8 +95,6 @@ class FixtureResource extends Resource
         \DateTimeInterface $endDate
     ): FixtureCollection
     {
-        $this->validateDateOrder($startDate, $endDate);
-
         $data = $this->api->request(
             method: 'GET',
             path: $this->api->buildPath('/v3/football/fixtures/between/{startDate}/{endDate}/{teamId}', [
@@ -134,13 +124,10 @@ class FixtureResource extends Resource
     }
 
     /**
-     * @throws ValidationException
      * @throws ClientExceptionInterface
      */
     public function getAllBySearchQuery(string $query): FixtureCollection
     {
-        $this->validateQuery($query);
-
         $data = $this->api->request(
             method: 'GET',
             path: $this->api->buildPath('/v3/football/fixtures/search/{query}', [

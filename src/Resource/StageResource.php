@@ -5,7 +5,6 @@ namespace ProgrammatorDev\SportMonksFootball\Resource;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\StageCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\StageItem;
 use ProgrammatorDev\SportMonksFootball\Resource\Util\PaginationTrait;
-use ProgrammatorDev\Validator\Exception\ValidationException;
 use Psr\Http\Client\ClientExceptionInterface;
 
 class StageResource extends Resource
@@ -56,13 +55,10 @@ class StageResource extends Resource
     }
 
     /**
-     * @throws ValidationException
      * @throws ClientExceptionInterface
      */
     public function getAllBySearchQuery(string $query): StageCollection
     {
-        $this->validateQuery($query);
-
         $data = $this->api->request(
             method: 'GET',
             path: $this->api->buildPath('/v3/football/stages/search/{query}', [

@@ -8,13 +8,11 @@ use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 use ProgrammatorDev\SportMonksFootball\Test\MockResponse;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestCollectionResponseTrait;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestItemResponseTrait;
-use ProgrammatorDev\SportMonksFootball\Test\Util\TestValidationExceptionTrait;
 
 class TransferResourceTest extends AbstractTest
 {
     use TestItemResponseTrait;
     use TestCollectionResponseTrait;
-    use TestValidationExceptionTrait;
 
     public static function provideItemResponseData(): \Generator
     {
@@ -61,15 +59,6 @@ class TransferResourceTest extends AbstractTest
             'transfers',
             'getAllByPlayerId',
             [1]
-        ];
-    }
-
-    public static function provideValidationExceptionData(): \Generator
-    {
-        yield 'get all by date range, invalid date order' => [
-            'transfers',
-            'getAllByDateRange',
-            [new \DateTime('today'), new \DateTime('yesterday')]
         ];
     }
 }

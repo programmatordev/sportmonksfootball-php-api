@@ -4,7 +4,6 @@ namespace ProgrammatorDev\SportMonksFootball\Test\Integration;
 
 use ProgrammatorDev\SportMonksFootball\Resource\Resource;
 use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
-use ProgrammatorDev\Validator\Exception\ValidationException;
 
 class TimezoneTraitTest extends AbstractTest
 {
@@ -24,13 +23,8 @@ class TimezoneTraitTest extends AbstractTest
 
     public function testMethods(): void
     {
+        $this->assertSame('UTC', $this->resource->getTimezone());
         $this->assertSame('Europe/Lisbon', $this->resource->withTimezone('Europe/Lisbon')->getTimezone());
         $this->assertSame('UTC', $this->resource->getTimezone()); // back to default value
-    }
-
-    public function testValidationException(): void
-    {
-        $this->expectException(ValidationException::class);
-        $this->resource->withTimezone('invalid');
     }
 }
