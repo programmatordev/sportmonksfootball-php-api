@@ -5,7 +5,6 @@ namespace ProgrammatorDev\SportMonksFootball\Resource;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\SeasonCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\SeasonItem;
 use ProgrammatorDev\SportMonksFootball\Resource\Util\PaginationTrait;
-use ProgrammatorDev\Validator\Exception\ValidationException;
 use Psr\Http\Client\ClientExceptionInterface;
 
 class SeasonResource extends Resource
@@ -56,13 +55,10 @@ class SeasonResource extends Resource
     }
 
     /**
-     * @throws ValidationException
      * @throws ClientExceptionInterface
      */
     public function getAllBySearchQuery(string $query): SeasonCollection
     {
-        $this->validateQuery($query);
-
         $data = $this->api->request(
             method: 'GET',
             path: $this->api->buildPath('/v3/football/seasons/search/{query}', [

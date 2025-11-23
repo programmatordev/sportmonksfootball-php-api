@@ -5,7 +5,6 @@ namespace ProgrammatorDev\SportMonksFootball\Resource;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\TransferCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\TransferItem;
 use ProgrammatorDev\SportMonksFootball\Resource\Util\PaginationTrait;
-use ProgrammatorDev\Validator\Exception\ValidationException;
 use Psr\Http\Client\ClientExceptionInterface;
 
 class TransferResource extends Resource
@@ -54,13 +53,10 @@ class TransferResource extends Resource
     }
 
     /**
-     * @throws ValidationException
      * @throws ClientExceptionInterface
      */
     public function getAllByDateRange(\DateTimeInterface $startDate, \DateTimeInterface $endDate): TransferCollection
     {
-        $this->validateDateOrder($startDate, $endDate);
-
         $data = $this->api->request(
             method: 'GET',
             path: $this->api->buildPath('/v3/football/transfers/between/{startDate}/{endDate}', [

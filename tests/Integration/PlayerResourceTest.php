@@ -2,21 +2,17 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Test\Integration;
 
-use ProgrammatorDev\SportMonksFootball\Entity\Response\BookmakerCollection;
-use ProgrammatorDev\SportMonksFootball\Entity\Response\BookmakerItem;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\PlayerCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\PlayerItem;
 use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 use ProgrammatorDev\SportMonksFootball\Test\MockResponse;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestCollectionResponseTrait;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestItemResponseTrait;
-use ProgrammatorDev\SportMonksFootball\Test\Util\TestValidationExceptionTrait;
 
 class PlayerResourceTest extends AbstractTest
 {
     use TestItemResponseTrait;
     use TestCollectionResponseTrait;
-    use TestValidationExceptionTrait;
 
     public static function provideItemResponseData(): \Generator
     {
@@ -56,15 +52,6 @@ class PlayerResourceTest extends AbstractTest
             MockResponse::PLAYER_COLLECTION_DATA,
             'players',
             'getAllLastUpdated'
-        ];
-    }
-
-    public static function provideValidationExceptionData(): \Generator
-    {
-        yield 'get all by search query, blank query' => [
-            'players',
-            'getAllBySearchQuery',
-            ['']
         ];
     }
 }

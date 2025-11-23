@@ -5,7 +5,6 @@ namespace ProgrammatorDev\SportMonksFootball\Resource;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\PlayerCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\PlayerItem;
 use ProgrammatorDev\SportMonksFootball\Resource\Util\PaginationTrait;
-use ProgrammatorDev\Validator\Exception\ValidationException;
 use Psr\Http\Client\ClientExceptionInterface;
 
 class PlayerResource extends Resource
@@ -56,13 +55,10 @@ class PlayerResource extends Resource
     }
 
     /**
-     * @throws ValidationException
      * @throws ClientExceptionInterface
      */
     public function getAllBySearchQuery(string $query): PlayerCollection
     {
-        $this->validateQuery($query);
-
         $data = $this->api->request(
             method: 'GET',
             path: $this->api->buildPath('/v3/football/players/search/{query}', [

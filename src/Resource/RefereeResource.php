@@ -5,7 +5,6 @@ namespace ProgrammatorDev\SportMonksFootball\Resource;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\RefereeCollection;
 use ProgrammatorDev\SportMonksFootball\Entity\Response\RefereeItem;
 use ProgrammatorDev\SportMonksFootball\Resource\Util\PaginationTrait;
-use ProgrammatorDev\Validator\Exception\ValidationException;
 use Psr\Http\Client\ClientExceptionInterface;
 
 class RefereeResource extends Resource
@@ -71,13 +70,10 @@ class RefereeResource extends Resource
     }
 
     /**
-     * @throws ValidationException
      * @throws ClientExceptionInterface
      */
     public function getAllBySearchQuery(string $query): RefereeCollection
     {
-        $this->validateQuery($query);
-
         $data = $this->api->request(
             method: 'GET',
             path: $this->api->buildPath('/v3/football/referees/search/{query}', [
