@@ -287,10 +287,14 @@
 
 - `getId()`: `int`
 - `getFixtureId()`: `int`
-- `getSidelinedId()`: `int`
+- `getSidelinedId()`: `?int`
+- `getPlayerId()`: `?int`
+- `getTypeId()`: `?int`
 - `getParticipantId()`: `int`
 - `getFixture()`: [`?Fixture`](#fixture) (`fixture` include is required)
-- `getSidelined()`: [`?Sidelined`](#sidelined) (`sidelined` include is required)
+- `getSidelined()`: [`?Sidelined`](#sidelined) (`sideline` include is required)
+- `getPlayer()`: [`?Player`](#player) (`player` include is required)
+- `getType()`: [`?Type`](#type) (`type` include is required)
 - `getParticipant()`: [`?Team`](#team) (`participant` include is required)
 
 ### FixtureTvStation
