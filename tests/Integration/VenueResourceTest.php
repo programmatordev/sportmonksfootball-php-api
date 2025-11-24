@@ -8,13 +8,11 @@ use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 use ProgrammatorDev\SportMonksFootball\Test\MockResponse;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestCollectionResponseTrait;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestItemResponseTrait;
-use ProgrammatorDev\SportMonksFootball\Test\Util\TestValidationExceptionTrait;
 
 class VenueResourceTest extends AbstractTest
 {
     use TestItemResponseTrait;
     use TestCollectionResponseTrait;
-    use TestValidationExceptionTrait;
 
     public static function provideItemResponseData(): \Generator
     {
@@ -48,15 +46,6 @@ class VenueResourceTest extends AbstractTest
             'venues',
             'getAllBySearchQuery',
             ['test']
-        ];
-    }
-
-    public static function provideValidationExceptionData(): \Generator
-    {
-        yield 'get all by search query, blank query' => [
-            'venues',
-            'getAllBySearchQuery',
-            ['']
         ];
     }
 }

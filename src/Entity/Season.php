@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class Season
 {
-    use EntityTrait;
-
     private int $id;
 
     private int $sportId;
@@ -76,13 +74,13 @@ class Season
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
         $this->league = isset($data['league']) ? new League($data['league'], $timezone) : null;
-        $this->stages = isset($data['stages']) ? $this->createEntityCollection(Stage::class, $data['stages'], $timezone) : null;
+        $this->stages = isset($data['stages']) ? EntityHelper::createEntityCollection(Stage::class, $data['stages'], $timezone) : null;
         $this->currentStage = isset($data['currentstage']) ? new Stage($data['currentstage'], $timezone) : null;
-        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures'], $timezone) : null;
-        $this->teams = isset($data['teams']) ? $this->createEntityCollection(Team::class, $data['teams'], $timezone) : null;
-        $this->groups = isset($data['groups']) ? $this->createEntityCollection(Group::class, $data['groups']) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(Statistic::class, $data['statistics'], $timezone) : null;
-        $this->topscorers = isset($data['topscorers']) ? $this->createEntityCollection(Topscorer::class, $data['topscorers'], $timezone) : null;
+        $this->fixtures = isset($data['fixtures']) ? EntityHelper::createEntityCollection(Fixture::class, $data['fixtures'], $timezone) : null;
+        $this->teams = isset($data['teams']) ? EntityHelper::createEntityCollection(Team::class, $data['teams'], $timezone) : null;
+        $this->groups = isset($data['groups']) ? EntityHelper::createEntityCollection(Group::class, $data['groups']) : null;
+        $this->statistics = isset($data['statistics']) ? EntityHelper::createEntityCollection(Statistic::class, $data['statistics'], $timezone) : null;
+        $this->topscorers = isset($data['topscorers']) ? EntityHelper::createEntityCollection(Topscorer::class, $data['topscorers'], $timezone) : null;
     }
 
     public function getId(): int

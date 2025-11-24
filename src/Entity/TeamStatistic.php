@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class TeamStatistic extends ParticipantStatistic
 {
-    use EntityTrait;
-
     private int $teamId;
 
     private ?bool $hasValues;
@@ -27,7 +25,7 @@ class TeamStatistic extends ParticipantStatistic
         $this->hasValues = $data['has_values'] ?? null;
 
         // include
-        $this->details = isset($data['details']) ? $this->createEntityCollection(TeamStatisticDetail::class, $data['details']) : null;
+        $this->details = isset($data['details']) ? EntityHelper::createEntityCollection(TeamStatisticDetail::class, $data['details']) : null;
         $this->team = isset($data['team']) ? new Team($data['team'], $timezone) : null;
     }
 

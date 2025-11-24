@@ -41,6 +41,11 @@ class PaginationTraitTest extends AbstractTest
 
     public function testMethods(): void
     {
+        $this->assertSame(null, $this->resource->getPage());
+        $this->assertSame(null, $this->resource->getPerPage());
+        $this->assertSame(null, $this->resource->getSortBy());
+        $this->assertSame(null, $this->resource->getOrder());
+
         $this->assertSame(1, $this->resource->withPage(1)->getPage());
         $this->assertSame(null, $this->resource->getPage());
 

@@ -8,13 +8,11 @@ use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 use ProgrammatorDev\SportMonksFootball\Test\MockResponse;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestCollectionResponseTrait;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestItemResponseTrait;
-use ProgrammatorDev\SportMonksFootball\Test\Util\TestValidationExceptionTrait;
 
 class CoachResourceTest extends AbstractTest
 {
     use TestItemResponseTrait;
     use TestCollectionResponseTrait;
-    use TestValidationExceptionTrait;
 
     public static function provideItemResponseData(): \Generator
     {
@@ -54,15 +52,6 @@ class CoachResourceTest extends AbstractTest
             MockResponse::COACH_COLLECTION_DATA,
             'coaches',
             'getAllLastUpdated'
-        ];
-    }
-
-    public static function provideValidationExceptionData(): \Generator
-    {
-        yield 'get all by search query, blank query' => [
-            'coaches',
-            'getAllBySearchQuery',
-            ['']
         ];
     }
 }

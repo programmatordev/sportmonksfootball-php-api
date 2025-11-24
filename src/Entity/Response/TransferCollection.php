@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Transfer;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class TransferCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var Transfer[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class TransferCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Transfer::class, $data['data'], $data['timezone']);
+        $this->data = EntityHelper::createEntityCollection(Transfer::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

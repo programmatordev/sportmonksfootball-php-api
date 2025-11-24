@@ -13,12 +13,16 @@ class FixtureSidelinedTest extends AbstractTest
             'id' => 1,
             'fixture_id' => 1,
             'sideline_id' => 1,
+            'player_id' => 1,
+            'type_id' => 1,
             'participant_id' => 1,
         ], 'UTC');
 
         $this->assertSame(1, $entity->getId());
         $this->assertSame(1, $entity->getFixtureId());
         $this->assertSame(1, $entity->getSidelinedId());
+        $this->assertSame(1, $entity->getPlayerId());
+        $this->assertSame(1, $entity->getTypeId());
         $this->assertSame(1, $entity->getParticipantId());
     }
 }

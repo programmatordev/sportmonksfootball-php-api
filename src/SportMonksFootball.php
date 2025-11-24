@@ -58,17 +58,22 @@ use ProgrammatorDev\SportMonksFootball\Resource\TransferResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TvStationResource;
 use ProgrammatorDev\SportMonksFootball\Resource\TypeResource;
 use ProgrammatorDev\SportMonksFootball\Resource\VenueResource;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SportMonksFootball extends Api
 {
-    private array $options;
+    private readonly array $options;
+
+    private OptionsResolver $optionsResolver;
 
     public function __construct(
-        #[\SensitiveParameter] private string $apiKey,
+        #[\SensitiveParameter] private readonly string $apiKey,
         array $options = []
     )
     {
         parent::__construct();
+
+        $this->optionsResolver = new OptionsResolver();
 
         $this->options = $this->configureOptions($options);
         $this->configureApi();
@@ -255,7 +260,7 @@ class SportMonksFootball extends Api
             $request = $event->getRequest();
             $uri = $request->getUri();
 
-            \parse_str($uri->getQuery(), $query);
+            parse_str($uri->getQuery(), $query);
 
             // removes "per_page" query parameter if "populate" filter exists,
             // otherwise it would be ignored
@@ -275,7 +280,7 @@ class SportMonksFootball extends Api
             $response = $event->getResponse();
             $statusCode = $response->getStatusCode();
 
-            $data = \json_decode($response->getBody()->getContents(), true);
+            $data = json_decode($response->getBody()->getContents(), true);
 
             // if response contains a message it is an error
             $errorMessage = $data['message'] ?? null;
@@ -327,7 +332,7 @@ class SportMonksFootball extends Api
         $this->addResponseContentsListener(function(ResponseContentsEvent $event) {
             // decode json string response into an array
             $contents = $event->getContents();
-            $contents = \json_decode($contents, true);
+            $contents = json_decode($contents, true);
 
             $event->setContents($contents);
         });

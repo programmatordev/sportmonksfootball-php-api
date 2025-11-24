@@ -8,13 +8,11 @@ use ProgrammatorDev\SportMonksFootball\Test\AbstractTest;
 use ProgrammatorDev\SportMonksFootball\Test\MockResponse;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestCollectionResponseTrait;
 use ProgrammatorDev\SportMonksFootball\Test\Util\TestItemResponseTrait;
-use ProgrammatorDev\SportMonksFootball\Test\Util\TestValidationExceptionTrait;
 
 class FixtureResourceTest extends AbstractTest
 {
     use TestItemResponseTrait;
     use TestCollectionResponseTrait;
-    use TestValidationExceptionTrait;
 
     public static function provideItemResponseData(): \Generator
     {
@@ -96,30 +94,6 @@ class FixtureResourceTest extends AbstractTest
             MockResponse::FIXTURE_COLLECTION_DATA,
             'fixtures',
             'getAllLastUpdated'
-        ];
-    }
-
-    public static function provideValidationExceptionData(): \Generator
-    {
-        yield 'get all by multiple ids, invalid integer' => [
-            'fixtures',
-            'getAllByMultipleIds',
-            [[1, 'a']]
-        ];
-        yield 'get all by date range, invalid date order' => [
-            'fixtures',
-            'getAllByDateRange',
-            [new \DateTime('today'), new \DateTime('yesterday')]
-        ];
-        yield 'get all by team id and date range, invalid date order' => [
-            'fixtures',
-            'getAllByTeamIdAndDateRange',
-            [1, new \DateTime('today'), new \DateTime('yesterday')]
-        ];
-        yield 'get all by search query, blank query' => [
-            'fixtures',
-            'getAllBySearchQuery',
-            ['']
         ];
     }
 }

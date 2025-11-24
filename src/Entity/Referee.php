@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class Referee extends Person
 {
-    use EntityTrait;
-
     private ?City $city;
 
     /** @var ?RefereeStatistic[] */
@@ -19,7 +17,7 @@ class Referee extends Person
 
         // include
         $this->city = isset($data['city']) ? new City($data['city'], $timezone) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(RefereeStatistic::class, $data['statistics'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? EntityHelper::createEntityCollection(RefereeStatistic::class, $data['statistics'], $timezone) : null;
     }
 
     public function getCity(): ?City

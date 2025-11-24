@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class Subscription
 {
-    use EntityTrait;
-
     private array $meta;
 
     private array $plans;
@@ -19,7 +17,7 @@ class Subscription
     public function __construct(array $data)
     {
         $this->meta = $data['meta'];
-        $this->plans = $this->createEntityCollection(Plan::class, $data['plans']);
+        $this->plans = EntityHelper::createEntityCollection(Plan::class, $data['plans']);
         $this->addOns = $data['add_ons'];
         $this->widgets = $data['widgets'];
     }

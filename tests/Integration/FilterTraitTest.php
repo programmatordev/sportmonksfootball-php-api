@@ -23,6 +23,7 @@ class FilterTraitTest extends AbstractTest
 
     public function testMethods(): void
     {
+        $this->assertSame(null, $this->resource->getFilter());
         $this->assertSame('eventTypes:18,17', $this->resource->withFilter('eventTypes:18,17')->getFilter());
         $this->assertSame(null, $this->resource->getFilter()); // back to default value
     }

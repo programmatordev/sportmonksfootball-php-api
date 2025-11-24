@@ -23,6 +23,7 @@ class IncludeTraitTest extends AbstractTest
 
     public function testMethods(): void
     {
+        $this->assertSame(null, $this->resource->getInclude());
         $this->assertSame('fixtures;teams', $this->resource->withInclude('fixtures;teams')->getInclude());
         $this->assertSame(null, $this->resource->getInclude()); // back to default value
     }

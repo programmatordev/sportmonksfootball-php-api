@@ -1,17 +1,17 @@
 <?php
 
-namespace ProgrammatorDev\SportMonksFootball\Util;
+namespace ProgrammatorDev\SportMonksFootball\Helper;
 
-trait ReflectionTrait
+class ReflectionHelper
 {
-    private function getClassConstants(string $className): array
+    public static function getClassConstants(string $className): array
     {
         $reflection = new \ReflectionClass($className);
         $constants = $reflection->getConstants();
 
-        // Sort by alphabetical order
+        // sort by alphabetical order
         // to be more intuitive when listing values for error messages
-        \asort($constants);
+        asort($constants);
 
         return $constants;
     }

@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\StandingCorrection;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class StandingCorrectionCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var StandingCorrection[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class StandingCorrectionCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(StandingCorrection::class, $data['data'], $data['timezone']);
+        $this->data = EntityHelper::createEntityCollection(StandingCorrection::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

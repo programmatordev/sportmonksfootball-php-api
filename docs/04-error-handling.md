@@ -1,8 +1,5 @@
 # Error Handling
 
-- [API Errors](#api-errors)
-- [Validation Errors](#validation-errors)
-
 ## API Errors
 
 To handle API response errors, multiple exceptions are provided.
@@ -16,7 +13,7 @@ You can see all available exceptions below:
 try {
     $response = $api->fixtures()->getById(1);
 }
-// when the query did not return any results (for example, the requested id does not exist or is empty)
+// when the query did not return any results (for example, the requested id does not exist or is empty), 
 // or there is no access via the current subscription
 catch (NoResultsFoundException $exception) {
     echo $exception->getMessage();
@@ -56,22 +53,6 @@ try {
 // catches all API response errors
 catch (ApiErrorException $exception) {
     echo $exception->getCode();
-    echo $exception->getMessage();
-}
-```
-
-## Validation Errors
-
-To catch invalid input data, the `ValidationException` is available:
-
-```php
-use ProgrammatorDev\Validator\Exception\ValidationException;
-
-try {
-    $response = $api->fixtures()->getAllBySearchQuery('');
-}
-catch (ValidationException $exception) {
-    // should print: The query value should not be blank, "" given.
     echo $exception->getMessage();
 }
 ```

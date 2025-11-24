@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class Period
 {
-    use EntityTrait;
-
     private int $id;
 
     private int $fixtureId;
@@ -71,9 +69,9 @@ class Period
         // include
         $this->fixture = isset($data['fixture']) ? new Fixture($data['fixture'], $timezone) : null;
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
-        $this->events = isset($data['events']) ? $this->createEntityCollection(Event::class, $data['events'], $timezone) : null;
-        $this->timeline = isset($data['timeline']) ? $this->createEntityCollection(Event::class, $data['timeline'], $timezone) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(FixtureStatistic::class, $data['statistics'], $timezone) : null;
+        $this->events = isset($data['events']) ? EntityHelper::createEntityCollection(Event::class, $data['events'], $timezone) : null;
+        $this->timeline = isset($data['timeline']) ? EntityHelper::createEntityCollection(Event::class, $data['timeline'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? EntityHelper::createEntityCollection(FixtureStatistic::class, $data['statistics'], $timezone) : null;
     }
 
     public function getId(): int
