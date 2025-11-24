@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\State;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class StateCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var State[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class StateCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(State::class, $data['data']);
+        $this->data = EntityHelper::createEntityCollection(State::class, $data['data']);
     }
 
     public function getData(): array

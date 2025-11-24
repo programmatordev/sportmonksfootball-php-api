@@ -4,12 +4,10 @@ namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\RateLimit;
 use ProgrammatorDev\SportMonksFootball\Entity\Subscription;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class AbstractResponse
 {
-    use EntityTrait;
-
     /** @var Subscription[] */
     private array $subscriptions;
 
@@ -19,7 +17,7 @@ class AbstractResponse
 
     public function __construct(array $data)
     {
-        $this->subscriptions = $this->createEntityCollection(Subscription::class, $data['subscription']);
+        $this->subscriptions = EntityHelper::createEntityCollection(Subscription::class, $data['subscription']);
         $this->rateLimit = new RateLimit($data['rate_limit']);
         $this->timezone = $data['timezone'];
     }

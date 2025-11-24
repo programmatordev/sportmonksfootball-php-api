@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class League
 {
-    use EntityTrait;
-
     private int $id;
 
     private int $sportId;
@@ -76,13 +74,13 @@ class League
         // include
         $this->sport = isset($data['sport']) ? new Sport($data['sport']) : null;
         $this->country = isset($data['country']) ? new Country($data['country'], $timezone) : null;
-        $this->stages = isset($data['stages']) ? $this->createEntityCollection(Stage::class, $data['stages'], $timezone) : null;
-        $this->latestFixtures = isset($data['latest']) ? $this->createEntityCollection(Fixture::class, $data['latest'], $timezone) : null;
-        $this->upcomingFixtures = isset($data['upcoming']) ? $this->createEntityCollection(Fixture::class, $data['upcoming'], $timezone) : null;
-        $this->inplayFixtures = isset($data['inplay']) ? $this->createEntityCollection(Fixture::class, $data['inplay'], $timezone) : null;
-        $this->todayFixtures = isset($data['today']) ? $this->createEntityCollection(Fixture::class, $data['today'], $timezone) : null;
+        $this->stages = isset($data['stages']) ? EntityHelper::createEntityCollection(Stage::class, $data['stages'], $timezone) : null;
+        $this->latestFixtures = isset($data['latest']) ? EntityHelper::createEntityCollection(Fixture::class, $data['latest'], $timezone) : null;
+        $this->upcomingFixtures = isset($data['upcoming']) ? EntityHelper::createEntityCollection(Fixture::class, $data['upcoming'], $timezone) : null;
+        $this->inplayFixtures = isset($data['inplay']) ? EntityHelper::createEntityCollection(Fixture::class, $data['inplay'], $timezone) : null;
+        $this->todayFixtures = isset($data['today']) ? EntityHelper::createEntityCollection(Fixture::class, $data['today'], $timezone) : null;
         $this->currentSeason = isset($data['currentseason']) ? new Season($data['currentseason'], $timezone) : null;
-        $this->seasons = isset($data['seasons']) ? $this->createEntityCollection(Season::class, $data['seasons'], $timezone) : null;
+        $this->seasons = isset($data['seasons']) ? EntityHelper::createEntityCollection(Season::class, $data['seasons'], $timezone) : null;
     }
 
     public function getId(): int

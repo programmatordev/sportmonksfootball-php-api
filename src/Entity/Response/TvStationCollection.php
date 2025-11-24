@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\TvStation;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class TvStationCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var TvStation[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class TvStationCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(TvStation::class, $data['data'], $data['timezone']);
+        $this->data = EntityHelper::createEntityCollection(TvStation::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

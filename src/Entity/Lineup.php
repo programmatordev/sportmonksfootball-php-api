@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class Lineup
 {
-    use EntityTrait;
-
     private int $id;
 
     private int $fixtureId;
@@ -65,7 +63,7 @@ class Lineup
         $this->type = isset($data['type']) ? new Type($data['type']) : null;
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
         $this->detailedPosition = isset($data['detailedposition']) ? new Type($data['detailedposition']) : null;
-        $this->details = isset($data['details']) ? $this->createEntityCollection(LineupDetail::class, $data['details'], $timezone) : null;
+        $this->details = isset($data['details']) ? EntityHelper::createEntityCollection(LineupDetail::class, $data['details'], $timezone) : null;
     }
 
     public function getId(): int

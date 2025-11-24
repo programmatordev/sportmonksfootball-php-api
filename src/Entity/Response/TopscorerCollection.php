@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Topscorer;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class TopscorerCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var Topscorer[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class TopscorerCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Topscorer::class, $data['data'], $data['timezone']);
+        $this->data = EntityHelper::createEntityCollection(Topscorer::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

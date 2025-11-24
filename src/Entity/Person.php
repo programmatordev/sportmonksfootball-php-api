@@ -2,12 +2,8 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
-
 class Person
 {
-    use EntityTrait;
-
     private int $id;
 
     private int $sportId;

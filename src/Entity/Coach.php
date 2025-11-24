@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class Coach extends Person
 {
-    use EntityTrait;
-
     private int $playerId;
 
     private int $nationalityId;
@@ -34,11 +32,11 @@ class Coach extends Person
         $this->nationalityId = $data['nationality_id'];
 
         // include
-        $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies']) : null;
+        $this->trophies = isset($data['trophies']) ? EntityHelper::createEntityCollection(ParticipantTrophy::class, $data['trophies']) : null;
         $this->player = isset($data['player']) ? new Player($data['player'], $timezone) : null;
-        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures'], $timezone) : null;
-        $this->teams = isset($data['teams']) ? $this->createEntityCollection(TeamCoach::class, $data['teams'], $timezone) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(CoachStatistic::class, $data['statistics'], $timezone) : null;
+        $this->fixtures = isset($data['fixtures']) ? EntityHelper::createEntityCollection(Fixture::class, $data['fixtures'], $timezone) : null;
+        $this->teams = isset($data['teams']) ? EntityHelper::createEntityCollection(TeamCoach::class, $data['teams'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? EntityHelper::createEntityCollection(CoachStatistic::class, $data['statistics'], $timezone) : null;
     }
 
     public function getPlayerId(): int

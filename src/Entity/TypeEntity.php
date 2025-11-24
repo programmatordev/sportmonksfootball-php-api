@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class TypeEntity
 {
-    use EntityTrait;
-
     private string $name;
 
     private \DateTimeImmutable $updatedAt;
@@ -21,7 +19,7 @@ class TypeEntity
         // check the EntityTrait
         $this->name = $data['_key'];
         $this->updatedAt = new \DateTimeImmutable($data['updated_at']);
-        $this->types = $this->createEntityCollection(Type::class, $data['types']);
+        $this->types = EntityHelper::createEntityCollection(Type::class, $data['types']);
     }
 
     public function getName(): string
