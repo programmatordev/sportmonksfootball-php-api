@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class RefereeStatistic extends ParticipantStatistic
 {
-    use EntityTrait;
-
     private int $refereeId;
 
     /** @var ?RefereeStatisticDetail[] */
@@ -22,7 +20,7 @@ class RefereeStatistic extends ParticipantStatistic
         $this->refereeId = $data['referee_id'];
 
         // include
-        $this->details = isset($data['details']) ? $this->createEntityCollection(RefereeStatisticDetail::class, $data['details']) : null;
+        $this->details = isset($data['details']) ? EntityHelper::createEntityCollection(RefereeStatisticDetail::class, $data['details']) : null;
         $this->referee = isset($data['referee']) ? new Referee($data['referee'], $timezone) : null;
     }
 

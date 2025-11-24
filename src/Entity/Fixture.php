@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class Fixture
 {
-    use EntityTrait;
-
     private int $id;
 
     private int $sportId;
@@ -145,22 +143,22 @@ class Fixture
         $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
         $this->venue = isset($data['venue']) ? new Venue($data['venue'], $timezone) : null;
         $this->state = isset($data['state']) ? new State($data['state']) : null;
-        $this->lineups = isset($data['lineups']) ? $this->createEntityCollection(Lineup::class, $data['lineups'], $timezone) : null;
-        $this->comments = isset($data['comments']) ? $this->createEntityCollection(Commentary::class, $data['comments'], $timezone) : null;
-        $this->participants = isset($data['participants']) ? $this->createEntityCollection(Team::class, $data['participants'], $timezone) : null;
-        $this->odds = isset($data['odds']) ? $this->createEntityCollection(Odd::class, $data['odds'], $timezone) : null;
-        $this->metadata = isset($data['metadata']) ? $this->createEntityCollection(Metadata::class, $data['metadata']) : null;
+        $this->lineups = isset($data['lineups']) ? EntityHelper::createEntityCollection(Lineup::class, $data['lineups'], $timezone) : null;
+        $this->comments = isset($data['comments']) ? EntityHelper::createEntityCollection(Commentary::class, $data['comments'], $timezone) : null;
+        $this->participants = isset($data['participants']) ? EntityHelper::createEntityCollection(Team::class, $data['participants'], $timezone) : null;
+        $this->odds = isset($data['odds']) ? EntityHelper::createEntityCollection(Odd::class, $data['odds'], $timezone) : null;
+        $this->metadata = isset($data['metadata']) ? EntityHelper::createEntityCollection(Metadata::class, $data['metadata']) : null;
         $this->weatherReport = isset($data['weatherreport']) ? new WeatherReport($data['weatherreport'], $timezone) : null;
-        $this->events = isset($data['events']) ? $this->createEntityCollection(Event::class, $data['events'], $timezone) : null;
-        $this->timeline = isset($data['timeline']) ? $this->createEntityCollection(Event::class, $data['timeline'], $timezone) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(FixtureStatistic::class, $data['statistics'], $timezone) : null;
-        $this->periods = isset($data['periods']) ? $this->createEntityCollection(Period::class, $data['periods'], $timezone) : null;
-        $this->detailedPeriods = isset($data['detailedperiods']) ? $this->createEntityCollection(Period::class, $data['detailedperiods'], $timezone) : null;
-        $this->formations = isset($data['formations']) ? $this->createEntityCollection(Formation::class, $data['formations'], $timezone) : null;
-        $this->scores = isset($data['scores']) ? $this->createEntityCollection(Score::class, $data['scores'], $timezone) : null;
-        $this->tvStations = isset($data['tvstations']) ? $this->createEntityCollection(FixtureTvStation::class, $data['tvstations'], $timezone) : null;
-        $this->referees = isset($data['referees']) ? $this->createEntityCollection(FixtureReferee::class, $data['referees'], $timezone) : null;
-        $this->sidelined = isset($data['sidelined']) ? $this->createEntityCollection(FixtureSidelined::class, $data['sidelined'], $timezone) : null;
+        $this->events = isset($data['events']) ? EntityHelper::createEntityCollection(Event::class, $data['events'], $timezone) : null;
+        $this->timeline = isset($data['timeline']) ? EntityHelper::createEntityCollection(Event::class, $data['timeline'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? EntityHelper::createEntityCollection(FixtureStatistic::class, $data['statistics'], $timezone) : null;
+        $this->periods = isset($data['periods']) ? EntityHelper::createEntityCollection(Period::class, $data['periods'], $timezone) : null;
+        $this->detailedPeriods = isset($data['detailedperiods']) ? EntityHelper::createEntityCollection(Period::class, $data['detailedperiods'], $timezone) : null;
+        $this->formations = isset($data['formations']) ? EntityHelper::createEntityCollection(Formation::class, $data['formations'], $timezone) : null;
+        $this->scores = isset($data['scores']) ? EntityHelper::createEntityCollection(Score::class, $data['scores'], $timezone) : null;
+        $this->tvStations = isset($data['tvstations']) ? EntityHelper::createEntityCollection(FixtureTvStation::class, $data['tvstations'], $timezone) : null;
+        $this->referees = isset($data['referees']) ? EntityHelper::createEntityCollection(FixtureReferee::class, $data['referees'], $timezone) : null;
+        $this->sidelined = isset($data['sidelined']) ? EntityHelper::createEntityCollection(FixtureSidelined::class, $data['sidelined'], $timezone) : null;
 
         // TODO trends, inplayOdds, prematchNews, predictions, ballCoordinates
     }

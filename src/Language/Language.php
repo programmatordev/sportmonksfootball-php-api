@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Language;
 
-use ProgrammatorDev\SportMonksFootball\Util\ReflectionTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\ReflectionHelper;
 
 class Language
 {
-    use ReflectionTrait;
-
     public const ARABIC = 'ar';
     public const CHINESE = 'zh';
     public const ENGLISH = 'en';
@@ -19,6 +17,6 @@ class Language
 
     public static function getOptions(): array
     {
-        return (new Language)->getClassConstants(self::class);
+        return ReflectionHelper::getClassConstants(self::class);
     }
 }

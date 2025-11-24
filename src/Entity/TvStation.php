@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class TvStation
 {
-    use EntityTrait;
-
     private int $id;
 
     private ?string $name;
@@ -38,8 +36,8 @@ class TvStation
         $this->relatedId = $data['related_id'] ?? null;
 
         // include
-        $this->countries = isset($data['countries']) ? $this->createEntityCollection(Country::class, $data['countries'], $timezone) : null;
-        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(FixtureTvStation::class, $data['fixtures'], $timezone) : null;
+        $this->countries = isset($data['countries']) ? EntityHelper::createEntityCollection(Country::class, $data['countries'], $timezone) : null;
+        $this->fixtures = isset($data['fixtures']) ? EntityHelper::createEntityCollection(FixtureTvStation::class, $data['fixtures'], $timezone) : null;
     }
 
     public function getId(): int

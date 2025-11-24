@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class Player extends Person
 {
-    use EntityTrait;
-
     private ?int $nationalityId;
 
     private ?int $positionId;
@@ -62,16 +60,16 @@ class Player extends Person
 
         // include
         $this->city = isset($data['city']) ? new City($data['city'], $timezone) : null;
-        $this->teams = isset($data['teams']) ? $this->createEntityCollection(TeamSquad::class, $data['teams'], $timezone) : null;
-        $this->trophies = isset($data['trophies']) ? $this->createEntityCollection(ParticipantTrophy::class, $data['trophies'], $timezone) : null;
-        $this->transfers = isset($data['transfers']) ? $this->createEntityCollection(Transfer::class, $data['transfers'], $timezone) : null;
+        $this->teams = isset($data['teams']) ? EntityHelper::createEntityCollection(TeamSquad::class, $data['teams'], $timezone) : null;
+        $this->trophies = isset($data['trophies']) ? EntityHelper::createEntityCollection(ParticipantTrophy::class, $data['trophies'], $timezone) : null;
+        $this->transfers = isset($data['transfers']) ? EntityHelper::createEntityCollection(Transfer::class, $data['transfers'], $timezone) : null;
         $this->pendingTransfers = isset($data['pendingtransfers']) ? $this->createEntityCollection(Transfer::class, $data['pendingtransfers'], $timezone) : null;
         $this->position = isset($data['position']) ? new Type($data['position']) : null;
         $this->detailedPosition = isset($data['detailedposition']) ? new Type($data['detailedposition']) : null;
-        $this->lineups = isset($data['lineups']) ? $this->createEntityCollection(Lineup::class, $data['lineups'], $timezone) : null;
-        $this->latestLineups = isset($data['latest']) ? $this->createEntityCollection(Lineup::class, $data['latest'], $timezone) : null;
-        $this->metadata = isset($data['metadata']) ? $this->createEntityCollection(Metadata::class, $data['metadata']) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(PlayerStatistic::class, $data['statistics'], $timezone) : null;
+        $this->lineups = isset($data['lineups']) ? EntityHelper::createEntityCollection(Lineup::class, $data['lineups'], $timezone) : null;
+        $this->latestLineups = isset($data['latest']) ? EntityHelper::createEntityCollection(Lineup::class, $data['latest'], $timezone) : null;
+        $this->metadata = isset($data['metadata']) ? EntityHelper::createEntityCollection(Metadata::class, $data['metadata']) : null;
+        $this->statistics = isset($data['statistics']) ? EntityHelper::createEntityCollection(PlayerStatistic::class, $data['statistics'], $timezone) : null;
     }
 
     public function getNationalityId(): int

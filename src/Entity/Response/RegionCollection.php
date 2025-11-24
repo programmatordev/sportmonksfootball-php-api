@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Region;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class RegionCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var Region[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class RegionCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Region::class, $data['data'], $data['timezone']);
+        $this->data = EntityHelper::createEntityCollection(Region::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

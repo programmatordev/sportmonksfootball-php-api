@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Commentary;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class CommentaryCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var Commentary[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class CommentaryCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Commentary::class, $data['data'], $data['timezone']);
+        $this->data = EntityHelper::createEntityCollection(Commentary::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

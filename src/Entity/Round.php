@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class Round
 {
-    use EntityTrait;
-
     private int $id;
 
     private int $sportId;
@@ -65,8 +63,8 @@ class Round
         $this->league = isset($data['league']) ? new League($data['league'], $timezone) : null;
         $this->season = isset($data['season']) ? new Season($data['season'], $timezone) : null;
         $this->stage = isset($data['stage']) ? new Stage($data['stage'], $timezone) : null;
-        $this->fixtures = isset($data['fixtures']) ? $this->createEntityCollection(Fixture::class, $data['fixtures'], $timezone) : null;
-        $this->statistics = isset($data['statistics']) ? $this->createEntityCollection(Statistic::class, $data['statistics'], $timezone) : null;
+        $this->fixtures = isset($data['fixtures']) ? EntityHelper::createEntityCollection(Fixture::class, $data['fixtures'], $timezone) : null;
+        $this->statistics = isset($data['statistics']) ? EntityHelper::createEntityCollection(Statistic::class, $data['statistics'], $timezone) : null;
     }
 
     public function getId(): int

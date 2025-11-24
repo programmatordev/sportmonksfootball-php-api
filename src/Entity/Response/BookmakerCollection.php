@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Bookmaker;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class BookmakerCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var Bookmaker[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class BookmakerCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Bookmaker::class, $data['data']);
+        $this->data = EntityHelper::createEntityCollection(Bookmaker::class, $data['data']);
     }
 
     public function getData(): array

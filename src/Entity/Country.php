@@ -2,12 +2,10 @@
 
 namespace ProgrammatorDev\SportMonksFootball\Entity;
 
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class Country
 {
-    use EntityTrait;
-
     private int $id;
 
     private int $continentId;
@@ -56,8 +54,8 @@ class Country
 
         // include
         $this->continent = isset($data['continent']) ? new Continent($data['continent'], $timezone) : null;
-        $this->regions = isset($data['regions']) ? $this->createEntityCollection(Region::class, $data['regions'], $timezone) : null;
-        $this->leagues = isset($data['leagues']) ? $this->createEntityCollection(League::class, $data['leagues'], $timezone) : null;
+        $this->regions = isset($data['regions']) ? EntityHelper::createEntityCollection(Region::class, $data['regions'], $timezone) : null;
+        $this->leagues = isset($data['leagues']) ? EntityHelper::createEntityCollection(League::class, $data['leagues'], $timezone) : null;
     }
 
     public function getId(): int

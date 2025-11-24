@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\CoachStatistic;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class CoachStatisticCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var CoachStatistic[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class CoachStatisticCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(CoachStatistic::class, $data['data'], $data['timezone']);
+        $this->data = EntityHelper::createEntityCollection(CoachStatistic::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

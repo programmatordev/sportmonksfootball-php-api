@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Round;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class RoundCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var Round[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class RoundCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Round::class, $data['data'], $data['timezone']);
+        $this->data = EntityHelper::createEntityCollection(Round::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

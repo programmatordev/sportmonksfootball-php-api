@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Referee;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class RefereeCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var Referee[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class RefereeCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Referee::class, $data['data'], $data['timezone']);
+        $this->data = EntityHelper::createEntityCollection(Referee::class, $data['data'], $data['timezone']);
     }
 
     public function getData(): array

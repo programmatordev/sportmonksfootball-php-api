@@ -3,12 +3,10 @@
 namespace ProgrammatorDev\SportMonksFootball\Entity\Response;
 
 use ProgrammatorDev\SportMonksFootball\Entity\Market;
-use ProgrammatorDev\SportMonksFootball\Util\EntityTrait;
+use ProgrammatorDev\SportMonksFootball\Helper\EntityHelper;
 
 class MarketCollection extends AbstractCollectionResponse
 {
-    use EntityTrait;
-
     /** @var Market[] */
     private array $data;
 
@@ -16,7 +14,7 @@ class MarketCollection extends AbstractCollectionResponse
     {
         parent::__construct($data);
 
-        $this->data = $this->createEntityCollection(Market::class, $data['data']);
+        $this->data = EntityHelper::createEntityCollection(Market::class, $data['data']);
     }
 
     public function getData(): array
